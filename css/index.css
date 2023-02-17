@@ -1,0 +1,43 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#left_board {
+    position: absolute;
+    background-color: #c7cbcd;
+    height: 100%;
+    width: 25%;
+    display: block;
+    align-items: center;
+}
+
+#center_board {
+    position: absolute;
+    background-color: #e3e5e6;
+    left: 25%;
+    height: 100%;
+    width: 50%;
+    display: block;
+}
+
+#right_board {
+    position: absolute;
+    background-color: #c7cbcd;
+    left: 75%;
+    height: 100%;
+    width: 25%;
+    display: block;
+}
+
+
+#enemy_leader {
+    position: absolute;
+    background-color: #90979a;
+    border-radius: 10px;
+    height: 15%;
+    width: 25%;
+    left: 37.5%;
+    top: 10%;
+}
+
