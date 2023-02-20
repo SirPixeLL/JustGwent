@@ -53,6 +53,17 @@
     position: absolute;
     top: 10%;
     left: 40%;
+    
+}
+
+#enemy_status_icons {
+    margin-top: 15%;
+}
+
+#enemy_card_num {
+    float: left;
+    color: #aa9667;
+    font-weight: bold;
 }
 
 
@@ -78,4 +89,11 @@
     aspect-ratio: 1/1;
     width: 20px;
     top: 70%;
+    float: left;
+}
+
+.heart_icon {
+    aspect-ratio: 1/1;
+    width: 20px;
+    float: left;
 }
