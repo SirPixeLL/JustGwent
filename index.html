@@ -15,8 +15,11 @@
         <div id="enemy_status">
             <img id="enemy_pic" class="profile_pic" src="images/profile_pic.jpg">
             <div class="status_content">
-                <p class="player_name" >Player</p>
-                <p class="player_faction">Nilfgaard</p>
+                <div class="value_div"><p id="enemy_total_value">5</p></div>
+                <div class="name_faction_div">
+                    <p class="player_name" >Player</p>
+                    <p class="player_faction">Nilfgaard</p>
+                </div>
                 <div class="card_icon_div">
                     <img class="card_icon" src="images/playing-card.png"><p id="enemy_card_num">69</p>
                 </div>
@@ -33,8 +36,11 @@
         <div id="own_status">
             <img id="own_pic" class="profile_pic" src="images/profile_pic2.jpg">
             <div class="status_content">
-                <p class="player_name" >Player2</p>
-                <p class="player_faction">Northern Realms</p>
+                <div class="value_div"><p id="own_total_value">5</p></div>
+                <div class="name_faction_div">
+                    <p class="player_name" >Player2</p>
+                    <p class="player_faction">Northern Realms</p>
+                </div>
                 <div class="card_icon_div">
                     <img class="card_icon" src="images/playing-card.png"><p id="own_card_num">420</p>
                 </div>
@@ -49,10 +55,38 @@
     </div>
     <div id="center_board">
         <div id="enemy_side">
-
+            <div id="enemy_arty_div" class="line_div">
+                <div class="line_value"><p id="enemy_arty_value">3</p></div>
+                <div id="enemy_arty_boost" class="boost_line"></div>
+                <div id="enemy_arty" class="card_line"></div>
+            </div>
+            <div id="enemy_ranged_div" class="line_div">
+                <div class="line_value"><p id="enemy_ranged_value">3</p></div>
+                <div id="enemy_ranged_boost" class="boost_line"></div>
+                <div id="enemy_ranged" class="card_line"></div>
+            </div>
+            <div id="enemy_melee_div" class="line_div">
+                <div class="line_value"><p id="enemy_melee_value">3</p></div>
+                <div id="enemy_melee_boost" class="boost_line"></div>
+                <div id="enemy_melee" class="card_line"></div>
+            </div> 
         </div>
         <div id="own_side">
-
+            <div id="own_arty_div" class="line_div">
+                <div class="line_value"><p id="own_arty_value">3</p></div>
+                <div id="own_arty_boost" class="boost_line"></div>
+                <div id="own_arty" class="card_line"></div>
+            </div>
+            <div id="own_ranged_div" class="line_div">
+                <div class="line_value"><p id="own_ranged_value">3</p></div>
+                <div id="own_ranged_boost" class="boost_line"></div>
+                <div id="own_ranged" class="card_line"></div>
+            </div>
+            <div id="own_melee_div" class="line_div">
+                <div class="line_value"><p id="own_melee_value">3</p></div>
+                <div id="own_melee_boost" class="boost_line"></div>
+                <div id="own_melee" class="card_line"></div>
+            </div> 
         </div>
         <div id="current_cards">
 
@@ -60,13 +94,13 @@
 
     </div>
     <div id="right_board">
-        <div id="enemy_upcoming">
+        <div id="enemy_last_out">
 
         </div>
         <div id="enemy_remaining">
 
         </div>
-        <div id="own_upcoming">
+        <div id="own_last_out">
 
         </div>
         <div id="own_remaining">
