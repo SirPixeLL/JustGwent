@@ -1,6 +1,8 @@
 * {
     margin: 0px;
     padding: 0px;
+    min-width: 800px;
+    min-height: 800px;
 }
 
 #left_board {
@@ -60,7 +62,7 @@
     background-color: #90979a;
     width: 80%;
     height: 20%;
-    top: 40%;
+    top: 42%;
     left: 10%;
 }
 
@@ -86,6 +88,21 @@
     aspect-ratio: 3/4;
     left: calc(50% - 40px);
     top: 82.5%;
+}
+
+#enemy_side {
+    position: absolute;
+    height: 40%;
+    width: 90%;
+    left: 5%;
+}
+
+#own_side {
+    position: absolute;
+    height: 40%;
+    width: 90%;
+    top:  40%;
+    left: 5%;
 }
 
 .leader_pic {
