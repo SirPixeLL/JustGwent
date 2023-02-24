@@ -9,54 +9,45 @@
 </head>
 <body>
     <div id="left_board">
-        <div id="enemy_leader_div">
-            <img id="enemy_leader" class="leader_pic" src="images/profile_pic.jpg">
-        </div>
+        <img id="enemy_leader" src="images/profile_pic.jpg">
         <div id="enemy_status">
-            <img id="enemy_pic" class="profile_pic" src="images/profile_pic.jpg">
+            <img id="enemy_pic" src="images/profile_pic.jpg">
             <div class="status_content">
-                <div class="value_div"><p id="enemy_total_value">5</p></div>
-                <div class="name_faction_div">
-                    <p class="player_name" >Player</p>
-                    <p class="player_faction">Nilfgaard</p>
-                </div>
-                <div class="card_icon_div">
-                    <img class="card_icon" src="images/playing-card.png"><p id="enemy_card_num">69</p>
-                </div>
-                <div class="heart_icon_div">
-                    <img class="heart_icon" src="images/love-always-wins.png"><img class="heart_icon" src="images/love-always-wins.png">
+                <p class="player_name" >Player</p>
+                <p class="player_faction">Nilfgaard</p>
+                <div id="stats">
+                    <img class="card_icon" src="images/playing-card.png">
+                    <p id="enemy_card_num">69</p>
+                    <img class="heart_icon" src="images/love-always-wins.png">
+                    <img class="heart_icon" src="images/love-always-wins.png">
                 </div>
             </div>
+            <div id="enemy_total_value" >5</div>
         </div>
 
-        <div id="wheater_cards">
-
-        </div>
+        <div id="weather_cards"></div>
 
         <div id="own_status">
-            <img id="own_pic" class="profile_pic" src="images/profile_pic2.jpg">
+            <img id="own_pic" src="images/profile_pic2.jpg">
             <div class="status_content">
-                <div class="value_div"><p id="own_total_value">5</p></div>
-                <div class="name_faction_div">
-                    <p class="player_name" >Player2</p>
-                    <p class="player_faction">Northern Realms</p>
-                </div>
-                <div class="card_icon_div">
-                    <img class="card_icon" src="images/playing-card.png"><p id="own_card_num">420</p>
-                </div>
-                <div class="heart_icon_div">
-                    <img class="heart_icon" src="images/love-always-wins.png"><img class="heart_icon" src="images/love-always-wins.png">
+                <p class="player_name" >Player2</p>
+                <p class="player_faction">Northern Realms</p>
+                <div id="stats">
+                    <img class="card_icon" src="images/playing-card.png">
+                    <p id="own_card_num">420</p>
+                    <img class="heart_icon" src="images/love-always-wins.png">
+                    <img class="heart_icon" src="images/love-always-wins.png">
                 </div>
             </div>
+            <div id="own_total_value">5</div>
+
         </div>
-        <div id="own_leader_div">
-            <img id="own_leader" class="leader_pic" src="images/profile_pic2.jpg">
-        </div>
+        <img id="own_leader" src="images/profile_pic2.jpg">
     </div>
     <div id="center_board">
         <div id="enemy_side">
             <div id="enemy_arty_div" class="line_div">
-                <div class="line_value"><p id="enemy_arty_value">3</p></div>
+                <div class="line_value" id="enemy_arty_value">3</div>
                 <div id="enemy_arty_boost" class="boost_line"></div>
                 <div id="enemy_arty" class="card_line"></div>
             </div>
