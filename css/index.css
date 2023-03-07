@@ -14,7 +14,7 @@ body,html{
     display: inline-block;
     background-color: #c7cbcd;
     height: 100%;
-    width: 24%;
+    width: 24.5%;
     text-align: center;
     vertical-align: middle;  
 }
@@ -31,16 +31,10 @@ body,html{
     display: inline-block;
     background-color: #c7cbcd;
     height: 100%;
-    width: 24%;
+    width: 24.5%;
 }
 
 /*Styles for the left of the board*/
-
-#enemy_leader_div {
-    background-color: #90979a;
-    border-radius: 10px;
-    width: 80px;
-}
 
 #enemy_status,
 #own_status {
@@ -68,14 +62,16 @@ body,html{
 #own_leader{
     border-radius: 10px;
     width: clamp(20px, 50%, 100px);
-    margin: 50px auto;
-    border: 10px solid #c94203
+    aspect-ratio: 3/4;
+    margin: 40px auto;
+    border: 5px solid #90979a
 }
 
 #enemy_pic,
 #own_pic {
     display: inline-block;
     vertical-align: middle;
+    margin: 5px;
     width: 60px;
     border-radius: 60px;
 }
@@ -114,7 +110,7 @@ body,html{
     height: 40px;
     width: 40px;
     text-align: center;
-    line-height: 40px;
+    vertical-align: middle;
     font-weight: bolder;
 }
 
@@ -145,6 +141,7 @@ body,html{
 
 #current_cards {
     margin: auto;
+    margin-left: 7.5%;
     background-color: #c7cbcd;
     width: 90.75%;
     height: 12.5%;
@@ -186,3 +183,14 @@ body,html{
 }
 
 /*Styles for the right of the board*/
+
+#enemy_discarded {
+    display: inline-block;
+
+}
+
+#enemy_remaining {}
+
+#own_discarded {}
+
+#own_remaining {}
