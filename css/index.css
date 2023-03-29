@@ -127,14 +127,12 @@ body,html{
 /*Styles for the center of the board*/
 
 #enemy_side {
-    
     margin: auto;
     height: 40%;
     width: 100%;
 }
 
 #own_side {
-    
     height: 40%;
     width: 100%;
 }
@@ -184,13 +182,51 @@ body,html{
 
 /*Styles for the right of the board*/
 
+#enemy_right_board {
+    width: 100%;
+    height: 78%;
+}
+
+#own_right_board {
+    width: 100%;
+    height: 22%;
+}
+
 #enemy_discarded {
     display: inline-block;
+    border-radius: 10px;
+    margin: 10px;
+    width: clamp(20px, 50%, 100px);
+    background-color: #17191a;
+    aspect-ratio: 3/4;
 
 }
 
-#enemy_remaining {}
+#enemy_remaining {
+    display: inline-block;
+    border-radius: 10px;
+    margin: 10px;
+    width: clamp(20px, 50%, 100px);
+    background-color: #17191a;
+    aspect-ratio: 3/4;
+    color: white;
+}
 
-#own_discarded {}
+#own_discarded {
+    display: inline-block;
+    border-radius: 10px;
+    margin: 10px;
+    width: clamp(20px, 50%, 100px);
+    background-color: #17191a;
+    aspect-ratio: 3/4;
+}
 
-#own_remaining {}
+#own_remaining {
+    display: inline-block;
+    border-radius: 10px;
+    margin: 10px;
+    width: clamp(20px, 50%, 100px);
+    background-color: #17191a;
+    aspect-ratio: 3/4;
+    color: white;
+}
