@@ -6,8 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScuffedGwent</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/menu.css">
 </head>
 <body>
+    <div id="main_menu">
+        <!-- button je temporary ↓ -->
+        <button id="hide_menu" onclick="getElementById('main_menu').style.display='none'">X</button>
+        <p id="menu_title">MENU</p>
+        <div id="modes">
+            <div id="menu_button1" onclick="localMenu()">
+                <p id="menu_button_text">LOCAL</p>
+            </div>
+            <div id="menu_button2" onclick="multiplayerMenu()">
+                <p id="menu_button_text">MULTIPLAYER</p>
+            </div>
+            <div id="menu_button3" onclick="menuBack()">
+                <p id="menu_button_text">BACK</p>
+            </div>
+        </div>
+        <div id="local_player_names">
+            <input type="text" id="player_name1" placeholder="Player 1" maxlength="17">
+            <input type="text" id="player_name2" placeholder="Player 2" maxlength="17">
+        </div>
+        <div id="deck1">
+            <img class="deck1_pic" src="images/NorthernRealmsCB.webp">
+        </div>
+        <div id="deck2">
+            <img class="deck2_pic" src="images/MonstersCB.webp">
+        </div>
+
+        </div>
+    </div>
     <div id="left_board">
         <img id="enemy_leader" src="images/profile_pic.jpg">
         <div id="enemy_status">
@@ -103,6 +132,6 @@
         </div>
     </div>
 
-
+    <script src="js/Menu.js"></script>
 </body>
 </html>

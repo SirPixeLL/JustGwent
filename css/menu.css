@@ -1,0 +1,99 @@
+#main_menu{
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#menu_title{
+    position: absolute;
+    font-size: 500%;
+    left: 0;
+    right: 0;
+    
+    
+}
+#menu_button1{
+    width: 30%;
+    height: 10%;
+    background-color: gray;
+    margin: auto;
+    margin-top: 15%;
+}
+#menu_button2{
+    width: 30%;
+    height: 10%;
+    background-color: gray;
+    margin: auto;
+    margin-top: 1%;
+}
+#menu_button3{
+    width: 30%;
+    height: 10%;
+    background-color: gray;
+    margin: auto;
+    margin-top: 1%;
+    display: none;
+}
+#menu_button_text{
+    padding: 2.5%;
+    font-size: 200%;
+    user-select: none;
+}
+#deck1{
+    display: none;
+    position: fixed;
+    margin: auto;
+    border-radius: 10px;
+    width: clamp(30px, 50%, 10%);
+    aspect-ratio: 3/4;
+    border: 5px solid #90979a;
+    left: 20%;
+    top: 30%;
+}
+#deck2{
+    display: none;
+    position: fixed;
+    margin: auto;
+    border-radius: 10px;
+    width: clamp(30px, 50%, 10%);
+    aspect-ratio: 3/4;
+    border: 5px solid #90979a;
+    left: 70%;
+    top: 30%;
+}
+
+.deck1_pic{
+    width: 10vw;
+}
+
+.deck2_pic{
+    width: 10vw;
+}
+#player_name1{
+    display: none;
+    width: 10.5vw;
+    height: 2vw;
+    position: fixed;
+    margin: auto;
+    top: 25%;
+    left: 20%;
+    border: none;
+    font-size: large;
+}
+#player_name2{
+    display: none;
+    width: 10.5vw;
+    height: 2vw;
+    position: fixed;
+    margin: auto;
+    top: 25%;
+    left: 70%;
+    border: none;
+    font-size: large;
+}
+
+/*temporary ↓*/
+#hide_menu{
+    margin-right: 95%;
+    font-size: x-large;
+}
