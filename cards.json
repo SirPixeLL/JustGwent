@@ -1,0 +1,24 @@
+{
+    "Ballista": {
+        "name": "Ballista",
+        "power": 6,
+        "type": "Siege",
+        "picture": "Ballista.webp",
+        "faction": "NorthernRealms",
+        "ability": null,
+        "summons": null,
+        "isLegend": false,
+        "isSpecial": false
+    },
+    "Keira_Metz": {
+        "name": "Keira Metz",
+        "power": 5,
+        "type": "Ranged",
+        "picture": "Keira.webp",
+        "faction": "NorthernRealms",
+        "ability": null,
+        "summons": null,
+        "isLegend": false,
+        "isSpecial": false
+    }
+}
