@@ -2,20 +2,26 @@ let name;
 let power;
 let type;
 let picture;
-let ability;
 let faction;
-let rarity;
+let ability;
+let summons;
+let isLegend;
+let isSpecial;
 
-function Card(name, power, type, picture, faction, ability, rarity) {
-    this.name = name;
-    this.power = power;
-    this.type = type;
-    this.picture = picture;
-    this.faction = faction;
-    this.ability = ability;
-    this.rarity = rarity;
-
-    this.drawCard = function() {
+class Card {
+    constructor(name, power, type, picture, faction, ability, summons, isLegend, isSpecial){
+        this.name = name;
+        this.power = power;
+        this.type = type;
+        this.picture = picture;
+        this.faction = faction;
+        this.ability = ability;
+        this.summons = summons;
+        this.isLegend = isLegend;
+        this.isSpecial = isSpecial;  
+    }
+    
+    drawcard() {
         let cardFrame = document.createElement("div");
         cardFrame.className = "card";
         let powerDiv = document.createElement("div");
@@ -27,5 +33,8 @@ function Card(name, power, type, picture, faction, ability, rarity) {
         powerDiv.appendChild(power);
         cardFrame.appendChild(powerDiv);
         currentHand.appendChild(cardFrame);
+    }
+    play(deck, mySide, theirSide, weathers, discarded){ //vykreslí kartu na správné místo a provede příslušné funkce schopností
+        //možná vyřešit inteligentněji jak získat informace ať to nemá tolik vstupů
     }
 }

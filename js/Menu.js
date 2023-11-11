@@ -62,7 +62,7 @@ function menuBack(){
         button3.style.display = "none";
         button_text1.innerHTML = "LOCAL";
         button_text2.innerHTML = "MULTIPLAYER";
-        menu_title.innerHTML = "MENU";
+        menu_title.innerHTML = "GWENT ONLINE";
 
         inclick--;
     } else if (inclick == 2){
