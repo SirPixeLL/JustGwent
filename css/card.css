@@ -1,0 +1,9 @@
+.cardInHand {
+    display: inline-block;
+    border-radius: 10px;
+    margin: 2px;
+    width: 80px;
+    background-color: #17191a;
+    color: white;
+    aspect-ratio: 3/4;
+}

@@ -7,6 +7,10 @@ let ability;
 let summons;
 let isLegend;
 let isSpecial;
+let cardsInHand = 0; //zatím jen aby měli všechny karty unique id, nic se s tím nepočítá
+const currentHand = document.getElementById("current_cards");
+
+
 
 class Card {
     constructor(name, power, type, picture, faction, ability, summons, isLegend, isSpecial){
@@ -22,19 +26,26 @@ class Card {
     }
     
     drawcard() {
+        cardsInHand++;
         let cardFrame = document.createElement("div");
-        cardFrame.className = "card";
+        cardFrame.className = "cardInHand";
+        cardFrame.id = "card" + cardsInHand.toString();
+        cardFrame.setAttribute('onclick', 'play()');
         let powerDiv = document.createElement("div");
         powerDiv.className = "powerDiv";
         let power = document.createElement("p");
         power.innerHTML = this.power;
         power.className = "power"
-        let currentHand = document.getElementById("current_cards");
         powerDiv.appendChild(power);
         cardFrame.appendChild(powerDiv);
         currentHand.appendChild(cardFrame);
     }
-    play(deck, mySide, theirSide, weathers, discarded){ //vykreslí kartu na správné místo a provede příslušné funkce schopností
-        //možná vyřešit inteligentněji jak získat informace ať to nemá tolik vstupů
+
+    play(){
+        //musím zjisti jak funguje to získávání ID podle kurzoru, jsem clueless
     }
+}
+let card = new Card("geralt", "15", "Melee", "JPEG", "any", "none", "none", true, false);
+for (let index = 0; index < 8; index++) {
+    card.drawcard();    
 }
