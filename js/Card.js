@@ -1,3 +1,4 @@
+let id;
 let name;
 let power;
 let type;
@@ -13,7 +14,8 @@ const currentHand = document.getElementById("current_cards");
 
 
 class Card {
-    constructor(name, power, type, picture, faction, ability, summons, isLegend, isSpecial){
+    constructor(id, name, power, type, picture, faction, ability, summons, isLegend, isSpecial){
+        this.id = id;
         this.name = name;
         this.power = power;
         this.type = type;

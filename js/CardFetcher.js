@@ -1,40 +1,37 @@
-let cardsjson;
 let cardArray = [];
 
-  //tahá z JSONu informace o kartách a dělá z nich instance třídy Card
+  //vytváří instance třídy Card ze slovníku karet
   //dává instance třídy karet do seznamu
+  //přidává ke každé kartě id (id pouze pro jednu stranu = nepřítel může mít kartu se stejným id)
 
-function main(){ //sem psát všechno "mimo funkci" kvůli fetchi
-    console.log(cardsjson);
-    for (let key in cardsjson) {
-      let cardValues = cardsjson[key];
-      let card = new Card(
-          cardValues.name,
-          cardValues.power,
-          cardValues.type,
-          cardValues.picture,
-          cardValues.faction,
-          cardValues.ability,
-          cardValues.summons,
-          cardValues.isLegend,
-          cardValues.isSpecial
-      );
-      cardArray.push(card);
+console.log(cardDict);
+let i = 0;
+for (let key in cardDict) {
+  let cardValues = cardDict[key];
+  if(cardValues.isSpecial){
+    for(let id = 0; id < 3; id++){
+      makeCardObject(cardValues, id, i);
+    }
   }
+  else{
+    makeCardObject(cardValues, "", i);
+  }
+  i++;
 }
 
-
-fetch('./cards.json')
-  .then(response => response.json())
-  .then(data => {
-    cardsjson = data;
-    main();
-  })
-  .catch(error => {
-    console.error('Chyba při načítání souboru', error);
-  });
-
-  
-  function getCardArray(){
-    return cardArray;
-  }
+function makeCardObject(cardValues, id, i){
+  let card = new Card(
+    Object.keys(cardDict)[i]+id,
+    cardValues.name,
+    cardValues.power,
+    cardValues.type,
+    cardValues.picture,
+    cardValues.faction,
+    cardValues.ability,
+    cardValues.summons,
+    cardValues.isLegend,
+    cardValues.isSpecial
+  );
+  cardArray.push(card); 
+};
+console.log(cardArray);
