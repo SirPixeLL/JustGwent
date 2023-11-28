@@ -4,7 +4,6 @@ let cardArray = [];
   //dává instance třídy karet do seznamu
   //přidává ke každé kartě id (id pouze pro jednu stranu = nepřítel může mít kartu se stejným id)
 
-console.log(cardDict);
 let i = 0;
 for (let key in cardDict) {
   let cardValues = cardDict[key];
@@ -34,4 +33,3 @@ function makeCardObject(cardValues, id, i){
   );
   cardArray.push(card); 
 };
-console.log(cardArray);

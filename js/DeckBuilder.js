@@ -30,6 +30,4 @@ if(mode == 1){
         p1deck.push(element);
         p2deck.push(element);
     })
-    console.log(p1deck);
-    console.log(p2deck);
 }
