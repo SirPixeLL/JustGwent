@@ -17,7 +17,9 @@ class Card {
     constructor(id, name, power, type, picture, faction, ability, summons, isLegend, isSpecial){
         this.id = id;
         this.name = name;
+        this.basepower = power;
         this.power = power;
+        this.debuffed = false;
         this.type = type;
         this.picture = picture;
         this.faction = faction;
@@ -45,6 +47,19 @@ class Card {
 
     play(){
         //musím zjisti jak funguje to získávání ID podle kurzoru, jsem clueless
+    }
+    effect(){
+        switch(ability){
+            case "bitingFrost":
+                weather(0);
+                break;
+            case "ImpenetrableFog":
+                weather(1);
+                break;
+            case "TorrentialRain":
+                weather(2);
+                break;
+        }
     }
 }
 let card = new Card("geralt", "15", "Melee", "JPEG", "any", "none", "none", true, false);
