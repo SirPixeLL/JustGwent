@@ -2,7 +2,7 @@ let cardArray = [];
 
   //vytváří instance třídy Card ze slovníku karet
   //dává instance třídy karet do seznamu
-  //přidává ke každé kartě id (id pouze pro jednu stranu = nepřítel může mít kartu se stejným id)
+  //přidává ke každé kartě id (id pouze pro jednu stranu = nepřítel může mít kartu se stejným id(ošetřeno v deckBuilderu))
 
 let i = 0;
 for (let key in cardDict) {

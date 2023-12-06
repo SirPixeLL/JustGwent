@@ -4,13 +4,13 @@ function localGame(){
     playerDecks = [p1deck, p2deck];
     playerHands = [[],[]]; 
     playerLeaderUsed = [false, false];
-    boards = [[[playerDecks[1][2]],[],[]],
-              [[],[],[]]]
+    boards = [[[playerDecks[1][3], playerDecks[1][8], playerDecks[1][8]],[playerDecks[1][9], playerDecks[1][9]],[playerDecks[1][10]]],
+              [[playerDecks[0][2]],[playerDecks[0][4]],[playerDecks[0][10]]]]
     horn = [[false, false, false],[false, false, false]];
+    
     localGameStart();
     let currentPlayer = startingPlayer();
-    bitingFrost();
-    console.log(boards[0][0]);
+    //console.log(JSON.parse(JSON.stringify(boards)));
 }
 
 function drawNewCard(currentPlayer){
@@ -45,7 +45,7 @@ function startingPlayer(){
     else{
         coinflip = getRandomInt(2);
     }
-    console.log(coinflip);
+    console.log("Starting player: " + coinflip);
     return coinflip;
 }
 
@@ -76,7 +76,7 @@ function bond(){
 }//////////////////////////////////////////////////////////////////////////
 //česká vlajka :3
 
-function commanderHorn(){
+function commanderHorn(){ //ošklivý ale funkční
     for(let i = 0; i < horn.length; i++){
         for(let j = 0; j < horn[i].length; j++){
             if(horn[i][j] == true){
@@ -94,21 +94,72 @@ function commanderHorn(){
 function playHorn(row){
     horn[currentPlayer][row] = true;
 }
-function scorch(){
-    let strongest = [];
-    let strongestIndex = [];
-    let strongestPower = -1;
+function scorch(){  //do rozsahu testování plně funkční
+    let strongest = {};
+    let t = 0;
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
-                if(boards[i][j][n].power==strongestPower){
-                    strongest.push(boards[i][j][n]);
-                    strongestIndex.push([i,j,n]);
+                element = boards[i][j][n];
+                if($.isEmptyObject(strongest)){
+                    powerIndex = [element.power, i, j, n, t];
+                    strongest[element.name] = powerIndex;
                 }
-                else if(boards[i][j][n].power>strongestPower){
-
+                else if(element.power>powerIndex[0]){
+                    strongest = {};
+                    t = 0;
+                    powerIndex = [element.power, i, j, n, t];
+                    strongest[element.name] = powerIndex;
                 }
-            }//////////////////////////////////////////////////////////////
-        }//////////////////////////////////////////////////////////////////
-    }//////////////////////////////////////////////////////////////////////
+                else if(element.power == powerIndex[0]){
+                    if(powerIndex[1] == i && powerIndex[2] == j){
+                        t++;
+                    }else{
+                        t=0;
+                    }
+                    powerIndex = [element.power, i, j, n, t];
+                    strongest[element.id+t] = powerIndex;
+                }  
+            }
+        }
+    }
+    console.log(strongest);
+    for(let key in strongest){
+        let i = strongest[key][1];
+        let j = strongest[key][2];
+        let n = strongest[key][3];
+        let t = strongest[key][4];
+        boards[i][j].splice(n-t, 1);
+    }
+}
+function scorchMelee(currentPlayer){
+    let strongest = {};
+    let a;
+    let t = 0;
+    if(currentPlayer == 1){a = 0}
+    else{a = 1}
+    for(let n = 0; n < boards[a][0].length; n++){
+        let element = boards[a][0][n];
+        if($.isEmptyObject(strongest)){
+            powerIndex = [element.power, n, t];
+            strongest[element.id+t] = powerIndex;
+        }
+        else if(powerIndex[0] < element.power){
+            t = 0;
+            powerIndex = [element.power, n, t];
+            strongest = {};
+            strongest[element.id+t] = powerIndex;
+        }
+        else if(powerIndex[0] == element.power){
+            t++;
+            strongestIndex = [element.power, n, t];
+            strongest[element.id+t] = strongestIndex;
+        }
+    }
+    for(let key in strongest){
+        console.log(strongest);
+        n = strongest[key][1];
+        t = strongest[key][2];
+        boards[a][0].splice(n-t, 1);
+    }
 }
