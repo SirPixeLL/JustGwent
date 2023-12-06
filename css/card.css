@@ -2,7 +2,17 @@
     display: inline-block;
     border-radius: 10px;
     margin: 2px;
-    width: 80px;
+    width: 10%;
+    background-color: #17191a;
+    color: white;
+    aspect-ratio: 3/4;
+}
+
+.playedWeatherCard {
+    display: inline-block;
+    border-radius: 10px;
+    margin: 2px;
+    width: 25%;
     background-color: #17191a;
     color: white;
     aspect-ratio: 3/4;
