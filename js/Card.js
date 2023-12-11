@@ -33,21 +33,24 @@ class Card {
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
         cardFrame.id = "card" + cardsId.toString();
-        let cardType = this.type
+        let cardType = this.type;
         cardFrame.addEventListener("click", function(e){
             switch (cardType) {
                 case "Melee":
                     document.getElementById("own_melee").appendChild(document.getElementById(e.target.id));
+                    document.getElementById(e.target.id).className = "cardPlayed"
                     break;
                 case "Ranged":
                     document.getElementById("own_ranged").appendChild(document.getElementById(e.target.id));
+                    document.getElementById(e.target.id).className = "cardPlayed"
                     break;
                 case "Siege":
                     document.getElementById("own_arty").appendChild(document.getElementById(e.target.id));
+                    document.getElementById(e.target.id).className = "cardPlayed"
                     break;
                 case "Weather":
                     document.getElementById("weather_cards").appendChild(document.getElementById(e.target.id));
-                    document.getElementById(e.target.id).className = "playedWeatherCard";
+                    document.getElementById(e.target.id).className = "weatherCardPlayed";
                     break;
             };
         });
@@ -76,11 +79,13 @@ class Card {
     }
 }
 
-let card = new Card("1", "kokot", "10", "Melee", "JPEG", "Milfguard", null, null, false, false);
-let card1 = new Card("2", "kokot", "10", "Ranged", "JPEG", "Milfguard", null, null, false, false);
+let card = new Card("1", "test", "10", "Melee", "JPEG", "Northern Realms", null, null, false, false);
+let card1 = new Card("2", "test1", "10", "Ranged", "JPEG", "Northern Realms", null, null, false, false);
 for (let index = 0; index < 3; index++) {
     card.drawcard();
     card1.drawcard();    
 }
-let card2 = new Card("2", "kokot", "10", "Weather", "JPEG", "Milfguard", null, null, false, false);
+let card2 = new Card("2", "test2", "10", "Weather", "JPEG", "Northern Realms", null, null, false, false);
+card2.drawcard();
+card2.drawcard();
 card2.drawcard();

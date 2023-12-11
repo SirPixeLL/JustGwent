@@ -142,7 +142,7 @@ body,html{
     margin-left: 7.5%;
     background-color: #c7cbcd;
     width: 90.75%;
-    height: 12.5%;
+    height: 14%;
 }
 
 .line_div {
@@ -226,7 +226,7 @@ body,html{
     border-radius: 10px;
     margin: 10px;
     width: clamp(20px, 50%, 100px);
-    background-color: #17191a;
     aspect-ratio: 3/4;
+    background-color: #17191a;
     color: white;
 }
