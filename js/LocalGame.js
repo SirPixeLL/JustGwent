@@ -4,7 +4,7 @@ function localGame(){
     playerDecks = [p1deck, p2deck];
     playerHands = [[],[]]; 
     playerLeaderUsed = [false, false];
-    boards = [[[playerDecks[1][3], playerDecks[1][8], playerDecks[1][8]],[playerDecks[1][9], playerDecks[1][9]],[playerDecks[1][10]]],
+    boards = [[[playerDecks[1][3], playerDecks[1][8]],[playerDecks[1][9], playerDecks[1][9]],[playerDecks[1][10]]],
               [[playerDecks[0][2]],[playerDecks[0][4]],[playerDecks[0][10]]]]
     horn = [[false, false, false],[false, false, false]];
     
@@ -26,8 +26,7 @@ function localGameStart(){
     for(let i = 0; i < 2; i++){
         for(let j = 0; j < 10; j++){
             drawNewCard(i);
-        }
-    }
+        }}
 }
 function startingPlayer(){
     //"Coinflip" na začátku hry
@@ -49,6 +48,9 @@ function startingPlayer(){
     return coinflip;
 }
 
+//Plays card
+
+
 //Weather effects
 function weather(row){ //row = číslo(0 melee, 1 ranged, 2 siege)
     for(let i = 0; i < 2; i++){
@@ -59,6 +61,13 @@ function weather(row){ //row = číslo(0 melee, 1 ranged, 2 siege)
         }
     }
 }
+function clearWeather(){
+    for(let i = 0; i < boards.length; i++){
+        for(let j = 0; j < boards[i].length; j++){
+            for(let n = 0; n < boards[i][j].length; n++){
+                boards[i][j][n].debuffed = false;
+            }}}
+}
 function bond(){
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){
@@ -67,27 +76,44 @@ function bond(){
                     for(let m = 0; m < boards[i][j].length; m++){
                         if(boards[i][j][m] != boards[i][j][n] && boards[i][j][n].summons == boards[i][j][m].name){
                             boards[i][j][n].power = boards[i][j][n].power*2;
-                        }//////////////////////////////////////////////////
-                    }//////////////////////////////////////////////////////
-                }//////////////////////////////////////////////////////////
-            }//////////////////////////////////////////////////////////////
-        }//////////////////////////////////////////////////////////////////
-    }//////////////////////////////////////////////////////////////////////
-}//////////////////////////////////////////////////////////////////////////
-//česká vlajka :3
+                        }}}}}}
+}
+function muster(currentPlayer, row, card){
+    for(let e = 0; e < playerDecks[currentPlayer].length; e++){
+        if(playerDecks[currentPlayer][e].name == card.summons){
+            boards[currentPlayer][row].push(playerDecks[currentPlayer][e]);
+            playerDecks[currentPlayer].splice(e, 1);
+            e--;
+        }
+    }
 
-function commanderHorn(){ //ošklivý ale funkční
+    for(let e = 0; e < playerHands[currentPlayer].length; e++){
+        if(playerHands[currentPlayer][e].name == card.summons){
+            boards[currentPlayer][row].push(playerHands[currentPlayer][e]);
+            playerHands[currentPlayer].splice(e, 1);
+            e--;
+        }
+    }
+    
+}
+function commanderHornSet(row){
+    //přidat funkce která dává horn na true podle toho kam se to dá
+}
+function commanderHornBuff(){ //ošklivý ale funkční
     for(let i = 0; i < horn.length; i++){
         for(let j = 0; j < horn[i].length; j++){
             if(horn[i][j] == true){
                 for(let n = 0; n < boards[i][j].length; n++){
                     if(boards[i][j][n].isLegend = false){
                         boards[i][j][n].power = boards[i][j][n].power*2;
-                    }
-                }
-            }
-        }
-    }
+                    }}}}}
+}
+
+function moraleBoost(player, row, boosterIndex){
+    for(let n = 0; n < boards[player][row].length; n++){
+        if(n != boosterIndex){
+            boards[player][row][n].power += 1;
+        }}
 }
 
 //Schopnosti

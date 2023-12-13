@@ -10,7 +10,8 @@ const cardDict = {
         "ability": "bitingFrost",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true
+        "isSpecial": true,
+        "number": 3
     },
     "Decoy": {
         "name": "Decoy",
@@ -21,7 +22,8 @@ const cardDict = {
         "ability": "Decoy",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true
+        "isSpecial": true,
+        "number": 3
     },
     "Clear_Weather": {
         "name": "Clear Weather",
@@ -32,7 +34,8 @@ const cardDict = {
         "ability": "ClearWeather",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true
+        "isSpecial": true,
+        "number": 3
     },
     "Commanders_Horn": {
         "name": "Commanders Horn",
@@ -43,7 +46,8 @@ const cardDict = {
         "ability": "Horn",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true
+        "isSpecial": true,
+        "number": 3
     },
     "Impenetrable_Fog": {
         "name": "Impenetrable Fog",
@@ -54,7 +58,8 @@ const cardDict = {
         "ability": "ImpenetrableFog",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true
+        "isSpecial": true,
+        "number": 3
     },
     "Scorch": {
         "name": "Scorch",
@@ -65,7 +70,8 @@ const cardDict = {
         "ability": "Scorch",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true
+        "isSpecial": true,
+        "number": 3
     },
     "Torrential_Rain": {
         "name": "Torrential Rain",
@@ -76,7 +82,8 @@ const cardDict = {
         "ability": "TorrentialRain",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true
+        "isSpecial": true,
+        "number": 3
     },
     //Neutral (chybí kráva a defence idk co s nima)
     "Ciri": {
@@ -88,7 +95,8 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": true,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Dandelion": {
         "name": "Dandelion",
@@ -99,7 +107,8 @@ const cardDict = {
         "ability": "Horn",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Regis": {
         "name": "Emiel Regis Rohellec Terzieff",
@@ -110,7 +119,8 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "O'Dimm": {
         "name": "Gaunter O'Dimm",
@@ -121,7 +131,8 @@ const cardDict = {
         "ability": "Muster",
         "summons": "Gaunter O'Dimm: Darkness",
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Darkness": { //3x
         "name": "Gaunter O'Dimm: Darkness",
@@ -132,7 +143,8 @@ const cardDict = {
         "ability": "Muster",
         "summons": "Gaunter O'Dimm: Darkness",
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 3
     },
     "Geralt": {
         "name": "Geralt of Rivia",
@@ -143,7 +155,8 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": true,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Mysterious_Elf": {
         "name": "Mysterious Elf",
@@ -154,7 +167,8 @@ const cardDict = {
         "ability": "Spy",
         "summons": null,
         "isLegend": true,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Olgierd": {
         "name": "Olgierd von Everec",
@@ -165,7 +179,8 @@ const cardDict = {
         "ability": "MoraleBoost",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Vesemir": {
         "name": "Vesemir",
@@ -176,7 +191,8 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Villentretenmerth": {
         "name": "Villentretenmerth",
@@ -187,7 +203,8 @@ const cardDict = {
         "ability": "ScorchMelee",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Yennefer": {
         "name": "Yennefer of Vengerberg",
@@ -198,7 +215,8 @@ const cardDict = {
         "ability": "Medic",
         "summons": null,
         "isLegend": true,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Zoltan": {
         "name": "Zoltan Chivay",
@@ -209,7 +227,8 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
 
     //Northern Realms
@@ -222,7 +241,8 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Keira_Metz": {
         "name": "Keira Metz",
@@ -233,7 +253,8 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
 
     //Nilfgaard
@@ -246,7 +267,8 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Assire_var_Anahid": {
         "name": "Assire var Anahid",
@@ -257,7 +279,8 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
     "Cahir": {
         "name": "Cahir Mawr Dyffryn aep Ceallach",
@@ -268,6 +291,7 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false
+        "isSpecial": false,
+        "number": 1
     },
 }

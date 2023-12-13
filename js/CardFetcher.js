@@ -7,8 +7,8 @@ let cardArray = [];
 let i = 0;
 for (let key in cardDict) {
   let cardValues = cardDict[key];
-  if(cardValues.isSpecial){
-    for(let id = 0; id < 3; id++){
+  if(cardValues.number > 1){
+    for(let id = 0; id < cardValues.number; id++){
       makeCardObject(cardValues, id, i);
     }
   }
@@ -17,10 +17,11 @@ for (let key in cardDict) {
   }
   i++;
 }
+//console.log(cardArray);
 
-function makeCardObject(cardValues, id, i){
+function makeCardObject(cardValues, idn, i){
   let card = new Card(
-    Object.keys(cardDict)[i]+id,
+    Object.keys(cardDict)[i]+idn,
     cardValues.name,
     cardValues.power,
     cardValues.type,
