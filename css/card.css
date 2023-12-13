@@ -6,13 +6,37 @@
     background-color: #17191a;
     color: white;
     aspect-ratio: 3/4;
+    overflow-wrap: hidden;
 }
 
-.playedWeatherCard {
+.cardInHand:hover {
     display: inline-block;
     border-radius: 10px;
     margin: 2px;
-    width: 25%;
+    margin-top: -8%;
+    width: 15%;
+    background-color: #17191a;
+    color: white;
+    aspect-ratio: 3/4;
+}
+
+.cardPlayed {
+    display: inline-block;
+    border-radius: 10px;
+    margin: 2px;
+    width: 10%;
+    background-color: #17191a;
+    color: white;
+    aspect-ratio: 3/4;
+    overflow-wrap: hidden;
+}
+
+.weatherCardPlayed {
+    display: inline-flex;
+    border-radius: 10px;
+    margin: 1%;
+    margin-top: 8%;
+    width: 31,3%;
     background-color: #17191a;
     color: white;
     aspect-ratio: 3/4;
