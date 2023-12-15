@@ -104,7 +104,7 @@ const cardDict = {
         "type": "Melee",
         "picture": "Dandelion.webp",
         "faction": "Neutral",
-        "ability": "Horn",
+        "ability": "HornMelee",
         "summons": null,
         "isLegend": false,
         "isSpecial": false,

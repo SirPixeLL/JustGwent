@@ -17,7 +17,6 @@ for (let key in cardDict) {
   }
   i++;
 }
-//console.log(cardArray);
 
 function makeCardObject(cardValues, idn, i){
   let card = new Card(

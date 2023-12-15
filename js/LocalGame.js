@@ -48,11 +48,9 @@ function startingPlayer(){
     return coinflip;
 }
 
-//Plays card
-
-
 //Weather effects
 function weather(row){ //row = číslo(0 melee, 1 ranged, 2 siege)
+    //specifická funkce, nastavuje debuff status na určitý řádek, power se řeší na konci cyklu kola
     for(let i = 0; i < 2; i++){
         for(let n = 0; n < boards[i][row].length; n++){
             if(boards[i][row][n].isLegend = false){
@@ -68,7 +66,7 @@ function clearWeather(){
                 boards[i][j][n].debuffed = false;
             }}}
 }
-function bond(){
+function bond(){ //universal funkce, volá se na konci cyklu kola
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
@@ -94,10 +92,9 @@ function muster(currentPlayer, row, card){
             e--;
         }
     }
-    
 }
 function commanderHornSet(row){
-    //přidat funkce která dává horn na true podle toho kam se to dá
+    //přidat funkci která dává horn na true podle toho kam se to dá
 }
 function commanderHornBuff(){ //ošklivý ale funkční
     for(let i = 0; i < horn.length; i++){
@@ -109,7 +106,7 @@ function commanderHornBuff(){ //ošklivý ale funkční
                     }}}}}
 }
 
-function moraleBoost(player, row, boosterIndex){
+function moraleBoost(player, row, boosterIndex){ //do seznamu se musí ukládat informace o tom kdo boostuje, volá se na konci cyklu
     for(let n = 0; n < boards[player][row].length; n++){
         if(n != boosterIndex){
             boards[player][row][n].power += 1;
