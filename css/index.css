@@ -184,7 +184,11 @@ body,html{
 
 #enemy_right_board {
     width: 100%;
-    height: 78%;
+    height: 22%;
+}
+#shown_card {
+    width: 100%;
+    height: 56%;
 }
 
 #own_right_board {

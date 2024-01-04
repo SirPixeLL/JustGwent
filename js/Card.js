@@ -9,7 +9,9 @@ let summons;
 let isLegend;
 let isSpecial;
 let cardsId = 0; //zatím jen aby měli všechny karty unique id, nic se s tím nepočítá
-const currentHand = document.getElementById("current_cards");
+let margin = -15;
+let currentHand = document.getElementById("current_cards");
+let cardsInHand = [];
 
 class Card {
     constructor(id, name, power, type, picture, faction, ability, summons, isLegend, isSpecial){
@@ -62,9 +64,23 @@ class Card {
         powerDiv.appendChild(power);
         cardFrame.appendChild(powerDiv);
         currentHand.appendChild(cardFrame);
+        cardsInHand.push(document.getElementById("card" + cardsId.toString()));
+        for (let i = 0; i < cardsInHand.length; i++) {
+            let card = cardsInHand[i];
+            console.log(card.id);
+            if (cardsInHand.length >= 10 && i != 0) {
+                card.style.marginLeft = margin + "px";
+            }
+        }
+        if (cardsInHand.length >= 10) {
+            margin += -3;
+        }
+        else if (cardsInHand.length >= 17) {
+            margin += -1;
+        }
     }
 
-    effect(){
+    effect() {
         switch(ability){
             case "bitingFrost":
                 weather(0);
@@ -79,13 +95,24 @@ class Card {
     }
 }
 
-let card = new Card("1", "test", "10", "Melee", "JPEG", "Northern Realms", null, null, false, false);
-let card1 = new Card("2", "test1", "10", "Ranged", "JPEG", "Northern Realms", null, null, false, false);
+let card1 = new Card("1", "test", "10", "Melee", "JPEG", "Northern Realms", null, null, false, false);
+let card2 = new Card("2", "test1", "10", "Ranged", "JPEG", "Northern Realms", null, null, false, false);
 for (let index = 0; index < 3; index++) {
-    card.drawcard();
-    card1.drawcard();    
+    card1.drawcard();
+    card2.drawcard();    
 }
-let card2 = new Card("2", "test2", "10", "Weather", "JPEG", "Northern Realms", null, null, false, false);
-card2.drawcard();
-card2.drawcard();
-card2.drawcard();
+let card3 = new Card("2", "test2", "10", "Weather", "JPEG", "Northern Realms", null, null, false, false);
+card3.drawcard();
+card3.drawcard();
+card3.drawcard();
+card3.drawcard();
+card3.drawcard();
+card3.drawcard();
+card3.drawcard();
+card3.drawcard();
+card3.drawcard();
+card3.drawcard();
+card3.drawcard();
+card3.drawcard();
+
+

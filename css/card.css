@@ -6,7 +6,7 @@
     background-color: #17191a;
     color: white;
     aspect-ratio: 3/4;
-    overflow-wrap: hidden;
+    transition: ease-in-out 300ms;
 }
 
 .cardInHand:hover {
@@ -28,7 +28,6 @@
     background-color: #17191a;
     color: white;
     aspect-ratio: 3/4;
-    overflow-wrap: hidden;
 }
 
 .weatherCardPlayed {
