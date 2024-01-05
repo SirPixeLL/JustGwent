@@ -2,7 +2,7 @@
     display: inline-block;
     border-radius: 10px;
     margin: 2px;
-    width: 10%;
+    width: clamp(40px, 10%, 10%);
     background-color: #17191a;
     color: white;
     aspect-ratio: 3/4;

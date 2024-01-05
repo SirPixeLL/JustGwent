@@ -26,7 +26,8 @@ class Card {
         this.ability = ability;
         this.summons = summons;
         this.isLegend = isLegend;
-        this.isSpecial = isSpecial;  
+        this.isSpecial = isSpecial;
+        this.cardsInHand = cardsInHand;  
     
     }
     
@@ -35,31 +36,6 @@ class Card {
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
         cardFrame.id = "card" + cardsId.toString();
-        let cardType = this.type;
-        cardFrame.addEventListener("click", function(e){
-            switch (cardType) {
-                case "Melee":
-                    document.getElementById("own_melee").appendChild(document.getElementById(e.target.id));
-                    document.getElementById(e.target.id).className = "cardPlayed"
-                    document.getElementById(e.target.id).style.margin = "2px";
-                    break;
-                case "Ranged":
-                    document.getElementById("own_ranged").appendChild(document.getElementById(e.target.id));
-                    document.getElementById(e.target.id).className = "cardPlayed"
-                    document.getElementById(e.target.id).style.margin = "2px";
-                    break;
-                case "Siege":
-                    document.getElementById("own_arty").appendChild(document.getElementById(e.target.id));
-                    document.getElementById(e.target.id).className = "cardPlayed"
-                    document.getElementById(e.target.id).style.margin = "2px";
-                    break;
-                case "Weather":
-                    document.getElementById("weather_cards").appendChild(document.getElementById(e.target.id));
-                    document.getElementById(e.target.id).className = "weatherCardPlayed";
-                    document.getElementById(e.target.id).style.margin = "2px";
-                    break;
-            };
-        });
         let powerDiv = document.createElement("div");
         powerDiv.className = "powerDiv";
         let power = document.createElement("p");
@@ -71,7 +47,6 @@ class Card {
         cardsInHand.push(document.getElementById("card" + cardsId.toString()));
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];
-            console.log(card.id);
             if (cardsInHand.length >= 10 && i != 0) {
                 card.style.marginLeft = margin + "px";
             }
