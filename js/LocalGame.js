@@ -4,13 +4,17 @@ function localGame(){
     playerDecks = [p1deck, p2deck];
     playerHands = [[],[]]; 
     playerLeaderUsed = [false, false];
-    boards = [[[playerDecks[1][3], playerDecks[1][8]],[playerDecks[1][9], playerDecks[1][9]],[playerDecks[1][10]]],
+    playerDiscarded = [[],[]];
+    boards = [[[playerDecks[0][30], playerDecks[0][31],playerDecks[0][32]],[playerDecks[1][9]],[playerDecks[1][10]]],
               [[playerDecks[0][2]],[playerDecks[0][4]],[playerDecks[0][10]]]]
     horn = [[false, false, false],[false, false, false]];
     
+    console.log(JSON.parse(JSON.stringify(boards[0])));
+    
     localGameStart();
     let currentPlayer = startingPlayer();
-    //console.log(JSON.parse(JSON.stringify(boards)));
+    bond();
+    console.log(JSON.parse(JSON.stringify(boards[0])));
 }
 
 function drawNewCard(currentPlayer){
@@ -48,6 +52,40 @@ function startingPlayer(){
     return coinflip;
 }
 
+//zahraje kartu
+function play(card, currentPlayer){
+    switch(card.ability){
+        case "BitingFrost":
+            weather(0);
+            break;
+        case "ImpenetrableFog":
+            weather(1);
+            break;
+        case "TorrentialRain":
+            weather(2);
+            break;
+        case "ClearWeather":
+            clearWeather;
+            break;
+        case "Muster":
+            muster();
+            break;
+        case "CommandersHorn":
+            commanderHornSet();
+            break;
+        case "Scorch":
+            if(card.name == "Villentretenmerth"){ //ještě francesca má stejnou abilitu
+                scorchMelee(currentPlayer);
+            }else{
+                scorch();
+            }
+            break;
+        case "Medic":
+            medic(currentPlayer);
+            break;
+    }
+}
+
 //Weather effects
 function weather(row){ //row = číslo(0 melee, 1 ranged, 2 siege)
     //specifická funkce, nastavuje debuff status na určitý řádek, power se řeší na konci cyklu kola
@@ -70,10 +108,10 @@ function bond(){ //universal funkce, volá se na konci cyklu kola
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
-                if(boards[i][j][n].ability=="tightBond"){
+                if(boards[i][j][n].ability=="TightBond"){
                     for(let m = 0; m < boards[i][j].length; m++){
                         if(boards[i][j][m] != boards[i][j][n] && boards[i][j][n].summons == boards[i][j][m].name){
-                            boards[i][j][n].power = boards[i][j][n].power*2;
+                            boards[i][j][n].power = boards[i][j][n].power+boards[i][j][n].basepower;
                         }}}}}}
 }
 function muster(currentPlayer, row, card){

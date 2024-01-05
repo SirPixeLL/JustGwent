@@ -7,7 +7,7 @@ const cardDict = {
         "type": "Weather",
         "picture": "Biting_Frost.webp",
         "faction": "Neutral",
-        "ability": "bitingFrost",
+        "ability": "BitingFrost",
         "summons": null,
         "isLegend": false,
         "isSpecial": true,
@@ -43,7 +43,7 @@ const cardDict = {
         "type": "Horn",
         "picture": "Commanders_Horn.webp",
         "faction": "Neutral",
-        "ability": "Horn",
+        "ability": "CommandersHorn",
         "summons": null,
         "isLegend": false,
         "isSpecial": true,
@@ -255,6 +255,18 @@ const cardDict = {
         "isLegend": false,
         "isSpecial": false,
         "number": 1
+    },
+    "Stripes_Commando": {
+        "name": "Blue Stripes Commando",
+        "power": 4,
+        "type": "Melee",
+        "picture": "BSC.webp",
+        "faction": "NorthernRealms",
+        "ability": "TightBond",
+        "summons": "Blue Stripes Commando",
+        "isLegend": false,
+        "isSpecial": false,
+        "number": 3
     },
 
     //Nilfgaard
