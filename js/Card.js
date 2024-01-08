@@ -35,7 +35,7 @@ class Card {
         cardsId++;
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
-        cardFrame.id = "card" + cardsId.toString();
+        cardFrame.id = this.type + "card" + cardsId.toString();
         let powerDiv = document.createElement("div");
         powerDiv.className = "powerDiv";
         let power = document.createElement("p");
@@ -44,7 +44,7 @@ class Card {
         powerDiv.appendChild(power);
         cardFrame.appendChild(powerDiv);
         currentHand.appendChild(cardFrame);
-        cardsInHand.push(document.getElementById("card" + cardsId.toString()));
+        cardsInHand.push(document.getElementById(cardFrame.id));
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];
             if (cardsInHand.length >= 10 && i != 0) {
