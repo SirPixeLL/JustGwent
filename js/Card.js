@@ -35,11 +35,11 @@ class Card {
         cardsId++;
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
-        cardFrame.id = this.type + "card" + cardsId.toString();
+        cardFrame.id = this.type + this.id;
         let powerDiv = document.createElement("div");
         powerDiv.className = "powerDiv";
         let power = document.createElement("p");
-        power.innerHTML = this.type;
+        power.innerHTML = this.power + this.id;
         power.className = "power";
         powerDiv.appendChild(power);
         cardFrame.appendChild(powerDiv);
@@ -73,25 +73,4 @@ class Card {
         }
     }
 }
-
-let card1 = new Card("1", "test", "10", "Melee", "JPEG", "Northern Realms", null, null, false, false);
-let card2 = new Card("2", "test1", "10", "Ranged", "JPEG", "Northern Realms", null, null, false, false);
-for (let index = 0; index < 3; index++) {
-    card1.drawcard();
-    card2.drawcard();    
-}
-let card3 = new Card("2", "test2", "10", "Weather", "JPEG", "Northern Realms", null, null, false, false);
-card3.drawcard();
-card3.drawcard();
-card3.drawcard();
-card3.drawcard();
-card3.drawcard();
-card3.drawcard();
-card3.drawcard();
-card3.drawcard();
-card3.drawcard();
-card3.drawcard();
-card3.drawcard();
-card3.drawcard();
-
 
