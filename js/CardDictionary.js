@@ -86,7 +86,7 @@ const cardDict = {
         "number": 3
     },
     //Neutral (chybí kráva a defence idk co s nima)
-    "Ciri": {
+    /*"Ciri": {
         "name": "Cirilla Fiona Elen Rianon",
         "power": 15,
         "type": "Melee",
@@ -104,7 +104,7 @@ const cardDict = {
         "type": "Melee",
         "picture": "Dandelion.webp",
         "faction": "Neutral",
-        "ability": "HornMelee",
+        "ability": "CommandersHorn",
         "summons": null,
         "isLegend": false,
         "isSpecial": false,
@@ -144,7 +144,7 @@ const cardDict = {
         "summons": "Gaunter O'Dimm: Darkness",
         "isLegend": false,
         "isSpecial": false,
-        "number": 3
+        "number": 1
     },
     "Geralt": {
         "name": "Geralt of Rivia",
@@ -193,14 +193,14 @@ const cardDict = {
         "isLegend": false,
         "isSpecial": false,
         "number": 1
-    },
+    },*/
     "Villentretenmerth": {
         "name": "Villentretenmerth",
         "power": 7,
         "type": "Melee",
         "picture": "Dragon.webp",
         "faction": "Neutral",
-        "ability": "ScorchMelee",
+        "ability": "Scorch",
         "summons": null,
         "isLegend": false,
         "isSpecial": false,
@@ -243,6 +243,18 @@ const cardDict = {
         "isLegend": false,
         "isSpecial": false,
         "number": 1
+    },
+    "Kaedweni_Siege": {
+        "name": "Kaedweni Siege Expert",
+        "power": 1,
+        "type": "Siege",
+        "picture": "SExpert.webp",
+        "faction": "NorthernRealms",
+        "ability": "MoraleBoost",
+        "summons": null,
+        "isLegend": false,
+        "isSpecial": false,
+        "number": 3
     },
     "Keira_Metz": {
         "name": "Keira Metz",

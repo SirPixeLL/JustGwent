@@ -5,7 +5,7 @@ function localGame(){
     playerHands = [[],[]]; 
     playerLeaderUsed = [false, false];
     playerDiscarded = [[],[]];
-    boards = [[[],[],[]],[[],[],[]]]
+    boards = [[[],[],[]],[[playerDecks[1][1], playerDecks[1][2], playerDecks[1][3]],[],[]]]
     horn = [[false, false, false],[false, false, false]];
 
     playersTotalPower = [0, 0];
@@ -77,10 +77,10 @@ function play(card, currentPlayer){
             clearWeather;
             break;
         case "Muster":
-            muster();
+            muster(currentPlayer, card);
             break;
         case "CommandersHorn":
-            commanderHornSet();
+            commanderHornSet(card, currentPlayer);
             break;
         case "Scorch":
             if(card.name == "Villentretenmerth"){ //ještě francesca má stejnou abilitu
@@ -93,7 +93,8 @@ function play(card, currentPlayer){
             medic(currentPlayer);
             break;
     }
-    end_turn();
+    
+    end_turn(currentPlayer);
 }
 
 //Weather effects
@@ -115,36 +116,51 @@ function clearWeather(){
             }}}
 }
 function bond(i, j, n){ //volá se na konci cyklu kola
-    if(boards[i][j][n].ability=="tightBond"){
+    if(boards[i][j][n].ability=="TightBond"){
+        boards[i][j][n].power = boards[i][j][n].basepower;
         for(let m = 0; m < boards[i][j].length; m++){
             if(boards[i][j][m] != boards[i][j][n] && boards[i][j][n].summons == boards[i][j][m].name){
-                boards[i][j][n].power = boards[i][j][n].power*2;
+                boards[i][j][n].power = boards[i][j][n].power+boards[i][j][n].basepower;
             }}}
 }
-function muster(currentPlayer, row, card){
+function muster(currentPlayer, card){
     for(let e = 0; e < playerDecks[currentPlayer].length; e++){
         if(playerDecks[currentPlayer][e].name == card.summons){
+            switch(playerDecks[currentPlayer][e].type){
+                case "Melee":
+                    row = 0;
+                    break;
+                case "Ranged":
+                    row = 1;
+                    break;
+                case "Siege":
+                    row = 2;
+                    break;
+            }
             boards[currentPlayer][row].push(playerDecks[currentPlayer][e]);
             playerDecks[currentPlayer].splice(e, 1);
             e--;
         }
     }
 
-    for(let e = 0; e < playerHands[currentPlayer].length; e++){
+    /*for(let e = 0; e < playerHands[currentPlayer].length; e++){
         if(playerHands[currentPlayer][e].name == card.summons){
             boards[currentPlayer][row].push(playerHands[currentPlayer][e]);
             playerHands[currentPlayer].splice(e, 1);
             e--;
         }
-    }
+    }*/
 }
-function commanderHornSet(row){
+function commanderHornSet(card, currentPlayer){
+    if(card.type = "Melee"){
+        horn[currentPlayer][0] = true;
+    }
     //přidat funkci která dává horn na true podle toho kam se to dá
 }
 function commanderHornBuff(i, j){ //ošklivý ale funkční
     if(horn[i][j] == true){
         for(let n = 0; n < boards[i][j].length; n++){
-            if(boards[i][j][n].isLegend = false){
+            if(boards[i][j][n].isLegend == false){
                 boards[i][j][n].power = boards[i][j][n].power*2;
             }}}
 }
@@ -157,9 +173,6 @@ function moraleBoost(player, row, boosterIndex){ //do seznamu se musí ukládat 
 }
 
 //Schopnosti
-function playHorn(row){
-    horn[currentPlayer][row] = true;
-}
 function scorch(){  //do rozsahu testování plně funkční
     let strongest = {};
     let t = 0;
@@ -167,25 +180,28 @@ function scorch(){  //do rozsahu testování plně funkční
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
                 element = boards[i][j][n];
-                if($.isEmptyObject(strongest)){
-                    powerIndex = [element.power, i, j, n, t];
-                    strongest[element.name] = powerIndex;
-                }
-                else if(element.power>powerIndex[0]){
-                    strongest = {};
-                    t = 0;
-                    powerIndex = [element.power, i, j, n, t];
-                    strongest[element.name] = powerIndex;
-                }
-                else if(element.power == powerIndex[0]){
-                    if(powerIndex[1] == i && powerIndex[2] == j){
-                        t++;
-                    }else{
-                        t=0;
+                if(element.isLegend == false){
+                    if($.isEmptyObject(strongest)){
+                        powerIndex = [element.power, i, j, n, t];
+                        strongest[element.name] = powerIndex;
                     }
-                    powerIndex = [element.power, i, j, n, t];
-                    strongest[element.id+t] = powerIndex;
-                }  
+                    else if(element.power>powerIndex[0]){
+                        strongest = {};
+                        t = 0;
+                        powerIndex = [element.power, i, j, n, t];
+                        strongest[element.name] = powerIndex;
+                    }
+                    else if(element.power == powerIndex[0]){
+                        if(powerIndex[1] == i && powerIndex[2] == j){
+                            t++;
+                        }else{
+                            t=0;
+                        }
+                        powerIndex = [element.power, i, j, n, t];
+                        strongest[element.id+t] = powerIndex;
+                    }  
+                }
+                
             }
         }
     }
@@ -206,28 +222,35 @@ function scorchMelee(currentPlayer){
     else{a = 1}
     for(let n = 0; n < boards[a][0].length; n++){
         let element = boards[a][0][n];
-        if($.isEmptyObject(strongest)){
+        if(element.isLegend == false){
+           if($.isEmptyObject(strongest)){
             powerIndex = [element.power, n, t];
             strongest[element.id+t] = powerIndex;
+            }
+            else if(powerIndex[0] < element.power){
+                t = 0;
+                powerIndex = [element.power, n, t];
+                strongest = {};
+                strongest[element.id+t] = powerIndex;
+            }
+            else if(powerIndex[0] == element.power){
+                t++;
+                strongestIndex = [element.power, n, t];
+                strongest[element.id+t] = strongestIndex;
+            } 
         }
-        else if(powerIndex[0] < element.power){
-            t = 0;
-            powerIndex = [element.power, n, t];
-            strongest = {};
-            strongest[element.id+t] = powerIndex;
-        }
-        else if(powerIndex[0] == element.power){
-            t++;
-            strongestIndex = [element.power, n, t];
-            strongest[element.id+t] = strongestIndex;
-        }
+        
     }
     for(let key in strongest){
-        console.log(strongest);
+        //console.log(strongest);
         n = strongest[key][1];
         t = strongest[key][2];
         boards[a][0].splice(n-t, 1);
     }
+}
+
+function medic(currentPlayer){
+
 }
 
 function SUMpowers(currentPlayer){
@@ -240,8 +263,10 @@ function SUMpowers(currentPlayer){
             ownSiege = document.getElementById("own_arty_value");
             ownRanged = document.getElementById("own_ranged_value");
             ownMelee = document.getElementById("own_melee_value");
+            enemyTotal = document.getElementById("enemy_total_value");
+            ownTotal = document.getElementById("own_total_value");
             UI = [[ownMelee, ownRanged, ownSiege],[enemyMelee, enemyRanged, enemySiege]];
-            //console.log(UI);
+            Total = [ownTotal, enemyTotal];
             break;
         case 1:
 
@@ -258,18 +283,24 @@ function SUMpowers(currentPlayer){
             //console.log(rowPower);
             //console.log(UI[half]);
             UI[half][row].innerHTML = rowPower;
+            playersTotalPower[half] += rowPower
         }
-        
-        playersTotalPower[half] += rowPower
+        console.log(playersTotalPower);
+        Total[half].innerHTML = playersTotalPower[half];
     }
+
+    console.log(boards);
 }
 
-function end_turn(){
+function end_turn(currentPlayer){
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
                 if(boards[i][j][n].debuffed){boards[i][j][n].power = 1} //weather debuff
                 bond(i, j, n) //bond
 
-            }}}
+            }
+        commanderHornBuff(i,j);
+        }}
+    SUMpowers(currentPlayer);
 }

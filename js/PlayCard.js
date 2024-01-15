@@ -19,20 +19,29 @@ for (let i = 0; i < hand.length; i++) {
 
                 //console.log(playerHands[currentPlayer])
                 boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
+                let playedCard = playerHands[currentPlayer][index];
+                play(playedCard, currentPlayer);
                 playerHands[currentPlayer].splice(i,1);
-                SUMpowers(currentPlayer);
+                
         };
         if (e.target.id.includes("Ranged")) {
                 document.getElementById("own_ranged").appendChild(document.getElementById(e.target.id));
                 document.getElementById(e.target.id).className = "cardPlayed"
                 document.getElementById(e.target.id).style.margin = "2px";
-                SUMpowers(currentPlayer);
+
+                boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
+                let playedCard = playerHands[currentPlayer][index];
+                play(playedCard, currentPlayer);
+                playerHands[currentPlayer].splice(i,1);
         };
         if (e.target.id.includes("Siege")) {
                 document.getElementById("own_arty").appendChild(document.getElementById(e.target.id));
                 document.getElementById(e.target.id).className = "cardPlayed"
                 document.getElementById(e.target.id).style.margin = "2px";
-                SUMpowers(currentPlayer);
+                boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
+                let playedCard = playerHands[currentPlayer][index];
+                play(playedCard, currentPlayer);
+                playerHands[currentPlayer].splice(i,1);
         };
         if (e.target.id.includes("Weather")) {
                 document.getElementById("weather_cards").appendChild(document.getElementById(e.target.id));
