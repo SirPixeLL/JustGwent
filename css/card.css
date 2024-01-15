@@ -24,7 +24,17 @@
     display: inline-block;
     border-radius: 10px;
     margin: 2px;
-    width: 10%;
+    width: clamp(60px, 10%, 10%);
+    background-color: #17191a;
+    color: white;
+    aspect-ratio: 3/4;
+}
+
+.cardShown {
+    display: inline-block;
+    border-radius: 10px;
+    margin: 2px;
+    width: clamp(120px, 70%, 70%);
     background-color: #17191a;
     color: white;
     aspect-ratio: 3/4;
@@ -35,7 +45,7 @@
     border-radius: 10px;
     margin: 1%;
     margin-top: 8%;
-    width: 31,3%;
+    width: clamp(60px, 31.3%, 31.3%);
     background-color: #17191a;
     color: white;
     aspect-ratio: 3/4;

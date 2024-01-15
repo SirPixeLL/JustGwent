@@ -191,6 +191,16 @@ body,html{
     height: 56%;
 }
 
+.shownButton {
+    display: none;
+    height: 30px;
+    width: 80px;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: #17191a;
+    color: #ffffff;
+}
+
 #own_right_board {
     width: 100%;
     height: 22%;

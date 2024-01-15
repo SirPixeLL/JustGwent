@@ -1,8 +1,35 @@
+function PlayCard(cardType, e) {
+        let buttonYes = document.getElementById("shownButtonYes");
+        let buttonNo = document.getElementById("shownButtonNo");
+        buttonYes.style.display = "inline-block";
+        buttonNo.style.display = "inline-block";
+        document.getElementById("shown_card").appendChild(document.getElementById(e.target.id));
+        document.getElementById(e.target.id).className = "cardShown";
+        buttonYes.onclick = function() {
+                document.getElementById(cardType).appendChild(document.getElementById(e.target.id));
+                document.getElementById(e.target.id).className = "cardPlayed";
+                document.getElementById(e.target.id).style.margin = "2px";
 
+                 //console.log(playerHands[currentPlayer])
+                if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
+                else if (cardType == "own_ranged") boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
+                else if (cardType == "own_arty") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
+                let playedCard = playerHands[currentPlayer][index];
+                play(playedCard, currentPlayer);
+                playerHands[currentPlayer].splice(i,1);
+                buttonYes.style.display = "none";
+                buttonNo.style.display = "none";
+        };
+        buttonNo.onclick = function() {
+                document.getElementById("current_cards").appendChild(document.getElementById(e.target.id));
+                document.getElementById(e.target.id).className = "cardInHand";
+                buttonYes.style.display = "none";
+                buttonNo.style.display = "none";
+        }; 
+}
 
-let hand = document.getElementsByClassName("cardInHand");
-for (let i = 0; i < hand.length; i++) {
-    hand[i].addEventListener("click", function(e){
+for (let i = 0; i < cardsInHand.length; i++) {
+    cardsInHand[i].addEventListener("click", function(e){
 
         currentPlayer = getCurrentPlayer();
         //console.log(currentPlayer);
@@ -10,38 +37,16 @@ for (let i = 0; i < hand.length; i++) {
                 //console.log(e.target.id, playerHands[currentPlayer][synch].id);
                 if(e.target.id.includes(playerHands[currentPlayer][synch].id)){
                         index = synch;
-                }
-        }
+                };
+        };
         if (e.target.id.includes("Melee")) {
-                document.getElementById("own_melee").appendChild(document.getElementById(e.target.id));
-                document.getElementById(e.target.id).className = "cardPlayed"
-                document.getElementById(e.target.id).style.margin = "2px";
-
-                //console.log(playerHands[currentPlayer])
-                boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
-                let playedCard = playerHands[currentPlayer][index];
-                play(playedCard, currentPlayer);
-                playerHands[currentPlayer].splice(i,1);
-                
+                PlayCard("own_melee", e);
         };
         if (e.target.id.includes("Ranged")) {
-                document.getElementById("own_ranged").appendChild(document.getElementById(e.target.id));
-                document.getElementById(e.target.id).className = "cardPlayed"
-                document.getElementById(e.target.id).style.margin = "2px";
-
-                boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
-                let playedCard = playerHands[currentPlayer][index];
-                play(playedCard, currentPlayer);
-                playerHands[currentPlayer].splice(i,1);
+                PlayCard("own_ranged", e);
         };
         if (e.target.id.includes("Siege")) {
-                document.getElementById("own_arty").appendChild(document.getElementById(e.target.id));
-                document.getElementById(e.target.id).className = "cardPlayed"
-                document.getElementById(e.target.id).style.margin = "2px";
-                boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
-                let playedCard = playerHands[currentPlayer][index];
-                play(playedCard, currentPlayer);
-                playerHands[currentPlayer].splice(i,1);
+                PlayCard("own_arty", e);
         };
         if (e.target.id.includes("Weather")) {
                 document.getElementById("weather_cards").appendChild(document.getElementById(e.target.id));
@@ -50,4 +55,5 @@ for (let i = 0; i < hand.length; i++) {
         };
         //console.log(JSON.parse(JSON.stringify(boards)));
     });
+
 };

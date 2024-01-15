@@ -8,7 +8,6 @@ let ability;
 let summons;
 let isLegend;
 let isSpecial;
-let cardsId = 0; //zatím jen aby měli všechny karty unique id, nic se s tím nepočítá
 let margin = -15;
 let currentHand = document.getElementById("current_cards");
 let cardsInHand = [];
@@ -27,12 +26,9 @@ class Card {
         this.summons = summons;
         this.isLegend = isLegend;
         this.isSpecial = isSpecial;
-        this.cardsInHand = cardsInHand;  
-    
     }
     
     drawcard() {
-        cardsId++;
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
         cardFrame.id = this.type + this.id;
