@@ -12,6 +12,37 @@ let margin = -15;
 let currentHand = document.getElementById("current_cards");
 let cardsInHand = [];
 
+function MarginTrueNeckKeys(value) {
+    if (value == true) {
+        for (let i = 0; i < cardsInHand.length; i++) {
+            let card = cardsInHand[i];
+            if (cardsInHand.length >= 10 && i != 0) {
+                card.style.marginLeft = margin + "px";
+            }
+        }
+        if (cardsInHand.length >= 10) {
+            margin += -3;
+        }
+        else if (cardsInHand.length >= 17) {
+            margin += -1;
+        }
+    }
+    else {
+        for (let i = 0; i < cardsInHand.length; i++) {
+            let card = cardsInHand[i];
+            if (cardsInHand.length >= 10 && i != 0) {
+                card.style.marginLeft = margin + "px";
+            }
+        }
+        if (cardsInHand.length >= 10) {
+            margin += 3;
+        }
+        else if (cardsInHand.length >= 17) {
+            margin += 1;
+        }
+    }
+}
+
 class Card {
     constructor(id, name, power, type, picture, faction, ability, summons, isLegend, isSpecial){
         this.id = id;
@@ -27,6 +58,7 @@ class Card {
         this.isLegend = isLegend;
         this.isSpecial = isSpecial;
     }
+
     
     drawcard() {
         let cardFrame = document.createElement("div");
@@ -41,18 +73,7 @@ class Card {
         cardFrame.appendChild(powerDiv);
         currentHand.appendChild(cardFrame);
         cardsInHand.push(document.getElementById(cardFrame.id));
-        for (let i = 0; i < cardsInHand.length; i++) {
-            let card = cardsInHand[i];
-            if (cardsInHand.length >= 10 && i != 0) {
-                card.style.marginLeft = margin + "px";
-            }
-        }
-        if (cardsInHand.length >= 10) {
-            margin += -3;
-        }
-        else if (cardsInHand.length >= 17) {
-            margin += -1;
-        }
+        MarginTrueNeckKeys(true);
     }
 
     effect() {
