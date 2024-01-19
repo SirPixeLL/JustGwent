@@ -43,6 +43,14 @@ function MarginTrueNeckKeys(value) {
     }
 }
 
+function clearBoards(){
+    let cardsToClear = document.getElementsByClassName("cardPlayed");
+    console.log(cardsToClear);
+    for(let i = 0; i < cardsToClear.length; i++){
+        cardsToClear[i--].remove();
+    }
+}
+
 class Card {
     constructor(id, name, power, type, picture, faction, ability, summons, isLegend, isSpecial){
         this.id = id;
@@ -74,6 +82,35 @@ class Card {
         currentHand.appendChild(cardFrame);
         cardsInHand.push(document.getElementById(cardFrame.id));
         MarginTrueNeckKeys(true);
+    }
+
+    drawOnBoard(i, j, currentPlayer){
+        let cardsOnBoard;
+        let enemySiege = document.getElementById("enemy_arty");
+        let enemyRanged = document.getElementById("enemy_ranged");
+        let enemyMelee = document.getElementById("enemy_melee");
+        let ownSiege = document.getElementById("own_arty");
+        let ownRanged = document.getElementById("own_ranged");
+        let ownMelee = document.getElementById("own_melee");
+        
+        if(currentPlayer == 0){
+            cardsOnBoard = [[ownMelee, ownRanged, ownSiege], [enemyMelee, enemyRanged, enemySiege]];
+        } else{
+            cardsOnBoard = [[enemyMelee, enemyRanged, enemySiege], [ownMelee, ownRanged, ownSiege]]
+        }
+
+        let cardFrame = document.createElement("div");
+        cardFrame.className = "cardPlayed";
+        console.log(cardsOnBoard[i][j]);
+        cardFrame.id = this.type + this.id;
+        let powerDiv = document.createElement("div");
+        powerDiv.className = "powerDiv";
+        let power = document.createElement("p");
+        power.innerHTML = this.power + this.id;
+        power.className = "power";
+        powerDiv.appendChild(power);
+        cardFrame.appendChild(powerDiv);
+        cardsOnBoard[i][j].appendChild(cardFrame);
     }
 
     effect() {

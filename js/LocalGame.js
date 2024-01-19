@@ -5,18 +5,29 @@ function localGame(){
     playerHands = [[],[]]; 
     playerLeaderUsed = [false, false];
     playerDiscarded = [[],[]];
-    boards = [[[],[],[]],[[playerDecks[1][1], playerDecks[1][2], playerDecks[1][3]],[],[]]]
+    boards = [[[playerDecks[0][1]],[],[]],[[playerDecks[1][1], playerDecks[1][2], playerDecks[1][3]],[],[]]]
     horn = [[false, false, false],[false, false, false]];
 
     playersTotalPower = [0, 0];
     
-    //console.log(JSON.parse(JSON.stringify(boards[0])));
+    console.log(JSON.parse(JSON.stringify(boards)));
     
     localGameStart();
     currentPlayer = startingPlayer();
-    playerHands[0].forEach(element => {
+    console.log(playerHands[currentPlayer]);
+    playerHands[currentPlayer].forEach(element => {
         element.drawcard();
     });
+
+
+    for(let i = 0; i < 2; i++){
+        for(let j = 0; j < boards[i].length; j++){
+            boards[i][j].forEach(element => {
+                element.drawOnBoard(i, j, currentPlayer);
+            });
+        }
+    }
+    console.log(JSON.parse(JSON.stringify(boards)));
 }
 
 function getCurrentPlayer(){
@@ -255,23 +266,27 @@ function medic(currentPlayer){
 
 function SUMpowers(currentPlayer){
     UI = [[],[]];
+    enemySiege = document.getElementById("enemy_arty_value");
+    enemyRanged = document.getElementById("enemy_ranged_value");
+    enemyMelee = document.getElementById("enemy_melee_value");
+    ownSiege = document.getElementById("own_arty_value");
+    ownRanged = document.getElementById("own_ranged_value");
+    ownMelee = document.getElementById("own_melee_value");
+    enemyTotal = document.getElementById("enemy_total_value");
+    ownTotal = document.getElementById("own_total_value");
+    
     switch (currentPlayer) {
         case 0:
-            enemySiege = document.getElementById("enemy_arty_value");
-            enemyRanged = document.getElementById("enemy_ranged_value");
-            enemyMelee = document.getElementById("enemy_melee_value");
-            ownSiege = document.getElementById("own_arty_value");
-            ownRanged = document.getElementById("own_ranged_value");
-            ownMelee = document.getElementById("own_melee_value");
-            enemyTotal = document.getElementById("enemy_total_value");
-            ownTotal = document.getElementById("own_total_value");
+            
             UI = [[ownMelee, ownRanged, ownSiege],[enemyMelee, enemyRanged, enemySiege]];
             Total = [ownTotal, enemyTotal];
             break;
         case 1:
-
+            UI = [[enemyMelee, enemyRanged, enemySiege],[ownMelee, ownRanged, ownSiege]];
+            Total = [enemyTotal, ownTotal];
             break;
     }
+
     playersTotalPower = [0, 0];
     for(let half = 0; half < 2; half++){
         for(let row = 0; row < 3; row++){

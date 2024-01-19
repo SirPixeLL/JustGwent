@@ -86,7 +86,7 @@ const cardDict = {
         "number": 3
     },
     //Neutral (chybí kráva a defence idk co s nima)
-    /*"Ciri": {
+    "Ciri": {
         "name": "Cirilla Fiona Elen Rianon",
         "power": 15,
         "type": "Melee",
@@ -193,7 +193,7 @@ const cardDict = {
         "isLegend": false,
         "isSpecial": false,
         "number": 1
-    },*/
+    },
     "Villentretenmerth": {
         "name": "Villentretenmerth",
         "power": 7,
