@@ -11,16 +11,19 @@ let isSpecial;
 let margin = -15;
 let currentHand = document.getElementById("current_cards");
 let cardsInHand = [];
+console.log(margin + "px")
 
-function MarginTrueNeckKeys(value) {
+function marginTrueNeckKeys(value) {
     if (value == true) {
+        console.log("Margin true");
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];
+            console.log(card);
             if (cardsInHand.length >= 10 && i != 0) {
                 card.style.marginLeft = margin + "px";
             }
         }
-        if (cardsInHand.length >= 10) {
+        if (cardsInHand.length >= 10 && cardsInHand.length < 17) {
             margin += -3;
         }
         else if (cardsInHand.length >= 17) {
@@ -28,17 +31,21 @@ function MarginTrueNeckKeys(value) {
         }
     }
     else {
-        for (let i = 0; i < cardsInHand.length; i++) {
-            let card = cardsInHand[i];
-            if (cardsInHand.length >= 10 && i != 0) {
-                card.style.marginLeft = margin + "px";
-            }
-        }
-        if (cardsInHand.length >= 10) {
+        console.log("Margin false");
+        if (cardsInHand.length < 17 && margin < 2) {
+            console.log(margin + "px");
             margin += 3;
+            console.log(margin + "px");
         }
         else if (cardsInHand.length >= 17) {
             margin += 1;
+            console.log(margin + "px");
+        }
+        for (let i = 0; i < cardsInHand.length; i++) {
+            let card = cardsInHand[i];
+            if (i != 0) {
+                card.style.marginLeft = margin + "px";
+            }
         }
     }
 }
@@ -81,7 +88,7 @@ class Card {
         cardFrame.appendChild(powerDiv);
         currentHand.appendChild(cardFrame);
         cardsInHand.push(document.getElementById(cardFrame.id));
-        MarginTrueNeckKeys(true);
+        marginTrueNeckKeys(true);
     }
 
     drawOnBoard(i, j, currentPlayer){

@@ -1,13 +1,16 @@
 let shownCardSlot = [];
 
+function medicCheck() {}
+//bude se nějak muset čekovat abilitka těch karet a zatím není jak, zkusit předělat drawCard()
+
 function PlayCard(cardType, e) {
         let buttonYes = document.getElementById("shownButtonYes");
         let buttonNo = document.getElementById("shownButtonNo");
         let targetCard = document.getElementById(e.target.id);
         if (shownCardSlot.length > 0) {
-                document.getElementById("current_cards").appendChild(shownCardSlot[0]);
                 shownCardSlot[0].className = "cardInHand";
                 shownCardSlot[0].style.marginLeft = margin + "px";
+                document.getElementById("current_cards").appendChild(shownCardSlot[0]);
                 shownCardSlot.splice(0, 1);
                 buttonYes.style.display = "inline-block";
                 buttonNo.style.display = "inline-block";
@@ -15,7 +18,7 @@ function PlayCard(cardType, e) {
                 shownCardSlot.push(targetCard);
                 targetCard.className = "cardShown";
                 targetCard.margin = "2px";
-                MarginTrueNeckKeys(false);
+                marginTrueNeckKeys(false);
 
                 buttonYes.onclick = function() {
                         document.getElementById(cardType).appendChild(targetCard);
@@ -40,7 +43,7 @@ function PlayCard(cardType, e) {
                         targetCard.style.marginLeft = margin + "px";
                         buttonYes.style.display = "none";
                         buttonNo.style.display = "none";
-                        MarginTrueNeckKeys(true);
+                        marginTrueNeckKeys(true);
                 };
         }
         else if (cardType == "weather_cards") {
@@ -50,7 +53,7 @@ function PlayCard(cardType, e) {
                 shownCardSlot.push(targetCard);
                 targetCard.className = "cardShown";
                 targetCard.margin = "2px";
-                MarginTrueNeckKeys(false)
+                marginTrueNeckKeys(false)
                 buttonYes.onclick = function() {
                         document.getElementById(cardType).appendChild(targetCard);
                         shownCardSlot.splice(0, 1);
@@ -74,7 +77,7 @@ function PlayCard(cardType, e) {
                         targetCard.style.marginLeft = margin + "px";
                         buttonYes.style.display = "none";
                         buttonNo.style.display = "none";
-                        MarginTrueNeckKeys(true);
+                        marginTrueNeckKeys(true);
                 };
         }
         else {
@@ -84,7 +87,7 @@ function PlayCard(cardType, e) {
                 shownCardSlot.push(targetCard);
                 targetCard.className = "cardShown";
                 targetCard.margin = "2px";
-                MarginTrueNeckKeys(false);
+                marginTrueNeckKeys(false);
                 buttonYes.onclick = function() {
                         document.getElementById(cardType).appendChild(targetCard);
                         shownCardSlot.splice(0, 1);
@@ -108,7 +111,7 @@ function PlayCard(cardType, e) {
                         targetCard.style.marginLeft = margin + "px";
                         buttonYes.style.display = "none";
                         buttonNo.style.display = "none";
-                        MarginTrueNeckKeys(true);
+                        marginTrueNeckKeys(true);
                 }; 
         };
 };
