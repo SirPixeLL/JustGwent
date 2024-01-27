@@ -3,7 +3,7 @@ let shownCardSlot = [];
 function medicCheck() {}
 //bude se nějak muset čekovat abilitka těch karet a zatím není jak, zkusit předělat drawCard()
 
-function PlayCard(cardType, e) {
+function playCard(cardType, e) {
         let buttonYes = document.getElementById("shownButtonYes");
         let buttonNo = document.getElementById("shownButtonNo");
         let targetCard = document.getElementById(e.target.id);
@@ -29,7 +29,7 @@ function PlayCard(cardType, e) {
 
                         if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
                         else if (cardType == "own_ranged") boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
-                        else if (cardType == "own_arty") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
+                        else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
                         let playedCard = playerHands[currentPlayer][index];
                         play(playedCard, currentPlayer);
                         playerHands[currentPlayer].splice(i,1);
@@ -63,7 +63,7 @@ function PlayCard(cardType, e) {
         
                         if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
                         else if (cardType == "own_ranged") boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
-                        else if (cardType == "own_arty") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
+                        else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
                         let playedCard = playerHands[currentPlayer][index];
                         play(playedCard, currentPlayer);
                         playerHands[currentPlayer].splice(i,1);
@@ -97,7 +97,7 @@ function PlayCard(cardType, e) {
         
                         if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
                         else if (cardType == "own_ranged") boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
-                        else if (cardType == "own_arty") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
+                        else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
                         let playedCard = playerHands[currentPlayer][index];
                         play(playedCard, currentPlayer);
                         playerHands[currentPlayer].splice(i,1);
@@ -116,7 +116,34 @@ function PlayCard(cardType, e) {
         };
 };
 
-for (let i = 0; i < cardsInHand.length; i++) {
+function addCardListener() {
+        for (let i = 0; i < cardsInHand.length; i++) {
+                cardsInHand[i].addEventListener("click", function(e){
+            
+                    currentPlayer = getCurrentPlayer();
+                    for(let synch = 0; synch < playerHands[currentPlayer].length; synch++){
+                            if(e.target.id.includes(playerHands[currentPlayer][synch].id)){
+                                    index = synch;
+                            };
+                    };
+                    if (e.target.id.includes("Melee")) {
+                            playCard("own_melee", e);
+                    };
+                    if (e.target.id.includes("Ranged")) {
+                            playCard("own_ranged", e);
+                    };
+                    if (e.target.id.includes("Siege")) {
+                            playCard("own_siege", e);
+                    };
+                    if (e.target.id.includes("Weather")) {
+                            playCard("weather_cards", e);
+                    };
+                });
+            
+            };
+            
+}
+/* for (let i = 0; i < cardsInHand.length; i++) {
     cardsInHand[i].addEventListener("click", function(e){
 
         currentPlayer = getCurrentPlayer();
@@ -128,19 +155,20 @@ for (let i = 0; i < cardsInHand.length; i++) {
                 };
         };
         if (e.target.id.includes("Melee")) {
-                PlayCard("own_melee", e);
+                playCard("own_melee", e);
         };
         if (e.target.id.includes("Ranged")) {
-                PlayCard("own_ranged", e);
+                playCard("own_ranged", e);
         };
         if (e.target.id.includes("Siege")) {
-                PlayCard("own_arty", e);
+                playCard("own_siege", e);
         };
-        //Přidal jsem do té funkce i weather karty, ale ty ještě neřešíš v local game atd., takže je to furt potřeba propojit.
+        //Přidal jsem do té funkce i weather ksiege, ale ty ještě neřešíš v local game atd., takže je to furt potřeba propojit.
         if (e.target.id.includes("Weather")) {
-                PlayCard("weather_cards", e);
+                playCard("weather_cards", e);
         };
         //console.log(JSON.parse(JSON.stringify(boards)));
     });
 
 };
+*/

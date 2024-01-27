@@ -93,10 +93,10 @@ class Card {
 
     drawOnBoard(i, j, currentPlayer){
         let cardsOnBoard;
-        let enemySiege = document.getElementById("enemy_arty");
+        let enemySiege = document.getElementById("enemy_siege");
         let enemyRanged = document.getElementById("enemy_ranged");
         let enemyMelee = document.getElementById("enemy_melee");
-        let ownSiege = document.getElementById("own_arty");
+        let ownSiege = document.getElementById("own_siege");
         let ownRanged = document.getElementById("own_ranged");
         let ownMelee = document.getElementById("own_melee");
         

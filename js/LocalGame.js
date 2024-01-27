@@ -266,10 +266,10 @@ function medic(currentPlayer){
 
 function SUMpowers(currentPlayer){
     UI = [[],[]];
-    enemySiege = document.getElementById("enemy_arty_value");
+    enemySiege = document.getElementById("enemy_siege_value");
     enemyRanged = document.getElementById("enemy_ranged_value");
     enemyMelee = document.getElementById("enemy_melee_value");
-    ownSiege = document.getElementById("own_arty_value");
+    ownSiege = document.getElementById("own_siege_value");
     ownRanged = document.getElementById("own_ranged_value");
     ownMelee = document.getElementById("own_melee_value");
     enemyTotal = document.getElementById("enemy_total_value");
