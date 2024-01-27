@@ -1,3 +1,9 @@
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+//////////////////////////////////////////////////////////////
+
 localGame();
 function localGame(){
     playerFactions = [p1faction, p2faction];
@@ -5,36 +11,15 @@ function localGame(){
     playerHands = [[],[]]; 
     playerLeaderUsed = [false, false];
     playerDiscarded = [[],[]];
-    boards = [[[playerDecks[0][1]],[],[]],[[playerDecks[1][1], playerDecks[1][2], playerDecks[1][3]],[],[]]]
+    boards = [[[playerDecks[0][1]],[],[]],[[playerDecks[1][2], playerDecks[1][3]],[],[]]]
     horn = [[false, false, false],[false, false, false]];
 
     playersTotalPower = [0, 0];
     
-    console.log(JSON.parse(JSON.stringify(boards)));
+    //console.log(JSON.parse(JSON.stringify(boards)));
     
-    localGameStart();
     currentPlayer = startingPlayer();
-    console.log(playerHands[currentPlayer]);
-    playerHands[currentPlayer].forEach(element => {
-        element.drawcard();
-    });
-
-
-    for(let i = 0; i < 2; i++){
-        for(let j = 0; j < boards[i].length; j++){
-            boards[i][j].forEach(element => {
-                element.drawOnBoard(i, j, currentPlayer);
-            });
-        }
-    }
-    console.log(JSON.parse(JSON.stringify(boards)));
-}
-
-function getCurrentPlayer(){
-    try{
-        return currentPlayer;
-    }
-    catch{}
+    localGameStart();
 }
 
 function drawNewCard(currentPlayer){
@@ -43,14 +28,16 @@ function drawNewCard(currentPlayer){
     playerHands[currentPlayer].push(playerDecks[currentPlayer][newCardIndex]);
     playerDecks[currentPlayer].splice(newCardIndex, 1);
 }
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
+
 function localGameStart(){
     for(let i = 0; i < 2; i++){
         for(let j = 0; j < 10; j++){
             drawNewCard(i);
         }}
+    
+    playerHands[currentPlayer].forEach(element => {
+        element.drawCard();
+    });
 }
 function startingPlayer(){
     //"Coinflip" na začátku hry
@@ -126,6 +113,23 @@ function clearWeather(){
                 boards[i][j][n].debuffed = false;
             }}}
 }
+
+function commanderHornSet(card, currentPlayer){
+    if(card.type = "Melee"){
+        horn[currentPlayer][0] = true;
+    }
+    //přidat funkci která dává horn na true podle toho kam se to dá
+}
+function commanderHornBuff(i, j){ //ošklivý ale funkční
+    if(horn[i][j] == true){
+        for(let n = 0; n < boards[i][j].length; n++){
+            if(boards[i][j][n].isLegend == false){
+                boards[i][j][n].power = boards[i][j][n].power*2;
+            }}}
+}
+
+
+//Schopnosti
 function bond(i, j, n){ //volá se na konci cyklu kola
     if(boards[i][j][n].ability=="TightBond"){
         boards[i][j][n].power = boards[i][j][n].basepower;
@@ -135,6 +139,7 @@ function bond(i, j, n){ //volá se na konci cyklu kola
             }}}
 }
 function muster(currentPlayer, card){
+    //z balíčku
     for(let e = 0; e < playerDecks[currentPlayer].length; e++){
         if(playerDecks[currentPlayer][e].name == card.summons){
             switch(playerDecks[currentPlayer][e].type){
@@ -153,27 +158,14 @@ function muster(currentPlayer, card){
             e--;
         }
     }
-
-    /*for(let e = 0; e < playerHands[currentPlayer].length; e++){
+    //z ruky
+    for(let e = 0; e < playerHands[currentPlayer].length; e++){
         if(playerHands[currentPlayer][e].name == card.summons){
             boards[currentPlayer][row].push(playerHands[currentPlayer][e]);
             playerHands[currentPlayer].splice(e, 1);
             e--;
         }
-    }*/
-}
-function commanderHornSet(card, currentPlayer){
-    if(card.type = "Melee"){
-        horn[currentPlayer][0] = true;
     }
-    //přidat funkci která dává horn na true podle toho kam se to dá
-}
-function commanderHornBuff(i, j){ //ošklivý ale funkční
-    if(horn[i][j] == true){
-        for(let n = 0; n < boards[i][j].length; n++){
-            if(boards[i][j][n].isLegend == false){
-                boards[i][j][n].power = boards[i][j][n].power*2;
-            }}}
 }
 
 function moraleBoost(player, row, boosterIndex){ //do seznamu se musí ukládat informace o tom kdo boostuje, volá se na konci cyklu
@@ -183,7 +175,7 @@ function moraleBoost(player, row, boosterIndex){ //do seznamu se musí ukládat 
         }}
 }
 
-//Schopnosti
+
 function scorch(){  //do rozsahu testování plně funkční
     let strongest = {};
     let t = 0;
@@ -216,7 +208,7 @@ function scorch(){  //do rozsahu testování plně funkční
             }
         }
     }
-    console.log(strongest);
+    //console.log(strongest);
     for(let key in strongest){
         let i = strongest[key][1];
         let j = strongest[key][2];
@@ -264,7 +256,7 @@ function medic(currentPlayer){
 
 }
 
-function SUMpowers(currentPlayer){
+function SumPowers(currentPlayer){
     UI = [[],[]];
     enemySiege = document.getElementById("enemy_siege_value");
     enemyRanged = document.getElementById("enemy_ranged_value");
@@ -300,7 +292,7 @@ function SUMpowers(currentPlayer){
             UI[half][row].innerHTML = rowPower;
             playersTotalPower[half] += rowPower
         }
-        console.log(playersTotalPower);
+        //console.log(playersTotalPower);
         Total[half].innerHTML = playersTotalPower[half];
     }
 
@@ -317,5 +309,5 @@ function end_turn(currentPlayer){
             }
         commanderHornBuff(i,j);
         }}
-    SUMpowers(currentPlayer);
+    SumPowers(currentPlayer);
 }

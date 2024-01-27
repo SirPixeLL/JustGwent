@@ -120,7 +120,7 @@ function addCardListener() {
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].addEventListener("click", function(e){
             
-                    currentPlayer = getCurrentPlayer();
+                    //currentPlayer = getCurrentPlayer();
                     for(let synch = 0; synch < playerHands[currentPlayer].length; synch++){
                             if(e.target.id.includes(playerHands[currentPlayer][synch].id)){
                                     index = synch;
@@ -143,6 +143,7 @@ function addCardListener() {
             };
             
 }
+addCardListener();
 /* for (let i = 0; i < cardsInHand.length; i++) {
     cardsInHand[i].addEventListener("click", function(e){
 

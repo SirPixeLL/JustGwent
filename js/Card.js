@@ -11,14 +11,14 @@ let isSpecial;
 let margin = -15;
 let currentHand = document.getElementById("current_cards");
 let cardsInHand = [];
-console.log(margin + "px")
+//console.log(margin + "px")
 
 function marginTrueNeckKeys(value) {
     if (value == true) {
-        console.log("Margin true");
+        //console.log("Margin true");
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];
-            console.log(card);
+            //console.log(card);
             if (cardsInHand.length >= 10 && i != 0) {
                 card.style.marginLeft = margin + "px";
             }
@@ -31,15 +31,15 @@ function marginTrueNeckKeys(value) {
         }
     }
     else {
-        console.log("Margin false");
+        //console.log("Margin false");
         if (cardsInHand.length < 17 && margin < 2) {
-            console.log(margin + "px");
+            //console.log(margin + "px");
             margin += 3;
-            console.log(margin + "px");
+            //console.log(margin + "px");
         }
         else if (cardsInHand.length >= 17) {
             margin += 1;
-            console.log(margin + "px");
+            //console.log(margin + "px");
         }
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];
@@ -52,7 +52,7 @@ function marginTrueNeckKeys(value) {
 
 function clearBoards(){
     let cardsToClear = document.getElementsByClassName("cardPlayed");
-    console.log(cardsToClear);
+    //console.log(cardsToClear);
     for(let i = 0; i < cardsToClear.length; i++){
         cardsToClear[i--].remove();
     }
@@ -75,7 +75,7 @@ class Card {
     }
 
     
-    drawcard() {
+    drawCard() {
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
         cardFrame.id = this.type + this.id;
@@ -108,7 +108,7 @@ class Card {
 
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardPlayed";
-        console.log(cardsOnBoard[i][j]);
+        //console.log(cardsOnBoard[i][j]);
         cardFrame.id = this.type + this.id;
         let powerDiv = document.createElement("div");
         powerDiv.className = "powerDiv";
