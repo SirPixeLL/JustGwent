@@ -256,7 +256,7 @@ function medic(currentPlayer){
 
 }
 
-function SumPowers(currentPlayer){
+function sumPowers(currentPlayer){
     UI = [[],[]];
     enemySiege = document.getElementById("enemy_siege_value");
     enemyRanged = document.getElementById("enemy_ranged_value");
@@ -309,5 +309,5 @@ function end_turn(currentPlayer){
             }
         commanderHornBuff(i,j);
         }}
-    SumPowers(currentPlayer);
+    sumPowers(currentPlayer);
 }
