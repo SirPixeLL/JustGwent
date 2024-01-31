@@ -18,13 +18,12 @@ function playCard(cardType, e) {
                 shownCardSlot.push(targetCard);
                 targetCard.className = "cardShown";
                 targetCard.margin = "2px";
-                marginTrueNeckKeys(false);
-
                 buttonYes.onclick = function() {
                         document.getElementById(cardType).appendChild(targetCard);
                         shownCardSlot.splice(0, 1);
                         targetCard.className = "cardPlayed";
                         targetCard.style.margin = "2px";
+                        targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
                         if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
@@ -59,6 +58,7 @@ function playCard(cardType, e) {
                         shownCardSlot.splice(0, 1);
                         targetCard.className = "weatherCardPlayed";
                         targetCard.style.margin = "2px";
+                        targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
         
                         if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
@@ -93,6 +93,7 @@ function playCard(cardType, e) {
                         shownCardSlot.splice(0, 1);
                         targetCard.className = "cardPlayed";
                         targetCard.style.margin = "2px";
+                        targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
         
                         if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
@@ -116,33 +117,32 @@ function playCard(cardType, e) {
         };
 };
 
+function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListener na karty
+        for(let synch = 0; synch < playerHands[currentPlayer].length; synch++){
+                if(e.target.id.includes(playerHands[currentPlayer][synch].id)){
+                        index = synch;
+                };
+        };
+        if (e.target.id.includes("Melee")) {
+                playCard("own_melee", e);
+        };
+        if (e.target.id.includes("Ranged")) {
+                playCard("own_ranged", e);
+        };
+        if (e.target.id.includes("Siege")) {
+                playCard("own_siege", e);
+        };
+        if (e.target.id.includes("Weather")) {
+                playCard("weather_cards", e);
+        };
+    }
+
 function addCardListener() {
         for (let i = 0; i < cardsInHand.length; i++) {
-                cardsInHand[i].addEventListener("click", function(e){
-            
-                    //currentPlayer = getCurrentPlayer();
-                    for(let synch = 0; synch < playerHands[currentPlayer].length; synch++){
-                            if(e.target.id.includes(playerHands[currentPlayer][synch].id)){
-                                    index = synch;
-                            };
-                    };
-                    if (e.target.id.includes("Melee")) {
-                            playCard("own_melee", e);
-                    };
-                    if (e.target.id.includes("Ranged")) {
-                            playCard("own_ranged", e);
-                    };
-                    if (e.target.id.includes("Siege")) {
-                            playCard("own_siege", e);
-                    };
-                    if (e.target.id.includes("Weather")) {
-                            playCard("weather_cards", e);
-                    };
-                });
-            
-            };
-            
+                cardsInHand[i].addEventListener("click", cardListenerHelper);
+        }
 }
+
 addCardListener();
 /* for (let i = 0; i < cardsInHand.length; i++) {
     cardsInHand[i].addEventListener("click", function(e){

@@ -15,10 +15,8 @@ let cardsInHand = [];
 
 function marginTrueNeckKeys(value) {
     if (value == true) {
-        //console.log("Margin true");
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];
-            //console.log(card);
             if (cardsInHand.length >= 10 && i != 0) {
                 card.style.marginLeft = margin + "px";
             }
@@ -31,15 +29,11 @@ function marginTrueNeckKeys(value) {
         }
     }
     else {
-        //console.log("Margin false");
         if (cardsInHand.length < 17 && margin < 2) {
-            //console.log(margin + "px");
             margin += 3;
-            //console.log(margin + "px");
         }
         else if (cardsInHand.length >= 17) {
             margin += 1;
-            //console.log(margin + "px");
         }
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];
