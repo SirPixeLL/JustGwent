@@ -1,3 +1,11 @@
+playerFactions = [p1faction, p2faction];
+playerDecks = [p1deck, p2deck];
+playerHands = [[],[]]; 
+playerLeaderUsed = [false, false];
+playerDiscarded = [[],[]];
+boards = [[[],[],[]],[[],[],[]]]
+horn = [[false, false, false],[false, false, false]];
+
 let shownCardSlot = [];
 
 function medicCheck() {}
@@ -31,9 +39,9 @@ function playCard(cardType, e) {
                         else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
                         let playedCard = playerHands[currentPlayer][index];
                         play(playedCard, currentPlayer);
-                        playerHands[currentPlayer].splice(i,1);
+                        playerHands[currentPlayer].splice(index,1);
                         buttonYes.style.display = "none";
-                        buttonNo.style.display = "none";    
+                        buttonNo.style.display = "none";
                 };
                 buttonNo.onclick = function() {
                         document.getElementById("current_cards").appendChild(targetCard);
@@ -66,7 +74,7 @@ function playCard(cardType, e) {
                         else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
                         let playedCard = playerHands[currentPlayer][index];
                         play(playedCard, currentPlayer);
-                        playerHands[currentPlayer].splice(i,1);
+                        playerHands[currentPlayer].splice(index,1);
                         buttonYes.style.display = "none";
                         buttonNo.style.display = "none";    
                 };
@@ -101,7 +109,7 @@ function playCard(cardType, e) {
                         else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
                         let playedCard = playerHands[currentPlayer][index];
                         play(playedCard, currentPlayer);
-                        playerHands[currentPlayer].splice(i,1);
+                        playerHands[currentPlayer].splice(index,1);
                         buttonYes.style.display = "none";
                         buttonNo.style.display = "none";    
                 };
@@ -173,3 +181,19 @@ addCardListener();
 
 };
 */
+
+function drawCard(card){
+        let cardFrame = document.createElement("div");
+        cardFrame.className = "cardInHand";
+        cardFrame.id = card.type + card.id;
+        let powerDiv = document.createElement("div");
+        powerDiv.className = "powerDiv";
+        let power = document.createElement("p");
+        power.innerHTML = card.power + card.id;
+        power.className = "power";
+        powerDiv.appendChild(power);
+        cardFrame.appendChild(powerDiv);
+        currentHand.appendChild(cardFrame);
+        cardsInHand.push(document.getElementById(cardFrame.id));
+        marginTrueNeckKeys(true);
+}

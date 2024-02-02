@@ -6,14 +6,6 @@ function getRandomInt(max) {
 
 localGame();
 function localGame(){
-    playerFactions = [p1faction, p2faction];
-    playerDecks = [p1deck, p2deck];
-    playerHands = [[],[]]; 
-    playerLeaderUsed = [false, false];
-    playerDiscarded = [[],[]];
-    boards = [[[playerDecks[0][1]],[],[]],[[playerDecks[1][2], playerDecks[1][3]],[],[]]]
-    horn = [[false, false, false],[false, false, false]];
-
     playersTotalPower = [0, 0];
     
     //console.log(JSON.parse(JSON.stringify(boards)));
@@ -35,9 +27,7 @@ function localGameStart(){
             drawNewCard(i);
         }}
     
-    playerHands[currentPlayer].forEach(element => {
-        element.drawCard();
-    });
+    drawHand(currentPlayer);
 }
 function startingPlayer(){
     //"Coinflip" na začátku hry
@@ -153,14 +143,28 @@ function muster(currentPlayer, card){
                     row = 2;
                     break;
             }
+            console.log(playerDecks[currentPlayer][e])
             boards[currentPlayer][row].push(playerDecks[currentPlayer][e]);
             playerDecks[currentPlayer].splice(e, 1);
             e--;
+            console.log(JSON.parse(JSON.stringify(playerDecks[currentPlayer])));
         }
     }
     //z ruky
     for(let e = 0; e < playerHands[currentPlayer].length; e++){
         if(playerHands[currentPlayer][e].name == card.summons){
+            switch(playerDecks[currentPlayer][e].type){
+                case "Melee":
+                    row = 0;
+                    break;
+                case "Ranged":
+                    row = 1;
+                    break;
+                case "Siege":
+                    row = 2;
+                    break;
+            }
+            console.log(playerDecks[currentPlayer][e], "hand");
             boards[currentPlayer][row].push(playerHands[currentPlayer][e]);
             playerHands[currentPlayer].splice(e, 1);
             e--;
@@ -310,4 +314,36 @@ function end_turn(currentPlayer){
         commanderHornBuff(i,j);
         }}
     sumPowers(currentPlayer);
+    updateAll(currentPlayer);
 }
+
+function drawHand(currentPlayer){
+    console.log(playerHands, playerHands[currentPlayer]);
+    playerHands[currentPlayer].forEach(element => {
+        drawCard(element);
+    });
+    addCardListener();
+}
+
+function updateBoards(currentPlayer){
+    clearBoards();
+    for(let i = 0; i < 2; i++){
+        for(let j = 0; j < 3; j++){
+            boards[i][j].forEach(element => {
+                element.drawOnBoards(i, j, currentPlayer);
+            });
+           
+        }
+    }
+}
+
+function updateAll(currentPlayer){
+    setTimeout(()=>{updateBoards(currentPlayer); console.log("boards drawn")}, 1000);
+    clearHand();
+    console.log(margin);
+    margin = 7;
+    setTimeout(()=>{drawHand(currentPlayer); console.log("hand drawn", margin)}, 2000);
+}
+
+
+

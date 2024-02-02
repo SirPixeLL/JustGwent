@@ -52,6 +52,14 @@ function clearBoards(){
     }
 }
 
+function clearHand(){
+    let cardsToClear = document.getElementsByClassName("cardInHand");
+    //console.log(cardsToClear);
+    for(let i = 0; i < cardsToClear.length; i++){
+        cardsToClear[i--].remove();
+    }
+}
+
 class Card {
     constructor(id, name, power, type, picture, faction, ability, summons, isLegend, isSpecial){
         this.id = id;
@@ -68,7 +76,7 @@ class Card {
         this.isSpecial = isSpecial;
     }
 
-    
+    /*
     drawCard() {
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
@@ -83,9 +91,9 @@ class Card {
         currentHand.appendChild(cardFrame);
         cardsInHand.push(document.getElementById(cardFrame.id));
         marginTrueNeckKeys(true);
-    }
+    }*/
 
-    drawOnBoard(i, j, currentPlayer){
+    drawOnBoards(i, j, currentPlayer){
         let cardsOnBoard;
         let enemySiege = document.getElementById("enemy_siege");
         let enemyRanged = document.getElementById("enemy_ranged");

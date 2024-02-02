@@ -144,7 +144,7 @@ const cardDict = {
         "summons": "Gaunter O'Dimm: Darkness",
         "isLegend": false,
         "isSpecial": false,
-        "number": 1
+        "number": 3
     },
     "Geralt": {
         "name": "Geralt of Rivia",
