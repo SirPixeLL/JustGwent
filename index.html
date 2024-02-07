@@ -40,7 +40,9 @@
         </div>
     </div>
     <div id="left_board">
-        <img id="enemy_leader" src="images/profile_pic.jpg">
+        <div id="enemy_leader_div" class="leader_div">
+            <img id="enemy_leader" src="images/profile_pic.jpg">
+        </div>
         <div id="enemy_status">
             <img id="enemy_pic" src="images/profile_pic.jpg">
             <div class="status_content">
@@ -73,7 +75,10 @@
             <div id="own_total_value">0</div>
 
         </div>
-        <img id="own_leader" src="images/profile_pic2.jpg">
+        <div id="own_leader_div" class="leader_div">
+            <img id="own_leader" src="images/profile_pic2.jpg">
+        </div>
+        <button id="pass_button" onclick="clearHand(); clearBoards()">PASS</button>
     </div>
     <div id="center_board">
         <div id="enemy_side">

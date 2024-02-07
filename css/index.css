@@ -124,6 +124,18 @@ body,html{
     width: 20px;
 }
 
+#pass_button {
+    height: 40px;
+    width: 160px;
+    border-radius: 10px;
+    margin: 2px;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: large;
+    background-color: #17191a;
+    color: #ffffff;
+}
+
 /*Styles for the center of the board*/
 
 #enemy_side {

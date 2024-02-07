@@ -49,6 +49,7 @@ function clearBoards(){
     //console.log(cardsToClear);
     for(let i = 0; i < cardsToClear.length; i++){
         cardsToClear[i--].remove();
+
     }
 }
 
@@ -57,6 +58,8 @@ function clearHand(){
     //console.log(cardsToClear);
     for(let i = 0; i < cardsToClear.length; i++){
         cardsToClear[i--].remove();
+        cardsInHand = [];
+        marginTrueNeckKeys(true);
     }
 }
 

@@ -121,7 +121,7 @@ function playCard(cardType, e) {
                         buttonYes.style.display = "none";
                         buttonNo.style.display = "none";
                         marginTrueNeckKeys(true);
-                }; 
+                };
         };
 };
 
@@ -151,37 +151,6 @@ function addCardListener() {
         }
 }
 
-addCardListener();
-/* for (let i = 0; i < cardsInHand.length; i++) {
-    cardsInHand[i].addEventListener("click", function(e){
-
-        currentPlayer = getCurrentPlayer();
-        //console.log(currentPlayer);
-        for(let synch = 0; synch < playerHands[currentPlayer].length; synch++){
-                //console.log(e.target.id, playerHands[currentPlayer][synch].id);
-                if(e.target.id.includes(playerHands[currentPlayer][synch].id)){
-                        index = synch;
-                };
-        };
-        if (e.target.id.includes("Melee")) {
-                playCard("own_melee", e);
-        };
-        if (e.target.id.includes("Ranged")) {
-                playCard("own_ranged", e);
-        };
-        if (e.target.id.includes("Siege")) {
-                playCard("own_siege", e);
-        };
-        //Přidal jsem do té funkce i weather ksiege, ale ty ještě neřešíš v local game atd., takže je to furt potřeba propojit.
-        if (e.target.id.includes("Weather")) {
-                playCard("weather_cards", e);
-        };
-        //console.log(JSON.parse(JSON.stringify(boards)));
-    });
-
-};
-*/
-
 function drawCard(card){
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
@@ -197,3 +166,5 @@ function drawCard(card){
         cardsInHand.push(document.getElementById(cardFrame.id));
         marginTrueNeckKeys(true);
 }
+
+addCardListener();
