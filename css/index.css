@@ -8,8 +8,32 @@ body,html{
     width: 100%; height: 100vh;
 }
 
-/* MAIN BOARDS */
+/*Switch screen*/
+#switch_screen {
+    position: absolute;
+    z-index: 2;
+    display: none;
+    background-color: #17191a;
+    height: 99vh;
+    width: 99vw;
+}
 
+#switch_text {
+    margin-top: 20%;
+    font-weight: bold;
+    color: #aa9667;
+    font-size: 50px;
+}
+
+#switch_button {
+    margin-top: 20px;
+    background-color: #90979a;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+}
+
+/* MAIN BOARDS */
 #left_board {
     display: inline-block;
     background-color: #c7cbcd;
@@ -190,6 +214,10 @@ body,html{
     border-radius: 5px;
     width: 80%;
     height: 100%;
+}
+
+.value_p {
+    margin-top: 30%;
 }
 
 /*Styles for the right of the board*/

@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="css/card.css">
 </head>
 <body>
+    <div id="switch_screen">
+        <div id="switch_text">To switch players press</div>
+        <button id="switch_button">SPACE</button>
+    </div>
     <div id="main_menu">
         <!-- button je temporary ↓ -->
         <button id="hide_menu" onclick="getElementById('main_menu').style.display='none'">X</button>
@@ -55,7 +59,7 @@
                     <img class="heart_icon" src="images/love-always-wins.png">
                 </div>
             </div>
-            <div id="enemy_total_value" >0</div>
+            <div id="enemy_total_value"><p class="value_p">0</p></div>
         </div>
 
         <div id="weather_cards"></div>
@@ -72,7 +76,7 @@
                     <img class="heart_icon" src="images/love-always-wins.png">
                 </div>
             </div>
-            <div id="own_total_value">0</div>
+            <div id="own_total_value"><p class="value_p">0</p></div>
 
         </div>
         <div id="own_leader_div" class="leader_div">
@@ -83,34 +87,34 @@
     <div id="center_board">
         <div id="enemy_side">
             <div id="enemy_siege_div" class="line_div">
-                <div class="line_value" id="enemy_siege_value">0</div>
+                <div class="line_value"><p id="enemy_siege_value" class="value_p">0</p></div>
                 <div id="enemy_siege_boost" class="boost_line"></div>
                 <div id="enemy_siege" class="card_line"></div>
             </div>
             <div id="enemy_ranged_div" class="line_div">
-                <div class="line_value"><p id="enemy_ranged_value">0</p></div>
+                <div class="line_value"><p id="enemy_ranged_value" class="value_p">0</p></div>
                 <div id="enemy_ranged_boost" class="boost_line"></div>
                 <div id="enemy_ranged" class="card_line"></div>
             </div>
             <div id="enemy_melee_div" class="line_div">
-                <div class="line_value"><p id="enemy_melee_value">0</p></div>
+                <div class="line_value"><p id="enemy_melee_value" class="value_p">0</p></div>
                 <div id="enemy_melee_boost" class="boost_line"></div>
                 <div id="enemy_melee" class="card_line"></div>
             </div> 
         </div>
         <div id="own_side">
             <div id="own_melee_div" class="line_div">
-                <div class="line_value"><p id="own_melee_value">0</p></div>
+                <div class="line_value"><p id="own_melee_value" class="value_p">0</p></div>
                 <div id="own_melee_boost" class="boost_line"></div>
                 <div id="own_melee" class="card_line"></div>
             </div>
             <div id="own_ranged_div" class="line_div">
-                <div class="line_value"><p id="own_ranged_value">0</p></div>
+                <div class="line_value"><p id="own_ranged_value" class="value_p">0</p></div>
                 <div id="own_ranged_boost" class="boost_line"></div>
                 <div id="own_ranged" class="card_line"></div>
             </div>
             <div id="own_siege_div" class="line_div">
-                <div class="line_value"><p id="own_siege_value">0</p></div>
+                <div class="line_value"><p id="own_siege_value" class="value_p">0</p></div>
                 <div id="own_siege_boost" class="boost_line"></div>
                 <div id="own_siege" class="card_line"></div>
             </div> 
