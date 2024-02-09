@@ -2,6 +2,16 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
+switchScreen = document.getElementById("switch_screen");
+function hideSwitchSreen(){
+    switchScreen.style.display = "none";
+
+    currentPlayer = 1-currentPlayer;
+    console.log(currentPlayer)
+    updateAll(currentPlayer);
+    sumPowers(currentPlayer);
+    console.log(JSON.parse(JSON.stringify(boards)));
+}
 //////////////////////////////////////////////////////////////
 
 localGame();
@@ -82,7 +92,7 @@ function play(card, currentPlayer){
             break;
     }
     
-    end_turn(currentPlayer);
+    end_turn();
 }
 
 //Weather effects
@@ -303,18 +313,19 @@ function sumPowers(currentPlayer){
     console.log(boards);
 }
 
-function end_turn(currentPlayer){
+function end_turn(){
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
                 if(boards[i][j][n].debuffed){boards[i][j][n].power = 1} //weather debuff
                 bond(i, j, n) //bond
-
             }
         commanderHornBuff(i,j);
         }}
     sumPowers(currentPlayer);
     updateAll(currentPlayer);
+    //konec tahu --------------sem přijde switchScreen
+    switchScreen.style.display = "inline-block";
 }
 
 function drawHand(currentPlayer){
@@ -338,11 +349,13 @@ function updateBoards(currentPlayer){
 }
 
 function updateAll(currentPlayer){
-    setTimeout(()=>{updateBoards(currentPlayer); console.log("boards drawn")}, 1000);
-    clearHand();
-    console.log(margin);
-    margin = 7;
-    setTimeout(()=>{drawHand(currentPlayer); console.log("hand drawn", margin)}, 2000);
+    setTimeout(()=>{
+        clearHand();
+        marginTrueNeckKeys(true);
+        updateBoards(currentPlayer);
+        drawHand(currentPlayer);
+        console.log("hand drawn", margin)
+    }, 1000);
 }
 
 
