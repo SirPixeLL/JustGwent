@@ -5,6 +5,7 @@ function getRandomInt(max) {
 switchScreen = document.getElementById("switch_screen");
 function hideSwitchSreen(){
     switchScreen.style.display = "none";
+    switchScreen.style.opacity = "0";
 
     currentPlayer = 1-currentPlayer;
     console.log(currentPlayer)
@@ -326,6 +327,14 @@ function end_turn(){
     updateAll(currentPlayer);
     //konec tahu --------------sem přijde switchScreen
     switchScreen.style.display = "inline-block";
+    setTimeout(()=>{
+        switchScreen.style.opacity = "1";
+    }, 1);
+    document.addEventListener("keydown", (event) => {
+        if(event.code == "Space" && switchScreen.style.display == "inline-block") {
+            hideSwitchSreen();
+        }
+    })
 }
 
 function drawHand(currentPlayer){
