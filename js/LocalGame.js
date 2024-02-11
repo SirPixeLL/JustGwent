@@ -8,10 +8,10 @@ function hideSwitchSreen(){
     switchScreen.style.opacity = "0";
 
     currentPlayer = 1-currentPlayer;
-    console.log(currentPlayer)
+    //console.log(currentPlayer)
     updateAll(currentPlayer);
     sumPowers(currentPlayer);
-    console.log(JSON.parse(JSON.stringify(boards)));
+    //console.log(JSON.parse(JSON.stringify(boards)));
 }
 //////////////////////////////////////////////////////////////
 
@@ -23,6 +23,7 @@ function localGame(){
     
     currentPlayer = startingPlayer();
     localGameStart();
+    console.log(JSON.parse(JSON.stringify(playerHands[currentPlayer])));
 }
 
 function drawNewCard(currentPlayer){
@@ -39,6 +40,7 @@ function localGameStart(){
         }}
     
     drawHand(currentPlayer);
+    sumPowers(currentPlayer);
 }
 function startingPlayer(){
     //"Coinflip" na začátku hry
@@ -141,9 +143,12 @@ function bond(i, j, n){ //volá se na konci cyklu kola
 }
 function muster(currentPlayer, card){
     //z balíčku
-    for(let e = 0; e < playerDecks[currentPlayer].length; e++){
-        if(playerDecks[currentPlayer][e].name == card.summons){
-            switch(playerDecks[currentPlayer][e].type){
+    playerDecks[currentPlayer].forEach(element=>{
+        let i = playerDecks[currentPlayer].indexOf(element); 
+        if(element.name === card.summons){
+            console.log(i + "deck", element);
+            
+            switch(element.type){
                 case "Melee":
                     row = 0;
                     break;
@@ -154,17 +159,18 @@ function muster(currentPlayer, card){
                     row = 2;
                     break;
             }
-            console.log(playerDecks[currentPlayer][e])
-            boards[currentPlayer][row].push(playerDecks[currentPlayer][e]);
-            playerDecks[currentPlayer].splice(e, 1);
-            e--;
-            console.log(JSON.parse(JSON.stringify(playerDecks[currentPlayer])));
+            boards[currentPlayer][row].push(element);
+
+            playerDecks[currentPlayer].splice(i, 1);
         }
-    }
+    })
     //z ruky
-    for(let e = 0; e < playerHands[currentPlayer].length; e++){
-        if(playerHands[currentPlayer][e].name == card.summons){
-            switch(playerDecks[currentPlayer][e].type){
+    playerHands[currentPlayer].forEach(element=>{
+        let i = playerHands[currentPlayer].indexOf(element); 
+        if(element.name === card.summons && element.id != card.id){
+            console.log(i, element)
+            
+            switch(element.type){
                 case "Melee":
                     row = 0;
                     break;
@@ -175,12 +181,11 @@ function muster(currentPlayer, card){
                     row = 2;
                     break;
             }
-            console.log(playerDecks[currentPlayer][e], "hand");
-            boards[currentPlayer][row].push(playerHands[currentPlayer][e]);
-            playerHands[currentPlayer].splice(e, 1);
-            e--;
+            boards[currentPlayer][row].push(element);
+
+            playerHands[currentPlayer].splice(i, 1);
         }
-    }
+    })
 }
 
 function moraleBoost(player, row, boosterIndex){ //do seznamu se musí ukládat informace o tom kdo boostuje, volá se na konci cyklu
@@ -268,7 +273,6 @@ function scorchMelee(currentPlayer){
 }
 
 function medic(currentPlayer){
-
 }
 
 function sumPowers(currentPlayer){
@@ -282,20 +286,28 @@ function sumPowers(currentPlayer){
     enemyTotal = document.getElementById("enemy_total_value");
     ownTotal = document.getElementById("own_total_value");
     
+    cardsLeft = [[],[]];
+    enemyDeckNum = document.getElementById("enemy_remaining");
+    enemyHandNum = document.getElementById("enemy_card_num");
+    ownDeckNum = document.getElementById("own_remaining");
+    ownHandNum = document.getElementById("own_card_num");
     switch (currentPlayer) {
         case 0:
-            
             UI = [[ownMelee, ownRanged, ownSiege],[enemyMelee, enemyRanged, enemySiege]];
             Total = [ownTotal, enemyTotal];
+            cardsLeft = [[ownDeckNum, ownHandNum],[enemyDeckNum, enemyHandNum]];
             break;
         case 1:
             UI = [[enemyMelee, enemyRanged, enemySiege],[ownMelee, ownRanged, ownSiege]];
             Total = [enemyTotal, ownTotal];
+            cardsLeft = [[enemyDeckNum, enemyHandNum],[ownDeckNum, ownHandNum]];
             break;
     }
 
     playersTotalPower = [0, 0];
     for(let half = 0; half < 2; half++){
+        cardsLeft[half][0].innerHTML = playerDecks[half].length;
+        cardsLeft[half][1].innerHTML = playerHands[half].length;
         for(let row = 0; row < 3; row++){
             rowPower = 0;
             for(item = 0; item < boards[half][row].length; item++){
@@ -310,8 +322,7 @@ function sumPowers(currentPlayer){
         //console.log(playersTotalPower);
         Total[half].innerHTML = playersTotalPower[half];
     }
-
-    console.log(boards);
+    ///console.log(boards[currentPlayer]);
 }
 
 function end_turn(){
@@ -338,7 +349,7 @@ function end_turn(){
 }
 
 function drawHand(currentPlayer){
-    console.log(playerHands, playerHands[currentPlayer]);
+    //console.log(playerHands, playerHands[currentPlayer]);
     playerHands[currentPlayer].forEach(element => {
         drawCard(element);
     });
@@ -363,9 +374,8 @@ function updateAll(currentPlayer){
         marginTrueNeckKeys(true);
         updateBoards(currentPlayer);
         drawHand(currentPlayer);
-        console.log("hand drawn", margin)
+        //console.log("hand drawn", margin)
     }, 1000);
 }
-
 
 
