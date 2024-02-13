@@ -2,6 +2,13 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
+function spliceSelected(which, from){
+    which.forEach( element => {
+        if(from.indexOf(element) != -1){ //indexOf vrací '-1' pokud se hledaná hodnota nenachází v seznamu
+            from.splice(from.indexOf(element), 1);
+        } else{console.log("Element se nenachází v zadaném poli")}})
+}
+
 switchScreen = document.getElementById("switch_screen");
 function hideSwitchSreen(){
     switchScreen.style.display = "none";
@@ -23,7 +30,6 @@ function localGame(){
     
     currentPlayer = startingPlayer();
     localGameStart();
-    console.log(JSON.parse(JSON.stringify(playerHands[currentPlayer])));
 }
 
 function drawNewCard(currentPlayer){
@@ -94,7 +100,6 @@ function play(card, currentPlayer){
             medic(currentPlayer);
             break;
     }
-    
     end_turn();
 }
 
@@ -142,11 +147,12 @@ function bond(i, j, n){ //volá se na konci cyklu kola
             }}}
 }
 function muster(currentPlayer, card){
+    let toRemove = [];
+
     //z balíčku
     playerDecks[currentPlayer].forEach(element=>{
         let i = playerDecks[currentPlayer].indexOf(element); 
         if(element.name === card.summons){
-            console.log(i + "deck", element);
             
             switch(element.type){
                 case "Melee":
@@ -160,15 +166,15 @@ function muster(currentPlayer, card){
                     break;
             }
             boards[currentPlayer][row].push(element);
-
-            playerDecks[currentPlayer].splice(i, 1);
+            toRemove.push(element);
         }
     })
+    spliceSelected(toRemove, playerDecks[currentPlayer]);
     //z ruky
+    toRemove = [];
     playerHands[currentPlayer].forEach(element=>{
         let i = playerHands[currentPlayer].indexOf(element); 
         if(element.name === card.summons && element.id != card.id){
-            console.log(i, element)
             
             switch(element.type){
                 case "Melee":
@@ -182,10 +188,10 @@ function muster(currentPlayer, card){
                     break;
             }
             boards[currentPlayer][row].push(element);
-
-            playerHands[currentPlayer].splice(i, 1);
+            toRemove.push(element);
         }
     })
+    spliceSelected(toRemove, playerHands[currentPlayer]);
 }
 
 function moraleBoost(player, row, boosterIndex){ //do seznamu se musí ukládat informace o tom kdo boostuje, volá se na konci cyklu
@@ -222,11 +228,7 @@ function scorch(){  //do rozsahu testování plně funkční
                         }
                         powerIndex = [element.power, i, j, n, t];
                         strongest[element.id+t] = powerIndex;
-                    }  
-                }
-                
-            }
-        }
+                    }}}}
     }
     //console.log(strongest);
     for(let key in strongest){
