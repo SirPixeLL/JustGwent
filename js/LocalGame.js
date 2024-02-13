@@ -108,7 +108,7 @@ function weather(row){ //row = číslo(0 melee, 1 ranged, 2 siege)
     //specifická funkce, nastavuje debuff status na určitý řádek, power se řeší na konci cyklu kola
     for(let i = 0; i < 2; i++){
         for(let n = 0; n < boards[i][row].length; n++){
-            if(boards[i][row][n].isLegend = false){
+            if(boards[i][row][n].isLegend == false){
                 boards[i][row][n].debuffed = true;
             }
         }
@@ -331,7 +331,7 @@ function end_turn(){
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
-                if(boards[i][j][n].debuffed){boards[i][j][n].power = 1} //weather debuff
+                if(boards[i][j][n].debuffed){boards[i][j][n].power = 1; console.log(boards[i][j][n])} //weather debuff
                 bond(i, j, n) //bond
             }
         commanderHornBuff(i,j);

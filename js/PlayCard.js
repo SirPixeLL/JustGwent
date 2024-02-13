@@ -6,6 +6,8 @@ playerDiscarded = [[],[]];
 boards = [[[],[],[]],[[],[],[]]]
 horn = [[false, false, false],[false, false, false]];
 
+let playedWeatherCards = [null];
+
 let shownCardSlot = [];
 
 function medicCheck() {}
@@ -62,19 +64,28 @@ function playCard(cardType, e) {
                 targetCard.margin = "2px";
                 marginTrueNeckKeys(false)
                 buttonYes.onclick = function() {
-                        document.getElementById(cardType).appendChild(targetCard);
-                        shownCardSlot.splice(0, 1);
-                        targetCard.className = "weatherCardPlayed";
-                        targetCard.style.margin = "2px";
                         targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-        
-                        if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
-                        else if (cardType == "own_ranged") boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
-                        else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
                         let playedCard = playerHands[currentPlayer][index];
                         play(playedCard, currentPlayer);
                         playerHands[currentPlayer].splice(index,1);
+                        let t = 0;
+                        playedWeatherCards.forEach(element => {
+                                if(playedCard.name != element){
+                                        t++;
+                                } 
+                        });
+                        if(t == playedWeatherCards.length){
+                                playedWeatherCards.push(playedCard.name);
+                                document.getElementById(cardType).appendChild(targetCard);
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "weatherCardPlayed";
+                                targetCard.style.margin = "2px";
+                        }
+                        else{
+                                shownCardSlot.splice(0, 1);
+                                document.getElementById("shown_card").removeChild(targetCard);
+                        }
                         buttonYes.style.display = "none";
                         buttonNo.style.display = "none";    
                 };
