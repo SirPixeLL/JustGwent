@@ -194,11 +194,21 @@ function muster(currentPlayer, card){
     spliceSelected(toRemove, playerHands[currentPlayer]);
 }
 
-function moraleBoost(player, row, boosterIndex){ //do seznamu se musí ukládat informace o tom kdo boostuje, volá se na konci cyklu
-    for(let n = 0; n < boards[player][row].length; n++){
-        if(n != boosterIndex){
-            boards[player][row][n].power += 1;
-        }}
+function moraleBoost(i, j, lastBooster){
+    lastBooster = {};
+    boards[i][j].forEach(element =>{
+        if(element.ability == "MoraleBoost" && element != lastBooster){
+            boards[i][j].forEach( e =>{
+                if(e == element){
+                    lastBooster = element;
+                }
+                else{
+                    e.power++;
+                }
+            })
+            console.log(lastBooster);
+        }
+    })
 }
 
 
@@ -331,9 +341,11 @@ function end_turn(){
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
+                boards[i][j][n].power = boards[i][j][n].basepower;
                 if(boards[i][j][n].debuffed){boards[i][j][n].power = 1; console.log(boards[i][j][n])} //weather debuff
-                bond(i, j, n) //bond
+                bond(i, j, n); //bond
             }
+        moraleBoost(i, j);    
         commanderHornBuff(i,j);
         }}
     sumPowers(currentPlayer);
