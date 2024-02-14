@@ -18,7 +18,6 @@ body,html{
     height: 99vh;
     width: 99vw;
     transition: all 1s ease-in;
-
 }
 
 #switch_text {
@@ -90,7 +89,8 @@ body,html{
     border-radius: 10px;
     width: 25%;
     aspect-ratio: 3/4;
-    margin: 40px auto;
+    margin: 10px;
+    margin-top: 30px;
     border: 5px solid #90979a
 }
 
@@ -151,12 +151,14 @@ body,html{
     width: 20px;
 }
 
+.leader_div {
+    height: 25vh;
+}
+
 #pass_button {
     height: 40px;
     width: 160px;
     border-radius: 10px;
-    margin: 2px;
-    margin-top: 50px;
     font-weight: bold;
     font-size: large;
     background-color: #17191a;

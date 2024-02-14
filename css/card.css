@@ -12,7 +12,7 @@
 .cardInHand:hover {
     display: inline-block;
     border-radius: 10px;
-    margin: 2px;
+    margin-left: -10px;
     margin-top: -8%;
     width: 15%;
     background-color: #17191a;

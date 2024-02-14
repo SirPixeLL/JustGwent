@@ -13,125 +13,289 @@ let shownCardSlot = [];
 function medicCheck() {}
 //bude se nějak muset čekovat abilitka těch karet a zatím není jak, zkusit předělat drawCard()
 
+function playCardType(cardType, slotStatus) {
+        if (slotStatus == 0) {
+
+        }
+        else if (slotStatus == 1) {
+                
+        }
+}
+
 function playCard(cardType, e) {
+        let buttonMelee = document.getElementById("shownButtonMelee");
+        let buttonRanged = document.getElementById("shownButtonRanged");
         let buttonYes = document.getElementById("shownButtonYes");
         let buttonNo = document.getElementById("shownButtonNo");
         let targetCard = document.getElementById(e.target.id);
         if (shownCardSlot.length > 0) {
-                shownCardSlot[0].className = "cardInHand";
-                shownCardSlot[0].style.marginLeft = margin + "px";
-                document.getElementById("current_cards").appendChild(shownCardSlot[0]);
-                shownCardSlot.splice(0, 1);
-                buttonYes.style.display = "inline-block";
-                buttonNo.style.display = "inline-block";
-                document.getElementById("shown_card").appendChild(targetCard);
-                shownCardSlot.push(targetCard);
-                targetCard.className = "cardShown";
-                targetCard.margin = "2px";
-                buttonYes.onclick = function() {
-                        document.getElementById(cardType).appendChild(targetCard);
+                if (cardType == "weather_cards") {
+                        shownCardSlot[0].className = "cardInHand";
+                        shownCardSlot[0].style.marginLeft = margin + "px";
+                        document.getElementById("current_cards").appendChild(shownCardSlot[0]);
                         shownCardSlot.splice(0, 1);
-                        targetCard.className = "cardPlayed";
-                        targetCard.style.margin = "2px";
-                        targetCard.removeEventListener("click", cardListenerHelper, false);
-                        cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-
-                        if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
-                        else if (cardType == "own_ranged") boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
-                        else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
-                        let playedCard = playerHands[currentPlayer][index];
-                        play(playedCard, currentPlayer);
-                        playerHands[currentPlayer].splice(index,1);
-                        buttonYes.style.display = "none";
-                        buttonNo.style.display = "none";
-                };
-                buttonNo.onclick = function() {
-                        document.getElementById("current_cards").appendChild(targetCard);
+                        buttonYes.style.display = "inline-block";
+                        buttonNo.style.display = "inline-block";
+                        document.getElementById("shown_card").appendChild(targetCard);
+                        shownCardSlot.push(targetCard);
+                        targetCard.className = "cardShown";
+                        targetCard.margin = "2px";
+                        buttonYes.onclick = function() {
+                                targetCard.removeEventListener("click", cardListenerHelper, false);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+                                let playedCard = playerHands[currentPlayer][index];
+                                play(playedCard, currentPlayer);
+                                playerHands[currentPlayer].splice(index,1);
+                                let t = 0;
+                                playedWeatherCards.forEach(element => {
+                                        if(playedCard.name != element) t++;
+                                });
+                                if(t == playedWeatherCards.length){
+                                        playedWeatherCards.push(playedCard.name);
+                                        document.getElementById(cardType).appendChild(targetCard);
+                                        shownCardSlot.splice(0, 1);
+                                        targetCard.className = "weatherCardPlayed";
+                                        targetCard.style.margin = "2px";
+                                }
+                                else{
+                                        shownCardSlot.splice(0, 1);
+                                        document.getElementById("shown_card").removeChild(targetCard);
+                                }
+                                buttonYes.style.display = "none";
+                                buttonNo.style.display = "none";    
+                        };
+                        buttonNo.onclick = function() {
+                                document.getElementById("current_cards").appendChild(targetCard);
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardInHand";
+                                targetCard.style.marginLeft = margin + "px";
+                                buttonYes.style.display = "none";
+                                buttonNo.style.display = "none";
+                                marginTrueNeckKeys(true);
+                        };
+                }
+                else if(cardType == "agile") {
+                        shownCardSlot[0].className = "cardInHand";
+                        shownCardSlot[0].style.marginLeft = margin + "px";
+                        document.getElementById("current_cards").appendChild(shownCardSlot[0]);
                         shownCardSlot.splice(0, 1);
-                        targetCard.className = "cardInHand";
-                        targetCard.style.marginLeft = margin + "px";
-                        buttonYes.style.display = "none";
-                        buttonNo.style.display = "none";
-                        marginTrueNeckKeys(true);
-                };
-        }
-        else if (cardType == "weather_cards") {
-                buttonYes.style.display = "inline-block";
-                buttonNo.style.display = "inline-block";
-                document.getElementById("shown_card").appendChild(targetCard);
-                shownCardSlot.push(targetCard);
-                targetCard.className = "cardShown";
-                targetCard.margin = "2px";
-                marginTrueNeckKeys(false)
-                buttonYes.onclick = function() {
-                        targetCard.removeEventListener("click", cardListenerHelper, false);
-                        cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-                        let playedCard = playerHands[currentPlayer][index];
-                        play(playedCard, currentPlayer);
-                        playerHands[currentPlayer].splice(index,1);
-                        let t = 0;
-                        playedWeatherCards.forEach(element => {
-                                if(playedCard.name != element){
-                                        t++;
-                                } 
-                        });
-                        if(t == playedWeatherCards.length){
-                                playedWeatherCards.push(playedCard.name);
+                        buttonYes.style.display = "inline-block";
+                        buttonNo.style.display = "inline-block";
+                        document.getElementById("shown_card").appendChild(targetCard);
+                        shownCardSlot.push(targetCard);
+                        targetCard.className = "cardShown";
+                        targetCard.margin = "2px";
+                        buttonMelee.onclick = function() {
                                 document.getElementById(cardType).appendChild(targetCard);
                                 shownCardSlot.splice(0, 1);
-                                targetCard.className = "weatherCardPlayed";
+                                targetCard.className = "cardPlayed";
                                 targetCard.style.margin = "2px";
+                                targetCard.removeEventListener("click", cardListenerHelper, false);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+        
+                                boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
+                                let playedCard = playerHands[currentPlayer][index];
+                                play(playedCard, currentPlayer);
+                                playerHands[currentPlayer].splice(index,1);
+                                buttonMelee.style.display = "none";
+                                buttonRanged.style.display = "none";
+                                buttonNo.style.display = "none";    
                         }
-                        else{
+                        buttonRanged.onclick = function() {
+                                document.getElementById(cardType).appendChild(targetCard);
                                 shownCardSlot.splice(0, 1);
-                                document.getElementById("shown_card").removeChild(targetCard);
+                                targetCard.className = "cardPlayed";
+                                targetCard.style.margin = "2px";
+                                targetCard.removeEventListener("click", cardListenerHelper, false);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+        
+                                boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
+                                let playedCard = playerHands[currentPlayer][index];
+                                play(playedCard, currentPlayer);
+                                playerHands[currentPlayer].splice(index,1);
+                                buttonMelee.style.display = "none";
+                                buttonRanged.style.display = "none";
+                                buttonNo.style.display = "none";
                         }
-                        buttonYes.style.display = "none";
-                        buttonNo.style.display = "none";    
-                };
-                buttonNo.onclick = function() {
-                        document.getElementById("current_cards").appendChild(targetCard);
+                        buttonNo.onclick = function() {
+                                document.getElementById("current_cards").appendChild(targetCard);
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardInHand";
+                                targetCard.style.marginLeft = margin + "px";
+                                buttonYes.style.display = "none";
+                                buttonNo.style.display = "none";
+                                marginTrueNeckKeys(true);  
+                        }
+                }
+                else {
+                        shownCardSlot[0].className = "cardInHand";
+                        shownCardSlot[0].style.marginLeft = margin + "px";
+                        document.getElementById("current_cards").appendChild(shownCardSlot[0]);
                         shownCardSlot.splice(0, 1);
-                        targetCard.className = "cardInHand";
-                        targetCard.style.marginLeft = margin + "px";
-                        buttonYes.style.display = "none";
-                        buttonNo.style.display = "none";
-                        marginTrueNeckKeys(true);
-                };
+                        buttonYes.style.display = "inline-block";
+                        buttonNo.style.display = "inline-block";
+                        document.getElementById("shown_card").appendChild(targetCard);
+                        shownCardSlot.push(targetCard);
+                        targetCard.className = "cardShown";
+                        targetCard.margin = "2px";
+                        buttonYes.onclick = function() {
+                                document.getElementById(cardType).appendChild(targetCard);
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardPlayed";
+                                targetCard.style.margin = "2px";
+                                targetCard.removeEventListener("click", cardListenerHelper, false);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+
+                                if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
+                                else if (cardType == "own_ranged") boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
+                                else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
+                                let playedCard = playerHands[currentPlayer][index];
+                                play(playedCard, currentPlayer);
+                                playerHands[currentPlayer].splice(index,1);
+                                buttonYes.style.display = "none";
+                                buttonNo.style.display = "none";
+                        };
+                        buttonNo.onclick = function() {
+                                document.getElementById("current_cards").appendChild(targetCard);
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardInHand";
+                                targetCard.style.marginLeft = margin + "px";
+                                buttonYes.style.display = "none";
+                                buttonNo.style.display = "none";
+                                marginTrueNeckKeys(true);
+                                
+                        };      
+                }
         }
         else {
-                buttonYes.style.display = "inline-block";
-                buttonNo.style.display = "inline-block";
-                document.getElementById("shown_card").appendChild(targetCard);
-                shownCardSlot.push(targetCard);
-                targetCard.className = "cardShown";
-                targetCard.margin = "2px";
-                marginTrueNeckKeys(false);
-                buttonYes.onclick = function() {
-                        document.getElementById(cardType).appendChild(targetCard);
-                        shownCardSlot.splice(0, 1);
-                        targetCard.className = "cardPlayed";
-                        targetCard.style.margin = "2px";
-                        targetCard.removeEventListener("click", cardListenerHelper, false);
-                        cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+                if (cardType == "weather_cards") {
+                        buttonYes.style.display = "inline-block";
+                        buttonNo.style.display = "inline-block";
+                        document.getElementById("shown_card").appendChild(targetCard);
+                        shownCardSlot.push(targetCard);
+                        targetCard.className = "cardShown";
+                        targetCard.margin = "2px";
+                        marginTrueNeckKeys(false);
+                        buttonYes.onclick = function() {
+                                targetCard.removeEventListener("click", cardListenerHelper, false);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+                                let playedCard = playerHands[currentPlayer][index];
+                                play(playedCard, currentPlayer);
+                                playerHands[currentPlayer].splice(index,1);
+                                let t = 0;
+                                playedWeatherCards.forEach(element => {
+                                        if(playedCard.name != element) t++;
+                                });
+                                if(t == playedWeatherCards.length){
+                                        playedWeatherCards.push(playedCard.name);
+                                        document.getElementById(cardType).appendChild(targetCard);
+                                        shownCardSlot.splice(0, 1);
+                                        targetCard.className = "weatherCardPlayed";
+                                        targetCard.style.margin = "2px";
+                                }
+                                else{
+                                        shownCardSlot.splice(0, 1);
+                                        document.getElementById("shown_card").removeChild(targetCard);
+                                }
+                                buttonYes.style.display = "none";
+                                buttonNo.style.display = "none";    
+                        };
+                        buttonNo.onclick = function() {
+                                document.getElementById("current_cards").appendChild(targetCard);
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardInHand";
+                                targetCard.style.marginLeft = margin + "px";
+                                buttonYes.style.display = "none";
+                                buttonNo.style.display = "none";
+                                marginTrueNeckKeys(true);
+                        };
+                }
+                else if(cardType == "agile") {
+                        buttonMelee.style.display = "inline-block";
+                        buttonMelee.style.display = "inline-block";
+                        buttonNo.style.display = "inline-block";
+                        buttonNo.style.display = "inline-block";
+                        document.getElementById("shown_card").appendChild(targetCard);
+                        shownCardSlot.push(targetCard);
+                        targetCard.className = "cardShown";
+                        targetCard.margin = "2px";
+                        marginTrueNeckKeys(false);
+                        buttonMelee.onclick = function() {
+                                document.getElementById(cardType).appendChild(targetCard);
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardPlayed";
+                                targetCard.style.margin = "2px";
+                                targetCard.removeEventListener("click", cardListenerHelper, false);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
         
-                        if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
-                        else if (cardType == "own_ranged") boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
-                        else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
-                        let playedCard = playerHands[currentPlayer][index];
-                        play(playedCard, currentPlayer);
-                        playerHands[currentPlayer].splice(index,1);
-                        buttonYes.style.display = "none";
-                        buttonNo.style.display = "none";    
-                };
-                buttonNo.onclick = function() {
-                        document.getElementById("current_cards").appendChild(targetCard);
-                        shownCardSlot.splice(0, 1);
-                        targetCard.className = "cardInHand";
-                        targetCard.style.marginLeft = margin + "px";
-                        buttonYes.style.display = "none";
-                        buttonNo.style.display = "none";
-                        marginTrueNeckKeys(true);
+                                boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
+                                let playedCard = playerHands[currentPlayer][index];
+                                play(playedCard, currentPlayer);
+                                playerHands[currentPlayer].splice(index,1);
+                                buttonMelee.style.display = "none";
+                                buttonRanged.style.display = "none";
+                                buttonNo.style.display = "none";    
+                        }
+                        buttonRanged.onclick = function() {
+                                document.getElementById(cardType).appendChild(targetCard);
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardPlayed";
+                                targetCard.style.margin = "2px";
+                                targetCard.removeEventListener("click", cardListenerHelper, false);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+        
+                                boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
+                                let playedCard = playerHands[currentPlayer][index];
+                                play(playedCard, currentPlayer);
+                                playerHands[currentPlayer].splice(index,1);
+                                buttonMelee.style.display = "none";
+                                buttonRanged.style.display = "none";
+                                buttonNo.style.display = "none";
+                        }
+                        buttonNo.onclick = function() {
+                                document.getElementById("current_cards").appendChild(targetCard);
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardInHand";
+                                targetCard.style.marginLeft = margin + "px";
+                                buttonYes.style.display = "none";
+                                buttonNo.style.display = "none";
+                                marginTrueNeckKeys(true);  
+                        }
+                }
+                else {
+                        buttonYes.style.display = "inline-block";
+                        buttonNo.style.display = "inline-block";
+                        document.getElementById("shown_card").appendChild(targetCard);
+                        shownCardSlot.push(targetCard);
+                        targetCard.className = "cardShown";
+                        targetCard.margin = "2px";
+                        marginTrueNeckKeys(false);
+                        buttonYes.onclick = function() {
+                                document.getElementById(cardType).appendChild(targetCard);
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardPlayed";
+                                targetCard.style.margin = "2px";
+                                targetCard.removeEventListener("click", cardListenerHelper, false);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+                
+                                if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
+                                else if (cardType == "own_ranged") boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
+                                else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
+                                let playedCard = playerHands[currentPlayer][index];
+                                play(playedCard, currentPlayer);
+                                playerHands[currentPlayer].splice(index,1);
+                                buttonYes.style.display = "none";
+                                buttonNo.style.display = "none";    
+                        };
+                        buttonNo.onclick = function() {
+                                document.getElementById("current_cards").appendChild(targetCard);
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardInHand";
+                                targetCard.style.marginLeft = margin + "px";
+                                buttonYes.style.display = "none";
+                                buttonNo.style.display = "none";
+                                marginTrueNeckKeys(true);
+                        };
                 };
         };
 };
@@ -144,16 +308,19 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
         };
         if (e.target.id.includes("Melee")) {
                 playCard("own_melee", e);
-        };
+        }
         if (e.target.id.includes("Ranged")) {
                 playCard("own_ranged", e);
-        };
+        }
         if (e.target.id.includes("Siege")) {
                 playCard("own_siege", e);
-        };
+        }
         if (e.target.id.includes("Weather")) {
                 playCard("weather_cards", e);
-        };
+        }
+        if (e.target.id.includes("Agile")) {
+                playCard("agile", e);
+        }
     }
 
 function addCardListener() {
