@@ -29,6 +29,10 @@ function playCard(cardType, e) {
         let buttonNo = document.getElementById("shownButtonNo");
         let targetCard = document.getElementById(e.target.id);
         if (shownCardSlot.length > 0) {
+                if (shownCardSlot[0].id.includes("Agile")) {
+                        buttonMelee.style.display = "none";
+                        buttonRanged.style.display = "none";
+                }
                 if (cardType == "weather_cards") {
                         shownCardSlot[0].className = "cardInHand";
                         shownCardSlot[0].style.marginLeft = margin + "px";
@@ -79,14 +83,16 @@ function playCard(cardType, e) {
                         shownCardSlot[0].style.marginLeft = margin + "px";
                         document.getElementById("current_cards").appendChild(shownCardSlot[0]);
                         shownCardSlot.splice(0, 1);
-                        buttonYes.style.display = "inline-block";
+                        buttonYes.style.display = "none";
+                        buttonMelee.style.display = "inline-block";
+                        buttonRanged.style.display = "inline-block";
                         buttonNo.style.display = "inline-block";
                         document.getElementById("shown_card").appendChild(targetCard);
                         shownCardSlot.push(targetCard);
                         targetCard.className = "cardShown";
                         targetCard.margin = "2px";
                         buttonMelee.onclick = function() {
-                                document.getElementById(cardType).appendChild(targetCard);
+                                document.getElementById("own_melee").appendChild(targetCard);
                                 shownCardSlot.splice(0, 1);
                                 targetCard.className = "cardPlayed";
                                 targetCard.style.margin = "2px";
@@ -102,7 +108,7 @@ function playCard(cardType, e) {
                                 buttonNo.style.display = "none";    
                         }
                         buttonRanged.onclick = function() {
-                                document.getElementById(cardType).appendChild(targetCard);
+                                document.getElementById("own_ranged").appendChild(targetCard);
                                 shownCardSlot.splice(0, 1);
                                 targetCard.className = "cardPlayed";
                                 targetCard.style.margin = "2px";
@@ -122,7 +128,8 @@ function playCard(cardType, e) {
                                 shownCardSlot.splice(0, 1);
                                 targetCard.className = "cardInHand";
                                 targetCard.style.marginLeft = margin + "px";
-                                buttonYes.style.display = "none";
+                                buttonMelee.style.display = "none";
+                                buttonRanged.style.display = "none";
                                 buttonNo.style.display = "none";
                                 marginTrueNeckKeys(true);  
                         }
@@ -212,7 +219,7 @@ function playCard(cardType, e) {
                 }
                 else if(cardType == "agile") {
                         buttonMelee.style.display = "inline-block";
-                        buttonMelee.style.display = "inline-block";
+                        buttonRanged.style.display = "inline-block";
                         buttonNo.style.display = "inline-block";
                         buttonNo.style.display = "inline-block";
                         document.getElementById("shown_card").appendChild(targetCard);
@@ -221,7 +228,7 @@ function playCard(cardType, e) {
                         targetCard.margin = "2px";
                         marginTrueNeckKeys(false);
                         buttonMelee.onclick = function() {
-                                document.getElementById(cardType).appendChild(targetCard);
+                                document.getElementById("own_melee").appendChild(targetCard);
                                 shownCardSlot.splice(0, 1);
                                 targetCard.className = "cardPlayed";
                                 targetCard.style.margin = "2px";
@@ -237,7 +244,7 @@ function playCard(cardType, e) {
                                 buttonNo.style.display = "none";    
                         }
                         buttonRanged.onclick = function() {
-                                document.getElementById(cardType).appendChild(targetCard);
+                                document.getElementById("own_ranged").appendChild(targetCard);
                                 shownCardSlot.splice(0, 1);
                                 targetCard.className = "cardPlayed";
                                 targetCard.style.margin = "2px";
@@ -257,7 +264,8 @@ function playCard(cardType, e) {
                                 shownCardSlot.splice(0, 1);
                                 targetCard.className = "cardInHand";
                                 targetCard.style.marginLeft = margin + "px";
-                                buttonYes.style.display = "none";
+                                buttonMelee.style.display = "none";
+                                buttonRanged.style.display = "none";
                                 buttonNo.style.display = "none";
                                 marginTrueNeckKeys(true);  
                         }
@@ -321,11 +329,18 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
         if (e.target.id.includes("Agile")) {
                 playCard("agile", e);
         }
+        removeCardListener();
     }
 
 function addCardListener() {
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].addEventListener("click", cardListenerHelper);
+        }
+}
+
+function removeCardListener() {
+        for (let i = 0; i < cardsInHand.length; i++) {
+                cardsInHand[i].removeEventListener("click", cardListenerHelper);
         }
 }
 

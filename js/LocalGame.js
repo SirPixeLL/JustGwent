@@ -354,7 +354,7 @@ function end_turn(){
     switchScreen.style.display = "inline-block";
     setTimeout(()=>{
         switchScreen.style.opacity = "1";
-    }, 1);
+    }, 0);
     document.addEventListener("keydown", (event) => {
         if(event.code == "Space" && switchScreen.style.display == "inline-block") {
             hideSwitchSreen();
