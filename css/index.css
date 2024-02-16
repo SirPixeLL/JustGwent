@@ -35,6 +35,48 @@ body,html{
     font-weight: bold;
 }
 
+/*Medic UI*/
+#medic_ui {
+    position: absolute;
+    display: none;
+    z-index: 2;
+    height: 55%;
+    width: 100%;
+    background-color: rgba(23, 25, 26, 0.5);
+    top: 25%;
+}
+
+#medic_text {
+    display: block;
+    height: 5%;
+    color: #ffffff;
+}
+
+#selected_card {
+    display: inline-block;
+    background-color: #17191a;
+    aspect-ratio: 3/4;
+    width: 17.5%;
+    margin: 15px;
+    margin-top: 25px;
+}
+
+.side_card1 {
+    display: inline-block;
+    background-color: #17191a;
+    aspect-ratio: 3/4;
+    width: 12.5%;
+    margin: 15px;
+}
+
+.side_card2 {
+    display: inline-block;
+    background-color: #17191a;
+    aspect-ratio: 3/4;
+    width: 7.5%;
+    margin: 15px;
+}
+
 /* MAIN BOARDS */
 #left_board {
     display: inline-block;

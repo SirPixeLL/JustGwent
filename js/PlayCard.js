@@ -10,8 +10,9 @@ let playedWeatherCards = [null];
 
 let shownCardSlot = [];
 
-function medicCheck() {}
-//bude se nějak muset čekovat abilitka těch karet a zatím není jak, zkusit předělat drawCard()
+function showMedicUI() {
+        
+}
 
 function playCardType(cardType, slotStatus) {
         if (slotStatus == 0) {
@@ -66,7 +67,8 @@ function playCard(cardType, e) {
                                         document.getElementById("shown_card").removeChild(targetCard);
                                 }
                                 buttonYes.style.display = "none";
-                                buttonNo.style.display = "none";    
+                                buttonNo.style.display = "none";
+                                removeCardListener();   
                         };
                         buttonNo.onclick = function() {
                                 document.getElementById("current_cards").appendChild(targetCard);
@@ -105,7 +107,8 @@ function playCard(cardType, e) {
                                 playerHands[currentPlayer].splice(index,1);
                                 buttonMelee.style.display = "none";
                                 buttonRanged.style.display = "none";
-                                buttonNo.style.display = "none";    
+                                buttonNo.style.display = "none";
+                                removeCardListener();
                         }
                         buttonRanged.onclick = function() {
                                 document.getElementById("own_ranged").appendChild(targetCard);
@@ -122,6 +125,7 @@ function playCard(cardType, e) {
                                 buttonMelee.style.display = "none";
                                 buttonRanged.style.display = "none";
                                 buttonNo.style.display = "none";
+                                removeCardListener();
                         }
                         buttonNo.onclick = function() {
                                 document.getElementById("current_cards").appendChild(targetCard);
@@ -161,6 +165,7 @@ function playCard(cardType, e) {
                                 playerHands[currentPlayer].splice(index,1);
                                 buttonYes.style.display = "none";
                                 buttonNo.style.display = "none";
+                                removeCardListener();
                         };
                         buttonNo.onclick = function() {
                                 document.getElementById("current_cards").appendChild(targetCard);
@@ -205,7 +210,8 @@ function playCard(cardType, e) {
                                         document.getElementById("shown_card").removeChild(targetCard);
                                 }
                                 buttonYes.style.display = "none";
-                                buttonNo.style.display = "none";    
+                                buttonNo.style.display = "none";
+                                removeCardListener();
                         };
                         buttonNo.onclick = function() {
                                 document.getElementById("current_cards").appendChild(targetCard);
@@ -241,7 +247,8 @@ function playCard(cardType, e) {
                                 playerHands[currentPlayer].splice(index,1);
                                 buttonMelee.style.display = "none";
                                 buttonRanged.style.display = "none";
-                                buttonNo.style.display = "none";    
+                                buttonNo.style.display = "none";
+                                removeCardListener(); 
                         }
                         buttonRanged.onclick = function() {
                                 document.getElementById("own_ranged").appendChild(targetCard);
@@ -258,6 +265,7 @@ function playCard(cardType, e) {
                                 buttonMelee.style.display = "none";
                                 buttonRanged.style.display = "none";
                                 buttonNo.style.display = "none";
+                                removeCardListener();
                         }
                         buttonNo.onclick = function() {
                                 document.getElementById("current_cards").appendChild(targetCard);
@@ -293,7 +301,8 @@ function playCard(cardType, e) {
                                 play(playedCard, currentPlayer);
                                 playerHands[currentPlayer].splice(index,1);
                                 buttonYes.style.display = "none";
-                                buttonNo.style.display = "none";    
+                                buttonNo.style.display = "none";
+                                removeCardListener();  
                         };
                         buttonNo.onclick = function() {
                                 document.getElementById("current_cards").appendChild(targetCard);
@@ -317,19 +326,18 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
         if (e.target.id.includes("Melee")) {
                 playCard("own_melee", e);
         }
-        if (e.target.id.includes("Ranged")) {
+        else if (e.target.id.includes("Ranged")) {
                 playCard("own_ranged", e);
         }
-        if (e.target.id.includes("Siege")) {
+        else if (e.target.id.includes("Siege")) {
                 playCard("own_siege", e);
         }
-        if (e.target.id.includes("Weather")) {
+        else if (e.target.id.includes("Weather")) {
                 playCard("weather_cards", e);
         }
-        if (e.target.id.includes("Agile")) {
+        else if (e.target.id.includes("Agile")) {
                 playCard("agile", e);
         }
-        removeCardListener();
     }
 
 function addCardListener() {
