@@ -15,10 +15,8 @@ function hideSwitchSreen(){
     switchScreen.style.opacity = "0";
 
     currentPlayer = 1-currentPlayer;
-    //console.log(currentPlayer)
     updateAll(currentPlayer);
     sumPowers(currentPlayer);
-    //console.log(JSON.parse(JSON.stringify(boards)));
 }
 //////////////////////////////////////////////////////////////
 
@@ -136,7 +134,6 @@ function commanderHornBuff(i, j){ //ošklivý ale funkční
             }}}
 }
 
-
 //Schopnosti
 function bond(i, j, n){ //volá se na konci cyklu kola
     if(boards[i][j][n].ability=="TightBond"){
@@ -240,7 +237,6 @@ function scorch(){  //do rozsahu testování plně funkční
                         strongest[element.id+t] = powerIndex;
                     }}}}
     }
-    //console.log(strongest);
     for(let key in strongest){
         let i = strongest[key][1];
         let j = strongest[key][2];
@@ -277,7 +273,6 @@ function scorchMelee(currentPlayer){
         
     }
     for(let key in strongest){
-        //console.log(strongest);
         n = strongest[key][1];
         t = strongest[key][2];
         boards[a][0].splice(n-t, 1);
@@ -323,18 +318,13 @@ function sumPowers(currentPlayer){
         for(let row = 0; row < 3; row++){
             rowPower = 0;
             for(item = 0; item < boards[half][row].length; item++){
-                //console.log(boards[half][row][item]);
                 rowPower += boards[half][row][item].power;
             }
-            //console.log(rowPower);
-            //console.log(UI[half]);
             UI[half][row].innerHTML = rowPower;
             playersTotalPower[half] += rowPower
         }
-        //console.log(playersTotalPower);
         Total[half].innerHTML = playersTotalPower[half];
     }
-    ///console.log(boards[currentPlayer]);
 }
 
 function endTurn(){
@@ -350,9 +340,9 @@ function endTurn(){
         }}
     sumPowers(currentPlayer);
     updateAll(currentPlayer);
-    //konec tahu --------------sem přijde switchScreen
+
     if(hasPassed[1-currentPlayer] && hasPassed[currentPlayer] == false){
-        //hraje dál
+        //hraje dál, idk co sem dát, je to tady aby nemuselo být víc podmínek
     }
     else{
         removeCardListener();
@@ -386,7 +376,6 @@ function updateBoards(currentPlayer){
             boards[i][j].forEach(element => {
                 element.drawOnBoards(i, j, currentPlayer);
             });
-           
         }
     }
 }
@@ -450,7 +439,6 @@ function endRound(){
         lives[1]--;
     }
     hasPassed = [false, false];
-    currentPlayer = 1 - currentPlayer;
     updateAll(currentPlayer);
     addCardListener();
 }
