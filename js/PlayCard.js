@@ -5,6 +5,11 @@ playerLeaderUsed = [false, false];
 playerDiscarded = [[],[]];
 boards = [[[],[],[]],[[],[],[]]]
 horn = [[false, false, false],[false, false, false]];
+lives= [2,2];
+
+hasPassed = [false, false];
+
+
 
 let playedWeatherCards = [null];
 

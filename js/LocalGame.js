@@ -100,7 +100,7 @@ function play(card, currentPlayer){
             medic(currentPlayer);
             break;
     }
-    end_turn();
+    endTurn();
 }
 
 //Weather effects
@@ -295,8 +295,8 @@ function sumPowers(currentPlayer){
     ownSiege = document.getElementById("own_siege_value");
     ownRanged = document.getElementById("own_ranged_value");
     ownMelee = document.getElementById("own_melee_value");
-    enemyTotal = document.getElementById("enemy_total_value");
-    ownTotal = document.getElementById("own_total_value");
+    enemyTotal = document.getElementById("enemy_total_value_p");
+    ownTotal = document.getElementById("own_total_value_p");
     
     cardsLeft = [[],[]];
     enemyDeckNum = document.getElementById("enemy_remaining");
@@ -337,7 +337,7 @@ function sumPowers(currentPlayer){
     ///console.log(boards[currentPlayer]);
 }
 
-function end_turn(){
+function endTurn(){
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
@@ -351,15 +351,24 @@ function end_turn(){
     sumPowers(currentPlayer);
     updateAll(currentPlayer);
     //konec tahu --------------sem přijde switchScreen
-    switchScreen.style.display = "inline-block";
-    setTimeout(()=>{
-        switchScreen.style.opacity = "1";
-    }, 0);
-    document.addEventListener("keydown", (event) => {
-        if(event.code == "Space" && switchScreen.style.display == "inline-block") {
-            hideSwitchSreen();
+    if(hasPassed[1-currentPlayer] && hasPassed[currentPlayer] == false){
+        //hraje dál
+    }
+    else{
+        removeCardListener();
+        if(hasPassed[currentPlayer] && hasPassed[1-currentPlayer]){
+            endRound();
         }
-    })
+        switchScreen.style.display = "inline-block";
+        setTimeout(()=>{
+            switchScreen.style.opacity = "1";
+        }, 0);
+        document.addEventListener("keydown", (event) => {
+            if(event.code == "Space" && switchScreen.style.display == "inline-block") {
+                hideSwitchSreen();
+            }
+        })
+    }
 }
 
 function drawHand(currentPlayer){
@@ -382,14 +391,66 @@ function updateBoards(currentPlayer){
     }
 }
 
+function updateLives(currentPlayer){
+    enemyLives = [document.getElementById("enemy_heart1"), document.getElementById("enemy_heart2")];
+    ownLives = [document.getElementById("own_heart1"), document.getElementById("own_heart2")];
+    livesUI = [];
+
+    if(currentPlayer == 0){
+        livesUI = [ownLives, enemyLives];
+    }else{
+        livesUI = [enemyLives, ownLives];
+    }
+
+    for(let i=0; i < 2; i++){
+        livesUI[i].forEach(element =>{
+            element.style.display="none";
+        })
+        for(let j = 0; j < lives[i]; j++){
+            livesUI[i][j].style.display="inline-block";
+        }
+    }
+}
+
 function updateAll(currentPlayer){
     setTimeout(()=>{
         clearHand();
         marginTrueNeckKeys(true);
         updateBoards(currentPlayer);
         drawHand(currentPlayer);
-        //console.log("hand drawn", margin)
-    }, 1000);
+        updateLives(currentPlayer);
+    }, 1); //kvůli musteru idk
+}
+
+function passButton(){
+    hasPassed[currentPlayer] = true;
+    endTurn();
+    marginTrueNeckKeys(false);
 }
 
 
+
+function endRound(){
+    //přidat funkci pro případ že by nilfgaard remizoval
+    if(playersTotalPower[currentPlayer] > playersTotalPower[1-currentPlayer]){
+        enemyLives[lives[1-currentPlayer]-1].style.display="none";
+        lives[1-currentPlayer]--;
+
+    }
+    else if(playersTotalPower[currentPlayer] < playersTotalPower[1-currentPlayer]){
+        ownLives[lives[currentPlayer]-1].style.display="none";
+        lives[currentPlayer]--;
+
+    }
+    else{
+        ownLives[lives[currentPlayer]-1].style.display="none";
+        enemyLives[lives[1-currentPlayer]-1].style.display="none";
+
+        lives[0]--;
+        lives[1]--;
+    }
+    hasPassed = [false, false];
+    currentPlayer = 1 - currentPlayer;
+    updateAll(currentPlayer);
+    addCardListener();
+}

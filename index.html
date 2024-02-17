@@ -62,11 +62,11 @@
                 <div id="stats">
                     <img class="card_icon" src="images/playing-card.png">
                     <p id="enemy_card_num">69</p>
-                    <img class="heart_icon" src="images/love-always-wins.png">
-                    <img class="heart_icon" src="images/love-always-wins.png">
+                    <img class="heart_icon" src="images/love-always-wins.png" id="enemy_heart1">
+                    <img class="heart_icon" src="images/love-always-wins.png" id="enemy_heart2">
                 </div>
             </div>
-            <div id="enemy_total_value"><p class="value_p">0</p></div>
+            <div id="enemy_total_value"><p class="value_p" id="enemy_total_value_p">0</p></div>
         </div>
 
         <div id="weather_cards"></div>
@@ -79,17 +79,17 @@
                 <div id="stats">
                     <img class="card_icon" src="images/playing-card.png">
                     <p id="own_card_num">420</p>
-                    <img class="heart_icon" src="images/love-always-wins.png">
-                    <img class="heart_icon" src="images/love-always-wins.png">
+                    <img class="heart_icon" src="images/love-always-wins.png" id="own_heart1">
+                    <img class="heart_icon" src="images/love-always-wins.png" id="own_heart2">
                 </div>
             </div>
-            <div id="own_total_value"><p class="value_p">0</p></div>
+            <div id="own_total_value"><p class="value_p" id="own_total_value_p">0</p></div>
 
         </div>
         <div id="own_leader_div" class="leader_div">
             <img id="own_leader" src="images/profile_pic2.jpg">
         </div>
-        <button id="pass_button" onclick="clearHand(); clearBoards()">PASS</button>
+        <button id="pass_button" onclick="passButton()">PASS</button>
     </div>
     <div id="center_board">
         <div id="enemy_side">
