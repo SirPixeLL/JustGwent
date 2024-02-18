@@ -36,4 +36,7 @@ if(mode == 1){
             }
         })
     }
+    let player1 = new Player(1, "Geralt", p1faction, "placeholder", p1deck);
+    let player2 = new Player(2, "Zoltan", p2faction, "placeholder", p2deck);
+    players = [player1, player2];
 }

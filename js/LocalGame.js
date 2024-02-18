@@ -1,7 +1,3 @@
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
-
 function spliceSelected(which, from){
     which.forEach( element => {
         if(from.indexOf(element) != -1){ //indexOf vrací '-1' pokud se hledaná hodnota nenachází v seznamu
@@ -21,28 +17,17 @@ function hideSwitchSreen(){
 //////////////////////////////////////////////////////////////
 
 localGame();
-function localGame(){
-    playersTotalPower = [0, 0];
-    
+function localGame(){    
     //console.log(JSON.parse(JSON.stringify(boards)));
     
     currentPlayer = startingPlayer();
     localGameStart();
 }
-
-function drawNewCard(currentPlayer){
-    //přidá hráči do ruky kartu z jeho balíčku
-    newCardIndex = getRandomInt(playerDecks[currentPlayer].length);
-    playerHands[currentPlayer].push(playerDecks[currentPlayer][newCardIndex]);
-    playerDecks[currentPlayer].splice(newCardIndex, 1);
-}
-
 function localGameStart(){
-    for(let i = 0; i < 2; i++){
-        for(let j = 0; j < 10; j++){
-            drawNewCard(i);
-        }}
-    
+        for(let i = 0; i < 2; i++){
+            players[i].populateHand();
+            console.log(players[i].hand)
+        }
     drawHand(currentPlayer);
     sumPowers(currentPlayer);
 }
@@ -50,13 +35,13 @@ function startingPlayer(){
     //"Coinflip" na začátku hry
     //scoia'tael jede první
     let coinflip;
-    if(playerFactions[0] == "Scoia'tael" && playerFactions[1] == "Scoia'tael"){
+    if(players[0].faction == "Scoia'tael" && players[1].faction == "Scoia'tael"){
         coinflip = getRandomInt(2);
     }
-    else if(playerFactions[0] == "Scoia'tael"){
+    else if(players[0].faction == "Scoia'tael"){
         coinflip = 0;
     }
-    else if(playerFactions[1] == "Scoia'tael"){
+    else if(players[1].faction == "Scoia'tael"){
         coinflip = 1;
     }
     else{
@@ -147,10 +132,9 @@ function muster(currentPlayer, card){
     let toRemove = [];
 
     //z balíčku
-    playerDecks[currentPlayer].forEach(element=>{
-        let i = playerDecks[currentPlayer].indexOf(element); 
+    players[currentPlayer].deck.forEach(element=>{
+        let i = players[currentPlayer].deck.indexOf(element); 
         if(element.name === card.summons){
-            
             switch(element.type){
                 case "Melee":
                     row = 0;
@@ -166,11 +150,12 @@ function muster(currentPlayer, card){
             toRemove.push(element);
         }
     })
-    spliceSelected(toRemove, playerDecks[currentPlayer]);
+    spliceSelected(toRemove, players[currentPlayer].deck);
+
     //z ruky
     toRemove = [];
-    playerHands[currentPlayer].forEach(element=>{
-        let i = playerHands[currentPlayer].indexOf(element); 
+    players[currentPlayer].hand.forEach(element=>{
+        let i = players[currentPlayer].hand.indexOf(element); 
         if(element.name === card.summons && element.id != card.id){
             
             switch(element.type){
@@ -188,7 +173,7 @@ function muster(currentPlayer, card){
             toRemove.push(element);
         }
     })
-    spliceSelected(toRemove, playerHands[currentPlayer]);
+    spliceSelected(toRemove, players[currentPlayer].hand);
 }
 
 function moraleBoost(i, j, lastBooster){
@@ -311,19 +296,19 @@ function sumPowers(currentPlayer){
             break;
     }
 
-    playersTotalPower = [0, 0];
     for(let half = 0; half < 2; half++){
-        cardsLeft[half][0].innerHTML = playerDecks[half].length;
-        cardsLeft[half][1].innerHTML = playerHands[half].length;
+        players[half].totalPower = 0;
+        cardsLeft[half][0].innerHTML = players[half].deck.length;
+        cardsLeft[half][1].innerHTML = players[half].deck.length;
         for(let row = 0; row < 3; row++){
             rowPower = 0;
             for(item = 0; item < boards[half][row].length; item++){
                 rowPower += boards[half][row][item].power;
             }
             UI[half][row].innerHTML = rowPower;
-            playersTotalPower[half] += rowPower
+            players[half].totalPower += rowPower
         }
-        Total[half].innerHTML = playersTotalPower[half];
+        Total[half].innerHTML = players[half].totalPower;
     }
 }
 
@@ -335,18 +320,18 @@ function endTurn(){
                 if(boards[i][j][n].debuffed){boards[i][j][n].power = 1; console.log(boards[i][j][n])} //weather debuff
                 bond(i, j, n); //bond
             }
-        moraleBoost(i, j);    
         commanderHornBuff(i,j);
+        moraleBoost(i, j); 
         }}
     sumPowers(currentPlayer);
     updateAll(currentPlayer);
 
-    if(hasPassed[1-currentPlayer] && hasPassed[currentPlayer] == false){
+    if(players[1-currentPlayer].hasPassed && players[currentPlayer].hasPassed == false){
         //hraje dál, idk co sem dát, je to tady aby nemuselo být víc podmínek
     }
     else{
         removeCardListener();
-        if(hasPassed[currentPlayer] && hasPassed[1-currentPlayer]){
+        if(players[currentPlayer].hasPassed && players[1-currentPlayer].hasPassed){
             endRound();
         }
         switchScreen.style.display = "inline-block";
@@ -362,10 +347,15 @@ function endTurn(){
 }
 
 function drawHand(currentPlayer){
-    //console.log(playerHands, playerHands[currentPlayer]);
+    /*console.log(playerHands, playerHands[currentPlayer]);
     playerHands[currentPlayer].forEach(element => {
         drawCard(element);
     });
+    addCardListener();
+    */
+    players[currentPlayer].hand.forEach(element =>{
+        drawCard(element);
+    })
     addCardListener();
 }
 
@@ -395,7 +385,7 @@ function updateLives(currentPlayer){
         livesUI[i].forEach(element =>{
             element.style.display="none";
         })
-        for(let j = 0; j < lives[i]; j++){
+        for(let j = 0; j < players[i].lives; j++){
             livesUI[i][j].style.display="inline-block";
         }
     }
@@ -412,7 +402,7 @@ function updateAll(currentPlayer){
 }
 
 function passButton(){
-    hasPassed[currentPlayer] = true;
+    players[currentPlayer].hasPassed = true;
     endTurn();
     marginTrueNeckKeys(false);
 }
@@ -421,22 +411,22 @@ function passButton(){
 
 function endRound(){
     //přidat funkci pro případ že by nilfgaard remizoval
-    if(playersTotalPower[currentPlayer] > playersTotalPower[1-currentPlayer]){
-        enemyLives[lives[1-currentPlayer]-1].style.display="none";
-        lives[1-currentPlayer]--;
+    if(players[currentPlayer].totalPower > players[1-currentPlayer].totalPower){
+        enemyLives[players[1-currentPlayer].lives-1].style.display="none";
+        players[1-currentPlayer].lives--;
 
     }
-    else if(playersTotalPower[currentPlayer] < playersTotalPower[1-currentPlayer]){
-        ownLives[lives[currentPlayer]-1].style.display="none";
-        lives[currentPlayer]--;
+    else if(players[currentPlayer].totalPower < players[1-currentPlayer].totalPower){
+        ownLives[players[currentPlayer].lives-1].style.display="none";
+        players[currentPlayer].lives--;
 
     }
     else{
-        ownLives[lives[currentPlayer]-1].style.display="none";
-        enemyLives[lives[1-currentPlayer]-1].style.display="none";
+        ownLives[players[currentPlayer].lives-1].style.display="none";
+        enemyLives[players[1-currentPlayer].lives-1].style.display="none";
 
-        lives[0]--;
-        lives[1]--;
+        players[currentPlayer].lives--;
+        players[1-currentPlayer].lives--;
     }
     hasPassed = [false, false];
     updateAll(currentPlayer);

@@ -1,15 +1,5 @@
-playerFactions = [p1faction, p2faction];
-playerDecks = [p1deck, p2deck];
-playerHands = [[],[]]; 
-playerLeaderUsed = [false, false];
-playerDiscarded = [[],[]];
 boards = [[[],[],[]],[[],[],[]]]
 horn = [[false, false, false],[false, false, false]];
-lives= [2,2];
-
-hasPassed = [false, false];
-
-
 
 let playedWeatherCards = [null];
 
@@ -53,9 +43,9 @@ function playCard(cardType, e) {
                         buttonYes.onclick = function() {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-                                let playedCard = playerHands[currentPlayer][index];
+                                let playedCard = players[currentPlayer].hand[index];
                                 play(playedCard, currentPlayer);
-                                playerHands[currentPlayer].splice(index,1);
+                                players[currentPlayer].hand.splice(index,1);
                                 let t = 0;
                                 playedWeatherCards.forEach(element => {
                                         if(playedCard.name != element) t++;
@@ -106,10 +96,10 @@ function playCard(cardType, e) {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
         
-                                boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
-                                let playedCard = playerHands[currentPlayer][index];
+                                boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
+                                let playedCard = players[currentPlayer].hand[index];
                                 play(playedCard, currentPlayer);
-                                playerHands[currentPlayer].splice(index,1);
+                                players[currentPlayer].hand.splice(index,1);
                                 buttonMelee.style.display = "none";
                                 buttonRanged.style.display = "none";
                                 buttonNo.style.display = "none";
@@ -123,10 +113,10 @@ function playCard(cardType, e) {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
         
-                                boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
-                                let playedCard = playerHands[currentPlayer][index];
+                                boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
+                                let playedCard = players[currentPlayer].hand[index];
                                 play(playedCard, currentPlayer);
-                                playerHands[currentPlayer].splice(index,1);
+                                players[currentPlayer].hand.splice(index,1);
                                 buttonMelee.style.display = "none";
                                 buttonRanged.style.display = "none";
                                 buttonNo.style.display = "none";
@@ -162,12 +152,12 @@ function playCard(cardType, e) {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
-                                if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
-                                else if (cardType == "own_ranged") boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
-                                else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
-                                let playedCard = playerHands[currentPlayer][index];
+                                if (cardType == "own_melee") boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
+                                else if (cardType == "own_ranged") boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
+                                else if (cardType == "own_siege") boards[currentPlayer][2].push(players[currentPlayer].hand[index]);
+                                let playedCard = players[currentPlayer].hand[index];
                                 play(playedCard, currentPlayer);
-                                playerHands[currentPlayer].splice(index,1);
+                                players[currentPlayer].hand.splice(index,1);
                                 buttonYes.style.display = "none";
                                 buttonNo.style.display = "none";
                                 removeCardListener();
@@ -196,9 +186,9 @@ function playCard(cardType, e) {
                         buttonYes.onclick = function() {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-                                let playedCard = playerHands[currentPlayer][index];
+                                let playedCard = players[currentPlayer].hand[index];
                                 play(playedCard, currentPlayer);
-                                playerHands[currentPlayer].splice(index,1);
+                                players[currentPlayer].hand.splice(index,1);
                                 let t = 0;
                                 playedWeatherCards.forEach(element => {
                                         if(playedCard.name != element) t++;
@@ -246,10 +236,10 @@ function playCard(cardType, e) {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
         
-                                boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
-                                let playedCard = playerHands[currentPlayer][index];
+                                boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
+                                let playedCard = players[currentPlayer].hand[index];
                                 play(playedCard, currentPlayer);
-                                playerHands[currentPlayer].splice(index,1);
+                                players[currentPlayer].hand.splice(index,1);
                                 buttonMelee.style.display = "none";
                                 buttonRanged.style.display = "none";
                                 buttonNo.style.display = "none";
@@ -263,10 +253,10 @@ function playCard(cardType, e) {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
         
-                                boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
-                                let playedCard = playerHands[currentPlayer][index];
+                                boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
+                                let playedCard = players[currentPlayer].hand[index];
                                 play(playedCard, currentPlayer);
-                                playerHands[currentPlayer].splice(index,1);
+                                players[currentPlayer].hand.splice(index,1);
                                 buttonMelee.style.display = "none";
                                 buttonRanged.style.display = "none";
                                 buttonNo.style.display = "none";
@@ -299,12 +289,12 @@ function playCard(cardType, e) {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
                 
-                                if (cardType == "own_melee") boards[currentPlayer][0].push(playerHands[currentPlayer][index]);
-                                else if (cardType == "own_ranged") boards[currentPlayer][1].push(playerHands[currentPlayer][index]);
-                                else if (cardType == "own_siege") boards[currentPlayer][2].push(playerHands[currentPlayer][index]);
-                                let playedCard = playerHands[currentPlayer][index];
+                                if (cardType == "own_melee") boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
+                                else if (cardType == "own_ranged") boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
+                                else if (cardType == "own_siege") boards[currentPlayer][2].push(players[currentPlayer].hand[index]);
+                                let playedCard = players[currentPlayer].hand[index];
                                 play(playedCard, currentPlayer);
-                                playerHands[currentPlayer].splice(index,1);
+                                players[currentPlayer].hand.splice(index,1);
                                 buttonYes.style.display = "none";
                                 buttonNo.style.display = "none";
                                 removeCardListener();  
@@ -323,8 +313,8 @@ function playCard(cardType, e) {
 };
 
 function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListener na karty
-        for(let synch = 0; synch < playerHands[currentPlayer].length; synch++){
-                if(e.target.id.includes(playerHands[currentPlayer][synch].id)){
+        for(let synch = 0; synch < players[currentPlayer].hand.length; synch++){
+                if(e.target.id.includes(players[currentPlayer].hand[synch].id)){
                         index = synch;
                 };
         };
