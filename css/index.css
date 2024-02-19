@@ -49,6 +49,7 @@ body,html{
 #medic_text {
     display: block;
     height: 5%;
+    margin-top: 10px;
     color: #ffffff;
 }
 
@@ -56,15 +57,17 @@ body,html{
     display: inline-block;
     background-color: #17191a;
     aspect-ratio: 3/4;
+    border-radius: 10px;
     width: 17.5%;
     margin: 15px;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .side_card1 {
     display: inline-block;
     background-color: #17191a;
     aspect-ratio: 3/4;
+    border-radius: 10px;
     width: 12.5%;
     margin: 15px;
 }
@@ -73,6 +76,7 @@ body,html{
     display: inline-block;
     background-color: #17191a;
     aspect-ratio: 3/4;
+    border-radius: 10px;
     width: 7.5%;
     margin: 15px;
 }

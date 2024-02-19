@@ -6,7 +6,17 @@ let playedWeatherCards = [null];
 let shownCardSlot = [];
 
 function showMedicUI() {
+        let ui = $("medic_ui");
+        let text = $("medic_text").innerHTML;
+        let previous2 = $("previous_card2");
+        let previous1 = $("previous_card1");
+        let selected = $("selected_card");
+        let next1 = $("next_card1");
+        let next2 = $("next_card2");
+        let discared = players[currentPlayer].discardedCards;
+
         
+
 }
 
 function playCardType(cardType, slotStatus) {
@@ -39,7 +49,6 @@ function playCard(cardType, e) {
                         document.getElementById("shown_card").appendChild(targetCard);
                         shownCardSlot.push(targetCard);
                         targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
                         buttonYes.onclick = function() {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
@@ -87,7 +96,6 @@ function playCard(cardType, e) {
                         document.getElementById("shown_card").appendChild(targetCard);
                         shownCardSlot.push(targetCard);
                         targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
                         buttonMelee.onclick = function() {
                                 document.getElementById("own_melee").appendChild(targetCard);
                                 shownCardSlot.splice(0, 1);
@@ -143,7 +151,6 @@ function playCard(cardType, e) {
                         document.getElementById("shown_card").appendChild(targetCard);
                         shownCardSlot.push(targetCard);
                         targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
                         buttonYes.onclick = function() {
                                 document.getElementById(cardType).appendChild(targetCard);
                                 shownCardSlot.splice(0, 1);
@@ -181,7 +188,6 @@ function playCard(cardType, e) {
                         document.getElementById("shown_card").appendChild(targetCard);
                         shownCardSlot.push(targetCard);
                         targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
                         marginTrueNeckKeys(false);
                         buttonYes.onclick = function() {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
@@ -226,7 +232,6 @@ function playCard(cardType, e) {
                         document.getElementById("shown_card").appendChild(targetCard);
                         shownCardSlot.push(targetCard);
                         targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
                         marginTrueNeckKeys(false);
                         buttonMelee.onclick = function() {
                                 document.getElementById("own_melee").appendChild(targetCard);
@@ -279,7 +284,6 @@ function playCard(cardType, e) {
                         document.getElementById("shown_card").appendChild(targetCard);
                         shownCardSlot.push(targetCard);
                         targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
                         marginTrueNeckKeys(false);
                         buttonYes.onclick = function() {
                                 document.getElementById(cardType).appendChild(targetCard);
