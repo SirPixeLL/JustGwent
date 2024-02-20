@@ -18,6 +18,14 @@ function playCardType(cardType, slotStatus) {
         }
 }
 
+function checkForSpy(index, row){
+        if(players[currentPlayer].hand[index].ability == "Spy"){
+                boards[1 - currentPlayer][row].push(players[currentPlayer].hand[index]);
+        }else{
+                boards[currentPlayer][row].push(players[currentPlayer].hand[index]);
+        }
+}
+
 function playCard(cardType, e) {
         let buttonMelee = document.getElementById("shownButtonMelee");
         let buttonRanged = document.getElementById("shownButtonRanged");
@@ -152,9 +160,9 @@ function playCard(cardType, e) {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
-                                if (cardType == "own_melee") boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
-                                else if (cardType == "own_ranged") boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
-                                else if (cardType == "own_siege") boards[currentPlayer][2].push(players[currentPlayer].hand[index]);
+                                if (cardType == "own_melee") checkForSpy(index, 0);
+                                else if (cardType == "own_ranged") checkForSpy(index, 0);
+                                else if (cardType == "own_siege")  checkForSpy(index, 0);
                                 let playedCard = players[currentPlayer].hand[index];
                                 play(playedCard, currentPlayer);
                                 players[currentPlayer].hand.splice(index,1);
@@ -289,9 +297,9 @@ function playCard(cardType, e) {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
                 
-                                if (cardType == "own_melee") boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
-                                else if (cardType == "own_ranged") boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
-                                else if (cardType == "own_siege") boards[currentPlayer][2].push(players[currentPlayer].hand[index]);
+                                if (cardType == "own_melee") checkForSpy(index, 0);
+                                else if (cardType == "own_ranged") checkForSpy(index, 0);
+                                else if (cardType == "own_siege") checkForSpy(index, 0);
                                 let playedCard = players[currentPlayer].hand[index];
                                 play(playedCard, currentPlayer);
                                 players[currentPlayer].hand.splice(index,1);
