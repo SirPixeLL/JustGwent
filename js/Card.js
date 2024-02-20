@@ -19,6 +19,7 @@ function getRandomInt(max) {
 
 function marginTrueNeckKeys(value) {
     if (value == true) {
+        console.log("MarginTrue");
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];
             if (cardsInHand.length >= 10 && i != 0) {
@@ -33,6 +34,7 @@ function marginTrueNeckKeys(value) {
         }
     }
     else {
+        console.log("MarginFalse");
         if (cardsInHand.length < 17 && margin < 2) {
             margin += 3;
         }
