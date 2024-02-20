@@ -81,12 +81,12 @@ function playCard(cardType, e) {
 
                         boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
                         let playedCard = players[currentPlayer].hand[index];
-                        play(playedCard, currentPlayer);
                         players[currentPlayer].hand.splice(index,1);
+                        play(playedCard, currentPlayer);
                         buttonMelee.style.display = "none";
                         buttonRanged.style.display = "none";
                         buttonNo.style.display = "none";
-                        removeCardListener();
+                        //removeCardListener();
                 }
                 buttonRanged.onclick = function() {
                         document.getElementById("own_ranged").appendChild(targetCard);
@@ -98,12 +98,12 @@ function playCard(cardType, e) {
 
                         boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
                         let playedCard = players[currentPlayer].hand[index];
-                        play(playedCard, currentPlayer);
                         players[currentPlayer].hand.splice(index,1);
+                        play(playedCard, currentPlayer);
                         buttonMelee.style.display = "none";
                         buttonRanged.style.display = "none";
                         buttonNo.style.display = "none";
-                        removeCardListener();
+                        //removeCardListener();
                 }
         }
         else {
@@ -116,11 +116,11 @@ function playCard(cardType, e) {
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
                         
                         if (cardType == "own_melee") checkForSpy(index, 0);
-                        else if (cardType == "own_ranged") checkForSpy(index, 0);
-                        else if (cardType == "own_siege") checkForSpy(index, 0);
+                        else if (cardType == "own_ranged") checkForSpy(index, 1);
+                        else if (cardType == "own_siege") checkForSpy(index, 2);
                         let playedCard = players[currentPlayer].hand[index];
-                        play(playedCard, currentPlayer);
                         players[currentPlayer].hand.splice(index,1);
+                        play(playedCard, currentPlayer);
                         if (cardType == "weather_cards") {
                                 let t = 0;
                                 playedWeatherCards.forEach(element => {
@@ -140,7 +140,7 @@ function playCard(cardType, e) {
                         }
                         buttonYes.style.display = "none";
                         buttonNo.style.display = "none";
-                        removeCardListener();  
+                        //removeCardListener();  
                 };
         }              
         buttonNo.onclick = function() {

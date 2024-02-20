@@ -7,6 +7,8 @@ function spliceSelected(which, from){
 
 switchScreen = document.getElementById("switch_screen");
 function hideSwitchSreen(){
+    changeButton("pass")
+
     switchScreen.style.display = "none";
     switchScreen.style.opacity = "0";
 
@@ -26,7 +28,6 @@ function localGame(){
 function localGameStart(){
         for(let i = 0; i < 2; i++){
             players[i].populateHand();
-            console.log(players[i].hand)
         }
     drawHand(currentPlayer);
     sumPowers(currentPlayer);
@@ -86,6 +87,7 @@ function play(card, currentPlayer){
             spy();
             break;
     }
+    changeButton("switch");
     endTurn();
 }
 
@@ -191,7 +193,6 @@ function moraleBoost(i, j, lastBooster){
                     e.power++;
                 }
             })
-            console.log(lastBooster);
         }
     })
 }
@@ -325,7 +326,7 @@ function endTurn(){
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
                 boards[i][j][n].power = boards[i][j][n].basepower;
-                if(boards[i][j][n].debuffed){boards[i][j][n].power = 1; console.log(boards[i][j][n])} //weather debuff
+                if(boards[i][j][n].debuffed){boards[i][j][n].power = 1} //weather debuff
                 bond(i, j, n); //bond
             }
         commanderHornBuff(i,j);
@@ -335,32 +336,18 @@ function endTurn(){
     updateAll(currentPlayer);
 
     if(players[1-currentPlayer].hasPassed && players[currentPlayer].hasPassed == false){
-        //hraje dál, idk co sem dát, je to tady aby nemuselo být víc podmínek
+        //hraje dál
+        changeButton("pass");
     }
     else{
         removeCardListener();
         if(players[currentPlayer].hasPassed && players[1-currentPlayer].hasPassed){
             endRound();
-        }
-        switchScreen.style.display = "inline-block";
-        setTimeout(()=>{
-            switchScreen.style.opacity = "1";
-        }, 0);
-        document.addEventListener("keydown", (event) => {
-            if(event.code == "Space" && switchScreen.style.display == "inline-block") {
-                hideSwitchSreen();
-            }
-        })
+        }        
     }
 }
 
 function drawHand(currentPlayer){
-    /*console.log(playerHands, playerHands[currentPlayer]);
-    playerHands[currentPlayer].forEach(element => {
-        drawCard(element);
-    });
-    addCardListener();
-    */
     players[currentPlayer].hand.forEach(element =>{
         drawCard(element);
     })
@@ -400,19 +387,43 @@ function updateLives(currentPlayer){
 }
 
 function updateAll(currentPlayer){
-    setTimeout(()=>{
-        clearHand();
-        marginTrueNeckKeys(true);
-        updateBoards(currentPlayer);
-        drawHand(currentPlayer);
-        updateLives(currentPlayer);
-    }, 1); //kvůli musteru idk
+    clearHand();
+    marginTrueNeckKeys(true);
+    updateBoards(currentPlayer);
+    drawHand(currentPlayer);
+    updateLives(currentPlayer);
 }
 
-function passButton(){
+function passFunction(){
     players[currentPlayer].hasPassed = true;
+    switchFunction();
     endTurn();
-    marginTrueNeckKeys(false);
+
+}
+function switchFunction(){
+    switchScreen.style.display = "inline-block";
+    setTimeout(()=>{
+        switchScreen.style.opacity = "1";
+    }, 0);
+    document.addEventListener("keydown", (event) => {
+        if(event.code == "Space" && switchScreen.style.display == "inline-block") {
+            hideSwitchSreen();
+        }
+    })
+}
+
+function changeButton(action){
+    passButton = document.getElementById("pass_button");
+    switch(action){
+        case "pass":
+            passButton.innerHTML="PASS";
+            passButton.setAttribute("onclick", "passFunction()");
+            break;
+        case "switch":
+            passButton.innerHTML="SWITCH";
+            passButton.setAttribute("onclick", "switchFunction()");
+            break;
+    }
 }
 
 
