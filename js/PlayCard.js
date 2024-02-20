@@ -6,22 +6,32 @@ let playedWeatherCards = [null];
 let shownCardSlot = [];
 
 function showMedicUI() {
-        
-}
+        let ui = $("medic_ui");
+        let text = $("medic_text");
+        let previous2 = $("previous_card2");
+        let previous1 = $("previous_card1");
+        let selected = $("selected_card");
+        let next1 = $("next_card1");
+        let next2 = $("next_card2");
+        let discared = players[currentPlayer].discardedCards;
+        let currentIndex = 0;
 
-function playCardType(cardType, slotStatus) {
-        if (slotStatus == 0) {
-
+        ui.style.display = "block";
+        if (currentIndex >= 2) {
+                previous2.setAttribute("onclick", () => {
+                        currentIndex--;
+                })
         }
-        else if (slotStatus == 1) {
+        if (currentIndex =1) {
                 
-        }
+        } 
 }
 
 function checkForSpy(index, row){
         if(players[currentPlayer].hand[index].ability == "Spy"){
                 boards[1 - currentPlayer][row].push(players[currentPlayer].hand[index]);
-        }else{
+        }
+        else{
                 boards[currentPlayer][row].push(players[currentPlayer].hand[index])
                 console.log(players[currentPlayer].hand[index]);
         }
@@ -34,170 +44,84 @@ function playCard(cardType, e) {
         let buttonNo = document.getElementById("shownButtonNo");
         let targetCard = document.getElementById(e.target.id);
         if (shownCardSlot.length > 0) {
-                if (shownCardSlot[0].id.includes("Agile")) {
+                if (shownCardSlot[0].id.includes("Agile") && cardType != "agile") {
                         buttonMelee.style.display = "none";
                         buttonRanged.style.display = "none";
                 }
-                if (cardType == "weather_cards") {
-                        shownCardSlot[0].className = "cardInHand";
-                        shownCardSlot[0].style.marginLeft = margin + "px";
-                        document.getElementById("current_cards").appendChild(shownCardSlot[0]);
+                shownCardSlot[0].className = "cardInHand";
+                shownCardSlot[0].style.marginLeft = margin + "px";
+                document.getElementById("current_cards").appendChild(shownCardSlot[0]);
+                shownCardSlot.splice(0, 1);
+                buttonYes.style.display = "inline-block";
+                buttonNo.style.display = "inline-block";
+                document.getElementById("shown_card").appendChild(targetCard);
+                shownCardSlot.push(targetCard);
+                targetCard.className = "cardShown";
+        }
+        else {
+                buttonYes.style.display = "inline-block";
+                buttonNo.style.display = "inline-block";
+                document.getElementById("shown_card").appendChild(targetCard);
+                shownCardSlot.splice(0, 1);
+                shownCardSlot.push(targetCard);
+                targetCard.className = "cardShown";
+                marginTrueNeckKeys(false);
+        }
+        if (cardType == "agile") {
+                buttonMelee.style.display = "inline-block";
+                buttonRanged.style.display = "inline-block";
+                buttonYes.style.display = "none";
+                buttonMelee.onclick = function() {
+                        document.getElementById("own_melee").appendChild(targetCard);
                         shownCardSlot.splice(0, 1);
-                        buttonYes.style.display = "inline-block";
-                        buttonNo.style.display = "inline-block";
-                        document.getElementById("shown_card").appendChild(targetCard);
-                        shownCardSlot.push(targetCard);
-                        targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
-                        buttonYes.onclick = function() {
-                                targetCard.removeEventListener("click", cardListenerHelper, false);
-                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-                                let playedCard = players[currentPlayer].hand[index];
-                                play(playedCard, currentPlayer);
-                                players[currentPlayer].hand.splice(index,1);
-                                let t = 0;
-                                playedWeatherCards.forEach(element => {
-                                        if(playedCard.name != element) t++;
-                                });
-                                if(t == playedWeatherCards.length){
-                                        playedWeatherCards.push(playedCard.name);
-                                        document.getElementById(cardType).appendChild(targetCard);
-                                        shownCardSlot.splice(0, 1);
-                                        targetCard.className = "weatherCardPlayed";
-                                        targetCard.style.margin = "2px";
-                                }
-                                else{
-                                        shownCardSlot.splice(0, 1);
-                                        document.getElementById("shown_card").removeChild(targetCard);
-                                }
-                                buttonYes.style.display = "none";
-                                buttonNo.style.display = "none";
-                                removeCardListener();   
-                        };
-                        buttonNo.onclick = function() {
-                                document.getElementById("current_cards").appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardInHand";
-                                targetCard.style.marginLeft = margin + "px";
-                                buttonYes.style.display = "none";
-                                buttonNo.style.display = "none";
-                                marginTrueNeckKeys(true);
-                        };
-                }
-                else if(cardType == "agile") {
-                        shownCardSlot[0].className = "cardInHand";
-                        shownCardSlot[0].style.marginLeft = margin + "px";
-                        document.getElementById("current_cards").appendChild(shownCardSlot[0]);
-                        shownCardSlot.splice(0, 1);
-                        buttonYes.style.display = "none";
-                        buttonMelee.style.display = "inline-block";
-                        buttonRanged.style.display = "inline-block";
-                        buttonNo.style.display = "inline-block";
-                        document.getElementById("shown_card").appendChild(targetCard);
-                        shownCardSlot.push(targetCard);
-                        targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
-                        buttonMelee.onclick = function() {
-                                document.getElementById("own_melee").appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardPlayed";
-                                targetCard.style.margin = "2px";
-                                targetCard.removeEventListener("click", cardListenerHelper, false);
-                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-        
-                                boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
-                                let playedCard = players[currentPlayer].hand[index];
-                                play(playedCard, currentPlayer);
-                                players[currentPlayer].hand.splice(index,1);
-                                buttonMelee.style.display = "none";
-                                buttonRanged.style.display = "none";
-                                buttonNo.style.display = "none";
-                                removeCardListener();
-                        }
-                        buttonRanged.onclick = function() {
-                                document.getElementById("own_ranged").appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardPlayed";
-                                targetCard.style.margin = "2px";
-                                targetCard.removeEventListener("click", cardListenerHelper, false);
-                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-        
-                                boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
-                                let playedCard = players[currentPlayer].hand[index];
-                                play(playedCard, currentPlayer);
-                                players[currentPlayer].hand.splice(index,1);
-                                buttonMelee.style.display = "none";
-                                buttonRanged.style.display = "none";
-                                buttonNo.style.display = "none";
-                                removeCardListener();
-                        }
-                        buttonNo.onclick = function() {
-                                document.getElementById("current_cards").appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardInHand";
-                                targetCard.style.marginLeft = margin + "px";
-                                buttonMelee.style.display = "none";
-                                buttonRanged.style.display = "none";
-                                buttonNo.style.display = "none";
-                                marginTrueNeckKeys(true);  
-                        }
-                }
-                else {
-                        shownCardSlot[0].className = "cardInHand";
-                        shownCardSlot[0].style.marginLeft = margin + "px";
-                        document.getElementById("current_cards").appendChild(shownCardSlot[0]);
-                        shownCardSlot.splice(0, 1);
-                        buttonYes.style.display = "inline-block";
-                        buttonNo.style.display = "inline-block";
-                        document.getElementById("shown_card").appendChild(targetCard);
-                        shownCardSlot.push(targetCard);
-                        targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
-                        buttonYes.onclick = function() {
-                                document.getElementById(cardType).appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardPlayed";
-                                targetCard.style.margin = "2px";
-                                targetCard.removeEventListener("click", cardListenerHelper, false);
-                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+                        targetCard.className = "cardPlayed";
+                        targetCard.style.margin = "2px";
+                        targetCard.removeEventListener("click", cardListenerHelper, false);
+                        cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
-                                if (cardType == "own_melee") checkForSpy(index, 0);
-                                else if (cardType == "own_ranged") checkForSpy(index, 1);
-                                else if (cardType == "own_siege")  checkForSpy(index, 2);
-                                let playedCard = players[currentPlayer].hand[index]
-                                players[currentPlayer].hand.splice(index,1);
-                                play(playedCard, currentPlayer);
-                                buttonYes.style.display = "none";
-                                buttonNo.style.display = "none";
-                                removeCardListener();
-                        };
-                        buttonNo.onclick = function() {
-                                document.getElementById("current_cards").appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardInHand";
-                                targetCard.style.marginLeft = margin + "px";
-                                buttonYes.style.display = "none";
-                                buttonNo.style.display = "none";
-                                marginTrueNeckKeys(true);
-                                
-                        };      
+                        boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
+                        let playedCard = players[currentPlayer].hand[index];
+                        play(playedCard, currentPlayer);
+                        players[currentPlayer].hand.splice(index,1);
+                        buttonMelee.style.display = "none";
+                        buttonRanged.style.display = "none";
+                        buttonNo.style.display = "none";
+                        removeCardListener();
+                }
+                buttonRanged.onclick = function() {
+                        document.getElementById("own_ranged").appendChild(targetCard);
+                        shownCardSlot.splice(0, 1);
+                        targetCard.className = "cardPlayed";
+                        targetCard.style.margin = "2px";
+                        targetCard.removeEventListener("click", cardListenerHelper, false);
+                        cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+
+                        boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
+                        let playedCard = players[currentPlayer].hand[index];
+                        play(playedCard, currentPlayer);
+                        players[currentPlayer].hand.splice(index,1);
+                        buttonMelee.style.display = "none";
+                        buttonRanged.style.display = "none";
+                        buttonNo.style.display = "none";
+                        removeCardListener();
                 }
         }
         else {
-                if (cardType == "weather_cards") {
-                        buttonYes.style.display = "inline-block";
-                        buttonNo.style.display = "inline-block";
-                        document.getElementById("shown_card").appendChild(targetCard);
-                        shownCardSlot.push(targetCard);
-                        targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
-                        marginTrueNeckKeys(false);
-                        buttonYes.onclick = function() {
-                                targetCard.removeEventListener("click", cardListenerHelper, false);
-                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-                                let playedCard = players[currentPlayer].hand[index];
-                                play(playedCard, currentPlayer);
-                                players[currentPlayer].hand.splice(index,1);
+                buttonYes.onclick = function() {
+                        document.getElementById(cardType).appendChild(targetCard);
+                        shownCardSlot.splice(0, 1);
+                        targetCard.className = "cardPlayed";
+                        targetCard.style.margin = "2px";
+                        targetCard.removeEventListener("click", cardListenerHelper, false);
+                        cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+                        
+                        if (cardType == "own_melee") checkForSpy(index, 0);
+                        else if (cardType == "own_ranged") checkForSpy(index, 0);
+                        else if (cardType == "own_siege") checkForSpy(index, 0);
+                        let playedCard = players[currentPlayer].hand[index];
+                        play(playedCard, currentPlayer);
+                        players[currentPlayer].hand.splice(index,1);
+                        if (cardType == "weather_cards") {
                                 let t = 0;
                                 playedWeatherCards.forEach(element => {
                                         if(playedCard.name != element) t++;
@@ -213,113 +137,22 @@ function playCard(cardType, e) {
                                         shownCardSlot.splice(0, 1);
                                         document.getElementById("shown_card").removeChild(targetCard);
                                 }
-                                buttonYes.style.display = "none";
-                                buttonNo.style.display = "none";
-                                removeCardListener();
-                        };
-                        buttonNo.onclick = function() {
-                                document.getElementById("current_cards").appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardInHand";
-                                targetCard.style.marginLeft = margin + "px";
-                                buttonYes.style.display = "none";
-                                buttonNo.style.display = "none";
-                                marginTrueNeckKeys(true);
-                        };
-                }
-                else if(cardType == "agile") {
-                        buttonMelee.style.display = "inline-block";
-                        buttonRanged.style.display = "inline-block";
-                        buttonNo.style.display = "inline-block";
-                        buttonNo.style.display = "inline-block";
-                        document.getElementById("shown_card").appendChild(targetCard);
-                        shownCardSlot.push(targetCard);
-                        targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
-                        marginTrueNeckKeys(false);
-                        buttonMelee.onclick = function() {
-                                document.getElementById("own_melee").appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardPlayed";
-                                targetCard.style.margin = "2px";
-                                targetCard.removeEventListener("click", cardListenerHelper, false);
-                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-        
-                                boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
-                                let playedCard = players[currentPlayer].hand[index];
-                                play(playedCard, currentPlayer);
-                                players[currentPlayer].hand.splice(index,1);
-                                buttonMelee.style.display = "none";
-                                buttonRanged.style.display = "none";
-                                buttonNo.style.display = "none";
-                                removeCardListener(); 
                         }
-                        buttonRanged.onclick = function() {
-                                document.getElementById("own_ranged").appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardPlayed";
-                                targetCard.style.margin = "2px";
-                                targetCard.removeEventListener("click", cardListenerHelper, false);
-                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-        
-                                boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
-                                let playedCard = players[currentPlayer].hand[index];
-                                play(playedCard, currentPlayer);
-                                players[currentPlayer].hand.splice(index,1);
-                                buttonMelee.style.display = "none";
-                                buttonRanged.style.display = "none";
-                                buttonNo.style.display = "none";
-                                removeCardListener();
-                        }
-                        buttonNo.onclick = function() {
-                                document.getElementById("current_cards").appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardInHand";
-                                targetCard.style.marginLeft = margin + "px";
-                                buttonMelee.style.display = "none";
-                                buttonRanged.style.display = "none";
-                                buttonNo.style.display = "none";
-                                marginTrueNeckKeys(true);  
-                        }
-                }
-                else {
-                        buttonYes.style.display = "inline-block";
-                        buttonNo.style.display = "inline-block";
-                        document.getElementById("shown_card").appendChild(targetCard);
-                        shownCardSlot.push(targetCard);
-                        targetCard.className = "cardShown";
-                        targetCard.margin = "2px";
-                        marginTrueNeckKeys(false);
-                        buttonYes.onclick = function() {
-                                document.getElementById(cardType).appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardPlayed";
-                                targetCard.style.margin = "2px";
-                                targetCard.removeEventListener("click", cardListenerHelper, false);
-                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-                
-                                if (cardType == "own_melee") checkForSpy(index, 0);
-                                else if (cardType == "own_ranged") checkForSpy(index, 1);
-                                else if (cardType == "own_siege") checkForSpy(index, 2);
-                                let playedCard = players[currentPlayer].hand[index];
-                                players[currentPlayer].hand.splice(index,1);
-                                play(playedCard, currentPlayer);
-                                buttonYes.style.display = "none";
-                                buttonNo.style.display = "none";
-                                removeCardListener();  
-                        };
-                        buttonNo.onclick = function() {
-                                document.getElementById("current_cards").appendChild(targetCard);
-                                shownCardSlot.splice(0, 1);
-                                targetCard.className = "cardInHand";
-                                targetCard.style.marginLeft = margin + "px";
-                                buttonYes.style.display = "none";
-                                buttonNo.style.display = "none";
-                                marginTrueNeckKeys(true);
-                        };
+                        buttonYes.style.display = "none";
+                        buttonNo.style.display = "none";
+                        removeCardListener();  
                 };
+        }              
+        buttonNo.onclick = function() {
+                document.getElementById("current_cards").appendChild(targetCard);
+                shownCardSlot.splice(0, 1);
+                targetCard.className = "cardInHand";
+                targetCard.style.marginLeft = margin + "px";
+                buttonYes.style.display = "none";
+                buttonNo.style.display = "none";
+                marginTrueNeckKeys(true);
         };
-};
+}
 
 function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListener na karty
         for(let synch = 0; synch < players[currentPlayer].hand.length; synch++){
