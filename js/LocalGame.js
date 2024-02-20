@@ -82,6 +82,9 @@ function play(card, currentPlayer){
         case "Medic":
             medic(currentPlayer);
             break;
+        case "Spy":
+            spy();
+            break;
     }
     endTurn();
 }
@@ -267,6 +270,11 @@ function scorchMelee(currentPlayer){
 function medic(currentPlayer){
 }
 
+function spy(){
+    for(let i = 0; i < 2; i++){
+        players[currentPlayer].drawNewCard();
+    }
+}
 function sumPowers(currentPlayer){
     UI = [[],[]];
     enemySiege = document.getElementById("enemy_siege_value");
@@ -299,7 +307,7 @@ function sumPowers(currentPlayer){
     for(let half = 0; half < 2; half++){
         players[half].totalPower = 0;
         cardsLeft[half][0].innerHTML = players[half].deck.length;
-        cardsLeft[half][1].innerHTML = players[half].deck.length;
+        cardsLeft[half][1].innerHTML = players[half].hand.length;
         for(let row = 0; row < 3; row++){
             rowPower = 0;
             for(item = 0; item < boards[half][row].length; item++){
