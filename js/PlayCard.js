@@ -7,14 +7,24 @@ let shownCardSlot = [];
 
 function showMedicUI() {
         let ui = $("medic_ui");
-        let text = $("medic_text").innerHTML;
+        let text = $("medic_text");
         let previous2 = $("previous_card2");
         let previous1 = $("previous_card1");
         let selected = $("selected_card");
         let next1 = $("next_card1");
         let next2 = $("next_card2");
         let discared = players[currentPlayer].discardedCards;
+        let currentIndex = 0;
 
+        ui.style.display = "block";
+        if (currentIndex >= 2) {
+                previous2.setAttribute("onclick", () => {
+                        currentIndex--;
+                })
+        }
+        if (currentIndex =1) {
+                
+        }
         
 
 }
