@@ -15,6 +15,7 @@ function hideSwitchSreen(){
     currentPlayer = 1-currentPlayer;
     updateAll(currentPlayer);
     sumPowers(currentPlayer);
+    playerUpdate(currentPlayer);
 }
 //////////////////////////////////////////////////////////////
 
@@ -26,6 +27,8 @@ function localGame(){
     localGameStart();
 }
 function localGameStart(){
+    playerUpdate(currentPlayer);
+
         for(let i = 0; i < 2; i++){
             players[i].populateHand();
         }
@@ -394,6 +397,24 @@ function updateAll(currentPlayer){
     updateLives(currentPlayer);
 }
 
+function playerUpdate(currentPlayer){
+    //leader, pfp, name, faction
+    let enemyHUD =[document.getElementById("enemy_leader"), document.getElementById("enemy_pic"), document.getElementById("enemy_name"), document.getElementById("enemy_faction")];
+    let ownHUD =[document.getElementById("own_leader"), document.getElementById("own_pic"), document.getElementById("own_name"), document.getElementById("own_faction")];
+    let HUD =[];
+    if(currentPlayer == 0){
+        HUD = [ownHUD, enemyHUD];
+    }else{
+        HUD = [enemyHUD, ownHUD];
+    }
+    for(let i = 0; i < 2; i++){
+        HUD[i][0].src=players[1-i].leaderPic;
+        HUD[i][1].src=players[1-i].leaderPic;
+        HUD[i][2].innerHTML=players[1-i].name;
+        HUD[i][3].innerHTML=players[1-i].faction;
+    }
+}
+
 function passFunction(){
     players[currentPlayer].hasPassed = true;
     switchFunction();
@@ -429,7 +450,6 @@ function changeButton(action){
 
 
 function endRound(){
-    //přidat funkci pro případ že by nilfgaard remizoval
     if(players[currentPlayer].totalPower > players[1-currentPlayer].totalPower){
         enemyLives[players[1-currentPlayer].lives-1].style.display="none";
         players[1-currentPlayer].lives--;
@@ -441,13 +461,36 @@ function endRound(){
 
     }
     else{
-        ownLives[players[currentPlayer].lives-1].style.display="none";
-        enemyLives[players[1-currentPlayer].lives-1].style.display="none";
+        //remízy - nilfgaard
+        if(players[0].faction == players[1].faction){
+            ownLives[players[currentPlayer].lives-1].style.display="none";
+            enemyLives[players[1-currentPlayer].lives-1].style.display="none";
 
-        players[currentPlayer].lives--;
-        players[1-currentPlayer].lives--;
+            players[currentPlayer].lives--;
+            players[1-currentPlayer].lives--; 
+        }
+        else if(players[currentPlayer].faction=="Nilfgaard"){
+            enemyLives[players[1-currentPlayer].lives-1].style.display="none";
+            players[1-currentPlayer].lives--;
+        }
+        else if(players[1-currentPlayer].faction=="Nilfgaard"){
+            ownLives[players[currentPlayer].lives-1].style.display="none";
+            players[currentPlayer].lives--;
+        }
+        else{
+            //opakování fuuuj
+            ownLives[players[currentPlayer].lives-1].style.display="none";
+            enemyLives[players[1-currentPlayer].lives-1].style.display="none";
+
+            players[currentPlayer].lives--;
+            players[1-currentPlayer].lives--; 
+        }
     }
-    hasPassed = [false, false];
+    players[0].hasPassed = false;
+    players[1].hasPassed = false;
     updateAll(currentPlayer);
     addCardListener();
+    //přidat funkci ve které Monsterům zůstává jedna karta v poli
+    boards = [[[],[],[]],[[],[],[]]]
+    horn = [[false, false, false],[false, false, false]];
 }

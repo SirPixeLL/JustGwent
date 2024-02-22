@@ -1,7 +1,7 @@
 
 //instance se vytváří po vytvoření decku
 class Player{
-    constructor(id, name, faction, leader, deck){
+    constructor(id, name, faction, leader, deck, leaderPic){
         this.id = id;
         this.name = name;
         this.faction = faction;
@@ -14,6 +14,8 @@ class Player{
         this.leaderUses = false;
         this.hand = [];
         this.totalPower = 0;
+
+        this.leaderPic = leaderPic;
     }
 
     drawNewCard(){

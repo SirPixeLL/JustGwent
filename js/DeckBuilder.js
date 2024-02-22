@@ -1,5 +1,5 @@
 let p1deck = [];
-let p1faction =  "NorthernRealms";
+let p1faction =  "Northern Realms";
 
 let p2deck = [];
 let p2faction = "Nilfgaard";
@@ -36,7 +36,7 @@ if(mode == 1){
             }
         })
     }
-    let player1 = new Player(1, "Geralt", p1faction, "placeholder", p1deck);
-    let player2 = new Player(2, "Zoltan", p2faction, "placeholder", p2deck);
+    let player1 = new Player(1, "Geralt", p1faction, "placeholder", p1deck, "images/profile_pic.jpg");
+    let player2 = new Player(2, "Zoltan", p2faction, "placeholder", p2deck, "images/profile_pic2.jpg");
     players = [player1, player2];
 }
