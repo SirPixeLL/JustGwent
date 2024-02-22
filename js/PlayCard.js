@@ -1,6 +1,3 @@
-boards = [[[],[],[]],[[],[],[]]]
-horn = [[false, false, false],[false, false, false]];
-
 let playedWeatherCards = [null];
 
 let shownCardSlot = [];
@@ -107,7 +104,6 @@ function checkForSpy(index, row){
         }
         else{
                 boards[currentPlayer][row].push(players[currentPlayer].hand[index])
-                console.log(players[currentPlayer].hand[index]);
         }
 }
 

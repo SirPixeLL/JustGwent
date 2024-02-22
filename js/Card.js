@@ -13,10 +13,6 @@ let currentHand = document.getElementById("current_cards");
 let cardsInHand = [];
 //console.log(margin + "px")
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
-
 function marginTrueNeckKeys(value) {
     if (value == true) {
         //console.log("MarginTrue");
