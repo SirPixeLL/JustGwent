@@ -212,15 +212,14 @@ function scorch(){  //do rozsahu testování plně funkční
         let j = strongest[key][2];
         let n = strongest[key][3];
         let t = strongest[key][4];
+        players[i].discardedCards.push(boards[i][j][n]);
         boards[i][j].splice(n-t, 1);
     }
 }
 function scorchMelee(currentPlayer){
     let strongest = {};
-    let a;
+    let a = 1-currentPlayer;
     let t = 0;
-    if(currentPlayer == 1){a = 0}
-    else{a = 1}
     for(let n = 0; n < boards[a][0].length; n++){
         let element = boards[a][0][n];
         if(element.isLegend == false){
@@ -245,6 +244,7 @@ function scorchMelee(currentPlayer){
     for(let key in strongest){
         n = strongest[key][1];
         t = strongest[key][2];
+        players[a].discardedCards.push(boards[a][0][n]);
         boards[a][0].splice(n-t, 1);
     }
 }
@@ -397,11 +397,22 @@ function endRound(){
             players[1-currentPlayer].lives--; 
         }
     }
+    discardCardsOnRoundEnd();
     players[0].hasPassed = false;
     players[1].hasPassed = false;
     updateAll(currentPlayer);
     addCardListener();
     //přidat funkci ve které Monsterům zůstává jedna karta v poli
+}
+
+function discardCardsOnRoundEnd(){
+    for(let i = 0; i < 2; i++){
+        for(let j = 0; j < 3; j++){
+            for(let n = 0; n < boards[i][j].length; n++){
+                players[i].discardedCards.push(boards[i][j][n]);
+            }
+        }
+    }
     boards = [[[],[],[]],[[],[],[]]]
     horn = [[false, false, false],[false, false, false]];
 }
