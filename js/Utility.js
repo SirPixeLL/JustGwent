@@ -45,7 +45,7 @@ function updateLives(currentPlayer){
 
 function updateAll(currentPlayer){
     clearHand();
-    marginTrueNeckKeys(true);
+    marginTrueNeckKeys(false);
     updateBoards(currentPlayer);
     drawHand(currentPlayer);
     updateLives(currentPlayer);
