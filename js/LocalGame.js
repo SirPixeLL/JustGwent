@@ -47,7 +47,7 @@ function play(card, currentPlayer){
             weather(2);
             break;
         case "ClearWeather":
-            clearWeather;
+            clearWeather();
             break;
         case "Muster":
             muster(currentPlayer, card);
@@ -85,11 +85,9 @@ function weather(row){ //row = číslo(0 melee, 1 ranged, 2 siege)
     }
 }
 function clearWeather(){
-    for(let i = 0; i < boards.length; i++){
-        for(let j = 0; j < boards[i].length; j++){
-            for(let n = 0; n < boards[i][j].length; n++){
-                boards[i][j][n].debuffed = false;
-            }}}
+    cycleBoard(function(i,j,n){
+        boards[i][j][n].debuffed = false;
+    })
 }
 
 function commanderHornSet(card, currentPlayer){
@@ -182,31 +180,29 @@ function moraleBoost(i, j, lastBooster){
 function scorch(){  //do rozsahu testování plně funkční
     let strongest = {};
     let t = 0;
-    for(let i = 0; i < boards.length; i++){
-        for(let j = 0; j < boards[i].length; j++){
-            for(let n = 0; n < boards[i][j].length; n++){
-                element = boards[i][j][n];
-                if(element.isLegend == false){
-                    if($.isEmptyObject(strongest)){
-                        powerIndex = [element.power, i, j, n, t];
-                        strongest[element.name] = powerIndex;
+    cycleBoard(function(i,j,n){
+        element = boards[i][j][n];
+            if(element.isLegend == false){
+                if($.isEmptyObject(strongest)){
+                    powerIndex = [element.power, i, j, n, t];
+                    strongest[element.name] = powerIndex;
+                }
+                else if(element.power>powerIndex[0]){
+                    strongest = {};
+                    t = 0;
+                    powerIndex = [element.power, i, j, n, t];
+                    strongest[element.name] = powerIndex;
+                }
+                else if(element.power == powerIndex[0]){
+                    if(powerIndex[1] == i && powerIndex[2] == j){
+                        t++;
+                    }else{
+                        t=0;
                     }
-                    else if(element.power>powerIndex[0]){
-                        strongest = {};
-                        t = 0;
-                        powerIndex = [element.power, i, j, n, t];
-                        strongest[element.name] = powerIndex;
-                    }
-                    else if(element.power == powerIndex[0]){
-                        if(powerIndex[1] == i && powerIndex[2] == j){
-                            t++;
-                        }else{
-                            t=0;
-                        }
-                        powerIndex = [element.power, i, j, n, t];
-                        strongest[element.id+t] = powerIndex;
-                    }}}}
-    }
+                    powerIndex = [element.power, i, j, n, t];
+                    strongest[element.id+t] = powerIndex;
+                }}
+    })   
     for(let key in strongest){
         let i = strongest[key][1];
         let j = strongest[key][2];
@@ -406,13 +402,10 @@ function endRound(){
 }
 
 function discardCardsOnRoundEnd(){
-    for(let i = 0; i < 2; i++){
-        for(let j = 0; j < 3; j++){
-            for(let n = 0; n < boards[i][j].length; n++){
-                players[i].discardedCards.push(boards[i][j][n]);
-            }
-        }
-    }
+    cycleBoard(function(i,j,n){
+        console.log(i,j,n);
+        players[i].discardedCards.push(boards[i][j][n]);
+    })
     boards = [[[],[],[]],[[],[],[]]]
     horn = [[false, false, false],[false, false, false]];
 }

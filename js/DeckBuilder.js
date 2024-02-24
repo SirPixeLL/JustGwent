@@ -9,7 +9,9 @@ let p2faction = "Nilfgaard";
 let mode = 1;
 
 if(mode == 1){
+
     //balancedSpecial();
+
     cardArray.forEach(element =>{
         //Player1
         if((element.faction == p1faction || element.faction == "Neutral") && !element.isSpecial){

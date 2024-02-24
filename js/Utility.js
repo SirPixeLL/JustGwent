@@ -88,3 +88,13 @@ function hideSwitchSreen(){
     sumPowers(currentPlayer);
     playerUpdate(currentPlayer);
 }
+
+function cycleBoard(func){
+    for(let i = 0; i < 2; i++){
+        for(let j = 0; j < 3; j++){
+            for(let n = 0; n < boards[i][j].length; n++){
+                func(i,j,n);
+            }
+        }
+    }
+}
