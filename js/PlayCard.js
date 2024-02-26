@@ -5,18 +5,67 @@ let shownCardSlot = [];
 let currentIndex = 0;
 
 function showMedicUI() {
-        let ui = $("medic_ui");
-        let text = $("medic_text");
-        let previous2 = $("previous_card2");
-        let previous1 = $("previous_card1");
-        let selected = $("selected_card");
-        let next1 = $("next_card1");
-        let next2 = $("next_card2");
+        let ui = document.getElementById("medic_ui");
+        let text = document.getElementById("medic_text");
+        let previous2 = document.getElementById("previous_card2");
+        let previous1 = document.getElementById("previous_card1");
+        let selected = document.getElementById("selected_card");
+        let next1 = document.getElementById("next_card1");
+        let next2 = document.getElementById("next_card2");
         let discared = players[currentPlayer].discardedCards;
-        let selectedCard = createCardElement(discared[currentIndex]);
-        ui.style.display = "block";
-        selected.appendChild(selectedCard); //musí se dodělat onlick pro selected kartu, currentIndex resetovat na nulu
-        if (currentIndex == 0) {
+        if (discared.length >= 1) {
+                let selectedCard = createCardElement(discared[currentIndex]);
+                selectedCard.className = "cardInMedicUI";
+                ui.style.display = "block";
+                selected.appendChild(selectedCard);
+                addCardListenerToElement(selectedCard); // zmenit na onclick
+                try {
+                        next1.appendChild(createCardElement(discared[currentIndex+1]));
+                        document.getElementById(discared[currentIndex+1].id).className = "cardInMedicUI";
+                        next1.setAttribute("onclick", () => {
+                                currentIndex++;
+                                showMedicUI();
+                        })         
+                }
+                catch(error) {
+        
+                }
+                try {
+                        next2.appendChild(createCardElement(discared[currentIndex+2]));
+                        document.getElementById(discared[currentIndex+2].id).className = "cardInMedicUI";
+                        next2.setAttribute("onclick", () => {
+                                currentIndex++;
+                                showMedicUI();
+                        })         
+                }
+                catch(error) {
+        
+                }
+                try {
+                        previous1.appendChild(createCardElement(discared[currentIndex-1]));
+                        document.getElementById(discared[currentIndex-1].id).className = "cardInMedicUI";
+                        previous1.setAttribute("onclick", () => {
+                                currentIndex--;
+                                showMedicUI();
+                        })         
+                }
+                catch(error) {
+        
+                }
+                try {
+                        previous2.appendChild(createCardElement(discared[currentIndex-2]));
+                        document.getElementById(discared[currentIndex-2].id).className = "cardInMedicUI";
+                        previous2.setAttribute("onclick", () => {
+                                currentIndex++;
+                                showMedicUI();
+                        })         
+                }
+                catch(error) {
+        
+                }
+        }
+
+        /*if (currentIndex == 0) {
                 next1.setAttribute("onclick", () => {
                         currentIndex++;
                         showMedicUI();
@@ -95,7 +144,7 @@ function showMedicUI() {
                         showMedicUI();
                 })
                 previous2.appendChild(createCardElement(discared[currentIndex-2]));
-        }
+        }*/
 }
 
 function checkForSpy(index, row){
@@ -250,6 +299,12 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
 function addCardListener() {
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].addEventListener("click", cardListenerHelper);
+        }
+}
+
+function addCardListenerToElement(element) {
+        for (let i = 0; i < cardsInHand.length; i++) {
+                element.addEventListener("click", cardListenerHelper);
         }
 }
 

@@ -51,3 +51,11 @@
     color: white;
     aspect-ratio: 3/4;
 }
+
+.cardInMedicUI {
+    border-radius: 10px;
+    width: 100;
+    background-color: #17191a;
+    color: white;
+    aspect-ratio: 3/4;
+}
