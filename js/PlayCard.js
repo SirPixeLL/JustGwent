@@ -13,6 +13,18 @@ function showMedicUI() {
         let next1 = document.getElementById("next_card1");
         let next2 = document.getElementById("next_card2");
         let discared = players[currentPlayer].discardedCards;
+        if(previous2.firstChild) {
+                previous2.removeChild(previous2.firstChild);
+        }
+        if(previous1.firstChild) {
+                previous1.removeChild(previous1.firstChild);
+        }
+        if(next1.firstChild) {
+                next1.removeChild(next1.firstChild);
+        }
+        if(next2.firstChild) {
+                next2.removeChild(next2.firstChild);
+        }
         if (discared.length >= 1) {
                 let selectedCard = createCardElement(discared[currentIndex]);
                 selectedCard.className = "cardInMedicUI";
@@ -49,49 +61,50 @@ function showMedicUI() {
                         }
                 })
                 try {
-                        next1.appendChild(createCardElement(discared[currentIndex+1]));
-                        document.getElementById(discared[currentIndex+1].id).className = "cardInMedicUI";
-                        next1.setAttribute("onclick", () => {
+                        let next1Card = createCardElement(discared[currentIndex+1]);
+                        next1.appendChild(next1Card);
+                        next1Card.className = "cardInMedicUI";
+                        next1Card.addEventListener("click", function next1() {
+                                selectedCard.remove();
                                 currentIndex++;
                                 showMedicUI();
                         })         
                 }
-                catch(error) {
-        
-                }
+                catch {}
                 try {
-                        next2.appendChild(createCardElement(discared[currentIndex+2]));
-                        document.getElementById(discared[currentIndex+2].id).className = "cardInMedicUI";
-                        next2.setAttribute("onclick", () => {
+                        let next2Card = createCardElement(discared[currentIndex+2]);
+                        next2.appendChild(next2Card);
+                        next2Card.className = "cardInMedicUI";
+                        next2Card.addEventListener("click", function next2() {
+                                selectedCard.remove();
                                 currentIndex++;
                                 showMedicUI();
                         })         
                 }
-                catch(error) {
-        
-                }
+                catch {}
                 try {
-                        previous1.appendChild(createCardElement(discared[currentIndex-1]));
-                        document.getElementById(discared[currentIndex-1].id).className = "cardInMedicUI";
-                        previous1.setAttribute("onclick", () => {
+                        let previous1Card = createCardElement(discared[currentIndex-1]);
+                        previous1.appendChild(previous1Card);
+                        previous1Card.className = "cardInMedicUI";
+                        previous1Card.addEventListener("click", function previous1() {
+                                selectedCard.remove();
+                                currentIndex--;
+
+                                showMedicUI();
+                        })                  
+                }
+                catch {}
+                try {
+                        let previous2Card = createCardElement(discared[currentIndex-2]);
+                        previous2.appendChild(previous2Card);
+                        previous2Card.className = "cardInMedicUI";
+                        previous2Card.addEventListener("click", function previous2() {
+                                selectedCard.remove();
                                 currentIndex--;
                                 showMedicUI();
-                        })         
+                        })           
                 }
-                catch(error) {
-        
-                }
-                try {
-                        previous2.appendChild(createCardElement(discared[currentIndex-2]));
-                        document.getElementById(discared[currentIndex-2].id).className = "cardInMedicUI";
-                        previous2.setAttribute("onclick", () => {
-                                currentIndex++;
-                                showMedicUI();
-                        })         
-                }
-                catch(error) {
-        
-                }
+                catch {}
         }
 }
 
@@ -309,9 +322,6 @@ function playCardDirect(cardType, id) {
         if (cardType != "weather") document.getElementById(cardType).appendChild(targetCard);
         targetCard.className = "cardPlayed";
         targetCard.style.margin = "2px";
-        if (cardType == "own_melee") checkForSpy(index, 0);
-        else if (cardType == "own_ranged") checkForSpy(index, 1);
-        else if (cardType == "own_siege") checkForSpy(index, 2);
         if (cardType == "weather_cards") {
                 let t = 0;
                 playedWeatherCards.forEach(element => {
