@@ -18,7 +18,36 @@ function showMedicUI() {
                 selectedCard.className = "cardInMedicUI";
                 ui.style.display = "block";
                 selected.appendChild(selectedCard);
-                addCardListenerToElement(selectedCard); // zmenit na onclick
+                selectedCard.addEventListener("click", function medicHelper() {
+                        if (selectedCard.id.includes("Melee")) {
+                                playCardDirect("own_melee", selectedCard.id);
+                                discared.splice(currentIndex, 1);
+                                ui.style.display = "none";
+                                currentIndex = 0;
+                                selectedCard.removeEventListener("click", medicHelper, false);
+                        }
+                        else if (selectedCard.id.includes("Ranged")) {
+                                playCardDirect("own_ranged", selectedCard.id);
+                                discared.splice(currentIndex, 1);
+                                ui.style.display = "none";
+                                currentIndex = 0;
+                                selectedCard.removeEventListener("click", medicHelper, false);
+                        }
+                        else if (selectedCard.id.includes("Siege")) {
+                                playCardDirect("own_siege", selectedCard.id);
+                                discared.splice(currentIndex, 1);
+                                ui.style.display = "none";
+                                currentIndex = 0;
+                                selectedCard.removeEventListener("click", medicHelper, false);
+                        }
+                        else if (selectedCard.id.includes("Weather")) {
+                                playCardDirect("weather_cards", selectedCard.id);
+                                discared.splice(currentIndex, 1);
+                                ui.style.display = "none";
+                                currentIndex = 0;
+                                selectedCard.removeEventListener("click", medicHelper, false);
+                        }
+                })
                 try {
                         next1.appendChild(createCardElement(discared[currentIndex+1]));
                         document.getElementById(discared[currentIndex+1].id).className = "cardInMedicUI";
@@ -64,6 +93,7 @@ function showMedicUI() {
         
                 }
         }
+}
 
         /*if (currentIndex == 0) {
                 next1.setAttribute("onclick", () => {
@@ -145,7 +175,6 @@ function showMedicUI() {
                 })
                 previous2.appendChild(createCardElement(discared[currentIndex-2]));
         }*/
-}
 
 function checkForSpy(index, row){
         if(players[currentPlayer].hand[index].ability == "Spy"){
@@ -271,6 +300,33 @@ function playCard(cardType, e) {
                 buttonNo.style.display = "none";
                 marginTrueNeckKeys(true);
         };
+}
+
+function playCardDirect(cardType, id) {
+        let targetCard = document.getElementById(id);
+        console.log(targetCard);
+        console.log(cardType);
+        if (cardType != "weather") document.getElementById(cardType).appendChild(targetCard);
+        targetCard.className = "cardPlayed";
+        targetCard.style.margin = "2px";
+        if (cardType == "own_melee") checkForSpy(index, 0);
+        else if (cardType == "own_ranged") checkForSpy(index, 1);
+        else if (cardType == "own_siege") checkForSpy(index, 2);
+        if (cardType == "weather_cards") {
+                let t = 0;
+                playedWeatherCards.forEach(element => {
+                        if(playedCard.name != element) t++;
+                })
+                if(t == playedWeatherCards.length){
+                        playedWeatherCards.push(playedCard.name);
+                        document.getElementById(cardType).appendChild(targetCard);
+                        targetCard.className = "weatherCardPlayed";
+                        targetCard.style.margin = "2px";
+                }
+                else{
+                        targetCard.style.display = "none";
+                }
+        }
 }
 
 function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListener na karty
