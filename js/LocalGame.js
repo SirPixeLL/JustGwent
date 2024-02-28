@@ -11,6 +11,13 @@ function localGameStart(){
         for(let i = 0; i < 2; i++){
             players[i].populateHand();
         }
+    
+    //testování medic funkce
+    for(let i = 0; i < 5; i++){
+        players[currentPlayer].discardedCards.push(players[currentPlayer].hand[i]);
+    }
+    players[currentPlayer].hand.splice(0,5);
+    
     drawHand(currentPlayer);
     sumPowers(currentPlayer);
 }
@@ -63,6 +70,7 @@ function play(card, currentPlayer){
             }
             break;
         case "Medic":
+            console.log(players[currentPlayer].discardedCards)
             medic(currentPlayer);
             break;
         case "Spy":
@@ -246,6 +254,7 @@ function scorchMelee(currentPlayer){
 }
 
 function medic(currentPlayer){
+    showMedicUI();
 }
 
 function spy(){
