@@ -12,7 +12,7 @@ function showMedicUI() {
         let selected = document.getElementById("selected_card");
         let next1 = document.getElementById("next_card1");
         let next2 = document.getElementById("next_card2");
-        let discared = players[currentPlayer].discardedCards;
+        let discarded = players[currentPlayer].discardedCards;
         if(previous2.firstChild) {
                 previous2.removeChild(previous2.firstChild);
         }
@@ -25,43 +25,37 @@ function showMedicUI() {
         if(next2.firstChild) {
                 next2.removeChild(next2.firstChild);
         }
-        if (discared.length >= 1) {
-                let selectedCard = createCardElement(discared[currentIndex]);
+        if (discarded.length >= 1) {
+                let selectedCard = createCardElement(discarded[currentIndex]);
                 selectedCard.className = "cardInMedicUI";
                 ui.style.display = "block";
                 selected.appendChild(selectedCard);
                 selectedCard.addEventListener("click", function medicHelper() {
                         if (selectedCard.id.includes("Melee")) {
-                                playCardDirect("own_melee", selectedCard.id);
-                                discared.splice(currentIndex, 1);
+                                checkForSpy(currentIndex, 0, "discarded");
+                                discarded.splice(currentIndex, 1);
                                 ui.style.display = "none";
                                 currentIndex = 0;
                                 selectedCard.removeEventListener("click", medicHelper, false);
                         }
                         else if (selectedCard.id.includes("Ranged")) {
-                                playCardDirect("own_ranged", selectedCard.id);
-                                discared.splice(currentIndex, 1);
+                                checkForSpy(currentIndex, 1, "discarded");
+                                discarded.splice(currentIndex, 1);
                                 ui.style.display = "none";
                                 currentIndex = 0;
                                 selectedCard.removeEventListener("click", medicHelper, false);
                         }
                         else if (selectedCard.id.includes("Siege")) {
-                                playCardDirect("own_siege", selectedCard.id);
-                                discared.splice(currentIndex, 1);
+                                checkForSpy(currentIndex, 2, "discarded");
+                                discarded.splice(currentIndex, 1);
                                 ui.style.display = "none";
                                 currentIndex = 0;
                                 selectedCard.removeEventListener("click", medicHelper, false);
                         }
-                        else if (selectedCard.id.includes("Weather")) {
-                                playCardDirect("weather_cards", selectedCard.id);
-                                discared.splice(currentIndex, 1);
-                                ui.style.display = "none";
-                                currentIndex = 0;
-                                selectedCard.removeEventListener("click", medicHelper, false);
-                        }
+                        sumPowers(currentPlayer);
                 })
                 try {
-                        let next1Card = createCardElement(discared[currentIndex+1]);
+                        let next1Card = createCardElement(discarded[currentIndex+1]);
                         next1.appendChild(next1Card);
                         next1Card.className = "cardInMedicUI";
                         next1Card.addEventListener("click", function next1() {
@@ -72,7 +66,7 @@ function showMedicUI() {
                 }
                 catch {}
                 try {
-                        let next2Card = createCardElement(discared[currentIndex+2]);
+                        let next2Card = createCardElement(discarded[currentIndex+2]);
                         next2.appendChild(next2Card);
                         next2Card.className = "cardInMedicUI";
                         next2Card.addEventListener("click", function next2() {
@@ -83,7 +77,7 @@ function showMedicUI() {
                 }
                 catch {}
                 try {
-                        let previous1Card = createCardElement(discared[currentIndex-1]);
+                        let previous1Card = createCardElement(discarded[currentIndex-1]);
                         previous1.appendChild(previous1Card);
                         previous1Card.className = "cardInMedicUI";
                         previous1Card.addEventListener("click", function previous1() {
@@ -95,7 +89,7 @@ function showMedicUI() {
                 }
                 catch {}
                 try {
-                        let previous2Card = createCardElement(discared[currentIndex-2]);
+                        let previous2Card = createCardElement(discarded[currentIndex-2]);
                         previous2.appendChild(previous2Card);
                         previous2Card.className = "cardInMedicUI";
                         previous2Card.addEventListener("click", function previous2() {
@@ -106,96 +100,25 @@ function showMedicUI() {
                 }
                 catch {}
         }
+        
 }
 
-        /*if (currentIndex == 0) {
-                next1.setAttribute("onclick", () => {
-                        currentIndex++;
-                        showMedicUI();
-                })
-                next1.appendChild(createCardElement(discared[currentIndex+1]));
-                next2.setAttribute("onclick", () => {
-                        currentIndex++;
-                        showMedicUI();
-                });
-                next2.appendChild(createCardElement(discared[currentIndex+2]));
+function checkForSpy(index, row, handOrDiscarded){
+        let toPush;
+        switch(handOrDiscarded){
+                case "hand":
+                        toPush = players[currentPlayer].hand[index]
+                        break;
+                case "discarded":
+                        toPush = players[currentPlayer].discardedCards[index]
         }
-        else if (currentIndex == 1) {
-                previous1.setAttribute("onclick", () => {
-                        currentIndex--;
-                        showMedicUI();
-                })
-                previous1.appendChild(createCardElement(discared[currentIndex-1]));
-                next1.setAttribute("onclick", () => {
-                        currentIndex++;
-                        showMedicUI();
-                })
-                next1.appendChild(createCardElement(discared[currentIndex+1]));
-                next2.setAttribute("onclick", () => {
-                        currentIndex++;
-                        showMedicUI();
-                });
-                next2.appendChild(createCardElement(discared[currentIndex+2]));
-        }
-        else if (currentIndex > 1 && currentIndex < discared.length-1) {
-                previous1.setAttribute("onclick", () => {
-                        currentIndex--;
-                        showMedicUI();
-                })
-                previous1.appendChild(createCardElement(discared[currentIndex-1]));
-                previous2.setAttribute("onclick", () => {
-                        currentIndex--;
-                        showMedicUI();
-                })
-                previous2.appendChild(createCardElement(discared[currentIndex-2]));
-                next1.setAttribute("onclick", () => {
-                        currentIndex++;
-                        showMedicUI();
-                })
-                next1.appendChild(createCardElement(discared[currentIndex+1]));
-                next2.setAttribute("onclick", () => {
-                        currentIndex++;
-                        showMedicUI();
-                });
-                next2.appendChild(createCardElement(discared[currentIndex+2]));
-        }
-        else if (currentIndex == discared.length-2) {
-                previous1.setAttribute("onclick", () => {
-                        currentIndex--;
-                        showMedicUI();
-                })
-                previous1.appendChild(createCardElement(discared[currentIndex-1]));
-                previous2.setAttribute("onclick", () => {
-                        currentIndex--;
-                        showMedicUI();
-                })
-                previous2.appendChild(createCardElement(discared[currentIndex-2]));
-                next1.setAttribute("onclick", () => {
-                        currentIndex++;
-                        showMedicUI();
-                })
-                next1.appendChild(createCardElement(discared[currentIndex+1]));
-        }
-        else if (currentIndex == discared.length-1) {
-                previous1.setAttribute("onclick", () => {
-                        currentIndex--;
-                        showMedicUI();
-                })
-                previous1.appendChild(createCardElement(discared[currentIndex-1]));
-                previous2.setAttribute("onclick", () => {
-                        currentIndex--;
-                        showMedicUI();
-                })
-                previous2.appendChild(createCardElement(discared[currentIndex-2]));
-        }*/
-
-function checkForSpy(index, row){
-        if(players[currentPlayer].hand[index].ability == "Spy"){
-                boards[1 - currentPlayer][row].push(players[currentPlayer].hand[index]);
+        if(toPush.ability == "Spy"){
+                boards[1 - currentPlayer][row].push(toPush);
         }
         else{
-                boards[currentPlayer][row].push(players[currentPlayer].hand[index])
+                boards[currentPlayer][row].push(toPush);
         }
+        updateBoards(currentPlayer);
 }
 
 function playCard(cardType, e) {
@@ -276,9 +199,9 @@ function playCard(cardType, e) {
                         targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
                         
-                        if (cardType == "own_melee") checkForSpy(index, 0);
-                        else if (cardType == "own_ranged") checkForSpy(index, 1);
-                        else if (cardType == "own_siege") checkForSpy(index, 2);
+                        if (cardType == "own_melee") checkForSpy(index, 0, "hand");
+                        else if (cardType == "own_ranged") checkForSpy(index, 1, "hand");
+                        else if (cardType == "own_siege") checkForSpy(index, 2, "hand");
                         let playedCard = players[currentPlayer].hand[index];
                         players[currentPlayer].hand.splice(index,1);
                         play(playedCard, currentPlayer);
