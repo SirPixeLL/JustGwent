@@ -13,11 +13,12 @@ function localGameStart(){
         }
     
     //testování medic funkce
+    /*
     for(let i = 0; i < 5; i++){
         players[currentPlayer].discardedCards.push(players[currentPlayer].hand[i]);
     }
     players[currentPlayer].hand.splice(0,5);
-    
+    */
     drawHand(currentPlayer);
     sumPowers(currentPlayer);
 }
@@ -71,7 +72,7 @@ function play(card, currentPlayer){
             break;
         case "Medic":
             console.log(players[currentPlayer].discardedCards)
-            medic(currentPlayer);
+            medic();
             break;
         case "Spy":
             spy();
@@ -216,6 +217,7 @@ function scorch(){  //do rozsahu testování plně funkční
         let j = strongest[key][2];
         let n = strongest[key][3];
         let t = strongest[key][4];
+        boards[i][j][n].ability = null;
         players[i].discardedCards.push(boards[i][j][n]);
         boards[i][j].splice(n-t, 1);
     }
@@ -243,17 +245,17 @@ function scorchMelee(currentPlayer){
                 strongest[element.id+t] = strongestIndex;
             } 
         }
-        
     }
     for(let key in strongest){
         n = strongest[key][1];
         t = strongest[key][2];
+        boards[i][0][n].ability = null;
         players[a].discardedCards.push(boards[a][0][n]);
         boards[a][0].splice(n-t, 1);
     }
 }
 
-function medic(currentPlayer){
+function medic(){
     showMedicUI();
 }
 
@@ -413,7 +415,12 @@ function endRound(){
 function discardCardsOnRoundEnd(){
     cycleBoard(function(i,j,n){
         console.log(i,j,n);
-        players[i].discardedCards.push(boards[i][j][n]);
+        if(boards[i][j][n].ability == "Muster"){
+            boards[i][j][n].ability = null;
+        }
+        if(boards[i][j][n].isLegend == false){
+            players[i].discardedCards.push(boards[i][j][n]);
+        }
     })
     boards = [[[],[],[]],[[],[],[]]]
     horn = [[false, false, false],[false, false, false]];

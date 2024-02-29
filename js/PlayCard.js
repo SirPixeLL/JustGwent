@@ -33,6 +33,7 @@ function showMedicUI() {
                 selectedCard.addEventListener("click", function medicHelper() {
                         if (selectedCard.id.includes("Melee")) {
                                 checkForSpy(currentIndex, 0, "discarded");
+                                play(discarded[currentIndex], currentPlayer);
                                 discarded.splice(currentIndex, 1);
                                 ui.style.display = "none";
                                 currentIndex = 0;
@@ -40,6 +41,7 @@ function showMedicUI() {
                         }
                         else if (selectedCard.id.includes("Ranged")) {
                                 checkForSpy(currentIndex, 1, "discarded");
+                                play(discarded[currentIndex], discarded);
                                 discarded.splice(currentIndex, 1);
                                 ui.style.display = "none";
                                 currentIndex = 0;
@@ -47,11 +49,13 @@ function showMedicUI() {
                         }
                         else if (selectedCard.id.includes("Siege")) {
                                 checkForSpy(currentIndex, 2, "discarded");
+                                play(discarded[currentIndex], currentPlayer);
                                 discarded.splice(currentIndex, 1);
                                 ui.style.display = "none";
                                 currentIndex = 0;
                                 selectedCard.removeEventListener("click", medicHelper, false);
                         }
+                        
                         sumPowers(currentPlayer);
                 })
                 try {
@@ -163,6 +167,7 @@ function playCard(cardType, e) {
                         targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
+                        players[currentPlayer].hand[index].type = "Melee";
                         boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
                         let playedCard = players[currentPlayer].hand[index];
                         players[currentPlayer].hand.splice(index,1);
@@ -180,6 +185,7 @@ function playCard(cardType, e) {
                         targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
+                        players[currentPlayer].hand[index].type = "Ranged";
                         boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
                         let playedCard = players[currentPlayer].hand[index];
                         players[currentPlayer].hand.splice(index,1);
