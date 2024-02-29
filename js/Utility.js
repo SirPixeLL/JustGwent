@@ -13,6 +13,7 @@ function drawHand(currentPlayer){
 }
 
 function updateBoards(currentPlayer){
+    console.log(boards);
     clearBoards();
     for(let i = 0; i < 2; i++){
         for(let j = 0; j < 3; j++){
@@ -26,7 +27,7 @@ function updateBoards(currentPlayer){
 function updateLives(currentPlayer){
     enemyLives = [document.getElementById("enemy_heart1"), document.getElementById("enemy_heart2")];
     ownLives = [document.getElementById("own_heart1"), document.getElementById("own_heart2")];
-    livesUI = [];
+    livesUI = [];  
 
     if(currentPlayer == 0){
         livesUI = [ownLives, enemyLives];
