@@ -371,12 +371,16 @@ function endRound(){
     if(players[currentPlayer].totalPower > players[1-currentPlayer].totalPower){
         enemyLives[players[1-currentPlayer].lives-1].style.display="none";
         players[1-currentPlayer].lives--;
-
+        if(players[currentPlayer].faction == "Northern Realms"){
+            players[currentPlayer].drawNewCard();
+        }
     }
     else if(players[currentPlayer].totalPower < players[1-currentPlayer].totalPower){
         ownLives[players[currentPlayer].lives-1].style.display="none";
         players[currentPlayer].lives--;
-
+        if(players[1-currentPlayer].faction == "Northern Realms"){
+            players[1-currentPlayer].drawNewCard();
+        }
     }
     else{
         //remízy - nilfgaard
@@ -422,6 +426,31 @@ function discardCardsOnRoundEnd(){
             players[i].discardedCards.push(boards[i][j][n]);
         }
     })
-    boards = [[[],[],[]],[[],[],[]]]
+    monsterAbility();
     horn = [[false, false, false],[false, false, false]];
+}
+
+function monsterAbility(){
+    let preserve = [];
+    for(let i = 0; i < 2; i++){
+        if(players[i].faction == "Monsters"){
+            let r = [];
+            for(let j = 0; j < 3; j++){
+                if(boards[i][j].length > 0){
+                    r.push(boards[i][j].length);
+                }
+            }
+            let j = getRandomInt(r.length);
+            let n = getRandomInt(r[j]);
+            preserve.push([i,j, boards[i][j][n]]);
+        }
+    }
+    boards = [[[],[],[]],[[],[],[]]];
+    if($.isEmptyObject(preserve)){
+       for(let a = 0; a < preserve.length; a++){
+            console.log(preserve[a][2]);
+            boards[preserve[a][0]][preserve[a][1]].push(preserve[a][2]);
+        } 
+    }
+    
 }
