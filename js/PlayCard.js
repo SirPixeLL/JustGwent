@@ -128,13 +128,18 @@ function checkForSpy(index, row, handOrDiscarded){
 function playCard(cardType, e) {
         let buttonMelee = document.getElementById("shownButtonMelee");
         let buttonRanged = document.getElementById("shownButtonRanged");
+        let buttonSiege = document.getElementById("shownButtonSiege");
         let buttonYes = document.getElementById("shownButtonYes");
         let buttonNo = document.getElementById("shownButtonNo");
         let targetCard = document.getElementById(e.target.id);
         if (shownCardSlot.length > 0) {
-                if (shownCardSlot[0].id.includes("Agile") && cardType != "agile") {
+                if ((shownCardSlot[0].id.includes("Agile") || shownCardSlot[0].id.includes("Horn")) && (cardType != "agile" || cardType != "horn")) {
                         buttonMelee.style.display = "none";
                         buttonRanged.style.display = "none";
+                        buttonSiege.style.display = "none";
+                }
+                if (shownCardSlot[0].id.includes("Horn") && cardType == "agile") {
+                        buttonSiege.style.display = "none";
                 }
                 shownCardSlot[0].className = "cardInHand";
                 shownCardSlot[0].style.marginLeft = margin + "px";
@@ -155,82 +160,110 @@ function playCard(cardType, e) {
                 targetCard.className = "cardShown";
                 marginTrueNeckKeys(false);
         }
-        if (cardType == "agile") {
+        if (cardType == "agile" || cardType == "horn") {
                 buttonMelee.style.display = "inline-block";
                 buttonRanged.style.display = "inline-block";
+                if (cardType == "horn") buttonSiege.style.display = "inline-block";
                 buttonYes.style.display = "none";
                 buttonMelee.onclick = function() {
-                        document.getElementById("own_melee").appendChild(targetCard);
                         shownCardSlot.splice(0, 1);
                         targetCard.className = "cardPlayed";
                         targetCard.style.margin = "2px";
                         targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
-                        players[currentPlayer].hand[index].type = "Melee";
-                        boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
+                        if (cardType == "agile") players[currentPlayer].hand[index].type = "Melee";
+                        if (cardType == "horn") hornUI[currentPlayer][0].push(players[currentPlayer].hand[index]);
+                        else boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
                         let playedCard = players[currentPlayer].hand[index];
                         players[currentPlayer].hand.splice(index,1);
                         play(playedCard, currentPlayer);
                         buttonMelee.style.display = "none";
                         buttonRanged.style.display = "none";
+                        buttonSiege.style.display = "none";
                         buttonNo.style.display = "none";
-                        //removeCardListener();
                 }
                 buttonRanged.onclick = function() {
-                        document.getElementById("own_ranged").appendChild(targetCard);
                         shownCardSlot.splice(0, 1);
                         targetCard.className = "cardPlayed";
                         targetCard.style.margin = "2px";
                         targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
-                        players[currentPlayer].hand[index].type = "Ranged";
-                        boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
+                        if (cardType == "agile") players[currentPlayer].hand[index].type = "Ranged";
+                        if (cardType == "horn") hornUI[currentPlayer][1].push(players[currentPlayer].hand[index]);
+                        else boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
                         let playedCard = players[currentPlayer].hand[index];
                         players[currentPlayer].hand.splice(index,1);
                         play(playedCard, currentPlayer);
                         buttonMelee.style.display = "none";
                         buttonRanged.style.display = "none";
+                        buttonSiege.style.display = "none";
                         buttonNo.style.display = "none";
-                        //removeCardListener();
+                }
+                if (cardType == "horn") {
+                        buttonSiege.onclick = function() {
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardPlayed";
+                                targetCard.style.margin = "2px";
+                                targetCard.removeEventListener("click", cardListenerHelper, false);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+
+                                hornUI[currentPlayer][2].push(players[currentPlayer].hand[index]);
+                                let playedCard = players[currentPlayer].hand[index];
+                                players[currentPlayer].hand.splice(index,1);
+                                play(playedCard, currentPlayer);
+                                buttonMelee.style.display = "none";
+                                buttonRanged.style.display = "none";
+                                buttonSiege.style.display = "none";
+                                buttonNo.style.display = "none";
+                        }
                 }
         }
         else {
                 buttonYes.onclick = function() {
-                        document.getElementById(cardType).appendChild(targetCard);
-                        shownCardSlot.splice(0, 1);
-                        targetCard.className = "cardPlayed";
-                        targetCard.style.margin = "2px";
-                        targetCard.removeEventListener("click", cardListenerHelper, false);
-                        cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-                        
-                        if (cardType == "own_melee") checkForSpy(index, 0, "hand");
-                        else if (cardType == "own_ranged") checkForSpy(index, 1, "hand");
-                        else if (cardType == "own_siege") checkForSpy(index, 2, "hand");
-                        let playedCard = players[currentPlayer].hand[index];
-                        players[currentPlayer].hand.splice(index,1);
-                        play(playedCard, currentPlayer);
-                        if (cardType == "weather_cards") {
-                                let t = 0;
-                                playedWeatherCards.forEach(element => {
-                                        if(playedCard.name != element) t++;
-                                });
-                                if(t == playedWeatherCards.length){
-                                        playedWeatherCards.push(playedCard.name);
-                                        document.getElementById(cardType).appendChild(targetCard);
-                                        shownCardSlot.splice(0, 1);
-                                        targetCard.className = "weatherCardPlayed";
-                                        targetCard.style.margin = "2px";
-                                }
-                                else{
-                                        shownCardSlot.splice(0, 1);
-                                        document.getElementById("shown_card").removeChild(targetCard);
-                                }
+                        if (cardType == "scorch") {
+                                let playedCard = players[currentPlayer].hand[index];
+                                players[currentPlayer].hand.splice(index,1);
+                                play(playedCard, currentPlayer);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+                                document.getElementById(e.target.id).remove();
+                                shownCardSlot.splice(0, 1);
+                        }
+                        else {
+                                shownCardSlot.splice(0, 1);
+                                targetCard.className = "cardPlayed";
+                                targetCard.style.margin = "2px";
+                                targetCard.removeEventListener("click", cardListenerHelper, false);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+                                
+                                if (cardType == "own_melee") checkForSpy(index, 0, "hand");
+                                else if (cardType == "own_ranged") checkForSpy(index, 1, "hand");
+                                else if (cardType == "own_siege") checkForSpy(index, 2, "hand");
+                                let playedCard = players[currentPlayer].hand[index];
+                                players[currentPlayer].hand.splice(index,1);
+                                play(playedCard, currentPlayer);
+                                if (cardType == "weather_cards") {
+                                        let t = 0;
+                                        playedWeatherCards.forEach(element => {
+                                                if(playedCard.name != element) t++;
+                                        });
+                                        if(t == playedWeatherCards.length){
+                                                playedWeatherCards.push(playedCard.name);
+                                                document.getElementById(cardType).appendChild(targetCard);
+                                                shownCardSlot.splice(0, 1);
+                                                targetCard.className = "weatherCardPlayed";
+                                                targetCard.style.margin = "2px";
+                                                targetCard.style.marginTop = "10px"
+                                        }
+                                        else{
+                                                shownCardSlot.splice(0, 1);
+                                                document.getElementById("shown_card").removeChild(targetCard);
+                                        }
+                                }  
                         }
                         buttonYes.style.display = "none";
-                        buttonNo.style.display = "none";
-                        //removeCardListener();  
+                        buttonNo.style.display = "none"; 
                 };
         }              
         buttonNo.onclick = function() {
@@ -288,6 +321,12 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
         }
         else if (e.target.id.includes("Agile")) {
                 playCard("agile", e);
+        }
+        else if (e.target.id.includes("Scorch")) {
+                playCard("scorch", e);
+        }
+        else if (e.target.id.includes("Commanders_Horn")) {
+                playCard("horn", e);
         }
     }
 

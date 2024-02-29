@@ -10,7 +10,7 @@ let mode = 1;
 
 if(mode == 1){
 
-    //balancedSpecial();
+    balancedSpecial();
 
     cardArray.forEach(element =>{
         //Player1

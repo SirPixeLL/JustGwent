@@ -30,7 +30,7 @@ function marginTrueNeckKeys(value) {
         }
     }
     else {
-        console.log("MarginFalse");
+        console.debug("MarginFalse");
         if (cardsInHand.length < 17 && margin < 2) {
             margin += 3;
         }

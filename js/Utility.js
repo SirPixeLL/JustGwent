@@ -1,5 +1,6 @@
 boards = [[[],[],[]],[[],[],[]]]
 horn = [[false, false, false],[false, false, false]];
+hornUI = [[[],[],[]],[[],[],[]]]
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
