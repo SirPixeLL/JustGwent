@@ -51,6 +51,7 @@ function updateAll(currentPlayer){
     updateBoards(currentPlayer);
     drawHand(currentPlayer);
     updateLives(currentPlayer);
+    updateHorn();
 }
 
 function playerUpdate(currentPlayer){
@@ -97,6 +98,22 @@ function cycleBoard(func){
             for(let n = 0; n < boards[i][j].length; n++){
                 func(i,j,n);
             }
+        }
+    }
+}
+
+function updateHorn(){
+    let enemyHorn = [document.getElementById("enemy_melee_boost"),document.getElementById("enemy_ranged_boost"),document.getElementById("enemy_siege_boost"),];
+    let ownHorn = [document.getElementById("own_melee_boost"),document.getElementById("own_ranged_boost"),document.getElementById("own_siege_boost"),];
+    let hornHUD = [];
+
+    if(currentPlayer == 0) hornHUD = [ownHorn, enemyHorn];
+    else hornHUD = [enemyHorn, ownHorn];
+
+    for(let i = 0; i < 2; i++){
+        for(let j = 0; j < 3; j++){
+            if($.isEmptyObject(hornUI[i][j]));
+            else hornUI[i][j][0].drawHorn(hornHUD[i][j]);
         }
     }
 }

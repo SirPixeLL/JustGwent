@@ -127,18 +127,21 @@ class Card {
         cardsOnBoard[i][j].appendChild(cardFrame);
     }
 
-    effect() {
-        switch(ability){
-            case "bitingFrost":
-                weather(0);
-                break;
-            case "ImpenetrableFog":
-                weather(1);
-                break;
-            case "TorrentialRain":
-                weather(2);
-                break;
-        }
-    }
+    drawHorn(whereTo){
+        let cardFrame = document.createElement("div");
+        cardFrame.className = "cardPlayed";
+        //console.log(cardsOnBoard[i][j]);
+        cardFrame.id = this.type + this.id;
+        let powerDiv = document.createElement("div");
+        powerDiv.className = "powerDiv";
+        let power = document.createElement("p");
+        power.innerHTML = this.id;
+        power.className = "power";
+        powerDiv.appendChild(power);
+        cardFrame.appendChild(powerDiv);
+        whereTo.appendChild(cardFrame);
+    }   
+
+
 }
 

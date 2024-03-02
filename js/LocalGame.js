@@ -99,10 +99,18 @@ function clearWeather(){
     })
 }
 
+let uHorn = 0;
 function commanderHornSet(card, currentPlayer){
-    if(card.type = "Melee"){
-        horn[currentPlayer][0] = true;
+    if(card.type == "Melee"){
+        row = 0;        
     }
+    else if(card.type == "Ranged"){
+        row = 1;
+    }
+    else row = 2;
+    horn[currentPlayer][row] = true;
+    hornUI[currentPlayer][row].push(new Card("Commanders_Horn"+uHorn+"U", null,null,"Horn","Commanders_Horn.webp","Neutral", "CommandersHorn", null, false, true));
+    uHorn++;
     //přidat funkci která dává horn na true podle toho kam se to dá
 }
 function commanderHornBuff(i, j){ //ošklivý ale funkční
@@ -428,6 +436,7 @@ function discardCardsOnRoundEnd(){
     })
     monsterAbility();
     horn = [[false, false, false],[false, false, false]];
+    hornUI = [[[],[],[]],[[],[],[]]];
 }
 
 function monsterAbility(){

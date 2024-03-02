@@ -172,8 +172,7 @@ function playCard(cardType, e) {
                         targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
-                        if (cardType == "agile") players[currentPlayer].hand[index].type = "Melee";
-                        if (cardType == "horn") hornUI[currentPlayer][0].push(players[currentPlayer].hand[index]);
+                        if (cardType == "agile" || cardType == "horn") players[currentPlayer].hand[index].type = "Melee";
                         else boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
                         let playedCard = players[currentPlayer].hand[index];
                         players[currentPlayer].hand.splice(index,1);
@@ -190,8 +189,7 @@ function playCard(cardType, e) {
                         targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
-                        if (cardType == "agile") players[currentPlayer].hand[index].type = "Ranged";
-                        if (cardType == "horn") hornUI[currentPlayer][1].push(players[currentPlayer].hand[index]);
+                        if (cardType == "agile" ||cardType == "horn") players[currentPlayer].hand[index].type = "Ranged";
                         else boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
                         let playedCard = players[currentPlayer].hand[index];
                         players[currentPlayer].hand.splice(index,1);
@@ -209,9 +207,9 @@ function playCard(cardType, e) {
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
-                                hornUI[currentPlayer][2].push(players[currentPlayer].hand[index]);
                                 let playedCard = players[currentPlayer].hand[index];
                                 players[currentPlayer].hand.splice(index,1);
+                                playedCard.type = "Siege";
                                 play(playedCard, currentPlayer);
                                 buttonMelee.style.display = "none";
                                 buttonRanged.style.display = "none";
