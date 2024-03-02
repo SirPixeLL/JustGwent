@@ -1,6 +1,7 @@
 boards = [[[],[],[]],[[],[],[]]]
 horn = [[false, false, false],[false, false, false]];
-hornUI = [[[],[],[]],[[],[],[]]]
+hornUI = [[[],[],[]],[[],[],[]]];
+weather = [false, false, false];
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -13,7 +14,6 @@ function drawHand(currentPlayer){
 }
 
 function updateBoards(currentPlayer){
-    console.log(boards);
     clearBoards();
     for(let i = 0; i < 2; i++){
         for(let j = 0; j < 3; j++){

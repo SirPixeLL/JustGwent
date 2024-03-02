@@ -46,13 +46,13 @@ function startingPlayer(){
 function play(card, currentPlayer){
     switch(card.ability){
         case "BitingFrost":
-            weather(0);
+            weather[0] = true;
             break;
         case "ImpenetrableFog":
-            weather(1);
+            weather[1] = true;
             break;
         case "TorrentialRain":
-            weather(2);
+            weather[2] = true;
             break;
         case "ClearWeather":
             clearWeather();
@@ -83,17 +83,17 @@ function play(card, currentPlayer){
 }
 
 //Weather effects
-function weather(row){ //row = číslo(0 melee, 1 ranged, 2 siege)
+function setWeather(){ //row = číslo(0 melee, 1 ranged, 2 siege)
     //specifická funkce, nastavuje debuff status na určitý řádek, power se řeší na konci cyklu kola
-    for(let i = 0; i < 2; i++){
-        for(let n = 0; n < boards[i][row].length; n++){
-            if(boards[i][row][n].isLegend == false){
-                boards[i][row][n].debuffed = true;
+    cycleBoard((i,j,n)=>{
+        if(weather[j] == true){
+            if(boards[i][j][n].isLegend == false){
+                boards[i][j][n].debuffed = true;
             }
         }
-    }
+    })
 }
-function clearWeather(){
+function clearWeatherDebuff(){
     cycleBoard(function(i,j,n){
         boards[i][j][n].debuffed = false;
     })
@@ -318,6 +318,7 @@ function sumPowers(currentPlayer){
 }
 
 function endTurn(){
+    setWeatherDebuff();
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
