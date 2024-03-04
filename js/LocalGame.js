@@ -83,7 +83,7 @@ function play(card, currentPlayer){
 }
 
 //Weather effects
-function setWeather(){ //row = číslo(0 melee, 1 ranged, 2 siege)
+function setWeatherDebuff(){ //row = číslo(0 melee, 1 ranged, 2 siege)
     //specifická funkce, nastavuje debuff status na určitý řádek, power se řeší na konci cyklu kola
     cycleBoard((i,j,n)=>{
         if(weather[j] == true){
