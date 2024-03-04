@@ -4,6 +4,17 @@ let shownCardSlot = [];
 
 let currentIndex = 0;
 
+function decoy() {
+        cycleBoard(function(i, j, n) {
+                let object = boards[i][j][n];
+                let element = document.getElementById(object.id);
+                element.addEventListener("click", function getCardBack() {
+                        document.getElementById("current_cards").appendChild(element);
+                        element.removeEventListener("click", getCardBack, false); // musi se removnout u vsech karet, need help from Veka
+                })
+        })
+}
+
 function showMedicUI() {
         let ui = document.getElementById("medic_ui");
         let text = document.getElementById("medic_text");
