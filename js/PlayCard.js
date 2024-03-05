@@ -4,14 +4,24 @@ let shownCardSlot = [];
 
 let currentIndex = 0;
 
-function decoy() {
+function decoy(decoyCard) {
         cycleBoard(function(i, j, n) {
                 let object = boards[i][j][n];
-                let element = document.getElementById(object.id);
-                element.addEventListener("click", function getCardBack() {
-                        document.getElementById("current_cards").appendChild(element);
-                        element.removeEventListener("click", getCardBack, false); // musi se removnout u vsech karet, need help from Veka
-                })
+                if (object != null) {
+                        let element;
+                        if (j == 0) element = document.getElementById("Melee"+object.id);
+                        else if (j == 1) element = document.getElementById("Ranged"+object.id);
+                        else if (j == 2) element = document.getElementById("Siege"+object.id);
+                        if (i == currentPlayer && object.isLegend == false) {
+                                element.addEventListener("click", function getCardBack() {
+                                        players[currentPlayer].hand.push(object);
+                                        boards[i][j].splice(n, 1, decoyCard);
+                                        updateAll(currentPlayer);
+                                        changeButton("switch");
+                                        endTurn();
+                                        })   
+                        }
+                }
         })
 }
 
@@ -184,7 +194,7 @@ function playCard(cardType, e) {
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
                         if (cardType == "agile" || cardType == "horn") players[currentPlayer].hand[index].type = "Melee";
-                        else boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
+                        if (cardType == "agile") boards[currentPlayer][0].push(players[currentPlayer].hand[index]);
                         let playedCard = players[currentPlayer].hand[index];
                         players[currentPlayer].hand.splice(index,1);
                         play(playedCard, currentPlayer);
@@ -201,7 +211,7 @@ function playCard(cardType, e) {
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
                         if (cardType == "agile" ||cardType == "horn") players[currentPlayer].hand[index].type = "Ranged";
-                        else boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
+                        if (cardType == "agile") boards[currentPlayer][1].push(players[currentPlayer].hand[index]);
                         let playedCard = players[currentPlayer].hand[index];
                         players[currentPlayer].hand.splice(index,1);
                         play(playedCard, currentPlayer);
@@ -235,6 +245,14 @@ function playCard(cardType, e) {
                                 let playedCard = players[currentPlayer].hand[index];
                                 players[currentPlayer].hand.splice(index,1);
                                 play(playedCard, currentPlayer);
+                                cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
+                                document.getElementById(e.target.id).remove();
+                                shownCardSlot.splice(0, 1);
+                        }
+                        else if (cardType == "decoy") {
+                                let playedCard = players[currentPlayer].hand[index];
+                                players[currentPlayer].hand.splice(index,1);
+                                decoy(playedCard);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
                                 document.getElementById(e.target.id).remove();
                                 shownCardSlot.splice(0, 1);
@@ -336,6 +354,9 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
         }
         else if (e.target.id.includes("Commanders_Horn")) {
                 playCard("horn", e);
+        }
+        else if (e.target.id.includes("Decoy")) {
+                playCard("decoy", e);
         }
     }
 
