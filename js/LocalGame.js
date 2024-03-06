@@ -94,9 +94,9 @@ function setWeatherDebuff(){ //row = číslo(0 melee, 1 ranged, 2 siege)
     })
 }
 function clearWeatherDebuff(){
-    cycleBoard(function(i,j,n){
-        boards[i][j][n].debuffed = false;
-    })
+    weather[0] = false;
+    weather[1] = false;
+    weather[2] = false;
 }
 
 let uHorn = 0;
@@ -345,18 +345,21 @@ function endTurn(){
 }
 
 function passFunction(){
+    changeButton("remove");
+    console.trace();
     players[currentPlayer].hasPassed = true;
     switchFunction();
     endTurn();
 
 }
 function switchFunction(){
+    document.activeElement.blur();
     switchScreen.style.display = "inline-block";
     setTimeout(()=>{
         switchScreen.style.opacity = "1";
     }, 0);
     document.addEventListener("keydown", (event) => {
-        if(event.code == "Space" && switchScreen.style.display == "inline-block") {
+        if(event.key == " " && switchScreen.style.display == "inline-block") {
             hideSwitchSreen();
         }
     })
@@ -372,6 +375,9 @@ function changeButton(action){
         case "switch":
             passButton.innerHTML="SWITCH";
             passButton.setAttribute("onclick", "switchFunction()");
+            break;
+        case "remove":
+            passButton.setAttribute("onclick", "");
             break;
     }
 }

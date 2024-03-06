@@ -80,8 +80,9 @@ function spliceSelected(which, from){
 }
 
 switchScreen = document.getElementById("switch_screen");
+
 function hideSwitchSreen(){
-    changeButton("pass")
+    changeButton("pass");
 
     switchScreen.style.display = "none";
     switchScreen.style.opacity = "0";
