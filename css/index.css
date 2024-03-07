@@ -177,10 +177,9 @@ body,html{
     display: inline-block;
     background-color:#aa9667;
     border-radius: 20px;
-    height: 40px;
-    width: 40px;
-    text-align: center;
-    vertical-align: middle;
+    width: 12%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
     font-weight: bolder;
 }
 
@@ -265,7 +264,8 @@ body,html{
 }
 
 .value_p {
-    margin-top: 30%;
+    font-size: 15px;
+    margin-top: calc((100% - 15px) / 2);
 }
 
 /*Styles for the right of the board*/

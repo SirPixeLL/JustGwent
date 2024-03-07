@@ -109,7 +109,7 @@ function commanderHornSet(card, currentPlayer){
     }
     else row = 2;
     horn[currentPlayer][row] = true;
-    hornUI[currentPlayer][row].push(new Card("Commanders_Horn"+uHorn+"U", null,null,"Horn","Commanders_Horn.webp","Neutral", "CommandersHorn", null, false, true));
+    hornUI[currentPlayer][row].push(new Card("Commanders_Horn"+uHorn+"U", null,null,"Horn","url(../images/cards/Commanders_Horn.png)","Neutral", "CommandersHorn", null, false, true));
     uHorn++;
     //přidat funkci která dává horn na true podle toho kam se to dá
 }

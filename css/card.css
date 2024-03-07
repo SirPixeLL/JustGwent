@@ -10,6 +10,23 @@
     transition: ease-in-out 300ms;
 }
 
+.powerDiv {
+    background-color: #ffff;
+    width: 20%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    margin: 2px;
+}
+
+.power {
+    display: inline-block;
+    color: #000000;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 18px;
+    margin-top: calc((100% - 20px)/2);
+}
+
 .cardInHand:hover {
     display: inline-block;
     border-radius: 10px;

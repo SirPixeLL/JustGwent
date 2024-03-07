@@ -1,5 +1,5 @@
 let p1deck = [];
-let p1faction =  "Northern Realms";
+let p1faction =  "NorthernRealms";
 
 let p2deck = [];
 let p2faction = "Monsters";

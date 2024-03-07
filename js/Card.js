@@ -117,13 +117,17 @@ class Card {
         cardFrame.className = "cardPlayed";
         //console.log(cardsOnBoard[i][j]);
         cardFrame.id = this.type + this.id;
-        let powerDiv = document.createElement("div");
-        powerDiv.className = "powerDiv";
-        let power = document.createElement("p");
-        power.innerHTML = this.power + this.id;
-        power.className = "power";
-        powerDiv.appendChild(power);
-        cardFrame.appendChild(powerDiv);
+        if (this.power != null) {
+            let powerDiv = document.createElement("div");
+            powerDiv.className = "powerDiv";
+            let power = document.createElement("p");
+            power.innerHTML = this.power;
+            power.className = "power";
+            powerDiv.appendChild(power);
+            cardFrame.appendChild(powerDiv);   
+        }
+        cardFrame.style.backgroundImage = this.picture;
+        cardFrame.style.backgroundSize = "100% 100%";
         cardsOnBoard[i][j].appendChild(cardFrame);
     }
 

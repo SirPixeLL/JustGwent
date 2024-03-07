@@ -396,13 +396,17 @@ function drawCard(card){
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
         cardFrame.id = card.type + card.id;
-        let powerDiv = document.createElement("div");
-        powerDiv.className = "powerDiv";
-        let power = document.createElement("p");
-        power.innerHTML = card.power + card.id;
-        power.className = "power";
-        powerDiv.appendChild(power);
-        cardFrame.appendChild(powerDiv);
+        if (card.power != null) {
+                let powerDiv = document.createElement("div");
+                powerDiv.className = "powerDiv";
+                let power = document.createElement("p");
+                power.innerHTML = card.power;
+                power.className = "power";
+                powerDiv.appendChild(power);
+                cardFrame.appendChild(powerDiv);   
+        }
+        cardFrame.style.backgroundImage = card.picture;
+        cardFrame.style.backgroundSize = "100% 100%";
         currentHand.appendChild(cardFrame);
         cardsInHand.push(document.getElementById(cardFrame.id));
         marginTrueNeckKeys(true);
