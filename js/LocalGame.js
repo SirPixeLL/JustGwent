@@ -225,8 +225,8 @@ function scorch(){  //do rozsahu testování plně funkční
         let j = strongest[key][2];
         let n = strongest[key][3];
         let t = strongest[key][4];
-        boards[i][j][n].ability = null;
-        players[i].discardedCards.push(boards[i][j][n]);
+        if(boards[i][j][n-t])boards[i][j][n].ability = null;
+        players[i].discardedCards.push(boards[i][j][n-t]);
         boards[i][j].splice(n-t, 1);
     }
 }
@@ -237,9 +237,9 @@ function scorchMelee(currentPlayer){
     for(let n = 0; n < boards[a][0].length; n++){
         let element = boards[a][0][n];
         if(element.isLegend == false){
-           if($.isEmptyObject(strongest)){
-            powerIndex = [element.power, n, t];
-            strongest[element.id+t] = powerIndex;
+            if($.isEmptyObject(strongest)){
+                powerIndex = [element.power, n, t];
+                strongest[element.id+t] = powerIndex;
             }
             else if(powerIndex[0] < element.power){
                 t = 0;
@@ -257,8 +257,8 @@ function scorchMelee(currentPlayer){
     for(let key in strongest){
         n = strongest[key][1];
         t = strongest[key][2];
-        boards[i][0][n].ability = null;
-        players[a].discardedCards.push(boards[a][0][n]);
+        if(boards[a][0][n-t].ability == "Muster")boards[a][0][n-t].ability = null;
+        players[a].discardedCards.push(boards[a][0][n-t]);
         boards[a][0].splice(n-t, 1);
     }
 }
