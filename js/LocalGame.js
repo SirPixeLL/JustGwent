@@ -64,15 +64,15 @@ function play(card, currentPlayer){
             commanderHornSet(card, currentPlayer);
             break;
         case "Scorch":
-            if(card.name == "Villentretenmerth"){ //ještě francesca má stejnou abilitu
-                scorchMelee(currentPlayer);
+            if(card.name == "Villentretenmerth"){
+                scorchMelee();
             }else{
                 scorch();
             }
             break;
         case "Medic":
             console.log(players[currentPlayer].discardedCards)
-            medic();
+            medic(card);
             break;
         case "Spy":
             spy();
@@ -93,7 +93,7 @@ function setWeatherDebuff(){ //row = číslo(0 melee, 1 ranged, 2 siege)
         }
     })
 }
-function clearWeatherDebuff(){
+function clearWeather(){
     weather[0] = false;
     weather[1] = false;
     weather[2] = false;
@@ -230,7 +230,7 @@ function scorch(){  //do rozsahu testování plně funkční
         boards[i][j].splice(n-t, 1);
     }
 }
-function scorchMelee(currentPlayer){
+function scorchMelee(){
     let strongest = {};
     let a = 1-currentPlayer;
     let t = 0;
@@ -263,8 +263,16 @@ function scorchMelee(currentPlayer){
     }
 }
 
-function medic(){
-    showMedicUI();
+function medic(card){
+    if(medicsRandom && card.isLegend == false){
+        console.log(JSON.parse(JSON.stringify(players[currentPlayer].discardedCards)))
+        ressurectedIndex = getRandomInt(players[currentPlayer].discardedCards.length);
+        ressurectedCard = players[currentPlayer].discardedCards[ressurectedIndex];
+        assingToBoard(ressurectedCard);
+        play(ressurectedCard, currentPlayer);
+        players[currentPlayer].discardedCards.splice(ressurectedIndex, 1);
+    }
+    else showMedicUI();
 }
 
 function spy(){

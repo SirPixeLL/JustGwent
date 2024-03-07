@@ -28,5 +28,10 @@ class Player{
         for(let i = 0; i < 10; i++){
             this.drawNewCard();
         }
+        
+        //Daisy of the Valley ability:
+        if(this.leader.name == "Francesca Findabair: Daisy of the Valley"){
+            this.drawNewCard();
+        }
     }
 }

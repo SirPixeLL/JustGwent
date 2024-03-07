@@ -38,7 +38,11 @@ if(mode == 1){
             }
         })
     }
-    let player1 = new Player(1, "Geralt", p1faction, "placeholder", p1deck, "images/profile_pic.jpg");
-    let player2 = new Player(2, "Zoltan", p2faction, "placeholder", p2deck, "images/profile_pic2.jpg");
+    let p1Leader = new Leader("A","Francesca Findabair: The Beautiful", "Nilfgaard");
+    let p2Leader = new Leader("B","Francesca Findabair: The Beautiful", "Nilfgaard");
+    
+
+    let player1 = new Player(1, "Geralt", p1faction, p1Leader , p1deck, "images/profile_pic.jpg");
+    let player2 = new Player(2, "Zoltan", p2faction, p2Leader, p2deck, "images/profile_pic2.jpg");
     players = [player1, player2];
 }

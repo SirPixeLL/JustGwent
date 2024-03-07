@@ -81,23 +81,6 @@ class Card {
         this.isSpecial = isSpecial;
     }
 
-    /*
-    drawCard() {
-        let cardFrame = document.createElement("div");
-        cardFrame.className = "cardInHand";
-        cardFrame.id = this.type + this.id;
-        let powerDiv = document.createElement("div");
-        powerDiv.className = "powerDiv";
-        let power = document.createElement("p");
-        power.innerHTML = this.power + this.id;
-        power.className = "power";
-        powerDiv.appendChild(power);
-        cardFrame.appendChild(powerDiv);
-        currentHand.appendChild(cardFrame);
-        cardsInHand.push(document.getElementById(cardFrame.id));
-        marginTrueNeckKeys(true);
-    }*/
-
     drawOnBoards(i, j, currentPlayer){
         let cardsOnBoard;
         let enemySiege = document.getElementById("enemy_siege");
@@ -145,7 +128,5 @@ class Card {
         cardFrame.appendChild(powerDiv);
         whereTo.appendChild(cardFrame);
     }   
-
-
 }
 

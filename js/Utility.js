@@ -2,6 +2,7 @@ boards = [[[],[],[]],[[],[],[]]]
 horn = [[false, false, false],[false, false, false]];
 hornUI = [[[],[],[]],[[],[],[]]];
 weather = [false, false, false];
+medicsRandom = false;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -22,6 +23,7 @@ function updateBoards(currentPlayer){
             });
         }
     }
+    sumPowers(currentPlayer);
 }
 
 function updateLives(currentPlayer){
@@ -116,5 +118,18 @@ function updateHorn(){
             if($.isEmptyObject(hornUI[i][j]));
             else hornUI[i][j][0].drawHorn(hornHUD[i][j]);
         }
+    }
+}
+
+function assingToBoard(card){
+    switch(card.type){
+        case "Melee":
+            boards[currentPlayer][0].push(card);
+            break;
+        case "Ranged":
+            boards[currentPlayer][1].push(card);
+            break;
+        case "Siege":
+            boards[currentPlayer][2].push(card);
     }
 }
