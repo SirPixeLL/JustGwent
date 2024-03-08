@@ -8,7 +8,7 @@ let ability;
 let summons;
 let isLegend;
 let isSpecial;
-let margin = -15;
+let margin = -18;
 let currentHand = document.getElementById("current_cards");
 let cardsInHand = [];
 //console.log(margin + "px")
@@ -18,7 +18,7 @@ function marginTrueNeckKeys(value) {
         //console.log("MarginTrue");
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];
-            if (cardsInHand.length >= 10 && i != 0) {
+            if (cardsInHand.length >= 9 && i != 0) {
                 card.style.marginLeft = margin + "px";
             }
         }
