@@ -56,7 +56,7 @@ function play(card, currentPlayer){
             break;
         case "Scorch":
             if(card.name == "Villentretenmerth"){
-                scorchMelee();
+                scorchRow(0);
             }else{
                 scorch();
             }
@@ -88,6 +88,9 @@ function clearWeather(){
     weather[0] = false;
     weather[1] = false;
     weather[2] = false;
+    cycleBoard((i,j,n)=>{
+        boards[i][j][n].debuffed = false;
+    })
 }
 
 let uHorn = 0;
@@ -225,12 +228,12 @@ function scorch(){  //do rozsahu testování plně funkční
         boards[i][j].splice(n-t, 1);
     }
 }
-function scorchMelee(){
+function scorchRow(row){
     let strongest = {};
     let a = 1-currentPlayer;
     let t = 0;
-    for(let n = 0; n < boards[a][0].length; n++){
-        let element = boards[a][0][n];
+    for(let n = 0; n < boards[a][row].length; n++){
+        let element = boards[a][row][n];
         if(element.isLegend == false){
             if($.isEmptyObject(strongest)){
                 powerIndex = [element.power, n, t];
@@ -252,8 +255,8 @@ function scorchMelee(){
     for(let key in strongest){
         n = strongest[key][1];
         t = strongest[key][2];
-        players[a].discardedCards.push(boards[a][0][n-t]);
-        boards[a][0].splice(n-t, 1);
+        players[a].discardedCards.push(boards[a][row][n-t]);
+        boards[a][row].splice(n-t, 1);
     }
 }
 

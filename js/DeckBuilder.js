@@ -1,5 +1,5 @@
 let p1deck = [];
-let p1faction =  "NorthernRealms";
+let p1faction =  "Northern Realms";
 
 let p2deck = [];
 let p2faction = "Monsters";
@@ -39,10 +39,10 @@ if(mode == 1){
         })
     }
     let p1Leader = new Leader("A","Francesca Findabair: The Beautiful", "Nilfgaard");
-    let p2Leader = new Leader("B","Francesca Findabair: The Beautiful", "Nilfgaard");
+    let p2Leader = new Leader("B","Foltest: The Siegemaster", "Nilfgaard");
     
 
-    let player1 = new Player(1, "Geralt", p1faction, p1Leader , p1deck, "images/profile_pic.jpg");
-    let player2 = new Player(2, "Zoltan", p2faction, p2Leader, p2deck, "images/profile_pic2.jpg");
+    let player1 = new Player(1, p1Leader.name, p1faction, p1Leader , p1deck, "images/profile_pic.jpg");
+    let player2 = new Player(2, p2Leader.name, p2faction, p2Leader, p2deck, "images/profile_pic2.jpg");
     players = [player1, player2];
 }

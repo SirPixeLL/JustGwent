@@ -1,4 +1,4 @@
-//leaderů funkčních: 10/20
+//leaderů funkčních: 13/20
 
 function playLeader(leader){
     switch(leader.name){
@@ -11,7 +11,7 @@ function playLeader(leader){
             break;
         case "Eredin: Commander of the Red Riders": //bez chyb
             //horn na melee
-            commanderHornSet(new Card("","",0,"melee","","","","","",""), currentPlayer);
+            commanderHornSet(new Card("","",0,"Melee","","","","","",""), currentPlayer);
             endTurn();
             break;
         case "Eredin: Destroyer of Worlds":
@@ -49,22 +49,26 @@ function playLeader(leader){
             //zahraje z decku fog
             leaderWeather("ImpenetrableFog");
             break;
-        case "Foltest: Lord Commander of the North": //teoreticky funkční
+        case "Foltest: Lord Commander of the North": //bez chyb
             //zahraje clearWeather
             clearWeather();
             changeButton("switch");
             endTurn();
             break;
-        case "Foltest: Son of Medell":
+        case "Foltest: Son of Medell": //bez chyb
             //Scorchne nepřátelskou ranged
+            scorchRow(1);
+            updateBoards(currentPlayer);
             break;
         case "Foltest: The Siegemaster": //bez chyb
             //commanderHorn na siege
-            commanderHornSet(new Card("","",0,"siege","","","","","",""), currentPlayer);
+            commanderHornSet(new Card("","",0,"Siege","","","","","",""), currentPlayer);
             endTurn();
             break;
-        case "Foltest: The Steel-Forged":
+        case "Foltest: The Steel-Forged": //bez chyb
             //Scorchne nepřátelskou siege
+            scorchRow(2);
+            updateBoards(currentPlayer);
             break;
         
         //Scoia'tael
@@ -82,12 +86,12 @@ function playLeader(leader){
             break;
         case "Francesca Findabair: Queen of Dol Blathanna": //bez chyb
             //Scorchne nepřátelskou melee
-            scorchMelee();
+            scorchRow(0);
             updateBoards(currentPlayer);
             break;
         case "Francesca Findabair: The Beautiful": //bez chyb
             //commanderHorn na ranged
-            commanderHornSet(new Card("","",0,"Ranged","","","","","",""), currentPlayer);
+            commanderHornSet(new Card("","Commander's Horn",0,"Ranged","","","","","",""), currentPlayer);
             endTurn();
     }
 }

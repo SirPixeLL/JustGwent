@@ -35,7 +35,7 @@ const cardDict = {
         "number": 3
     },
     "Commanders_Horn": {
-        "name": "Commanders Horn",
+        "name": "Commander's Horn",
         "power": null,
         "type": "Horn",
         "faction": "Neutral",
