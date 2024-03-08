@@ -21,20 +21,20 @@ function marginTrueNeckKeys(value) {
                 card.style.marginLeft = margin + "px";
             }
         }
-        if (cardsInHand.length >= 10 && cardsInHand.length < 17) {
-            margin += -3;
+        if (cardsInHand.length >= 9 && cardsInHand.length < 17) {
+            margin += -4;
         }
         else if (cardsInHand.length >= 17) {
-            margin += -1;
+            margin += -2;
         }
     }
     else {
         console.debug("MarginFalse");
         if (cardsInHand.length < 17 && margin < 2) {
-            margin += 3;
+            margin += 4;
         }
         else if (cardsInHand.length >= 17) {
-            margin += 1;
+            margin += 2;
         }
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];

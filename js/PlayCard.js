@@ -13,9 +13,11 @@ function decoy(decoyCard) {
                         else if (j == 1) element = document.getElementById("Ranged"+object.id);
                         else if (j == 2) element = document.getElementById("Siege"+object.id);
                         if (i == currentPlayer && object.isLegend == false) {
+                                element.style.border = "2px yellow solid";
                                 element.addEventListener("click", function getCardBack() {
                                         players[currentPlayer].hand.push(object);
                                         boards[i][j].splice(n, 1, decoyCard);
+                                        
                                         updateAll(currentPlayer);
                                         changeButton("switch");
                                         endTurn();
