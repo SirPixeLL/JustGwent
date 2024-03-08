@@ -7,7 +7,11 @@ let ability;
 let summons;
 let isLegend;
 let isSpecial;
-let margin = -18;
+var zoomLevel = window.devicePixelRatio;
+let margin;
+let marginDiff;
+if (zoomLevel > 1) {margin = -18; marginDiff = 4}
+else {margin = -22; marginDiff = 8}
 let currentHand = document.getElementById("current_cards");
 let cardsInHand = [];
 //console.log(margin + "px")
@@ -22,19 +26,19 @@ function marginTrueNeckKeys(value) {
             }
         }
         if (cardsInHand.length >= 9 && cardsInHand.length < 17) {
-            margin += -4;
+            margin += -1*marginDiff;
         }
         else if (cardsInHand.length >= 17) {
-            margin += -2;
+            margin += -0.5*marginDiff;
         }
     }
     else {
         console.debug("MarginFalse");
         if (cardsInHand.length < 17 && margin < 2) {
-            margin += 4;
+            margin += marginDiff;
         }
         else if (cardsInHand.length >= 17) {
-            margin += 2;
+            margin += 0.5/marginDiff;
         }
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];
