@@ -24,7 +24,6 @@ function makeCardObject(cardValues, idn, i){
     cardValues.name,
     cardValues.power,
     cardValues.type,
-    cardValues.picture,
     cardValues.faction,
     cardValues.ability,
     cardValues.summons,

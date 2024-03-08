@@ -7,18 +7,9 @@ function localGame(){
 }
 function localGameStart(){
     playerUpdate(currentPlayer);
-
         for(let i = 0; i < 2; i++){
             players[i].populateHand();
         }
-    
-    //testování medic funkce
-    /*
-    for(let i = 0; i < 5; i++){
-        players[currentPlayer].discardedCards.push(players[currentPlayer].hand[i]);
-    }
-    players[currentPlayer].hand.splice(0,5);
-    */
     drawHand(currentPlayer);
     sumPowers(currentPlayer);
 }
@@ -109,7 +100,7 @@ function commanderHornSet(card, currentPlayer){
     }
     else row = 2;
     horn[currentPlayer][row] = true;
-    hornUI[currentPlayer][row].push(new Card("Commanders_Horn"+uHorn+"U", null,null,"Horn","url(../images/cards/Commanders_Horn.png)","Neutral", "CommandersHorn", null, false, true));
+    hornUI[currentPlayer][row].push(new Card("Commanders_Horn"+uHorn+"U", "Commanders Horn",null,"Horn","url(../images/cards/Commanders_Horn.png)","Neutral", "CommandersHorn", null, false, true));
     uHorn++;
     //přidat funkci která dává horn na true podle toho kam se to dá
 }
@@ -135,6 +126,7 @@ function muster(currentPlayer, card){
 
     //z balíčku
     players[currentPlayer].deck.forEach(element=>{
+        console.log(element)
         let i = players[currentPlayer].deck.indexOf(element); 
         if(element.name === card.summons){
             switch(element.type){
@@ -178,8 +170,9 @@ function muster(currentPlayer, card){
     spliceSelected(toRemove, players[currentPlayer].hand);
 }
 
-function moraleBoost(i, j, lastBooster){
+function moraleBoost(i, j){
     lastBooster = {};
+    boards[i][j].forEach(element =>{element.isBoosted=false});
     boards[i][j].forEach(element =>{
         if(element.ability == "MoraleBoost" && element != lastBooster){
             boards[i][j].forEach( e =>{
@@ -187,7 +180,10 @@ function moraleBoost(i, j, lastBooster){
                     lastBooster = element;
                 }
                 else{
-                    e.power++;
+                    if(e.isLegend == false){
+                       e.power++;
+                        e.isBoosted = true; 
+                    }
                 }
             })
         }
@@ -225,7 +221,6 @@ function scorch(){  //do rozsahu testování plně funkční
         let j = strongest[key][2];
         let n = strongest[key][3];
         let t = strongest[key][4];
-        if(boards[i][j][n-t])boards[i][j][n].ability = null;
         players[i].discardedCards.push(boards[i][j][n-t]);
         boards[i][j].splice(n-t, 1);
     }
@@ -257,7 +252,6 @@ function scorchMelee(){
     for(let key in strongest){
         n = strongest[key][1];
         t = strongest[key][2];
-        if(boards[a][0][n-t].ability == "Muster")boards[a][0][n-t].ability = null;
         players[a].discardedCards.push(boards[a][0][n-t]);
         boards[a][0].splice(n-t, 1);
     }
@@ -442,9 +436,6 @@ function endRound(){
 function discardCardsOnRoundEnd(){
     cycleBoard(function(i,j,n){
         console.log(i,j,n);
-        if(boards[i][j][n].ability == "Muster"){
-            boards[i][j][n].ability = null;
-        }
         if(boards[i][j][n].isLegend == false){
             players[i].discardedCards.push(boards[i][j][n]);
         }

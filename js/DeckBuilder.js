@@ -15,13 +15,13 @@ if(mode == 1){
     cardArray.forEach(element =>{
         //Player1
         if((element.faction == p1faction || element.faction == "Neutral") && !element.isSpecial){
-            appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.picture, element.faction, element.ability, element.summons, element.isLegend, element.isSpecial);
+            appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.isSpecial);
             p1deck.push(appendCard);
         }
         
         //Player2
         if((element.faction == p2faction || element.faction == "Neutral") && !element.isSpecial){
-            appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.picture, element.faction, element.ability, element.summons, element.isLegend, element.isSpecial);
+            appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.isSpecial);
             p2deck.push(appendCard);
         }
     })
@@ -32,8 +32,8 @@ if(mode == 1){
         cardArray.forEach(element =>{
             if(element.isSpecial){
                 if(element.id.charAt(element.id.length-1)!=2){
-                    p1deck.push(new Card(element.id+"A", element.name, element.power, element.type, element.picture, element.faction, element.ability, element.summons, element.isLegend, element.isSpecial));
-                    p2deck.push(new Card(element.id+"B", element.name, element.power, element.type, element.picture, element.faction, element.ability, element.summons, element.isLegend, element.isSpecial));
+                    p1deck.push(new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.isSpecial));
+                    p2deck.push(new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.isSpecial));
                 }
             }
         })

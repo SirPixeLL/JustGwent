@@ -62,7 +62,7 @@ function showMedicUI() {
                         }
                         else if (selectedCard.id.includes("Ranged")) {
                                 checkForSpy(currentIndex, 1, "discarded");
-                                play(discarded[currentIndex], discarded);
+                                play(discarded[currentIndex], currentPlayer);
                                 discarded.splice(currentIndex, 1);
                                 ui.style.display = "none";
                                 currentIndex = 0;

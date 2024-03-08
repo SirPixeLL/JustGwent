@@ -2,7 +2,6 @@ let id;
 let name;
 let power;
 let type;
-let picture;
 let faction;
 let ability;
 let summons;
@@ -66,19 +65,19 @@ function clearHand(){
 }
 
 class Card {
-    constructor(id, name, power, type, picture, faction, ability, summons, isLegend, isSpecial){
+    constructor(id, name, power, type, faction, ability, summons, isLegend, isSpecial){
         this.id = id;
         this.name = name;
         this.basepower = power;
         this.power = power;
         this.debuffed = false;
         this.type = type;
-        this.picture = picture;
         this.faction = faction;
         this.ability = ability;
         this.summons = summons;
         this.isLegend = isLegend;
         this.isSpecial = isSpecial;
+        this.isBoosted = false;
     }
 
     drawOnBoards(i, j, currentPlayer){
@@ -107,6 +106,7 @@ class Card {
             power.innerHTML = this.power;
             power.className = "power";
             powerDiv.appendChild(power);
+            if(this.isBoosted) power.style.color="Green";//else power.style.color="Black";
             cardFrame.appendChild(powerDiv);   
         }
         let pictureSrc = "url(../images/cards/"+this.name+".png";
@@ -129,6 +129,11 @@ class Card {
         power.className = "power";
         powerDiv.appendChild(power);
         cardFrame.appendChild(powerDiv);
+        let pictureSrc = "url(../images/cards/"+this.name+".png";
+        pictureSrc = pictureSrc.replaceAll(" ","_");
+        pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
+        cardFrame.style.backgroundImage = pictureSrc;
+        cardFrame.style.backgroundSize = "100% 100%";
         whereTo.appendChild(cardFrame);
     }   
 }
