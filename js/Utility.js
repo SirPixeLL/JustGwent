@@ -49,7 +49,7 @@ function updateLives(currentPlayer){
 
 function updateAll(currentPlayer){
     clearHand();
-    marginTrueNeckKeys(false);
+    margin = -18;
     updateBoards(currentPlayer);
     drawHand(currentPlayer);
     updateLives(currentPlayer);

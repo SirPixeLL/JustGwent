@@ -300,6 +300,11 @@ function playCard(cardType, e) {
                 targetCard.style.marginLeft = margin + "px";
                 buttonYes.style.display = "none";
                 buttonNo.style.display = "none";
+                if (cardType == "agile" || cardType == "horn") {
+                        buttonMelee.style.display = "none";
+                        buttonRanged.style.display = "none";
+                        buttonSiege.style.display = "none";
+                }
                 marginTrueNeckKeys(true);
         };
 }
