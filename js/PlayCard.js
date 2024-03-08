@@ -405,7 +405,10 @@ function drawCard(card){
                 powerDiv.appendChild(power);
                 cardFrame.appendChild(powerDiv);   
         }
-        cardFrame.style.backgroundImage = card.picture;
+        let pictureSrc = "url(../images/cards/"+card.name+".png";
+        pictureSrc = pictureSrc.replaceAll(" ","_");
+        pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
+        cardFrame.style.backgroundImage = pictureSrc;
         cardFrame.style.backgroundSize = "100% 100%";
         currentHand.appendChild(cardFrame);
         cardsInHand.push(document.getElementById(cardFrame.id));

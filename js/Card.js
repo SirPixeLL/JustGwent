@@ -109,7 +109,10 @@ class Card {
             powerDiv.appendChild(power);
             cardFrame.appendChild(powerDiv);   
         }
-        cardFrame.style.backgroundImage = this.picture;
+        let pictureSrc = "url(../images/cards/"+this.name+".png";
+        pictureSrc = pictureSrc.replaceAll(" ","_");
+        pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
+        cardFrame.style.backgroundImage = pictureSrc;
         cardFrame.style.backgroundSize = "100% 100%";
         cardsOnBoard[i][j].appendChild(cardFrame);
     }
