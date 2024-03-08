@@ -175,7 +175,6 @@ function muster(currentPlayer, card){
 
 function moraleBoost(i, j){
     lastBooster = {};
-    boards[i][j].forEach(element =>{element.isBoosted=false});
     boards[i][j].forEach(element =>{
         if(element.ability == "MoraleBoost" && element != lastBooster){
             boards[i][j].forEach( e =>{

@@ -77,7 +77,6 @@ class Card {
         this.summons = summons;
         this.isLegend = isLegend;
         this.isSpecial = isSpecial;
-        this.isBoosted = false;
     }
 
     drawOnBoards(i, j, currentPlayer){
@@ -106,7 +105,8 @@ class Card {
             power.innerHTML = this.power;
             power.className = "power";
             powerDiv.appendChild(power);
-            if(this.isBoosted) power.style.color="Green";//else power.style.color="Black";
+            if(this.power > this.basepower) power.style.color="Green";
+            if(this.power < this.basepower) power.style.color="Red";
             cardFrame.appendChild(powerDiv);   
         }
         let pictureSrc = "url(../images/cards/"+this.name+".png";
