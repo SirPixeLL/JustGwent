@@ -254,7 +254,7 @@ img {
 }
 
 .line_value {
-    border-radius: 20px;
+    border-radius: 50%;
     height: 40%;
     aspect-ratio: 1/1;
     text-align: center;

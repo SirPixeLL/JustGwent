@@ -268,7 +268,7 @@ function medic(card){
         play(ressurectedCard, currentPlayer);
         players[currentPlayer].discardedCards.splice(ressurectedIndex, 1);
     }
-    else showMedicUI();
+    else showMedicUI("default");
 }
 
 function spy(){

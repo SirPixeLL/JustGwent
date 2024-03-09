@@ -27,7 +27,7 @@ function decoy(decoyCard) {
         })
 }
 
-function showMedicUI() {
+function showMedicUI(version) {
         let ui = document.getElementById("medic_ui");
         let text = document.getElementById("medic_text");
         let previous2 = document.getElementById("previous_card2");
@@ -35,7 +35,17 @@ function showMedicUI() {
         let selected = document.getElementById("selected_card");
         let next1 = document.getElementById("next_card1");
         let next2 = document.getElementById("next_card2");
-        let discarded = players[currentPlayer].discardedCards;
+        let discarded;
+        if (version == "default") discarded = players[currentPlayer].discardedCards;
+        else if (version == "leaderWeather") {
+                text.innerHTML = "Pick any weather card from your deck";
+                let weatherCardDeck = players[currentPlayer].deck.filter(function (Card) {
+                        return Card.type == "Weather";
+                });
+                discarded = weatherCardDeck.filter(function (Card, index, self) {
+                        return self.findIndex(v => v.name === Card.name) === index;
+                });
+        }
         if(previous2.firstChild) {
                 previous2.removeChild(previous2.firstChild);
         }
@@ -57,6 +67,7 @@ function showMedicUI() {
                         if (selectedCard.id.includes("Melee")) {
                                 checkForSpy(currentIndex, 0, "discarded");
                                 play(discarded[currentIndex], currentPlayer);
+                                players[currentPlayer].discardedCards.splice(players[currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
                                 discarded.splice(currentIndex, 1);
                                 ui.style.display = "none";
                                 currentIndex = 0;
@@ -65,6 +76,7 @@ function showMedicUI() {
                         else if (selectedCard.id.includes("Ranged")) {
                                 checkForSpy(currentIndex, 1, "discarded");
                                 play(discarded[currentIndex], currentPlayer);
+                                players[currentPlayer].discardedCards.splice(players[currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
                                 discarded.splice(currentIndex, 1);
                                 ui.style.display = "none";
                                 currentIndex = 0;
@@ -73,10 +85,36 @@ function showMedicUI() {
                         else if (selectedCard.id.includes("Siege")) {
                                 checkForSpy(currentIndex, 2, "discarded");
                                 play(discarded[currentIndex], currentPlayer);
+                                players[currentPlayer].discardedCards.splice(players[currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
                                 discarded.splice(currentIndex, 1);
                                 ui.style.display = "none";
                                 currentIndex = 0;
                                 selectedCard.removeEventListener("click", medicHelper, false);
+                        }
+                        else if (discarded[currentIndex].type == "Weather") {
+                                play(discarded[currentIndex, currentPlayer]);
+                                players[currentPlayer].deck.splice(players[currentPlayer].deck.indexOf(discarded[currentIndex]), 1);
+                                discarded.splice(currentIndex, 1);
+                                let t = 0;
+                                playedWeatherCards.forEach(element => {
+                                        if(discarded[currentIndex].name != element) t++;
+                                });
+                                if(t == playedWeatherCards.length){
+                                        playedWeatherCards.push(discarded[currentIndex].name);
+                                        discarded
+                                        document.getElementById("weather_cards").appendChild(selectedCard);
+                                        selectedCard.className = "weatherCardPlayed";
+                                        selectedCard.style.margin = "2px";
+                                        selectedCard.style.marginTop = "10px"
+                                        ui.style.display = "none";
+                                        currentIndex = 0;
+                                        selectedCard.removeEventListener("click", medicHelper, false);
+                                }
+                                else{
+                                        ui.style.display = "none";
+                                        currentIndex = 0;
+                                        selectedCard.removeEventListener("click", medicHelper, false);
+                                }
                         }
                         
                         sumPowers(currentPlayer);
@@ -88,7 +126,7 @@ function showMedicUI() {
                         next1Card.addEventListener("click", function next1() {
                                 selectedCard.remove();
                                 currentIndex++;
-                                showMedicUI();
+                                showMedicUI(version);
                         })         
                 }
                 catch {}
@@ -99,7 +137,7 @@ function showMedicUI() {
                         next2Card.addEventListener("click", function next2() {
                                 selectedCard.remove();
                                 currentIndex++;
-                                showMedicUI();
+                                showMedicUI(version);
                         })         
                 }
                 catch {}
@@ -110,8 +148,7 @@ function showMedicUI() {
                         previous1Card.addEventListener("click", function previous1() {
                                 selectedCard.remove();
                                 currentIndex--;
-
-                                showMedicUI();
+                                showMedicUI(version);
                         })                  
                 }
                 catch {}
@@ -122,7 +159,7 @@ function showMedicUI() {
                         previous2Card.addEventListener("click", function previous2() {
                                 selectedCard.remove();
                                 currentIndex--;
-                                showMedicUI();
+                                showMedicUI(version);
                         })           
                 }
                 catch {}
@@ -389,13 +426,20 @@ function createCardElement(card){
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
         cardFrame.id = card.type + card.id;
-        let powerDiv = document.createElement("div");
-        powerDiv.className = "powerDiv";
-        let power = document.createElement("p");
-        power.innerHTML = card.power + card.id;
-        power.className = "power";
-        powerDiv.appendChild(power);
-        cardFrame.appendChild(powerDiv);
+        if (card.power != null) {
+                let powerDiv = document.createElement("div");
+                powerDiv.className = "powerDiv";
+                let power = document.createElement("p");
+                power.innerHTML = card.power;
+                power.className = "power";
+                powerDiv.appendChild(power);
+                cardFrame.appendChild(powerDiv);   
+        }
+        let pictureSrc = "url(../images/cards/"+card.name+".png";
+        pictureSrc = pictureSrc.replaceAll(" ","_");
+        pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
+        cardFrame.style.backgroundImage = pictureSrc;
+        cardFrame.style.backgroundSize = "100% 100%";
         return cardFrame;
 }
 

@@ -11,7 +11,7 @@ var zoomLevel = window.devicePixelRatio;
 let margin;
 let marginDiff;
 if (zoomLevel > 1) {margin = -18; marginDiff = 4}
-else {margin = -22; marginDiff = 8}
+else {margin = -20; marginDiff = 8}
 let currentHand = document.getElementById("current_cards");
 let cardsInHand = [];
 //console.log(margin + "px")
@@ -21,11 +21,11 @@ function marginTrueNeckKeys(value) {
         //console.log("MarginTrue");
         for (let i = 0; i < cardsInHand.length; i++) {
             let card = cardsInHand[i];
-            if (cardsInHand.length >= 9 && i != 0) {
+            if (cardsInHand.length >= 8 && i != 0) {
                 card.style.marginLeft = margin + "px";
             }
         }
-        if (cardsInHand.length >= 9 && cardsInHand.length < 17) {
+        if (cardsInHand.length >= 8 && cardsInHand.length < 17) {
             margin += -1*marginDiff;
         }
         else if (cardsInHand.length >= 17) {
