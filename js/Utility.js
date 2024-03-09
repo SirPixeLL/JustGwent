@@ -7,6 +7,21 @@ medicsRandom = false;
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
+
+function generateRandomUniqueInt(min, max, num) {
+    if (max - min + 1 < num) {
+        return [];
+    }
+    let result = [];
+    while (result.length < num) {
+        let randomNum = Math.floor(Math.random() * (max - min)) + min;
+        if (!result.includes(randomNum)) {
+            result.push(randomNum);
+        }
+    }
+    return result;
+}
+
 function drawHand(currentPlayer){
     players[currentPlayer].hand.forEach(element =>{
         drawCard(element);

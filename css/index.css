@@ -90,6 +90,18 @@ img {
     margin: 15px;
 }
 
+#look_button {
+    display: none;
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    margin: 2px;
+    font-weight: bold;
+    background-color: #17191a;
+    color: #ffffff;
+    margin-left: calc(50% - 50px);
+}
+
 /* MAIN BOARDS */
 #left_board {
     display: inline-block;

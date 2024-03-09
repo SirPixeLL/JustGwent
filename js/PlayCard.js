@@ -27,7 +27,7 @@ function decoy(decoyCard) {
         })
 }
 
-function showMedicUI(version) {
+function showMedicUI(version, random = 0) {
         let ui = document.getElementById("medic_ui");
         let text = document.getElementById("medic_text");
         let previous2 = document.getElementById("previous_card2");
@@ -35,7 +35,8 @@ function showMedicUI(version) {
         let selected = document.getElementById("selected_card");
         let next1 = document.getElementById("next_card1");
         let next2 = document.getElementById("next_card2");
-        let discarded;
+        let lookButton = document.getElementById("look_button")
+        let discarded = [];
         if (version == "default") discarded = players[currentPlayer].discardedCards;
         else if (version == "leaderWeather") {
                 text.innerHTML = "Pick any weather card from your deck";
@@ -45,6 +46,28 @@ function showMedicUI(version) {
                 discarded = weatherCardDeck.filter(function (Card, index, self) {
                         return self.findIndex(v => v.name === Card.name) === index;
                 });
+        }
+        else if (version == "lookAtEnemy") {
+                text.innerHTML = "3 cards from the enemy's hand";
+                ui.style.display = "block";
+                lookButton.style.display = "block";
+                let enemyDeck = players[1-currentPlayer].hand;
+                if (random == 0) {
+                        random = generateRandomUniqueInt(0, enemyDeck.length, 3)
+                        for (let i = 0; i < 3; i++) {
+                                discarded[i] = (enemyDeck[random[i]]);
+                                
+                        } 
+                }
+                else {
+                        for (let i = 0; i < 3; i++) {
+                                discarded[i] = (enemyDeck[random[i]]);         
+                        } 
+                }
+                lookButton.addEventListener("click", function look() {
+                        lookButton.style.display = "none";
+                        ui.style.display = "none";
+                })
         }
         if(previous2.firstChild) {
                 previous2.removeChild(previous2.firstChild);
@@ -63,7 +86,7 @@ function showMedicUI(version) {
                 selectedCard.className = "cardInMedicUI";
                 ui.style.display = "block";
                 selected.appendChild(selectedCard);
-                selectedCard.addEventListener("click", function medicHelper() {
+                if (version != "lookAtEnemy") selectedCard.addEventListener("click", function medicHelper() {
                         if (selectedCard.id.includes("Melee")) {
                                 checkForSpy(currentIndex, 0, "discarded");
                                 play(discarded[currentIndex], currentPlayer);
@@ -126,7 +149,8 @@ function showMedicUI(version) {
                         next1Card.addEventListener("click", function next1() {
                                 selectedCard.remove();
                                 currentIndex++;
-                                showMedicUI(version);
+                                if (version != "lookAtEnemy") showMedicUI(version);
+                                else showMedicUI(version, random)
                         })         
                 }
                 catch {}
@@ -137,7 +161,8 @@ function showMedicUI(version) {
                         next2Card.addEventListener("click", function next2() {
                                 selectedCard.remove();
                                 currentIndex++;
-                                showMedicUI(version);
+                                if (version != "lookAtEnemy") showMedicUI(version);
+                                else showMedicUI(version, random)
                         })         
                 }
                 catch {}
@@ -148,7 +173,8 @@ function showMedicUI(version) {
                         previous1Card.addEventListener("click", function previous1() {
                                 selectedCard.remove();
                                 currentIndex--;
-                                showMedicUI(version);
+                                if (version != "lookAtEnemy") showMedicUI(version);
+                                else showMedicUI(version, random)
                         })                  
                 }
                 catch {}
@@ -159,7 +185,8 @@ function showMedicUI(version) {
                         previous2Card.addEventListener("click", function previous2() {
                                 selectedCard.remove();
                                 currentIndex--;
-                                showMedicUI(version);
+                                if (version != "lookAtEnemy") showMedicUI(version);
+                                else showMedicUI(version, random)
                         })           
                 }
                 catch {}
