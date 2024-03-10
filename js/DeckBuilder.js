@@ -38,8 +38,8 @@ if(mode == 1){
             }
         })
     }
-    let p1Leader = new Leader("A","Francesca Findabair: The Beautiful", "Nilfgaard");
-    let p2Leader = new Leader("B","Foltest: The Siegemaster", "Nilfgaard");
+    let p1Leader = new Leader("A","Eredin Bréacc Glas: The Trecherous", "Nilfgaard");
+    let p2Leader = new Leader("B","Eredin Bréacc Glas: The Trecherous", "Nilfgaard");
     
 
     let player1 = new Player(1, p1Leader.name, p1faction, p1Leader , p1deck, "images/profile_pic.jpg");

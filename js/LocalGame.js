@@ -129,7 +129,6 @@ function muster(currentPlayer, card){
 
     //z balíčku
     players[currentPlayer].deck.forEach(element=>{
-        console.log(element)
         let i = players[currentPlayer].deck.indexOf(element); 
         if(element.name === card.summons){
             switch(element.type){
@@ -327,7 +326,8 @@ function endTurn(){
         for(let j = 0; j < boards[i].length; j++){
             for(let n = 0; n < boards[i][j].length; n++){
                 boards[i][j][n].power = boards[i][j][n].basepower;
-                if(boards[i][j][n].debuffed){boards[i][j][n].power = 1} //weather debuff
+                if(boards[i][j][n].debuffed) boards[i][j][n].power = 1; //weather debuff
+                if(boards[i][j][n].ability=="Spy" && spyDouble) boards[i][j][n].power = boards[i][j][n].power*2;
                 bond(i, j, n); //bond
             }
         commanderHornBuff(i,j);

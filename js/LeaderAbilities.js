@@ -1,10 +1,12 @@
-//leaderů funkčních: 13/20
+//leaderů funkčních: 14/20
 
 function playLeader(leader){
     switch(leader.name){
         //monsters
-        case "Eredin Bréacc Glas: The Trecherous":
+        case "Eredin Bréacc Glas: The Trecherous": //bez chyb
             //všechny spy power*2
+            spyDouble = true;
+            endTurn();
             break;
         case "Eredin: Bringer of Death":
             //medic do ruky
@@ -74,10 +76,27 @@ function playLeader(leader){
         //Scoia'tael
         case "Francesca Findabair: Daisy of the Valley": //bez chyb
             //na začátku hry si vezme o kartu navíc
-            //oštřeno v Player.js
+            //oštřeno v Player.j
             break;
-        case "Francesca Findabair: Hope of Aen Seidhe":
+        case "Francesca Findabair: Hope of Aen Seidhe": //hrozně se mi to nechce testovat
             //posune agile jednotky na nejvýhodnější místo
+            for(let j = 0; j < 2; j++){
+                for(let n = 0; n < boards[currentPlayer][j].length; n++){
+                    let element = boards[currentPlayer][j][n];
+                    let virtualPower = element.power;
+                    if(element.ability == "Agile"){
+                        if(weather[1-j]) virtualPower = 1;
+                        if(horn[currentPlayer][-j]) virtualPower = virtualPower*2;
+                        boards[currentPlayer][1-j].forEach(element => {
+                            if(element.ability=="moraleBoost") virtualPower++;
+                        });
+                        if(virtualPower>element.power){
+                            boards[currentPlayer][1-j].push(element);
+                            boards[currentPlayer][j].splice(n, 1);
+                        }
+                    }
+                }
+            }
             break;
         case "Francesca Findabair: Pureblood Elf": //bez chyb
             //zahraje z balíčku frost

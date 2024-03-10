@@ -3,6 +3,7 @@ horn = [[false, false, false],[false, false, false]];
 hornUI = [[[],[],[]],[[],[],[]]];
 weather = [false, false, false];
 medicsRandom = false;
+spyDouble = false;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);

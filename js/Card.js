@@ -100,7 +100,6 @@ class Card {
 
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardPlayed";
-        //console.log(cardsOnBoard[i][j]);
         cardFrame.id = this.type + this.id;
         if (this.power != null) {
             let powerDiv = document.createElement("div");
@@ -113,7 +112,7 @@ class Card {
             if(this.power < this.basepower) power.style.color="Red";
             cardFrame.appendChild(powerDiv);   
         }
-        let pictureSrc = "url(../images/cards/"+this.name+".png";
+        let pictureSrc = "url(../images/cards/"+this.name+".png)";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
         cardFrame.style.backgroundImage = pictureSrc;
@@ -124,16 +123,8 @@ class Card {
     drawHorn(whereTo){
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardPlayed";
-        //console.log(cardsOnBoard[i][j]);
         cardFrame.id = this.type + this.id;
-        let powerDiv = document.createElement("div");
-        powerDiv.className = "powerDiv";
-        let power = document.createElement("p");
-        power.innerHTML = this.id;
-        power.className = "power";
-        powerDiv.appendChild(power);
-        cardFrame.appendChild(powerDiv);
-        let pictureSrc = "url(../images/cards/"+this.name+".png";
+        let pictureSrc = "url(../images/cards/"+this.name+".png)";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
         cardFrame.style.backgroundImage = pictureSrc;
