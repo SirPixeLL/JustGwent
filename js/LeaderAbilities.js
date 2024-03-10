@@ -1,4 +1,4 @@
-//leaderů funkčních: 14/20
+//leaderů funkčních: 16/20
 
 function playLeader(leader){
     switch(leader.name){
@@ -10,6 +10,7 @@ function playLeader(leader){
             break;
         case "Eredin: Bringer of Death":
             //medic do ruky
+            showMedicUI("takeEnemysDiscarded")
             break;
         case "Eredin: Commander of the Red Riders": //bez chyb
             //horn na melee
@@ -19,14 +20,17 @@ function playLeader(leader){
         case "Eredin: Destroyer of Worlds":
             //vybere 2 karty z ruky, vyhodí je a vezme si z balíčku libovolnou kartu
             break;
-        case "Eredin: King of the Wild Hunt":
+        case "Eredin: King of the Wild Hunt": //bez chyb
             //z balíčku si vybere weather kartu
+            showMedicUI("leaderWeather")
             break;
 
 
         //Nilfgaard
-        case "Emhyr var Emreis: Emperor of Nilfgaard":
+        case "Emhyr var Emreis: Emperor of Nilfgaard": //bez chyb
             //podívá se na 3 náhodné karty z nepřítelovi ruky
+            showMedicUI("lookAtEnemy");
+            endTurn();
             break;
         case "Emhyr var Emreis: His Imperial Majesty": //bez chyb
             //zahraje torrential rain z balíčku

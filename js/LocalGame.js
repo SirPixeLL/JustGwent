@@ -432,42 +432,45 @@ function endRound(){
     players[1].hasPassed = false;
     updateAll(currentPlayer);
     addCardListener();
-    //přidat funkci ve které Monsterům zůstává jedna karta v poli
 }
 
 function discardCardsOnRoundEnd(){
-    cycleBoard(function(i,j,n){
-        console.log(i,j,n);
-        if(boards[i][j][n].isLegend == false){
-            players[i].discardedCards.push(boards[i][j][n]);
-        }
-    })
-    monsterAbility();
-    horn = [[false, false, false],[false, false, false]];
-    hornUI = [[[],[],[]],[[],[],[]]];
-}
-
-function monsterAbility(){
     let preserve = [];
     for(let i = 0; i < 2; i++){
         if(players[i].faction == "Monsters"){
             let r = [];
             for(let j = 0; j < 3; j++){
+                
                 if(boards[i][j].length > 0){
-                    r.push(boards[i][j].length);
+                    console.log(j, boards[i][j].length);
+                    r.push(j);
                 }
             }
-            let j = getRandomInt(r.length);
-            let n = getRandomInt(r[j]);
-            preserve.push([i,j, boards[i][j][n]]);
+            if($.isEmptyObject(r) == false){
+                let j = r[Math.floor((Math.random()*r.length))];
+                let n = getRandomInt(boards[i][r].length);
+                preserve.push([i,j, boards[i][j][n]]);   
+            }
+           
         }
     }
+    cycleBoard(function(i,j,n){
+        console.log(i,j,n);
+        for(let p = 0; p < preserve.length; p++){
+            if(boards[i][j][n].isLegend == false || i == preserve[p][0] && boards[i][j][n] != preserve[p][2]){
+                console.log(boards[i][j][n])
+                players[i].discardedCards.push(boards[i][j][n]);
+            } 
+        }
+        
+    })
     boards = [[[],[],[]],[[],[],[]]];
-    if($.isEmptyObject(preserve)){
+    if($.isEmptyObject(preserve) == false){
        for(let a = 0; a < preserve.length; a++){
-            console.log(preserve[a][2]);
+            console.log(preserve[a]);
             boards[preserve[a][0]][preserve[a][1]].push(preserve[a][2]);
         } 
     }
-    
+    horn = [[false, false, false],[false, false, false]];
+    hornUI = [[[],[],[]],[[],[],[]]];
 }
