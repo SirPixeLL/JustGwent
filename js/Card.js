@@ -112,6 +112,20 @@ class Card {
             if(this.power < this.basepower) power.style.color="Red";
             cardFrame.appendChild(powerDiv);   
         }
+        if (card.type == "Agile" || card.type == "Melee" || card.type == "Ranged" || card.type == "Siege") {
+            let typeDiv = document.createElement("div");
+            typeDiv.className = "typeDiv";
+            let typeSrc = "url(../images/cardWidgets/"+this.type+".png";
+            typeDiv.style.backgroundImage = typeSrc;
+            typeDiv.style.backgroundSize = "100% 100%";
+            cardFrame.appendChild(typeDiv);
+    }
+        let abilityDiv = document.createElement("div");
+        abilityDiv.className = "abilityDiv";
+        let abilitySrc = "url(../images/cardWidgets/"+this.ability+".png"
+        abilityDiv.style.backgroundImage = abilitySrc;
+        abilityDiv.style.backgroundSize = "100% 100%";
+        cardFrame.appendChild(abilityDiv);
         let pictureSrc = "url(../images/cards/"+this.name+".png)";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
