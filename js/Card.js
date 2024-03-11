@@ -101,11 +101,11 @@ class Card {
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardPlayed";
         cardFrame.id = this.type + this.id;
-        if (card.power != null) {
+        if (this.power != null) {
             let powerDiv = document.createElement("div");
             powerDiv.className = "powerDiv";
             let power = document.createElement("p");
-            power.innerHTML = card.power;
+            power.innerHTML = this.power;
             power.className = "power";
             if (this.isLegend == true) {
                     powerDiv.style.backgroundImage = "url(../images/cardWidgets/legendPowerBack.png";
@@ -119,7 +119,7 @@ class Card {
             powerDiv.appendChild(power);
             cardFrame.appendChild(powerDiv); 
         }
-        if (card.type == "Agile" || card.type == "Melee" || card.type == "Ranged" || card.type == "Siege") {
+        if (this.type == "Agile" || this.type == "Melee" || this.type == "Ranged" || this.type == "Siege") {
             let typeDiv = document.createElement("div");
             typeDiv.className = "typeDiv";
             let typeSrc = "url(../images/cardWidgets/"+this.type+".png";
