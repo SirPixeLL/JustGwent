@@ -459,6 +459,13 @@ function createCardElement(card){
                 let power = document.createElement("p");
                 power.innerHTML = card.power;
                 power.className = "power";
+                if (card.isLegend == true) {
+                        powerDiv.style.backgroundImage = "url(../images/cardWidgets/legendPowerBack.png";
+                }
+                else {
+                        powerDiv.style.backgroundImage = "url(../images/cardWidgets/powerBack.png";
+                        power.style.color = "#000000";
+                }
                 powerDiv.appendChild(power);
                 cardFrame.appendChild(powerDiv);   
         }
@@ -493,6 +500,13 @@ function drawCard(card){
                 let power = document.createElement("p");
                 power.innerHTML = card.power;
                 power.className = "power";
+                if (card.isLegend == true) {
+                        powerDiv.style.backgroundImage = "url(../images/cardWidgets/legendPowerBack.png";
+                }
+                else {
+                        powerDiv.style.backgroundImage = "url(../images/cardWidgets/powerBack.png";
+                        power.style.color = "#000000";
+                }
                 powerDiv.appendChild(power);
                 cardFrame.appendChild(powerDiv);   
         }

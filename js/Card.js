@@ -101,16 +101,23 @@ class Card {
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardPlayed";
         cardFrame.id = this.type + this.id;
-        if (this.power != null) {
+        if (card.power != null) {
             let powerDiv = document.createElement("div");
             powerDiv.className = "powerDiv";
             let power = document.createElement("p");
-            power.innerHTML = this.power;
+            power.innerHTML = card.power;
             power.className = "power";
-            powerDiv.appendChild(power);
+            if (this.isLegend == true) {
+                    powerDiv.style.backgroundImage = "url(../images/cardWidgets/legendPowerBack.png";
+            }
+            else {
+                    powerDiv.style.backgroundImage = "url(../images/cardWidgets/powerBack.png";
+                    power.style.color = "#000000";
+            }
             if(this.power > this.basepower) power.style.color="Green";
             if(this.power < this.basepower) power.style.color="Red";
-            cardFrame.appendChild(powerDiv);   
+            powerDiv.appendChild(power);
+            cardFrame.appendChild(powerDiv); 
         }
         if (card.type == "Agile" || card.type == "Melee" || card.type == "Ranged" || card.type == "Siege") {
             let typeDiv = document.createElement("div");
@@ -119,7 +126,7 @@ class Card {
             typeDiv.style.backgroundImage = typeSrc;
             typeDiv.style.backgroundSize = "100% 100%";
             cardFrame.appendChild(typeDiv);
-    }
+        }
         let abilityDiv = document.createElement("div");
         abilityDiv.className = "abilityDiv";
         let abilitySrc = "url(../images/cardWidgets/"+this.ability+".png"
