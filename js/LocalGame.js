@@ -52,7 +52,7 @@ function play(card, currentPlayer){
             muster(currentPlayer, card);
             break;
         case "CommandersHorn":
-            commanderHornSet(card, currentPlayer);
+            if(card.name != "Dandelion") commanderHornSet(card, currentPlayer);
             break;
         case "Scorch":
             if(card.name == "Villentretenmerth"){
@@ -62,7 +62,6 @@ function play(card, currentPlayer){
             }
             break;
         case "Medic":
-            console.log(players[currentPlayer].discardedCards)
             medic(card);
             break;
         case "Spy":
@@ -275,6 +274,15 @@ function spy(){
         players[currentPlayer].drawNewCard();
     }
 }
+
+function dandelion(i, j){
+    if (boards[i][j].filter(e => e.name === 'Dandelion')) {
+        for(let e = 0; e < boards[i][j].length; e++){
+            if(boards[i][j][e].name != "Dandelion") boards[i][j][e].power = boards[i][j][e].power*2;
+        }
+    }
+}
+
 function sumPowers(currentPlayer){
     UI = [[],[]];
     enemySiege = document.getElementById("enemy_siege_value");
@@ -330,6 +338,7 @@ function endTurn(){
                 if(boards[i][j][n].ability=="Spy" && spyDouble) boards[i][j][n].power = boards[i][j][n].power*2;
                 bond(i, j, n); //bond
             }
+        dandelion(i,j);
         commanderHornBuff(i,j);
         moraleBoost(i, j); 
         }}
