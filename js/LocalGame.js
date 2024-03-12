@@ -260,7 +260,6 @@ function scorchRow(row){
 
 function medic(card){
     if(medicsRandom && card.isLegend == false){
-        console.log(JSON.parse(JSON.stringify(players[currentPlayer].discardedCards)))
         ressurectedIndex = getRandomInt(players[currentPlayer].discardedCards.length);
         ressurectedCard = players[currentPlayer].discardedCards[ressurectedIndex];
         assingToBoard(ressurectedCard);
@@ -398,7 +397,6 @@ function changeButton(action){
 }
 
 function endRound(){
-    console.log(switchScreen.style); 
     clearHand(currentPlayer);
     let winner;
     

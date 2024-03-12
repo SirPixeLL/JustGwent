@@ -100,7 +100,7 @@ function spliceSelected(which, from){
 
 switchScreen = document.getElementById("switch_screen");
 
-function hideSwitchSreen(){
+function hideSwitchScreen(){
     changeButton("pass");
 
     switchScreen.style.display = "none";
@@ -154,7 +154,12 @@ let graphic = document.getElementById("end_round_graphic");
 function showEndGraphic(winner, gameEnded){
     let result = document.getElementById("end_round_result");
     let resultText;
-    if(winner == "draw"&&gameEnded) resultText = "Game ended in a draw!"
+    
+    if(gameEnded){
+        document.getElementById("switch_text").innerHTML = "Return to menu";
+        document.getElementById("switch_button").setAttribute("onclick", "returnToMenu()");
+    }
+    if(winner == "draw"&&gameEnded) resultText = "Game ended in a draw!"; 
     else if(winner == "draw") resultText = "Round ended in a draw!";
     else if(gameEnded) resultText = winner.name + " won the game!";
     else resultText = winner.name + " won the round!";
@@ -166,7 +171,6 @@ function showEndGraphic(winner, gameEnded){
     }, 0);
     setTimeout(()=>{
         hideEndGraphic();
-        console.log("nigga")
     }, 1500);
 
 }
@@ -186,11 +190,14 @@ function gameEnded(){
     }
 }
 function fadeOut(element) {
-    setInterval(function() {
+    let interval = setInterval(function() {
        let opacity = element.style.opacity;
        if (opacity > 0) {
           opacity -= 0.1;
           element.style.opacity = opacity;
+       }
+       else{
+        clearInterval(interval);
        }
     }, 50);
     setTimeout(() => {

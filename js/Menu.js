@@ -84,3 +84,11 @@ function hideLocalDeckbuilders(){
     player1_name.style.display = "none";
     player2_name.style.display = "none";
 }
+
+function returnToMenu(){
+    document.getElementById("switch_screen").style.display="none";
+    document.getElementById("switch_button").setAttribute("onclick", "hideSwitchScreen()");
+    document.getElementById("switch_text").innerHTML = "To switch players press";
+
+    document.getElementById("main_menu").style.display = "inline-block";
+}
