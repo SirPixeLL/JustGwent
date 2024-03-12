@@ -14,6 +14,8 @@ class Player{
         this.leaderUses = false;
         this.hand = [];
         this.totalPower = 0;
+        
+        this.bard = false;
 
         this.leaderPic = leaderPic;
     }

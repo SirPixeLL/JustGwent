@@ -357,3 +357,31 @@ img {
     background-color: #17191a;
     color: white;
 }
+
+#end_round_graphic {
+    width: 99.5vw;
+    height: 25vh;
+    margin-top: 37vh;
+    display:inline-block;
+    position: absolute;
+    opacity: 0;
+    background-color: #17191a;
+    transition: all 1s ease-in-out;
+}
+
+#end_round_result {
+    display: block;
+    color: white;
+    margin-top: 4%;
+    font-size: 300%;
+}
+
+#end_round_button {
+    margin-top: 2%;
+}
+
+.endHidden{
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s ease-in;
+}

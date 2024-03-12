@@ -53,6 +53,7 @@ function play(card, currentPlayer){
             break;
         case "CommandersHorn":
             if(card.name != "Dandelion") commanderHornSet(card, currentPlayer);
+            else players[currentPlayer].bard = true;
             break;
         case "Scorch":
             if(card.name == "Villentretenmerth"){
@@ -275,10 +276,11 @@ function spy(){
     }
 }
 
-function dandelion(i, j){
-    if (boards[i][j].filter(e => e.name === 'Dandelion')) {
-        for(let e = 0; e < boards[i][j].length; e++){
-            if(boards[i][j][e].name != "Dandelion") boards[i][j][e].power = boards[i][j][e].power*2;
+function dandelion(i,j){
+    if(players[i].bard && j == 0) {
+        console.log("je tam");
+        for(let e = 0; e < boards[i][0].length; e++){
+            if(boards[i][0][e].name != "Dandelion") boards[i][0][e].power = boards[i][0][e].power*2;
         }
     }
 }
@@ -359,9 +361,9 @@ function endTurn(){
 
 function passFunction(){
     changeButton("remove");
-    console.trace();
     players[currentPlayer].hasPassed = true;
-    switchFunction();
+    if(players[currentPlayer].hasPassed && players[1-currentPlayer].hasPassed);
+    else switchFunction();
     endTurn();
 
 }
@@ -396,9 +398,14 @@ function changeButton(action){
 }
 
 function endRound(){
+    console.log(switchScreen.style); 
+    clearHand(currentPlayer);
+    let winner;
+    
     if(players[currentPlayer].totalPower > players[1-currentPlayer].totalPower){
         enemyLives[players[1-currentPlayer].lives-1].style.display="none";
         players[1-currentPlayer].lives--;
+        winner = players[currentPlayer];
         if(players[currentPlayer].faction == "Northern Realms"){
             players[currentPlayer].drawNewCard();
         }
@@ -406,6 +413,7 @@ function endRound(){
     else if(players[currentPlayer].totalPower < players[1-currentPlayer].totalPower){
         ownLives[players[currentPlayer].lives-1].style.display="none";
         players[currentPlayer].lives--;
+        winner = players[1-currentPlayer];
         if(players[1-currentPlayer].faction == "Northern Realms"){
             players[1-currentPlayer].drawNewCard();
         }
@@ -417,15 +425,18 @@ function endRound(){
             enemyLives[players[1-currentPlayer].lives-1].style.display="none";
 
             players[currentPlayer].lives--;
-            players[1-currentPlayer].lives--; 
+            players[1-currentPlayer].lives--;
+            winner = "draw"; 
         }
         else if(players[currentPlayer].faction=="Nilfgaard"){
             enemyLives[players[1-currentPlayer].lives-1].style.display="none";
             players[1-currentPlayer].lives--;
+            winner = players[currentPlayer];
         }
         else if(players[1-currentPlayer].faction=="Nilfgaard"){
             ownLives[players[currentPlayer].lives-1].style.display="none";
             players[currentPlayer].lives--;
+            winner = players[1-currentPlayer];
         }
         else{
             //opakování fuuuj
@@ -433,14 +444,11 @@ function endRound(){
             enemyLives[players[1-currentPlayer].lives-1].style.display="none";
 
             players[currentPlayer].lives--;
-            players[1-currentPlayer].lives--; 
+            players[1-currentPlayer].lives--;
+            winner = "draw"; 
         }
     }
-    discardCardsOnRoundEnd();
-    players[0].hasPassed = false;
-    players[1].hasPassed = false;
-    updateAll(currentPlayer);
-    addCardListener();
+    showEndGraphic(winner, gameEnded());
 }
 
 function discardCardsOnRoundEnd(){

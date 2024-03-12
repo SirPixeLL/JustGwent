@@ -4,6 +4,7 @@ hornUI = [[[],[],[]],[[],[],[]]];
 weather = [false, false, false];
 medicsRandom = false;
 spyDouble = false;
+bard = [false, false];
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -149,3 +150,50 @@ function assingToBoard(card){
             boards[currentPlayer][2].push(card);
     }
 }
+let graphic = document.getElementById("end_round_graphic");
+function showEndGraphic(winner, gameEnded){
+    let result = document.getElementById("end_round_result");
+    let resultText;
+    if(winner == "draw"&&gameEnded) resultText = "Game ended in a draw!"
+    else if(winner == "draw") resultText = "Round ended in a draw!";
+    else if(gameEnded) resultText = winner.name + " won the game!";
+    else resultText = winner.name + " won the round!";
+    result.innerHTML = resultText;
+    graphic.style.display="inline-block";
+    graphic.className ="endVisible";
+    setTimeout(()=>{
+        graphic.style.opacity = "0.75";
+    }, 0);
+    setTimeout(()=>{
+        hideEndGraphic();
+        console.log("nigga")
+    }, 1500);
+
+}
+function hideEndGraphic(){
+    fadeOut(graphic)
+    setTimeout(()=>{
+        graphic.style.display="none";
+        discardCardsOnRoundEnd();
+        players[0].hasPassed = false;
+        players[1].hasPassed = false;
+        switchFunction();
+    }, 1500);
+}
+function gameEnded(){
+    for(let i = 0; i < 2; i++){
+        if(players[i].lives == 0) return true;
+    }
+}
+function fadeOut(element) {
+    setInterval(function() {
+       let opacity = element.style.opacity;
+       if (opacity > 0) {
+          opacity -= 0.1;
+          element.style.opacity = opacity;
+       }
+    }, 50);
+    setTimeout(() => {
+        element.style.opacity="0";
+    }, 50);
+ }
