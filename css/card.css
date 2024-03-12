@@ -14,6 +14,7 @@
 
 .powerDiv {
     display: block;
+    pointer-events: none;
     background-size: 100% 100%;
     background-position: center center;
     width: 30%; 
@@ -33,6 +34,7 @@
 
 .typeDiv {
     display: block;
+    pointer-events: none;
     width: 30%;
     aspect-ratio: 1/1;
     margin: 2px;
@@ -41,6 +43,7 @@
 
 .abilityDiv {
     display: block;
+    pointer-events: none;
     width: 30%;
     aspect-ratio: 1/1;
     margin: 2px;
