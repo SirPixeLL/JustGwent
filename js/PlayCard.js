@@ -228,9 +228,16 @@ function playCard(cardType, e) {
                 if (shownCardSlot[0].id.includes("Horn") && cardType == "agile") {
                         buttonSiege.style.display = "none";
                 }
-                shownCardSlot[0].className = "cardInHand";
-                shownCardSlot[0].style.marginLeft = margin + "px";
-                document.getElementById("current_cards").appendChild(shownCardSlot[0]);
+                if (cardType == "leader") {
+                        shownCardSlot[0].className = "leaderCard";
+                        shownCardSlot[0].style.marginLeft = margin + "px";
+                        document.getElementById("own_leader_div").appendChild(shownCardSlot[0]);
+                }
+                else {
+                        shownCardSlot[0].className = "cardInHand";
+                        shownCardSlot[0].style.marginLeft = margin + "px";
+                        document.getElementById("current_cards").appendChild(shownCardSlot[0]);
+                }
                 shownCardSlot.splice(0, 1);
                 buttonYes.style.display = "inline-block";
                 buttonNo.style.display = "inline-block";
@@ -321,6 +328,12 @@ function playCard(cardType, e) {
                                 decoy(playedCard);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
                                 document.getElementById(e.target.id).remove();
+                                shownCardSlot.splice(0, 1);
+                        }
+                        else if (cardType == "leader") {
+                                playLeader(players[currentPlayer].leader);
+                                players[currentPlayer].leader.playable = false;
+                                document.getElementById("own_leader_div").appendChild(targetCard);
                                 shownCardSlot.splice(0, 1);
                         }
                         else {
@@ -429,23 +442,28 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
         else if (e.target.id.includes("Decoy")) {
                 playCard("decoy", e);
         }
+        else if (e.target.id.includes("Leader")) {
+                playCard("leader", e)
+        }
     }
 
 function addCardListener() {
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].addEventListener("click", cardListenerHelper);
+                document.getElementById("own_leader_div").firstChild.addEventListener("click", cardListenerHelper);
         }
 }
 
 function addCardListenerToElement(element) {
         for (let i = 0; i < cardsInHand.length; i++) {
-                element.addEventListener("click", cardListenerHelper);
+                element.addEventListener("click", cardListenerHelper, false);
         }
 }
 
 function removeCardListener() {
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].removeEventListener("click", cardListenerHelper);
+                document.getElementById("own_leader_div").firstChild.removeEventListener("click", cardListenerHelper, false);
         }
 }
 
@@ -518,12 +536,14 @@ function drawCard(card){
                 typeDiv.style.backgroundSize = "100% 100%";
                 cardFrame.appendChild(typeDiv);
         }
-        let abilityDiv = document.createElement("div");
-        abilityDiv.className = "abilityDiv";
-        let abilitySrc = "url(../images/cardWidgets/"+card.ability+".png";
-        abilityDiv.style.backgroundImage = abilitySrc;
-        abilityDiv.style.backgroundSize = "100% 100%";
-        cardFrame.appendChild(abilityDiv);
+        if (card.ability != null) {
+                let abilityDiv = document.createElement("div");
+                abilityDiv.className = "abilityDiv";
+                let abilitySrc = "url(../images/cardWidgets/"+card.ability+".png";
+                abilityDiv.style.backgroundImage = abilitySrc;
+                abilityDiv.style.backgroundSize = "100% 100%";
+                cardFrame.appendChild(abilityDiv);
+        }
         let pictureSrc = "url(../images/cards/"+card.name+".png";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');

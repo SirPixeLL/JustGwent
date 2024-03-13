@@ -151,17 +151,6 @@ img {
     aspect-ratio: 16/9;    
 }
 
-#enemy_leader,
-#own_leader{
-    border-radius: 10px;
-    width: 25%;
-    aspect-ratio: 3/4;
-    margin: 10px;
-    margin-top: 30px;
-    border: 5px solid #90979a;
-    object-fit: cover;
-}
-
 #enemy_pic,
 #own_pic {
     display: inline-block;
@@ -222,12 +211,20 @@ img {
 }
 
 .leader_div {
-    height: 25vh;
+    display: inline-block;
+    height: 18%;
+    aspect-ratio: 3/4;
+    background-color: #90979a;
+    border-radius: 5px;
+    margin: 5%;
 }
 
 #pass_button {
+    display: block;
     height: 40px;
     width: 160px;
+    margin-left: calc(50% - 80px);
+    margin-top: 5%;
     border-radius: 10px;
     font-weight: bold;
     font-size: large;
