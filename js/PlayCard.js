@@ -228,9 +228,8 @@ function playCard(cardType, e) {
                 if (shownCardSlot[0].id.includes("Horn") && cardType == "agile") {
                         buttonSiege.style.display = "none";
                 }
-                if (cardType == "leader") {
-                        shownCardSlot[0].className = "leaderCard";
-                        shownCardSlot[0].style.marginLeft = margin + "px";
+                if (shownCardSlot[0].id.includes("Leader")) {
+                        shownCardSlot[0].className = "cardLeader";
                         document.getElementById("own_leader_div").appendChild(shownCardSlot[0]);
                 }
                 else {
@@ -252,7 +251,7 @@ function playCard(cardType, e) {
                 shownCardSlot.splice(0, 1);
                 shownCardSlot.push(targetCard);
                 targetCard.className = "cardShown";
-                marginTrueNeckKeys(false);
+                if (cardType != "leader")marginTrueNeckKeys(false);
         }
         if (cardType == "agile" || cardType == "horn") {
                 buttonMelee.style.display = "inline-block";
@@ -333,6 +332,8 @@ function playCard(cardType, e) {
                         else if (cardType == "leader") {
                                 playLeader(players[currentPlayer].leader);
                                 players[currentPlayer].leader.playable = false;
+                                targetCard.removeEventListener("click", cardListenerHelper, false);
+                                targetCard.className = "cardLeader";
                                 document.getElementById("own_leader_div").appendChild(targetCard);
                                 shownCardSlot.splice(0, 1);
                         }
@@ -373,18 +374,27 @@ function playCard(cardType, e) {
                 };
         }              
         buttonNo.onclick = function() {
-                document.getElementById("current_cards").appendChild(targetCard);
-                shownCardSlot.splice(0, 1);
-                targetCard.className = "cardInHand";
-                targetCard.style.marginLeft = margin + "px";
-                buttonYes.style.display = "none";
-                buttonNo.style.display = "none";
-                if (cardType == "agile" || cardType == "horn") {
-                        buttonMelee.style.display = "none";
-                        buttonRanged.style.display = "none";
-                        buttonSiege.style.display = "none";
+                if (cardType != "leader") {
+                        document.getElementById("current_cards").appendChild(targetCard);
+                        shownCardSlot.splice(0, 1);
+                        targetCard.className = "cardInHand";
+                        targetCard.style.marginLeft = margin + "px";
+                        buttonYes.style.display = "none";
+                        buttonNo.style.display = "none";
+                        if (cardType == "agile" || cardType == "horn") {
+                                buttonMelee.style.display = "none";
+                                buttonRanged.style.display = "none";
+                                buttonSiege.style.display = "none";
+                        }
+                        marginTrueNeckKeys(true);        
                 }
-                marginTrueNeckKeys(true);
+                else {
+                        document.getElementById("own_leader_div").appendChild(targetCard);
+                        shownCardSlot.splice(0, 1);
+                        targetCard.className = "cardLeader";
+                        buttonYes.style.display = "none";
+                        buttonNo.style.display = "none";
+                }
         };
 }
 
@@ -450,7 +460,6 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
 function addCardListener() {
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].addEventListener("click", cardListenerHelper);
-                document.getElementById("own_leader_div").firstChild.addEventListener("click", cardListenerHelper);
         }
 }
 
@@ -463,8 +472,11 @@ function addCardListenerToElement(element) {
 function removeCardListener() {
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].removeEventListener("click", cardListenerHelper);
-                document.getElementById("own_leader_div").firstChild.removeEventListener("click", cardListenerHelper, false);
         }
+}
+
+function addLeaderListener() {
+        document.getElementById("own_leader_div").firstElementChild.addEventListener("click", cardListenerHelper);
 }
 
 function createCardElement(card){

@@ -69,10 +69,10 @@ function updateAll(currentPlayer){
     clearLeaders();
     margin = -18;
     updateBoards(currentPlayer);
+    updateLeaders();
     drawHand(currentPlayer);
     updateLives(currentPlayer);
     updateHorn();
-    updateLeaders();
 }
 
 function playerUpdate(currentPlayer){

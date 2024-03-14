@@ -11,7 +11,7 @@ function localGameStart(){
             players[i].populateHand();
         }
     drawHand(currentPlayer);
-    updateLeaders();
+    updateLeaders(currentPlayer);
     sumPowers(currentPlayer);
 }
 function startingPlayer(){
