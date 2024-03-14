@@ -57,11 +57,9 @@ function play(card, currentPlayer){
             else players[currentPlayer].bard = true;
             break;
         case "Scorch":
-            if(card.name == "Villentretenmerth"){
-                scorchRow(0);
-            }else{
-                scorch();
-            }
+            if(card.name == "Schirrú") scorchRow(2);
+            if(card.name == "Villentretenmerth") scorchRow(0);
+            else scorch();
             break;
         case "Medic":
             medic(card);
