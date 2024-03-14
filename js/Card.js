@@ -81,6 +81,10 @@ class Card {
         this.summons = summons;
         this.isLegend = isLegend;
         this.isSpecial = isSpecial;
+        this.isAgile;
+
+        if(type == "Agile") this.isAgile = true;
+        else this.isAgile = false;
     }
 
     drawOnBoards(i, j, currentPlayer){
@@ -127,9 +131,12 @@ class Card {
             typeDiv.style.backgroundSize = "100% 100%";
             cardFrame.appendChild(typeDiv);
         }
+        let abilitySrc;
         let abilityDiv = document.createElement("div");
         abilityDiv.className = "abilityDiv";
-        let abilitySrc = "url(../images/cardWidgets/"+this.ability+".png"
+        if(this.isAgile && this.ability == null) abilitySrc = "url(../images/cardWidgets/AgileAbility.png";
+        else abilitySrc = "url(../images/cardWidgets/"+this.ability+".png";
+        
         abilityDiv.style.backgroundImage = abilitySrc;
         abilityDiv.style.backgroundSize = "100% 100%";
         cardFrame.appendChild(abilityDiv);

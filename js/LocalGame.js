@@ -76,11 +76,8 @@ function play(card, currentPlayer){
 function setWeatherDebuff(){ //row = číslo(0 melee, 1 ranged, 2 siege)
     //specifická funkce, nastavuje debuff status na určitý řádek, power se řeší na konci cyklu kola
     cycleBoard((i,j,n)=>{
-        if(weather[j] == true){
-            if(boards[i][j][n].isLegend == false){
-                boards[i][j][n].debuffed = true;
-            }
-        }
+        if(weather[j] == true && boards[i][j][n].isLegend == false) boards[i][j][n].debuffed = true;
+        else boards[i][j][n].debuffed = false;
     })
 }
 function clearWeather(){

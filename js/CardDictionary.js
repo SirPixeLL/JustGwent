@@ -622,7 +622,7 @@ const cardDict = {
         "number": 1
     },
     "Ciaran": {
-        "name": "Ciaran_aep_Easnillien",
+        "name": "Ciaran aep Easnillien",
         "power": 3,
         "type": "Agile",
         "faction": "Scoia'tael",
@@ -658,7 +658,7 @@ const cardDict = {
         "number": 1
     },
     "Dol_Blathanna_Scout": {
-        "name": "Dol Blathanna",
+        "name": "Dol Blathanna Scout",
         "power": 6,
         "type": "Agile",
         "faction": "Scoia'tael",

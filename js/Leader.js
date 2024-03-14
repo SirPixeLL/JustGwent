@@ -38,5 +38,4 @@ function clearLeaders() {
     let enemyLeaderDiv = document.getElementById("enemy_leader_div");
     ownLeaderDiv.removeChild(ownLeaderDiv.firstElementChild);
     enemyLeaderDiv.removeChild(enemyLeaderDiv.firstElementChild);
-    console.trace()
 }

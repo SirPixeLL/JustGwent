@@ -555,6 +555,13 @@ function drawCard(card){
                 abilityDiv.style.backgroundImage = abilitySrc;
                 abilityDiv.style.backgroundSize = "100% 100%";
                 cardFrame.appendChild(abilityDiv);
+        } else if(card.isAgile){
+                let abilityDiv = document.createElement("div");
+                abilityDiv.className = "abilityDiv";
+                let abilitySrc = "url(../images/cardWidgets/AgileAbility.png";
+                abilityDiv.style.backgroundImage = abilitySrc;
+                abilityDiv.style.backgroundSize = "100% 100%";
+                cardFrame.appendChild(abilityDiv);
         }
         let pictureSrc = "url(../images/cards/"+card.name+".png";
         pictureSrc = pictureSrc.replaceAll(" ","_");
