@@ -263,7 +263,7 @@ const cardDict = {
         "name": "Albrich",
         "power": 2,
         "type": "Ranged",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -275,7 +275,7 @@ const cardDict = {
         "name": "Assire var Anahid",
         "power": 6,
         "type": "Ranged",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -287,7 +287,7 @@ const cardDict = {
         "name": "Black Infantry Archer",
         "power": 10,
         "type": "Ranged",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -299,7 +299,7 @@ const cardDict = {
         "name": "Cahir Mawr Dyffryn aep Ceallach",
         "power": 6,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -311,7 +311,7 @@ const cardDict = {
         "name": "Cynthia",
         "power": 4,
         "type": "Ranged",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -323,7 +323,7 @@ const cardDict = {
         "name": "Etolian Auxiliary Archers",
         "power": 1,
         "type": "Ranged",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": "Medic",
         "summons": null,
         "isLegend": false,
@@ -335,7 +335,7 @@ const cardDict = {
         "name": "Fringilla Vigo",
         "power": 6,
         "type": "Ranged",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -347,7 +347,7 @@ const cardDict = {
         "name": "Heavy Zerrikanian Fire Scorpion",
         "power": 10,
         "type": "Siege",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -359,7 +359,7 @@ const cardDict = {
         "name": "Impera Brigade Guard",
         "power": 3,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": "TightBond",
         "summons": null,
         "isLegend": false,
@@ -371,7 +371,7 @@ const cardDict = {
         "name": "Letho of Gulet",
         "power": 10,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": true,
@@ -383,7 +383,7 @@ const cardDict = {
         "name": "Menno Coehoorn",
         "power": 10,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": "Medic",
         "summons": null,
         "isLegend": true,
@@ -395,7 +395,7 @@ const cardDict = {
         "name": "Morteisen",
         "power": 3,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -407,7 +407,7 @@ const cardDict = {
         "name": "Morvran Voorhis",
         "power": 10,
         "type": "Siege",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": true,
@@ -419,7 +419,7 @@ const cardDict = {
         "name": "Nausicaa Cavalry Rider",
         "power": 2,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": "TightBond",
         "summons": null,
         "isLegend": false,
@@ -431,7 +431,7 @@ const cardDict = {
         "name": "Puttkammer",
         "power": 3,
         "type": "Ranged",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -443,7 +443,7 @@ const cardDict = {
         "name": "Rainfarn",
         "power": 4,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -455,7 +455,7 @@ const cardDict = {
         "name": "Renuald aep Matsen",
         "power": 5,
         "type": "Ranged",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -467,7 +467,7 @@ const cardDict = {
         "name": "Rotten Mangonel",
         "power": 3,
         "type": "Siege",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -479,7 +479,7 @@ const cardDict = {
         "name": "Shilard Fitz-Oesterlen",
         "power": 7,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": "Spy",
         "summons": null,
         "isLegend": false,
@@ -491,7 +491,7 @@ const cardDict = {
         "name": "Siege Engineer",
         "power": 6,
         "type": "Siege",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -503,7 +503,7 @@ const cardDict = {
         "name": "Siege Technician",
         "power": 0,
         "type": "Siege",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": "Medic",
         "summons": null,
         "isLegend": false,
@@ -515,7 +515,7 @@ const cardDict = {
         "name": "Stefan Skellen",
         "power": 9,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": "Spy",
         "summons": null,
         "isLegend": false,
@@ -527,7 +527,7 @@ const cardDict = {
         "name": "Sweers",
         "power": 2,
         "type": "Ranged",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -539,7 +539,7 @@ const cardDict = {
         "name": "Tibor Eggebracht",
         "power": 10,
         "type": "Ranged",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": true,
@@ -551,7 +551,7 @@ const cardDict = {
         "name": "Vanhemar",
         "power": 4,
         "type": "Ranged",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -563,7 +563,7 @@ const cardDict = {
         "name": "Vattier de Rideaux",
         "power": 4,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": "Spy",
         "summons": null,
         "isLegend": false,
@@ -575,7 +575,7 @@ const cardDict = {
         "name": "Vreemde",
         "power": 2,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -587,7 +587,7 @@ const cardDict = {
         "name": "Young Emissary",
         "power": 5,
         "type": "Melee",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": "TightBond",
         "summons": null,
         "isLegend": false,
@@ -599,7 +599,7 @@ const cardDict = {
         "name": "Zerrikanian Fire Scorpion",
         "power": 5,
         "type": "Siege",
-        "faction": "Nilfgaard",
+        "faction": "Nilfgaardian Empire",
         "ability": null,
         "summons": null,
         "isLegend": false,
@@ -607,4 +607,111 @@ const cardDict = {
         "quote": "The Zerrikania Desert used to be a lush garden. Then these came along.",
         "number": 1
     },
+}
+
+const leaderDict = {
+    //Monsters
+    "Trecherous":{
+        "name": "Eredin Bréacc Glas: The Trecherous",
+        "faction": "Monsters",
+        "quote": "I'm enjoying this. You are my toy."
+    },
+    "Bringer_of_Death":{
+        "name": "Eredin Bréacc Glas: Bringe of Death",
+        "faction": "Monsters",
+        "quote": "Go on. Show me your spins, pirouettes and feints. I want to watch."
+    },
+    "Commander_Riders":{
+        "name": "Eredin Bréacc Glas: Commander of the Red Riders",
+        "faction": "Monsters",
+        "quote": "Have some dignity. You know how this will end."
+    },
+    "Destroyer_Worlds":{
+        "name": "Eredin Bréacc Glas: Destroyer of Worlds",
+        "faction": "Monsters",
+        "quote": "It is unavoidable."
+    },
+    "King_Wild_Hunt":{
+        "name": "Eredin Bréacc Glas: King of the Wild Hunt",
+        "faction": "Monsters",
+        "quote": "I've long awaited this..."
+    },
+    //Nilfgaard
+    "Emperor_Nilfgaard":{
+        "name": "Emhyr var Emreis: Emperor of Nilfgaard",
+        "faction": "Nilfgaardian Empire",
+        "quote": "Your motives do not interest me. Only results." 
+    },
+    "Imperial_Majesty":{
+        "name": "Emhyr var Emreis: His Imperial Majesty",
+        "faction": "Nilfgaardian Empire",
+        "quote": "The skies wept when my Pavetta died. They will not weep for me."
+    },
+    "Invader_North":{
+        "name": "Emhyr var Emreis: Invader of the North",
+        "faction": "Nilfgaardian Empire",
+        "quote": "Emperors command multitudes, yet cannot control two things: their time and their hearts."
+    },
+    "Relentless":{
+        "name": "Emhyr var Emreis: The Relentless",
+        "faction": "Nilfgaardian Empire",
+        "quote": "They do not call me the Patient. Take care they do not call you the Headless."
+    },
+    "White_Flame":{
+        "name": "Emhyr var Emreis: The White Flame",
+        "faction": "Nilfgaardian Empire",
+        "quote": "A sword is but one of many tools at a ruler's disposal."  
+    },
+    //Northern Realms
+    "King_Temeria":{
+        "name": "Foltest: King of Temeria",
+        "faction": "Northern Realms",
+        "quote": "It is natural and beautiful that a man should love his sister."  
+    },
+    "Lord_Commander":{
+        "name": "Foltest: Lord Commander of the North",
+        "faction": "Northern Realms",
+        "quote": "Sod advisors and their schemes. I place my trust in my solders' blades."  
+    },
+    "Son_Medell":{
+        "name": "Foltest: Son of Medell",
+        "faction": "Northern Realms",
+        "quote": "Dammit, I rule this land and I refuse to creep around its corners."  
+    },
+    "Siegemaster":{
+        "name": "Foltest: The Siegemaster",
+        "faction": "Northern Realms",
+        "quote": "A well-aimed ballista razes not just the enemy's walls, but his morale as well."  
+    },
+    "SteelForged":{
+        "name": "Foltest: The Steel-Forged",
+        "faction": "Northern Realms",
+        "quote": "A beautiful day for battle."  
+    },
+    //Scoia'tael
+    "Daisy_Valley":{
+        "name": "Francesca Findabair: Daisy of the Valley",
+        "faction": "Scoia'tael",
+        "quote": "The Elder Races have forgotten more than humans can ever hope to know."  
+    },
+    "Hope_Aen_Seidhe":{
+        "name": "Francesca Findabair: Hope of Aen Seidhe",
+        "faction": "Scoia'tael",
+        "quote": "Daede sian caente, Aen Seidhe en'allane ael coeden..."  
+    },
+    "Pureblood_Elf":{
+        "name": "Francesca Findabair: Pureblood Elf",
+        "faction": "Scoia'tael",
+        "quote": "Ash shall fertilize the soil. By spring, the valley shall bloom once more."  
+    },
+    "Queen_Dol_Blathanna":{
+        "name": "Francesca Findabair: Queen of Dol Blathanna",
+        "faction": "Scoia'tael",
+        "quote": "To live in peace, we first must kill. This is human oppression's cruel finale."  
+    },
+    "Beutiful":{
+        "name": "Francesca Findabair: The Beautiful",
+        "faction": "Scoia'tael",
+        "quote": "Do not let my beauty distract your aim."  
+    }
 }

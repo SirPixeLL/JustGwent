@@ -1,5 +1,5 @@
-let cardArray = [];
-
+cardArray = [];
+leaderArray = [];
   //vytváří instance třídy Card ze slovníku karet
   //dává instance třídy karet do seznamu
   //přidává ke každé kartě id (id pouze pro jednu stranu = nepřítel může mít kartu se stejným id(ošetřeno v deckBuilderu))
@@ -16,6 +16,20 @@ for (let key in cardDict) {
     makeCardObject(cardValues, "", i);
   }
   i++;
+}
+i = 0
+for (let key in leaderDict){
+  let leaderValues = leaderDict[key];
+  makeLeaderObject(leaderValues, i++);
+}
+function makeLeaderObject(leaderValues, i){
+  let leader = new Leader(
+    Object.keys(leaderDict)[i],
+    leaderValues.name,
+    leaderValues.faction,
+    leaderValues.quote
+  )
+  leaderArray.push(leader);
 }
 
 function makeCardObject(cardValues, idn, i){

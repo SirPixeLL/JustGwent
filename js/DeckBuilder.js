@@ -8,6 +8,22 @@ let p2faction = "Monsters";
 //Classic = 2
 let mode = 1;
 
+function splitLeadersArray(){
+    p1leaders = [];
+    p2leaders = [];
+    leaderArray.forEach(e =>{
+        if(e.faction == p1faction){
+            appendLeader = new Leader(e.id+"A", e.name, e.faction);
+            p1leaders.push(appendLeader);
+        }
+        if(e.faction == p2faction){
+            appendLeader = new Leader(e.id+"B", e.name, e.faction);
+            p2leaders.push(appendLeader);
+        }
+        
+    })
+}
+
 if(mode == 1){
 
     balancedSpecial();
@@ -38,8 +54,9 @@ if(mode == 1){
             }
         })
     }
-    let p1Leader = new Leader("A","Eredin: Bringer of Death", "Nilfgaard");
-    let p2Leader = new Leader("B","Eredin: Bringer of Death", "Nilfgaard");
+    splitLeadersArray();
+    let p1Leader = p1leaders[0];
+    let p2Leader = p2leaders[1];
     
 
     let player1 = new Player(1, p1Leader.name, p1faction, p1Leader , p1deck, "images/profile_pic.jpg");

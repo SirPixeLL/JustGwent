@@ -1,6 +1,6 @@
 class Leader{
-    constructor(idn , name, faction){
-        this.id = name+idn;
+    constructor(id, name, faction){
+        this.id = id;
         this.name = name;
         this.faction = faction;
         this.playable = true;
@@ -26,8 +26,9 @@ function drawLeader(leader) {
 function drawLeaders(currentPlayer) {
     let ownLeaderDiv = document.getElementById("own_leader_div");
     let enemyLeaderDiv = document.getElementById("enemy_leader_div");
-    ownLeaderDiv.appendChild(drawLeader(currentPlayer.leader));
-    enemyLeaderDiv.appendChild(drawLeader(1-currentPlayer.leader));
+    ownLeaderDiv.appendChild(drawLeader(players[currentPlayer].leader));
+    enemyLeaderDiv.appendChild(drawLeader(players[1-currentPlayer].leader));
+    addCardListener();
 }
 
 function clearLeaders() {
@@ -35,4 +36,5 @@ function clearLeaders() {
     let enemyLeaderDiv = document.getElementById("enemy_leader_div");
     ownLeaderDiv.removeChild(ownLeaderDiv.firstChild);
     enemyLeaderDiv.removeChild(enemyLeaderDiv.firstChild);
+    console.trace()
 }

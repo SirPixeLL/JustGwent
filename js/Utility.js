@@ -66,11 +66,13 @@ function updateLives(currentPlayer){
 
 function updateAll(currentPlayer){
     clearHand();
+    clearLeaders();
     margin = -18;
     updateBoards(currentPlayer);
     drawHand(currentPlayer);
     updateLives(currentPlayer);
     updateHorn();
+    updateLeaders();
 }
 
 function playerUpdate(currentPlayer){
@@ -134,6 +136,10 @@ function updateHorn(){
             else hornUI[i][j][0].drawHorn(hornHUD[i][j]);
         }
     }
+}
+function updateLeaders(){
+    drawLeaders(currentPlayer)
+    addCardListener();
 }
 
 function assingToBoard(card){
