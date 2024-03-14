@@ -129,4 +129,5 @@ function leaderWeather(effect){
         }
         return true;
     });
+    endTurn();
 }

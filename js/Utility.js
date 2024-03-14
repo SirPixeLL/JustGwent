@@ -138,8 +138,7 @@ function updateHorn(){
     }
 }
 function updateLeaders(){
-    drawLeaders(currentPlayer)
-    addCardListener();
+    drawLeaders(currentPlayer);
 }
 
 function assingToBoard(card){

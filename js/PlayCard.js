@@ -330,12 +330,12 @@ function playCard(cardType, e) {
                                 shownCardSlot.splice(0, 1);
                         }
                         else if (cardType == "leader") {
-                                playLeader(players[currentPlayer].leader);
-                                players[currentPlayer].leader.playable = false;
-                                targetCard.removeEventListener("click", cardListenerHelper, false);
                                 targetCard.className = "cardLeader";
                                 document.getElementById("own_leader_div").appendChild(targetCard);
+                                playLeader(players[currentPlayer].leader);
+                                players[currentPlayer].leader.playable = false;
                                 shownCardSlot.splice(0, 1);
+                                document.getElementById("own_leader_div").firstElementChild.removeEventListener("click", cardListenerHelper, false);
                         }
                         else {
                                 shownCardSlot.splice(0, 1);

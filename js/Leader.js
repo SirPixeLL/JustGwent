@@ -30,7 +30,7 @@ function drawLeaders(currentPlayer) {
     let enemyLeaderDiv = document.getElementById("enemy_leader_div");
     ownLeaderDiv.appendChild(drawLeader(players[currentPlayer].leader));
     enemyLeaderDiv.appendChild(drawLeader(players[1-currentPlayer].leader));
-    addLeaderListener();
+    if(players[currentPlayer].leader.playable == true) addLeaderListener();
 }
 
 function clearLeaders() {
