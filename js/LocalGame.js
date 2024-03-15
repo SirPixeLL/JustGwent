@@ -459,17 +459,15 @@ function discardCardsOnRoundEnd(){
             }
             if($.isEmptyObject(r) == false){
                 let j = r[Math.floor((Math.random()*r.length))];
-                let n = getRandomInt(boards[i][r].length);
+                let n = getRandomInt(boards[i][j].length);
                 preserve.push([i,j, boards[i][j][n]]);   
             }
            
         }
     }
     cycleBoard(function(i,j,n){
-        console.log(i,j,n);
         for(let p = 0; p < preserve.length; p++){
-            if(boards[i][j][n].isLegend == false || i == preserve[p][0] && boards[i][j][n] != preserve[p][2]){
-                console.log(boards[i][j][n])
+            if(i == preserve[p][0] && boards[i][j][n] != preserve[p][2] && boards[i][j][n].isLegend == false){
                 players[i].discardedCards.push(boards[i][j][n]);
             } 
         }

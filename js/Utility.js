@@ -73,6 +73,7 @@ function updateAll(currentPlayer){
     drawHand(currentPlayer);
     updateLives(currentPlayer);
     updateHorn();
+    discardPile();
 }
 
 function playerUpdate(currentPlayer){
@@ -207,4 +208,13 @@ function fadeOut(element) {
     setTimeout(() => {
         element.style.opacity="0";
     }, 50);
+ }
+ 
+ function discardPile(){
+    console.log(players[currentPlayer].discardedCards);
+    if($.isEmptyObject(players[currentPlayer].discardedCards)==false){
+        let card = players[currentPlayer].discardedCards[players[currentPlayer].discardedCards.length - 1];
+        console.log(card);
+        card.drawHorn(document.getElementById("own_discarded"))
+    }
  }
