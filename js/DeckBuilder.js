@@ -1,8 +1,8 @@
 let p1deck = [];
-let p1faction =  "Northern Realms";
+let p1faction =  "Nilfgaardian Empire";
 
 let p2deck = [];
-let p2faction = "Scoia'tael";
+let p2faction = "Monsters";
 
 //Balanced = 1
 //Classic = 2
@@ -55,8 +55,8 @@ if(mode == 1){
         })
     }
     splitLeadersArray();
-    let p1Leader = p1leaders[0];
-    let p2Leader = p2leaders[1];
+    let p1Leader = p1leaders[4];
+    let p2Leader = p2leaders[4];
     
 
     let player1 = new Player(1, p1Leader.name, p1faction, p1Leader , p1deck, "images/profile_pic.jpg");
