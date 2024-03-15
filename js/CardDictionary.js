@@ -895,22 +895,22 @@ const leaderDict = {
         "quote": "I'm enjoying this. You are my toy."
     },
     "Bringer_of_Death":{
-        "name": "Eredin Bréacc Glas: Bringe of Death",
+        "name": "Eredin: Bringer of Death",
         "faction": "Monsters",
         "quote": "Go on. Show me your spins, pirouettes and feints. I want to watch."
     },
     "Commander_Riders":{
-        "name": "Eredin Bréacc Glas: Commander of the Red Riders",
+        "name": "Eredin: Commander of the Red Riders",
         "faction": "Monsters",
         "quote": "Have some dignity. You know how this will end."
     },
     "Destroyer_Worlds":{
-        "name": "Eredin Bréacc Glas: Destroyer of Worlds",
+        "name": "Eredin: Destroyer of Worlds",
         "faction": "Monsters",
         "quote": "It is unavoidable."
     },
     "King_Wild_Hunt":{
-        "name": "Eredin Bréacc Glas: King of the Wild Hunt",
+        "name": "Eredin: King of the Wild Hunt",
         "faction": "Monsters",
         "quote": "I've long awaited this..."
     },
@@ -973,7 +973,7 @@ const leaderDict = {
         "quote": "The Elder Races have forgotten more than humans can ever hope to know."  
     },
     "Hope_Aen_Seidhe":{
-        "name": "Francesca Findabair: Hope of Aen Seidhe",
+        "name": "Francesca Findabair: Hope of the Aen Seidhe",
         "faction": "Scoia'tael",
         "quote": "Daede sian caente, Aen Seidhe en'allane ael coeden..."  
     },

@@ -422,12 +422,12 @@ function endRound(){
             players[1-currentPlayer].lives--;
             winner = "draw"; 
         }
-        else if(players[currentPlayer].faction=="Nilfgaard"){
+        else if(players[currentPlayer].faction=="Nilfgaardian Empire"){
             enemyLives[players[1-currentPlayer].lives-1].style.display="none";
             players[1-currentPlayer].lives--;
             winner = players[currentPlayer];
         }
-        else if(players[1-currentPlayer].faction=="Nilfgaard"){
+        else if(players[1-currentPlayer].faction=="Nilfgaardian Empire"){
             ownLives[players[currentPlayer].lives-1].style.display="none";
             players[currentPlayer].lives--;
             winner = players[1-currentPlayer];

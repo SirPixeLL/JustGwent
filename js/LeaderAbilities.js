@@ -82,13 +82,14 @@ function playLeader(leader){
             //na začátku hry si vezme o kartu navíc
             //oštřeno v Player.j
             break;
-        case "Francesca Findabair: Hope of Aen Seidhe": //hrozně se mi to nechce testovat
+        case "Francesca Findabair: Hope of the Aen Seidhe": //hrozně se mi to nechce testovat
             //posune agile jednotky na nejvýhodnější místo
             for(let j = 0; j < 2; j++){
                 for(let n =  boards[currentPlayer][j].length - 1; n>=0; n--){
                     if(boards[currentPlayer][j][n].isAgile){
                         let virtualPower = boards[currentPlayer][j][n].basepower;
                         if(weather[1-j]) virtualPower = 1;
+                        if(1-j == 0 && players[currentPlayer].bard) virtualPower = virtualPower*2;
                         if(horn[currentPlayer][1-j]) virtualPower = virtualPower*2;
                         boards[currentPlayer][1-j].forEach(element => {
                             if(element.ability=="moraleBoost") virtualPower++;
@@ -104,6 +105,7 @@ function playLeader(leader){
                 }
             }
             endTurn();
+            updateHorn();
             updateBoards(currentPlayer);
             break;
         case "Francesca Findabair: Pureblood Elf": //bez chyb

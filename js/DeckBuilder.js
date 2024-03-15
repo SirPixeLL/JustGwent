@@ -1,8 +1,8 @@
 let p1deck = [];
-let p1faction =  "Northern Realms";
+let p1faction =  "Nilfgaardian Empire";
 
 let p2deck = [];
-let p2faction = "Scoia'tael";
+let p2faction = "Monsters";
 
 //Balanced = 1
 //Classic = 2
@@ -55,8 +55,8 @@ if(mode == 1){
         })
     }
     splitLeadersArray();
-    let p1Leader = p1leaders[0];
-    let p2Leader = p2leaders[1];
+    let p1Leader = p1leaders[4];
+    let p2Leader = p2leaders[4];
     
     let picture1Src = "../images/"+p1faction+".png";
     picture1Src = picture1Src.replaceAll(" ","_");
