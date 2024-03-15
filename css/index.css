@@ -47,6 +47,35 @@ img {
     font-weight: bold;
 }
 
+/*Round End*/
+#end_round_graphic {
+    width: 99.5vw;
+    height: 25vh;
+    margin-top: 37vh;
+    display:none;
+    position: absolute;
+    opacity: 0;
+    background-color: #17191a;
+    transition: all 1s ease-in-out;
+}
+
+#end_round_result {
+    display: block;
+    color: white;
+    margin-top: 4%;
+    font-size: 300%;
+}
+
+#end_round_button {
+    margin-top: 2%;
+}
+
+.endHidden{
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s ease-in;
+}
+
 /*Medic UI*/
 #medic_ui {
     position: absolute;
@@ -134,7 +163,7 @@ img {
     display: inline-block;
     background-color: #17191a;
     width: 100%;
-    height: 10%;
+    height: 12%;
 }
 
 #enemy_card_num,
@@ -156,28 +185,32 @@ img {
     display: inline-block;
     vertical-align: middle;
     margin: 5px;
-    width: 60px;
-    border-radius: 60px;
+    height: 80%;
+    top: 10%;
 }
 
 .player_name {
     text-align: left;
     color: #aa9667;
     font-weight: bold;
-    height: 16px;
+    height: 40%;
+    margin: 2px;
+    line-height: 100%;
 }
 
 .player_faction {
     text-align: left;
     height: 16px;
     color: #aa9667;
-    margin-bottom: 2px;
+    margin: 2px;
+    margin-top: 1%;
+    line-height: 100%;
 }
 
 .status_content {
     display: inline-block;
     vertical-align: middle;
-    height: 80%;
+    height: 100%;
     width: 50%;
 }
 
@@ -216,7 +249,7 @@ img {
     aspect-ratio: 3/4;
     background-color: #90979a;
     border-radius: 5px;
-    margin: 5%;
+    margin: 4%;
 }
 
 #pass_button {
@@ -224,7 +257,6 @@ img {
     height: 40px;
     width: 160px;
     margin-left: calc(50% - 80px);
-    margin-top: 5%;
     border-radius: 10px;
     font-weight: bold;
     font-size: large;
@@ -353,32 +385,4 @@ img {
     aspect-ratio: 3/4;
     background-color: #17191a;
     color: white;
-}
-
-#end_round_graphic {
-    width: 99.5vw;
-    height: 25vh;
-    margin-top: 37vh;
-    display:inline-block;
-    position: absolute;
-    opacity: 0;
-    background-color: #17191a;
-    transition: all 1s ease-in-out;
-}
-
-#end_round_result {
-    display: block;
-    color: white;
-    margin-top: 4%;
-    font-size: 300%;
-}
-
-#end_round_button {
-    margin-top: 2%;
-}
-
-.endHidden{
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 2s ease-in;
 }
