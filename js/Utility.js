@@ -86,6 +86,7 @@ function playerUpdate(currentPlayer){
         HUD = [enemyHUD, ownHUD];
     }
     for(let i = 0; i < 2; i++){
+        HUD[i][1].src=players[i].factionCOA;
         HUD[i][2].innerHTML=players[i].name;
         HUD[i][3].innerHTML=players[i].faction;
     }

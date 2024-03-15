@@ -15,7 +15,6 @@ function drawLeader(leader) {
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
         cardFrame.style.backgroundImage = pictureSrc;
-        console.log(pictureSrc);
         cardFrame.style.backgroundSize = "100% 100%";
         if (leader.playable == false) {
             cardFrame.style.backgroundBlendMode = "multiply";

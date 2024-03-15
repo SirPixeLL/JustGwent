@@ -1,7 +1,7 @@
 
 //instance se vytváří po vytvoření decku
 class Player{
-    constructor(id, name, faction, leader, deck, leaderPic){
+    constructor(id, name, faction, leader, deck){
         this.id = id;
         this.name = name;
         this.faction = faction;
@@ -17,7 +17,10 @@ class Player{
         
         this.bard = false;
 
-        this.leaderPic = leaderPic;
+        let pictureSrc = "../images/"+this.faction+".png";
+        pictureSrc = pictureSrc.replaceAll(" ","_");
+        pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
+        this.factionCOA = pictureSrc;
     }
 
     drawNewCard(){
