@@ -6,6 +6,7 @@
 }
 
 body,html{
+    overflow: hidden;
     width: 100%; height: 100vh;
     font-family: 'Noticia Text', serif;
     object-position: center;
@@ -18,6 +19,12 @@ img {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+}
+
+#body_div {
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 16/7.8;
 }
 
 /*Switch screen*/
@@ -93,68 +100,53 @@ img {
     margin-top: 10px;
     color: #ffffff;
 }
-
-#selected_card {
-    display: inline-block;
-    aspect-ratio: 3/4;
-    border-radius: 10px;
-    width: 17.5%;
-    margin: 15px;
-    margin-top: 15px;
-}
-
-.side_card1 {
-    display: inline-block;
-    aspect-ratio: 3/4;
-    border-radius: 10px;
-    width: 12.5%;
-    margin: 15px;
-}
-
+#selected_card,
+.side_card1,
 .side_card2 {
     display: inline-block;
     aspect-ratio: 3/4;
-    border-radius: 10px;
-    width: 7.5%;
+    border-radius: 5px;
     margin: 15px;
+    width: 17.5%;
+    vertical-align: middle;
+}
+
+.side_card1 {
+    width: 12.5%;
+}
+
+.side_card2 {
+    width: 7.5%;
 }
 
 #look_button {
     display: none;
-    height: 50px;
-    width: 100px;
+    height: 10%;
+    width: 40%;
     border-radius: 10px;
     margin: 2px;
     font-weight: bold;
     background-color: #17191a;
     color: #ffffff;
-    margin-left: calc(50% - 50px);
+    margin-left: 30%;
 }
 
 /* MAIN BOARDS */
-#left_board {
-    display: inline-block;
-    background-color: #c7cbcd;
-    height: 100%;
-    width: 24.5%;
-    text-align: center;
-    vertical-align: middle;  
-}
-
-#center_board {
-    display: inline-block;
-    background-color: #e3e5e6;
-    height: 100%;
-    width: 50%;
-    vertical-align: auto;
-}
-
+#left_board,
+#center_board,
 #right_board {
     display: inline-block;
     background-color: #c7cbcd;
     height: 100%;
     width: 24.5%;
+    text-align: center;  
 }
+
+#center_board {
+    background-color: #e3e5e6;
+    width: 50%;
+}
+
 
 /*Styles for the left of the board*/
 
@@ -175,9 +167,9 @@ img {
 #weather_cards {
     background-color: #90979a;
     border-radius: 5px;
-    height: 21%;
-    margin: 10px auto;
-    aspect-ratio: 16/9;    
+    height: 22%;
+    width: 90%;
+    margin: 10px auto;    
 }
 
 #enemy_pic,
@@ -186,25 +178,23 @@ img {
     vertical-align: middle;
     margin: 5px;
     height: 80%;
-    top: 10%;
+    object-fit: center;
+}
+.player_faction,
+.player_name{
+    text-align: left;
+    color: #aa9667;
+    margin: 2px;
+    line-height: 100%;
 }
 
 .player_name {
-    text-align: left;
-    color: #aa9667;
     font-weight: bold;
     height: 40%;
-    margin: 2px;
-    line-height: 100%;
 }
 
 .player_faction {
-    text-align: left;
-    height: 16px;
-    color: #aa9667;
-    margin: 2px;
-    margin-top: 1%;
-    line-height: 100%;
+    height: 16%;
 }
 
 .status_content {
@@ -226,21 +216,16 @@ img {
 #own_total_value {
     display: inline-block;
     background-color:#aa9667;
-    border-radius: 20px;
     width: 12%;
     aspect-ratio: 1/1;
     border-radius: 50%;
     font-weight: bolder;
 }
 
-.card_icon {
-    aspect-ratio: 1/1;
-    width: 20px;
-}
-
+.card_icon,
 .heart_icon {
     aspect-ratio: 1/1;
-    width: 20px;
+    width: 10%;
 }
 
 .leader_div {
@@ -254,9 +239,9 @@ img {
 
 #pass_button {
     display: block;
-    height: 40px;
-    width: 160px;
-    margin-left: calc(50% - 80px);
+    width: 40%;
+    aspect-ratio: 4/1;
+    margin: auto;
     border-radius: 10px;
     font-weight: bold;
     font-size: large;
@@ -323,19 +308,25 @@ img {
 
 /*Styles for the right of the board*/
 
+#own_right_board,
 #enemy_right_board {
     width: 100%;
     height: 22%;
 }
+
 #shown_card {
     width: 100%;
     height: 56%;
 }
 
+.shown_button_div {
+    height: 32%;
+}
+
 .shownButton {
     display: none;
-    height: 30px;
-    width: 80px;
+    height: 100%;
+    width: 20%;
     border-radius: 10px;
     margin: 2px;
     font-weight: bold;
@@ -343,46 +334,15 @@ img {
     color: #ffffff;
 }
 
-#own_right_board {
-    width: 100%;
-    height: 22%;
-}
-
-#enemy_discarded {
-    display: inline-block;
-    border-radius: 10px;
-    margin: 10px;
-    width: 25%;
-    background-color: #17191a;
-    aspect-ratio: 3/4;
-
-}
-
-#enemy_remaining {
-    display: inline-block;
-    border-radius: 10px;
-    margin: 10px;
-    width: 25%;
-    background-color: #17191a;
-    aspect-ratio: 3/4;
-    color: white;
-}
-
-#own_discarded {
-    display: inline-block;
-    border-radius: 10px;
-    margin: 10px;
-    width: 25%;
-    background-color: #17191a;
-    aspect-ratio: 3/4;
-}
-
+#enemy_discarded,
+#enemy_remaining,
+#own_discarded,
 #own_remaining {
     display: inline-block;
     border-radius: 10px;
     margin: 10px;
     width: 25%;
-    aspect-ratio: 3/4;
     background-color: #17191a;
+    aspect-ratio: 3/4;
     color: white;
 }

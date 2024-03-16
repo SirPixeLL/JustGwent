@@ -14,154 +14,157 @@
     <link rel="stylesheet" href="css/card.css">
 </head>
 <body>
-    <div id="switch_screen">
-        <div id="switch_text">To switch players press</div>
-        <button id="switch_button" onclick="hideSwitchScreen()">SPACE</button>
-    </div>
-    <div id="end_round_graphic">
-        <div id="end_round_result">Player1 won the round!</div>
-    </div>
-    <div id="medic_ui">
-        <div id="medic_text">Choose a card to revive:</div>
-        <div id="previous_card2" class="side_card2"></div>
-        <div id="previous_card1" class="side_card1"></div>
-        <div id="selected_card"></div>
-        <div id="next_card1" class="side_card1"></div>
-        <div id="next_card2" class="side_card2"></div>
-        <button id="look_button">Continue</button>
-    </div>
-    <div id="main_menu">
-        <!-- button je temporary, ale DOOM je Eternal ↓ -->
-        <button id="hide_menu" onclick="getElementById('main_menu').style.display='none'">X</button>
-        <p id="menu_title">JUST GWENT</p>
-        <div id="modes">
-            <div id="menu_button1" onclick="localMenu()">
-                <p id="menu_button_text">LOCAL</p>
-            </div>
-            <div id="menu_button2" onclick="multiplayerMenu()">
-                <p id="menu_button_text">MULTIPLAYER</p>
-            </div>
-            <div id="menu_button3" onclick="menuBack()">
-                <p id="menu_button_text">BACK</p>
-            </div>
+    <div id="body_div">
+        <div id="switch_screen">
+            <div id="switch_text">To switch players press</div>
+            <button id="switch_button" onclick="hideSwitchScreen()">SPACE</button>
         </div>
-        <div id="local_player_names">
-            <input type="text" id="player_name1" placeholder="Player 1" maxlength="17">
-            <input type="text" id="player_name2" placeholder="Player 2" maxlength="17">
+        <div id="end_round_graphic">
+            <div id="end_round_result">Player1 won the round!</div>
         </div>
-        <div id="deck1">
-            <img class="deck1_pic">
+        <div id="medic_ui">
+            <div id="medic_text">Choose a card to revive:</div>
+            <div id="previous_card2" class="side_card2"></div>
+            <div id="previous_card1" class="side_card1"></div>
+            <div id="selected_card"></div>
+            <div id="next_card1" class="side_card1"></div>
+            <div id="next_card2" class="side_card2"></div>
+            <button id="look_button">Continue</button>
         </div>
-        <div id="deck2">
-            <img class="deck2_pic">
-        </div>
-    </div>
-    </div>
-    <div id="left_board">
-        <div id="enemy_leader_div" class="leader_div">
-        </div>
-        <div id="enemy_status">
-            <img id="enemy_pic" src="">
-            <div class="status_content">
-                <p class="player_name" id="enemy_name">Player</p>
-                <p class="player_faction" id="enemy_faction">Nilfgaard</p>
-                <div id="stats">
-                    <img class="card_icon" src="images/playing-card.png">
-                    <p id="enemy_card_num">69</p>
-                    <img class="heart_icon" src="images/love-always-wins.png" id="enemy_heart1">
-                    <img class="heart_icon" src="images/love-always-wins.png" id="enemy_heart2">
+        <div id="main_menu">
+            <!-- button je temporary, ale DOOM je Eternal ↓ -->
+            <button id="hide_menu" onclick="getElementById('main_menu').style.display='none'">X</button>
+            <p id="menu_title">JUST GWENT</p>
+            <div id="modes">
+                <div id="menu_button1" onclick="localMenu()">
+                    <p id="menu_button_text">LOCAL</p>
+                </div>
+                <div id="menu_button2" onclick="multiplayerMenu()">
+                    <p id="menu_button_text">MULTIPLAYER</p>
+                </div>
+                <div id="menu_button3" onclick="menuBack()">
+                    <p id="menu_button_text">BACK</p>
                 </div>
             </div>
-            <div id="enemy_total_value"><p class="value_p" id="enemy_total_value_p">0</p></div>
+            <div id="local_player_names">
+                <input type="text" id="player_name1" placeholder="Player 1" maxlength="17">
+                <input type="text" id="player_name2" placeholder="Player 2" maxlength="17">
+            </div>
+            <div id="deck1">
+                <img class="deck1_pic">
+            </div>
+            <div id="deck2">
+                <img class="deck2_pic">
+            </div>
         </div>
+        <div id="left_board">
+            <div id="enemy_leader_div" class="leader_div">
+            </div>
+            <div id="enemy_status">
+                <img id="enemy_pic" src="images/profile_pic.jpg">
+                <div class="status_content">
+                    <p class="player_name" id="enemy_name">Player</p>
+                    <p class="player_faction" id="enemy_faction">Nilfgaard</p>
+                    <div id="stats">
+                        <img class="card_icon" src="images/playing-card.png">
+                        <p id="enemy_card_num">69</p>
+                        <img class="heart_icon" src="images/love-always-wins.png" id="enemy_heart1">
+                        <img class="heart_icon" src="images/love-always-wins.png" id="enemy_heart2">
+                    </div>
+                </div>
+                <div id="enemy_total_value"><p class="value_p" id="enemy_total_value_p">0</p></div>
+            </div>
 
-        <div id="weather_cards"></div>
+            <div id="weather_cards"></div>
 
-        <div id="own_status">
-            <img id="own_pic" src="">
-            <div class="status_content">
-                <p class="player_name" id="own_name">Player2</p>
-                <p class="player_faction" id="own_faction">Northern Realms</p>
-                <div id="stats">
-                    <img class="card_icon" src="images/playing-card.png">
-                    <p id="own_card_num">420</p>
-                    <img class="heart_icon" src="images/love-always-wins.png" id="own_heart1">
-                    <img class="heart_icon" src="images/love-always-wins.png" id="own_heart2">
+            <div id="own_status">
+                <img id="own_pic" src="images/profile_pic2.jpg">
+                <div class="status_content">
+                    <p class="player_name" id="own_name">Player2</p>
+                    <p class="player_faction" id="own_faction">Northern Realms</p>
+                    <div id="stats">
+                        <img class="card_icon" src="images/playing-card.png">
+                        <p id="own_card_num">420</p>
+                        <img class="heart_icon" src="images/love-always-wins.png" id="own_heart1">
+                        <img class="heart_icon" src="images/love-always-wins.png" id="own_heart2">
+                    </div>
+                </div>
+                <div id="own_total_value"><p class="value_p" id="own_total_value_p">0</p></div>
+
+            </div>
+            <div id="own_leader_div" class="leader_div">
+            </div>
+            <button id="pass_button" onclick="passFunction()">PASS</button>
+        </div>
+        <div id="center_board">
+            <div id="enemy_side">
+                <div id="enemy_siege_div" class="line_div">
+                    <div class="line_value"><p id="enemy_siege_value" class="value_p">0</p></div>
+                    <div id="enemy_siege_boost" class="boost_line"></div>
+                    <div id="enemy_siege" class="card_line"></div>
+                </div>
+                <div id="enemy_ranged_div" class="line_div">
+                    <div class="line_value"><p id="enemy_ranged_value" class="value_p">0</p></div>
+                    <div id="enemy_ranged_boost" class="boost_line"></div>
+                    <div id="enemy_ranged" class="card_line"></div>
+                </div>
+                <div id="enemy_melee_div" class="line_div">
+                    <div class="line_value"><p id="enemy_melee_value" class="value_p">0</p></div>
+                    <div id="enemy_melee_boost" class="boost_line"></div>
+                    <div id="enemy_melee" class="card_line"></div>
+                </div> 
+            </div>
+            <div id="own_side">
+                <div id="own_melee_div" class="line_div">
+                    <div class="line_value"><p id="own_melee_value" class="value_p">0</p></div>
+                    <div id="own_melee_boost" class="boost_line"></div>
+                    <div id="own_melee" class="card_line"></div>
+                </div>
+                <div id="own_ranged_div" class="line_div">
+                    <div class="line_value"><p id="own_ranged_value" class="value_p">0</p></div>
+                    <div id="own_ranged_boost" class="boost_line"></div>
+                    <div id="own_ranged" class="card_line"></div>
+                </div>
+                <div id="own_siege_div" class="line_div">
+                    <div class="line_value"><p id="own_siege_value" class="value_p">0</p></div>
+                    <div id="own_siege_boost" class="boost_line"></div>
+                    <div id="own_siege" class="card_line"></div>
+                </div> 
+            </div>
+            <div id="current_cards">
+
+            </div>
+
+        </div>
+        <div id="right_board">
+            <div id="enemy_right_board">
+                <div id="enemy_discarded">
+
+                </div>
+                <div id="enemy_remaining">
+                    47
                 </div>
             </div>
-            <div id="own_total_value"><p class="value_p" id="own_total_value_p">0</p></div>
-
-        </div>
-        <div id="own_leader_div" class="leader_div">
-        </div>
-        <button id="pass_button" onclick="passFunction()">PASS</button>
-    </div>
-    <div id="center_board">
-        <div id="enemy_side">
-            <div id="enemy_siege_div" class="line_div">
-                <div class="line_value"><p id="enemy_siege_value" class="value_p">0</p></div>
-                <div id="enemy_siege_boost" class="boost_line"></div>
-                <div id="enemy_siege" class="card_line"></div>
-            </div>
-            <div id="enemy_ranged_div" class="line_div">
-                <div class="line_value"><p id="enemy_ranged_value" class="value_p">0</p></div>
-                <div id="enemy_ranged_boost" class="boost_line"></div>
-                <div id="enemy_ranged" class="card_line"></div>
-            </div>
-            <div id="enemy_melee_div" class="line_div">
-                <div class="line_value"><p id="enemy_melee_value" class="value_p">0</p></div>
-                <div id="enemy_melee_boost" class="boost_line"></div>
-                <div id="enemy_melee" class="card_line"></div>
-            </div> 
-        </div>
-        <div id="own_side">
-            <div id="own_melee_div" class="line_div">
-                <div class="line_value"><p id="own_melee_value" class="value_p">0</p></div>
-                <div id="own_melee_boost" class="boost_line"></div>
-                <div id="own_melee" class="card_line"></div>
-            </div>
-            <div id="own_ranged_div" class="line_div">
-                <div class="line_value"><p id="own_ranged_value" class="value_p">0</p></div>
-                <div id="own_ranged_boost" class="boost_line"></div>
-                <div id="own_ranged" class="card_line"></div>
-            </div>
-            <div id="own_siege_div" class="line_div">
-                <div class="line_value"><p id="own_siege_value" class="value_p">0</p></div>
-                <div id="own_siege_boost" class="boost_line"></div>
-                <div id="own_siege" class="card_line"></div>
-            </div> 
-        </div>
-        <div id="current_cards">
-
-        </div>
-
-    </div>
-    <div id="right_board">
-        <div id="enemy_right_board">
-            <div id="enemy_discarded">
+            <div id="shown_card">
+                <div id="shown_button_div">
+                    <button id="shownButtonMelee" class="shownButton">Play to Melee</button>
+                    <button id="shownButtonRanged" class="shownButton">Play to Ranged</button>
+                    <button id="shownButtonSiege" class="shownButton">Play to Siege</button>
+                    <button id="shownButtonYes" class="shownButton">Play Card</button>
+                    <button id="shownButtonNo" class="shownButton">Cancel</button>
+                </div>
 
             </div>
-            <div id="enemy_remaining">
-                47
-            </div>
-        </div>
-        <div id="shown_card">
-            <button id="shownButtonMelee" class="shownButton">Play to Melee</button>
-            <button id="shownButtonRanged" class="shownButton">Play to Ranged</button>
-            <button id="shownButtonSiege" class="shownButton">Play to Siege</button>
-            <button id="shownButtonYes" class="shownButton">Play Card</button>
-            <button id="shownButtonNo" class="shownButton">Cancel</button>
-        </div>
-        <div id="own_right_board">
-            <div id="own_discarded">
+            <div id="own_right_board">
+                <div id="own_discarded">
 
-            </div>
-            <div id="own_remaining">
-                35
+                </div>
+                <div id="own_remaining">
+                    35
+                </div>
             </div>
         </div>
     </div>
-
     <script src="js/CardDictionary.js"></script>
     <script src="js/Menu.js"></script>
     <script src="js/Card.js"></script>

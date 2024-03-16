@@ -1,5 +1,9 @@
-let playedWeatherCards = [null];
-
+let playedWeatherCards = [];
+let types = {
+        'Melee': 0,
+        'Ranged': 1,
+        'Siege': 2
+}
 let shownCardSlot = [];
 
 let currentIndex = 0;
@@ -55,8 +59,7 @@ function showMedicUI(version, random = 0) {
                 if (random == 0) {
                         random = generateRandomUniqueInt(0, enemyDeck.length, 3)
                         for (let i = 0; i < 3; i++) {
-                                discarded[i] = (enemyDeck[random[i]]);
-                                
+                                discarded[i] = (enemyDeck[random[i]]);          
                         } 
                 }
                 else {
@@ -87,26 +90,8 @@ function showMedicUI(version, random = 0) {
                 ui.style.display = "block";
                 selected.appendChild(selectedCard);
                 if (version != "lookAtEnemy") selectedCard.addEventListener("click", function medicHelper() {
-                        if (selectedCard.id.includes("Melee")) {
-                                checkForSpy(currentIndex, 0, "discarded");
-                                play(discarded[currentIndex], currentPlayer);
-                                players[currentPlayer].discardedCards.splice(players[currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
-                                discarded.splice(currentIndex, 1);
-                                ui.style.display = "none";
-                                currentIndex = 0;
-                                selectedCard.removeEventListener("click", medicHelper, false);
-                        }
-                        else if (selectedCard.id.includes("Ranged")) {
-                                checkForSpy(currentIndex, 1, "discarded");
-                                play(discarded[currentIndex], currentPlayer);
-                                players[currentPlayer].discardedCards.splice(players[currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
-                                discarded.splice(currentIndex, 1);
-                                ui.style.display = "none";
-                                currentIndex = 0;
-                                selectedCard.removeEventListener("click", medicHelper, false);
-                        }
-                        else if (selectedCard.id.includes("Siege")) {
-                                checkForSpy(currentIndex, 2, "discarded");
+                        if (selectedCard.id.includes("Melee") || selectedCard.id.includes("Ranged") || selectedCard.id.includes("Siege")) {
+                                checkForSpy(currentIndex, types[selectedCard.id], "discarded");
                                 play(discarded[currentIndex], currentPlayer);
                                 players[currentPlayer].discardedCards.splice(players[currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
                                 discarded.splice(currentIndex, 1);
@@ -115,6 +100,7 @@ function showMedicUI(version, random = 0) {
                                 selectedCard.removeEventListener("click", medicHelper, false);
                         }
                         else if (discarded[currentIndex].type == "Weather") {
+                                console.log(discarded[currentIndex].type)
                                 play(discarded[currentIndex, currentPlayer]);
                                 players[currentPlayer].deck.splice(players[currentPlayer].deck.indexOf(discarded[currentIndex]), 1);
                                 discarded.splice(currentIndex, 1);
@@ -124,22 +110,20 @@ function showMedicUI(version, random = 0) {
                                 });
                                 if(t == playedWeatherCards.length){
                                         playedWeatherCards.push(discarded[currentIndex].name);
-                                        discarded
                                         document.getElementById("weather_cards").appendChild(selectedCard);
                                         selectedCard.className = "weatherCardPlayed";
-                                        selectedCard.style.margin = "2px";
-                                        selectedCard.style.marginTop = "10px"
                                         ui.style.display = "none";
                                         currentIndex = 0;
                                         selectedCard.removeEventListener("click", medicHelper, false);
+                                        console.log(playedWeatherCards)
                                 }
                                 else{
                                         ui.style.display = "none";
                                         currentIndex = 0;
                                         selectedCard.removeEventListener("click", medicHelper, false);
+                                        console.log(playedWeatherCards)
                                 }
-                        }
-                        
+                        } 
                         sumPowers(currentPlayer);
                 })
                 try {
@@ -231,6 +215,7 @@ function playCard(cardType, e) {
                 if (shownCardSlot[0].id.includes("Leader")) {
                         shownCardSlot[0].className = "cardLeader";
                         document.getElementById("own_leader_div").appendChild(shownCardSlot[0]);
+                        shownCardSlot[0].style.margin = "none";
                 }
                 else {
                         shownCardSlot[0].className = "cardInHand";
@@ -243,6 +228,7 @@ function playCard(cardType, e) {
                 document.getElementById("shown_card").appendChild(targetCard);
                 shownCardSlot.push(targetCard);
                 targetCard.className = "cardShown";
+                targetCard.style.marginLeft = "none";
         }
         else {
                 buttonYes.style.display = "inline-block";
@@ -251,7 +237,8 @@ function playCard(cardType, e) {
                 shownCardSlot.splice(0, 1);
                 shownCardSlot.push(targetCard);
                 targetCard.className = "cardShown";
-                if (cardType != "leader")marginTrueNeckKeys(false);
+                targetCard.style.marginLeft = "none";
+                if (cardType != "leader") marginTrueNeckKeys(false);
         }
         if (cardType == "agile" || cardType == "horn") {
                 buttonMelee.style.display = "inline-block";
@@ -261,7 +248,6 @@ function playCard(cardType, e) {
                 buttonMelee.onclick = function() {
                         shownCardSlot.splice(0, 1);
                         targetCard.className = "cardPlayed";
-                        targetCard.style.margin = "2px";
                         targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
@@ -278,7 +264,6 @@ function playCard(cardType, e) {
                 buttonRanged.onclick = function() {
                         shownCardSlot.splice(0, 1);
                         targetCard.className = "cardPlayed";
-                        targetCard.style.margin = "2px";
                         targetCard.removeEventListener("click", cardListenerHelper, false);
                         cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
@@ -296,7 +281,6 @@ function playCard(cardType, e) {
                         buttonSiege.onclick = function() {
                                 shownCardSlot.splice(0, 1);
                                 targetCard.className = "cardPlayed";
-                                targetCard.style.margin = "2px";
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
 
@@ -340,7 +324,6 @@ function playCard(cardType, e) {
                         else {
                                 shownCardSlot.splice(0, 1);
                                 targetCard.className = "cardPlayed";
-                                targetCard.style.margin = "2px";
                                 targetCard.removeEventListener("click", cardListenerHelper, false);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
                                 
@@ -360,8 +343,6 @@ function playCard(cardType, e) {
                                                 document.getElementById(cardType).appendChild(targetCard);
                                                 shownCardSlot.splice(0, 1);
                                                 targetCard.className = "weatherCardPlayed";
-                                                targetCard.style.margin = "2px";
-                                                targetCard.style.marginTop = "10px"
                                         }
                                         else{
                                                 shownCardSlot.splice(0, 1);
@@ -378,7 +359,6 @@ function playCard(cardType, e) {
                         document.getElementById("current_cards").appendChild(targetCard);
                         shownCardSlot.splice(0, 1);
                         targetCard.className = "cardInHand";
-                        targetCard.style.marginLeft = margin + "px";
                         buttonYes.style.display = "none";
                         buttonNo.style.display = "none";
                         if (cardType == "agile" || cardType == "horn") {
@@ -507,11 +487,21 @@ function createCardElement(card){
                 typeDiv.style.backgroundSize = "100% 100%";
                 cardFrame.appendChild(typeDiv);
         }
-        let abilityDiv = document.createElement("div");
-        abilityDiv.className = "abilityDiv";
-        let abilitySrc = "url(../images/cardWidgets/"+card.ability+".png"
-        abilityDiv.style.backgroundImage = abilitySrc;
-        abilityDiv.style.backgroundSize = "100% 100%";
+        if (card.ability != null) {
+                let abilityDiv = document.createElement("div");
+                abilityDiv.className = "abilityDiv";
+                let abilitySrc = "url(../images/cardWidgets/"+card.ability+".png";
+                abilityDiv.style.backgroundImage = abilitySrc;
+                abilityDiv.style.backgroundSize = "100% 100%";
+                cardFrame.appendChild(abilityDiv);
+        } else if(card.isAgile){
+                let abilityDiv = document.createElement("div");
+                abilityDiv.className = "abilityDiv";
+                let abilitySrc = "url(../images/cardWidgets/AgileAbility.png";
+                abilityDiv.style.backgroundImage = abilitySrc;
+                abilityDiv.style.backgroundSize = "100% 100%";
+                cardFrame.appendChild(abilityDiv);
+        }
         let pictureSrc = "url(../images/cards/"+card.name+".png";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');

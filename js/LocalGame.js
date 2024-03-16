@@ -370,7 +370,7 @@ function switchFunction(){
     }, 0);
     document.addEventListener("keydown", (event) => {
         if(event.key == " " && switchScreen.style.display == "inline-block") {
-            hideSwitchSreen();
+            hideSwitchScreen();
         }
     })
 }
