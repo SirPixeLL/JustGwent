@@ -9,7 +9,6 @@ const cardDict = {
         "ability": "BitingFrost",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true,
         "number": 3
     },
     "Decoy": {
@@ -20,7 +19,6 @@ const cardDict = {
         "ability": "Decoy",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true,
         "number": 3
     },
     "Clear_Weather": {
@@ -31,7 +29,6 @@ const cardDict = {
         "ability": "ClearWeather",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true,
         "number": 3
     },
     "Commanders_Horn": {
@@ -42,7 +39,6 @@ const cardDict = {
         "ability": "CommandersHorn",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true,
         "number": 3
     },
     "Impenetrable_Fog": {
@@ -53,7 +49,6 @@ const cardDict = {
         "ability": "ImpenetrableFog",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true,
         "number": 3
     },
     "Scorch": {
@@ -64,7 +59,6 @@ const cardDict = {
         "ability": "Scorch",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true,
         "number": 3
     },
     "Torrential_Rain": {
@@ -75,7 +69,6 @@ const cardDict = {
         "ability": "TorrentialRain",
         "summons": null,
         "isLegend": false,
-        "isSpecial": true,
         "number": 3
     },
     //Neutral (chybí kráva a defence idk co s nima)
@@ -87,7 +80,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "number": 1
     },
     "Dandelion": {
@@ -98,7 +90,6 @@ const cardDict = {
         "ability": "CommandersHorn",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "number": 1
     },
     "Regis": {
@@ -109,7 +100,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "number": 1
     },
     "O'Dimm": {
@@ -120,7 +110,6 @@ const cardDict = {
         "ability": "Muster",
         "summons": "Gaunter O'Dimm: Darkness",
         "isLegend": false,
-        "isSpecial": false,
         "number": 1
     },
     "Darkness": { //3x
@@ -131,7 +120,6 @@ const cardDict = {
         "ability": "Muster",
         "summons": "Gaunter O'Dimm: Darkness",
         "isLegend": false,
-        "isSpecial": false,
         "number": 3
     },
     "Geralt": {
@@ -142,7 +130,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "number": 1
     },
     "Mysterious_Elf": {
@@ -153,7 +140,6 @@ const cardDict = {
         "ability": "Spy",
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "number": 1
     },
     "Olgierd": {
@@ -164,7 +150,6 @@ const cardDict = {
         "ability": "MoraleBoost",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "number": 1
     },
     "Vesemir": {
@@ -175,7 +160,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "number": 1
     },
     "Villentretenmerth": {
@@ -186,7 +170,6 @@ const cardDict = {
         "ability": "Scorch",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "number": 1
     },
     "Yennefer": {
@@ -197,7 +180,6 @@ const cardDict = {
         "ability": "Medic",
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "number": 1
     },
     "Zoltan": {
@@ -208,7 +190,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "number": 1
     },
 
@@ -221,7 +202,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "number": 1
     },
     "Kaedweni_Siege": {
@@ -232,7 +212,6 @@ const cardDict = {
         "ability": "MoraleBoost",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "number": 3
     },
     "Keira_Metz": {
@@ -243,7 +222,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "number": 1
     },
     "Stripes_Commando": {
@@ -254,7 +232,6 @@ const cardDict = {
         "ability": "TightBond",
         "summons": "Blue Stripes Commando",
         "isLegend": false,
-        "isSpecial": false,
         "number": 3
     },
 
@@ -267,7 +244,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "A fireball? Of course. Whatever your Imperial Majesty wishes",
         "number": 1
     },
@@ -279,7 +255,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Nilfgaardian mage do ahve a choice: servile submission, or the gallows.",
         "number": 1
     },
@@ -291,7 +266,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "I aim for the knee. Always.",
         "number": 2
     },
@@ -303,7 +277,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "His eyes flashed under his winged helmet. Fire gleamed from his sword's blade",
         "number": 1
     },
@@ -315,7 +288,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Cynthia's talents can be deadly. She needs a tight leash.",
         "number": 1
     },
@@ -327,7 +299,6 @@ const cardDict = {
         "ability": "Medic",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Double or nothing, aim for his Vergil",
         "number": 2
     },
@@ -339,7 +310,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Magic is the highest good. It transcends all borders and divisions.",
         "number": 1
     },
@@ -351,7 +321,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Not the best for taking cities, but great for razing them to the ground.",
         "number": 1
     },
@@ -363,7 +332,6 @@ const cardDict = {
         "ability": "TightBond",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "The Impera Brigade neber surrenders. Ever.",
         "number": 4
     },
@@ -375,7 +343,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "quote": "Witchers never die in their beds.",
         "number": 1
     },
@@ -387,7 +354,6 @@ const cardDict = {
         "ability": "Medic",
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "quote": "I'll take an attentive reconnaissance unit over a fine cavalry brigade any day.",
         "number": 1
     },
@@ -399,7 +365,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "No Nordling pikemen or dwarven spearbearers can hope to best trained cavalry.",
         "number": 1
     },
@@ -411,7 +376,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "quote": "Summer sun reflecting in the quite waters of the Alba - that's the Nilfgaard to me.",
         "number": 1
     },
@@ -423,7 +387,6 @@ const cardDict = {
         "ability": "TightBond",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "The Emperor will teach the North discipline.",
         "number": 3
     },
@@ -435,7 +398,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Learned a lot at Braibant Military Academy. How to scrub potatoes, for instance",
         "number": 1
     },
@@ -447,7 +409,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "You'll die as painfully as that pathetic traitor Windhalm did.",
         "number": 1
     },
@@ -459,7 +420,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "They say the Impera fear nothing. Untrue. Renuald scares them Vergilless.",
         "number": 1
     },
@@ -471,7 +431,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "The rotten smell brings back childhood memories",
         "number": 1
     },
@@ -483,7 +442,6 @@ const cardDict = {
         "ability": "Spy",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Warfare is mere sound and fury - diplomacy is what truly shapes history.",
         "number": 1
     },
@@ -495,7 +453,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Wielded correctly, a protractor can be a deadly weapon.",
         "number": 1
     },
@@ -507,7 +464,6 @@ const cardDict = {
         "ability": "Medic",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "I never miss twice.",
         "number": 1
     },
@@ -519,7 +475,6 @@ const cardDict = {
         "ability": "Spy",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "My mark scars the face of our future empress. That is my proudest achievement.",
         "number": 1
     },
@@ -531,7 +486,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "And hands off the girl! Whatever we may be, we're not savages.",
         "number": 1
     },
@@ -543,7 +497,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "quote": "Albaaaa! Forward!! Alba! Long live the Emperor!",
         "number": 1
     },
@@ -555,7 +508,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "For a fire mage, he's not very... flamboyant.",
         "number": 1
     },
@@ -567,7 +519,6 @@ const cardDict = {
         "ability": "Spy",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "There's never been a problem a well-planned assassinaton couldn't solve.",
         "number": 1
     },
@@ -579,7 +530,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Discipline is the Empire's deadliest weapon.",
         "number": 1
     },
@@ -591,7 +541,6 @@ const cardDict = {
         "ability": "TightBond",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "If I acquit myself well, perhaps next they'll post me somewhere civilized.",
         "number": 2
     },
@@ -603,7 +552,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "The Zerrikania Desert used to be a lush garden. Then these came along.",
         "number": 1
     },
@@ -617,7 +565,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Our mead smells like Vergil, do it? Easy to fix - I'll break your Vergilin' nose!",
         "number": 1
     },
@@ -629,7 +576,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "The path to freedom is paved in blood, not ink.",
         "number": 1
     },
@@ -641,7 +587,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "I know how to carry out orders, so you can shove your advice up your coal chute.",
         "number": 1
     },
@@ -653,7 +598,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Take another step, dh'oine. You'd look better with an arrow between your eyes.",
         "number": 1
     },
@@ -665,7 +609,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "They track like hounds, run like deer and kill like cold-hearted Vergils.",
         "number": 3
     },
@@ -677,7 +620,6 @@ const cardDict = {
         "ability": "Muster",
         "summons": "Dwarven Skirmisher",
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Worked a pickaxe all me life. Battleaxe won't be any trouble.",
         "number": 3
     },
@@ -689,7 +631,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "quote": "The dryad queen has eyes of molten silver, and a heart of cold-forged steel.",
         "number": 1
     },
@@ -701,7 +642,6 @@ const cardDict = {
         "ability": "Muster",
         "summons": "Elven Skirmisher",
         "isLegend": false,
-        "isSpecial": false,
         "quote": "No matter what you may have heard, elves don't take human scalps. Too much lice.",
         "number": 3
     },
@@ -713,7 +653,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Though we are now few and scattered, our hearts burn brighter than ever.",
         "number": 1
     },
@@ -725,7 +664,6 @@ const cardDict = {
         "ability": "Medic",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Sure, I'll patch you up. Gonna cost you, though.",
         "number": 3
     },
@@ -737,7 +675,6 @@ const cardDict = {
         "ability": "Muster",
         "summons": "Havekar Smuggler",
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Sure, I'll patch you up. Gonna cost you, though.",
         "number": 3
     },
@@ -749,7 +686,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "I am a Sage. My power lies in possessing knowledge. Not sharing it.",
         "number": 1
     },
@@ -761,7 +697,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "quote": "King or beggar, what's the difference? One dh'oine less.",
         "number": 1
     },
@@ -773,7 +708,6 @@ const cardDict = {
         "ability": "MoraleBoost",
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "quote": "It dawns on them once they notice my scar: a realization of imminent death.",
         "number": 1
     },
@@ -785,7 +719,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "I'm telling ye, we're born fer battle - we slash straight at their knees!",
         "number": 5
     },
@@ -797,7 +730,6 @@ const cardDict = {
         "ability": "MoraleBoost",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "With each arrow I loose, I think of my da. He'd be proud. I think.",
         "number": 1
     },
@@ -809,7 +741,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Stare into their eyes, feast on their terror. Then go in for the kill.",
         "number": 1
     },
@@ -821,7 +752,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": true,
-        "isSpecial": false,
         "quote": "Beautiful, pure, fierce - the prefect icon for a rebellion.",
         "number": 1
     },
@@ -833,7 +763,6 @@ const cardDict = {
         "ability": "Scorch",
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Time to look death in the face.",
         "number": 1
     },
@@ -845,7 +774,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "I'd gladly kill you from up close, stare in your eyes... But you reek, human.",
         "number": 1
     },
@@ -857,7 +785,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "Hatred burns brighter than any fire, and cuts deeper than any blade.",
         "number": 1
     },
@@ -869,7 +796,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "'Vrihedd? What's that mean?' 'Trouble.'",
         "number": 2
     },
@@ -881,7 +807,6 @@ const cardDict = {
         "ability": null,
         "summons": null,
         "isLegend": false,
-        "isSpecial": false,
         "quote": "We are the drops of rain that together make a ferocious storm.",
         "number": 1
     }

@@ -334,11 +334,7 @@ function playCard(cardType, e) {
                                 players[currentPlayer].hand.splice(index,1);
                                 play(playedCard, currentPlayer);
                                 if (cardType == "weather_cards") {
-                                        let t = 0;
-                                        playedWeatherCards.forEach(element => {
-                                                if(playedCard.name != element) t++;
-                                        });
-                                        if(t == playedWeatherCards.length){
+                                        if(playedWeatherCards.indexOf(playedCard.name)== -1){
                                                 playedWeatherCards.push(playedCard.name);
                                                 document.getElementById(cardType).appendChild(targetCard);
                                                 shownCardSlot.splice(0, 1);
