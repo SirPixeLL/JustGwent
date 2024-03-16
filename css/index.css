@@ -11,6 +11,7 @@ body,html{
     font-family: 'Noticia Text', serif;
     object-position: center;
     user-select: none;
+    font-size: 1vw;
 }
 
 img {
@@ -43,7 +44,7 @@ img {
     margin-top: 20%;
     font-weight: bold;
     color: #aa9667;
-    font-size: 50px;
+    font-size: 3vw;
 }
 
 #switch_button {
@@ -56,6 +57,7 @@ img {
 
 /*Round End*/
 #end_round_graphic {
+    z-index: 10;
     width: 99.5vw;
     height: 25vh;
     margin-top: 37vh;
@@ -244,7 +246,7 @@ img {
     margin: auto;
     border-radius: 10px;
     font-weight: bold;
-    font-size: large;
+    font-size: 1.5vw;
     background-color: #17191a;
     color: #ffffff;
 }
@@ -301,7 +303,6 @@ img {
 
 .value_p {
     position: relative;
-    font-size: 15px;
     top: 50%;
     transform: translateY(-50%);
 }
