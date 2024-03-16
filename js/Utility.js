@@ -32,11 +32,20 @@ function drawHand(currentPlayer){
 }
 
 function updateBoards(currentPlayer){
+    let enemySiege = document.getElementById("enemy_siege");
+    let enemyRanged = document.getElementById("enemy_ranged");
+    let enemyMelee = document.getElementById("enemy_melee");
+    let ownSiege = document.getElementById("own_siege");
+    let ownRanged = document.getElementById("own_ranged");
+    let ownMelee = document.getElementById("own_melee");
+    
+    let cardsOnBoard = currentPlayer == 0 ? [[ownMelee, ownRanged, ownSiege], [enemyMelee, enemyRanged, enemySiege]] : [[enemyMelee, enemyRanged, enemySiege], [ownMelee, ownRanged, ownSiege]]
+
     clearBoards();
     for(let i = 0; i < 2; i++){
         for(let j = 0; j < 3; j++){
             boards[i][j].forEach(element => {
-                element.drawOnBoards(i, j, currentPlayer);
+                element.drawTo(cardsOnBoard[i][j]);
             });
         }
     }
@@ -135,7 +144,7 @@ function updateHorn(){
     for(let i = 0; i < 2; i++){
         for(let j = 0; j < 3; j++){
             if($.isEmptyObject(hornUI[i][j]));
-            else hornUI[i][j][0].drawHorn(hornHUD[i][j]);
+            else hornUI[i][j][0].drawTo(hornHUD[i][j]);
         }
     }
 }
@@ -215,6 +224,6 @@ function fadeOut(element) {
     if($.isEmptyObject(players[currentPlayer].discardedCards)==false){
         let card = players[currentPlayer].discardedCards[players[currentPlayer].discardedCards.length - 1];
         console.log(card);
-        card.drawHorn(document.getElementById("own_discarded"))
+        card.drawTo(document.getElementById("own_discarded"))
     }
  }

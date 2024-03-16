@@ -88,71 +88,47 @@ class Card {
         else this.isAgile = false;
     }
 
-    drawOnBoards(i, j, currentPlayer){
-        let cardsOnBoard;
-        let enemySiege = document.getElementById("enemy_siege");
-        let enemyRanged = document.getElementById("enemy_ranged");
-        let enemyMelee = document.getElementById("enemy_melee");
-        let ownSiege = document.getElementById("own_siege");
-        let ownRanged = document.getElementById("own_ranged");
-        let ownMelee = document.getElementById("own_melee");
-        
-        if(currentPlayer == 0){
-            cardsOnBoard = [[ownMelee, ownRanged, ownSiege], [enemyMelee, enemyRanged, enemySiege]];
-        } else{
-            cardsOnBoard = [[enemyMelee, enemyRanged, enemySiege], [ownMelee, ownRanged, ownSiege]]
-        }
-
+    drawTo(whereTo){
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardPlayed";
         cardFrame.id = this.type + this.id;
-        if (this.power != null) {
-            let powerDiv = document.createElement("div");
-            powerDiv.className = "powerDiv";
-            let power = document.createElement("p");
-            power.innerHTML = this.power;
-            power.className = "power";
-            if (this.isLegend == true) {
-                    powerDiv.style.backgroundImage = "url(../images/cardWidgets/legendPowerBack.png";
+        if(this.type != "Horn"){
+            if (this.power != null) {
+                let powerDiv = document.createElement("div");
+                powerDiv.className = "powerDiv";
+                let power = document.createElement("p");
+                power.innerHTML = this.power;
+                power.className = "power";
+                if (this.isLegend == true) {
+                        powerDiv.style.backgroundImage = "url(../images/cardWidgets/legendPowerBack.png";
+                }
+                else {
+                        powerDiv.style.backgroundImage = "url(../images/cardWidgets/powerBack.png";
+                        power.style.color = "#000000";
+                }
+                if(this.power > this.basepower) power.style.color="Green";
+                if(this.power < this.basepower) power.style.color="Red";
+                powerDiv.appendChild(power);
+                cardFrame.appendChild(powerDiv); 
             }
-            else {
-                    powerDiv.style.backgroundImage = "url(../images/cardWidgets/powerBack.png";
-                    power.style.color = "#000000";
+            if (this.type == "Agile" || this.type == "Melee" || this.type == "Ranged" || this.type == "Siege") {
+                let typeDiv = document.createElement("div");
+                typeDiv.className = "typeDiv";
+                let typeSrc = "url(../images/cardWidgets/"+this.type+".png";
+                typeDiv.style.backgroundImage = typeSrc;
+                typeDiv.style.backgroundSize = "100% 100%";
+                cardFrame.appendChild(typeDiv);
             }
-            if(this.power > this.basepower) power.style.color="Green";
-            if(this.power < this.basepower) power.style.color="Red";
-            powerDiv.appendChild(power);
-            cardFrame.appendChild(powerDiv); 
+            let abilitySrc;
+            let abilityDiv = document.createElement("div");
+            abilityDiv.className = "abilityDiv";
+            if(this.isAgile && this.ability == null) abilitySrc = "url(../images/cardWidgets/AgileAbility.png";
+            else abilitySrc = "url(../images/cardWidgets/"+this.ability+".png";
+            
+            abilityDiv.style.backgroundImage = abilitySrc;
+            abilityDiv.style.backgroundSize = "100% 100%";
+            cardFrame.appendChild(abilityDiv);
         }
-        if (this.type == "Agile" || this.type == "Melee" || this.type == "Ranged" || this.type == "Siege") {
-            let typeDiv = document.createElement("div");
-            typeDiv.className = "typeDiv";
-            let typeSrc = "url(../images/cardWidgets/"+this.type+".png";
-            typeDiv.style.backgroundImage = typeSrc;
-            typeDiv.style.backgroundSize = "100% 100%";
-            cardFrame.appendChild(typeDiv);
-        }
-        let abilitySrc;
-        let abilityDiv = document.createElement("div");
-        abilityDiv.className = "abilityDiv";
-        if(this.isAgile && this.ability == null) abilitySrc = "url(../images/cardWidgets/AgileAbility.png";
-        else abilitySrc = "url(../images/cardWidgets/"+this.ability+".png";
-        
-        abilityDiv.style.backgroundImage = abilitySrc;
-        abilityDiv.style.backgroundSize = "100% 100%";
-        cardFrame.appendChild(abilityDiv);
-        let pictureSrc = "url(../images/cards/"+this.name+".png)";
-        pictureSrc = pictureSrc.replaceAll(" ","_");
-        pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
-        cardFrame.style.backgroundImage = pictureSrc;
-        cardFrame.style.backgroundSize = "100% 100%";
-        cardsOnBoard[i][j].appendChild(cardFrame);
-    }
-
-    drawHorn(whereTo){
-        let cardFrame = document.createElement("div");
-        cardFrame.className = "cardPlayed";
-        cardFrame.id = this.type + this.id;
         let pictureSrc = "url(../images/cards/"+this.name+".png)";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
