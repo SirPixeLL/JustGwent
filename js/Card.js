@@ -11,16 +11,17 @@ var zoomLevel = window.devicePixelRatio;
 let margin;
 let marginDiff;
 let currentHand = document.getElementById("current_cards")
-if (zoomLevel > 1) {margin = -18; marginDiff = 4}
-else {margin = -20; marginDiff = 8}
+if (zoomLevel > 1) {margin = -16; marginDiff = 3}
+else {margin = -18; marginDiff = 5}
 let cardsInHand = [];
 //console.log(margin + "px")
 
 function marginTrueNeckKeys(value) {
     let handCards = document.getElementsByClassName("cardInHand");
     if (value == true) {
-        console.debug("MarginTrue")
-        if (handCards.length >= 8 && handCards.length < 17) {
+        console.debug(handCards.length);
+        console.debug("MarginTrue");
+        if (handCards.length >= 9 && handCards.length < 17) {
             margin += -1*marginDiff;
         }
         else if (handCards.length >= 17) {
@@ -28,25 +29,28 @@ function marginTrueNeckKeys(value) {
         }
         for (let i = 0; i < handCards.length; i++) {
             let card = handCards[i];
-            if (handCards.length >= 8 && i != 0) {
+            if (handCards.length >= 9 && i != 0) {
                 card.style.marginLeft = margin + "px";
             }
         }
+        console.debug("Current margin " + margin);
     }
     else {
+        console.debug(handCards.length);
         console.debug("MarginFalse");
         if (handCards.length < 17 && margin < 2) {
             margin += marginDiff;
         }
         else if (handCards.length >= 17) {
-            margin += 0.5/marginDiff;
+            margin += 0.5*marginDiff;
         }
         for (let i = 0; i < handCards.length; i++) {
             let card = handCards[i];
-            if (i != 0) {
+            if (handCards.length >= 9 && i != 0) {
                 card.style.marginLeft = margin + "px";
             }
         }
+        console.debug("Current margin " + margin);
     }
 }
 
@@ -65,7 +69,6 @@ function clearHand(){
     for(let i = 0; i < cardsToClear.length; i++){
         cardsToClear[i--].remove();
         cardsInHand = [];
-        marginTrueNeckKeys(true);
     }
 }
 

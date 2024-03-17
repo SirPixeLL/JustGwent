@@ -74,9 +74,10 @@ function updateLives(currentPlayer){
 }
 
 function updateAll(currentPlayer){
+    if (zoomLevel > 1) margin = -16;
+    else margin = -18;
     clearHand();
     clearLeaders();
-    margin = -18;
     updateBoards(currentPlayer);
     updateLeaders();
     drawHand(currentPlayer);

@@ -122,6 +122,7 @@ function playLeader(leader){
             //commanderHorn na ranged
             commanderHornSet(new Card("","Commander's Horn",0,"Ranged","","","","","",""), currentPlayer);
             endTurn();
+    updateLeaders();
     }
 }
 

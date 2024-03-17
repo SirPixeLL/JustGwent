@@ -217,7 +217,6 @@ function playCard(cardType, e) {
                 }
                 else {
                         shownCardSlot[0].className = "cardInHand";
-                        shownCardSlot[0].style.marginLeft = margin + "px";
                         document.getElementById("current_cards").appendChild(shownCardSlot[0]);
                 }
                 shownCardSlot.splice(0, 1);
@@ -226,7 +225,6 @@ function playCard(cardType, e) {
                 document.getElementById("shown_card").appendChild(targetCard);
                 shownCardSlot.push(targetCard);
                 targetCard.className = "cardShown";
-                targetCard.style.marginLeft = "none";
         }
         else {
                 buttonYes.style.display = "inline-block";
@@ -235,7 +233,6 @@ function playCard(cardType, e) {
                 shownCardSlot.splice(0, 1);
                 shownCardSlot.push(targetCard);
                 targetCard.className = "cardShown";
-                targetCard.style.marginLeft = "none";
                 if (cardType != "leader") marginTrueNeckKeys(false);
         }
         if (cardType == "agile" || cardType == "horn") {
@@ -312,10 +309,10 @@ function playCard(cardType, e) {
                                 shownCardSlot.splice(0, 1);
                         }
                         else if (cardType == "leader") {
+                                players[currentPlayer].leader.playable = false;
                                 targetCard.className = "cardLeader";
                                 document.getElementById("own_leader_div").appendChild(targetCard);
                                 playLeader(players[currentPlayer].leader);
-                                players[currentPlayer].leader.playable = false;
                                 shownCardSlot.splice(0, 1);
                                 document.getElementById("own_leader_div").firstElementChild.removeEventListener("click", cardListenerHelper, false);
                         }
@@ -360,7 +357,7 @@ function playCard(cardType, e) {
                                 buttonRanged.style.display = "none";
                                 buttonSiege.style.display = "none";
                         }
-                        marginTrueNeckKeys(true);        
+                        marginTrueNeckKeys(true);       
                 }
                 else {
                         document.getElementById("own_leader_div").appendChild(targetCard);
@@ -378,13 +375,11 @@ function playCardDirect(cardType, id) {
         console.log(cardType);
         if (cardType != "weather") document.getElementById(cardType).appendChild(targetCard);
         targetCard.className = "cardPlayed";
-        targetCard.style.margin = "2px";
         if (cardType == "weather_cards") {
                 if(playedWeatherCards.indexOf(playedCard.name)== -1){
                         playedWeatherCards.push(playedCard.name);
                         document.getElementById(cardType).appendChild(targetCard);
                         targetCard.className = "weatherCardPlayed";
-                        targetCard.style.margin = "2px";
                 }
                 else{
                         targetCard.style.display = "none";
