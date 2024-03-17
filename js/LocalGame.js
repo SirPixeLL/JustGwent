@@ -446,6 +446,7 @@ function endRound(){
 }
 
 function discardCardsOnRoundEnd(){
+    console.trace()
     let preserve = [];
     for(let i = 0; i < 2; i++){
         if(players[i].faction == "Monsters"){
@@ -462,16 +463,19 @@ function discardCardsOnRoundEnd(){
                 let n = getRandomInt(boards[i][j].length);
                 preserve.push([i,j, boards[i][j][n]]);   
             }
-           
         }
     }
     cycleBoard(function(i,j,n){
-        for(let p = 0; p < preserve.length; p++){
-            if(i == preserve[p][0] && boards[i][j][n] != preserve[p][2] && boards[i][j][n].isLegend == false){
-                players[i].discardedCards.push(boards[i][j][n]);
-            } 
+        if($.isEmptyObject(preserve) || preserve.length == 1 && preserve[0][0] != i){
+            players[i].discardedCards.push(boards[i][j][n])
         }
-        
+        else{
+            for(let p = 0; p < preserve.length; p++){
+                if(i == preserve[p][0] && boards[i][j][n] != preserve[p][2] && boards[i][j][n].isLegend == false){
+                    players[i].discardedCards.push(boards[i][j][n]);
+                } 
+            }
+        }
     })
     boards = [[[],[],[]],[[],[],[]]];
     if($.isEmptyObject(preserve) == false){

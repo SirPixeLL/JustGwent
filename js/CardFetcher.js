@@ -42,6 +42,7 @@ function makeCardObject(cardValues, idn, i){
     cardValues.ability,
     cardValues.summons,
     cardValues.isLegend,
+    cardValues.hasVariations
   );
   cardArray.push(card); 
 };

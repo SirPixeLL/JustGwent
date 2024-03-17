@@ -91,7 +91,7 @@ function showMedicUI(version, random = 0) {
                 selected.appendChild(selectedCard);
                 if (version != "lookAtEnemy") selectedCard.addEventListener("click", function medicHelper() {
                         if (selectedCard.id.includes("Melee") || selectedCard.id.includes("Ranged") || selectedCard.id.includes("Siege")) {
-                                checkForSpy(currentIndex, types[selectedCard.id], "discarded");
+                                checkForSpy(currentIndex, types[discarded[currentIndex].type], "discarded");
                                 play(discarded[currentIndex], currentPlayer);
                                 players[currentPlayer].discardedCards.splice(players[currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
                                 discarded.splice(currentIndex, 1);
@@ -180,6 +180,7 @@ function showMedicUI(version, random = 0) {
 
 function checkForSpy(index, row, handOrDiscarded){
         let toPush;
+        console.log(index, row);
         switch(handOrDiscarded){
                 case "hand":
                         toPush = players[currentPlayer].hand[index]
@@ -549,7 +550,12 @@ function drawCard(card){
                 abilityDiv.style.backgroundSize = "100% 100%";
                 cardFrame.appendChild(abilityDiv);
         }
-        let pictureSrc = "url(../images/cards/"+card.name+".png";
+        let pictureNum = "";
+        if(card.id[card.id.length-2]>=0 && card.id[card.id.length-2]<=9 && card.hasVariations){
+            pictureNum = card.id[card.id.length-2]
+            
+        }
+        let pictureSrc = "url(../images/cards/"+card.name+pictureNum+".png";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
         cardFrame.style.backgroundImage = pictureSrc;

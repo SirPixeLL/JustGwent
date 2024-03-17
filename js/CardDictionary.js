@@ -267,7 +267,8 @@ const cardDict = {
         "summons": null,
         "isLegend": false,
         "quote": "I aim for the knee. Always.",
-        "number": 2
+        "number": 2,
+        "hasVariations": true
     },
     "Cahir": {
         "name": "Cahir Mawr Dyffryn aep Ceallach",
@@ -300,7 +301,8 @@ const cardDict = {
         "summons": null,
         "isLegend": false,
         "quote": "Double or nothing, aim for his Vergil",
-        "number": 2
+        "number": 2,
+        "hasVariations": true
     },
     "Fringilla": {
         "name": "Fringilla Vigo",
@@ -333,7 +335,8 @@ const cardDict = {
         "summons": null,
         "isLegend": false,
         "quote": "The Impera Brigade neber surrenders. Ever.",
-        "number": 4
+        "number": 4,
+        "hasVariations": true
     },
     "Letho": {
         "name": "Letho of Gulet",
@@ -388,7 +391,8 @@ const cardDict = {
         "summons": null,
         "isLegend": false,
         "quote": "The Emperor will teach the North discipline.",
-        "number": 3
+        "number": 3,
+        "hasVariations": true
     },
     "Puttkammer": {
         "name": "Puttkammer",
@@ -542,7 +546,8 @@ const cardDict = {
         "summons": null,
         "isLegend": false,
         "quote": "If I acquit myself well, perhaps next they'll post me somewhere civilized.",
-        "number": 2
+        "number": 2,
+        "hasVariations": true
     },
     "Fire_Scorpion": {
         "name": "Zerrikanian Fire Scorpion",
@@ -610,7 +615,8 @@ const cardDict = {
         "summons": null,
         "isLegend": false,
         "quote": "They track like hounds, run like deer and kill like cold-hearted Vergils.",
-        "number": 3
+        "number": 3,
+        "hasVariations": true
     },
     "Dwarven_Skirmisher": {
         "name": "Dwarven Skirmisher",
@@ -621,7 +627,8 @@ const cardDict = {
         "summons": "Dwarven Skirmisher",
         "isLegend": false,
         "quote": "Worked a pickaxe all me life. Battleaxe won't be any trouble.",
-        "number": 3
+        "number": 3,
+        "hasVariations": true
     },
     "Eithné": {
         "name": "Eithné",
@@ -643,7 +650,8 @@ const cardDict = {
         "summons": "Elven Skirmisher",
         "isLegend": false,
         "quote": "No matter what you may have heard, elves don't take human scalps. Too much lice.",
-        "number": 3
+        "number": 3,
+        "hasVariations": true
     },
     "Fidháil": {
         "name": "Filavandrel aén Fidháil",
@@ -665,7 +673,8 @@ const cardDict = {
         "summons": null,
         "isLegend": false,
         "quote": "Sure, I'll patch you up. Gonna cost you, though.",
-        "number": 3
+        "number": 3,
+        "hasVariations": true
     },
     "Havekar_Smuggler": {
         "name": "Havekar Smuggler",
@@ -676,7 +685,8 @@ const cardDict = {
         "summons": "Havekar Smuggler",
         "isLegend": false,
         "quote": "Sure, I'll patch you up. Gonna cost you, though.",
-        "number": 3
+        "number": 3,
+        "hasVariations": true
     },
     "Ida_Emean": {
         "name": "Ida Emean aep Sivney",
@@ -720,7 +730,8 @@ const cardDict = {
         "summons": null,
         "isLegend": false,
         "quote": "I'm telling ye, we're born fer battle - we slash straight at their knees!",
-        "number": 5
+        "number": 5,
+        "hasVariations": true
     },
     "Milva": {
         "name": "Milva",
@@ -797,7 +808,8 @@ const cardDict = {
         "summons": null,
         "isLegend": false,
         "quote": "'Vrihedd? What's that mean?' 'Trouble.'",
-        "number": 2
+        "number": 2,
+        "hasVariations": true
     },
     "Yaevinn": {
         "name": "Yaevinn",

@@ -70,7 +70,7 @@ function clearHand(){
 }
 
 class Card {
-    constructor(id, name, power, type, faction, ability, summons, isLegend){
+    constructor(id, name, power, type, faction, ability, summons, isLegend, hasVariations){
         this.id = id;
         this.name = name;
         this.basepower = power;
@@ -82,10 +82,9 @@ class Card {
         this.summons = summons;
         this.isLegend = isLegend;
         this.isSpecial = power == null ? true : false;
-        this.isAgile;
+        this.isAgile = this.type == "Agile" ? true :false;
 
-        if(type == "Agile") this.isAgile = true;
-        else this.isAgile = false;
+        this.hasVariations = hasVariations == true ? true : false;
     }
 
     drawTo(whereTo){
@@ -129,7 +128,11 @@ class Card {
             abilityDiv.style.backgroundSize = "100% 100%";
             cardFrame.appendChild(abilityDiv);
         }
-        let pictureSrc = "url(../images/cards/"+this.name+".png)";
+        let pictureNum = "";
+        if(this.id[this.id.length-2]>=0 && this.id[this.id.length-2]<=9 && this.hasVariations){
+            pictureNum = this.id[this.id.length-2]
+        }
+        let pictureSrc = "url(../images/cards/"+this.name+pictureNum+".png)";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
         cardFrame.style.backgroundImage = pictureSrc;
