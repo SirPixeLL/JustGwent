@@ -100,15 +100,10 @@ function showMedicUI(version, random = 0) {
                                 selectedCard.removeEventListener("click", medicHelper, false);
                         }
                         else if (discarded[currentIndex].type == "Weather") {
-                                console.log(discarded[currentIndex].type)
-                                play(discarded[currentIndex, currentPlayer]);
-                                players[currentPlayer].deck.splice(players[currentPlayer].deck.indexOf(discarded[currentIndex]), 1);
-                                discarded.splice(currentIndex, 1);
-                                let t = 0;
-                                playedWeatherCards.forEach(element => {
-                                        if(discarded[currentIndex].name != element) t++;
-                                });
-                                if(t == playedWeatherCards.length){
+                                console.log(playedWeatherCards);
+                                console.log(discarded[currentIndex].name)
+                                play(discarded[currentIndex], currentPlayer);
+                                if(playedWeatherCards.indexOf(discarded[currentIndex].name)== -1){
                                         playedWeatherCards.push(discarded[currentIndex].name);
                                         document.getElementById("weather_cards").appendChild(selectedCard);
                                         selectedCard.className = "weatherCardPlayed";
@@ -123,6 +118,8 @@ function showMedicUI(version, random = 0) {
                                         selectedCard.removeEventListener("click", medicHelper, false);
                                         console.log(playedWeatherCards)
                                 }
+                                players[currentPlayer].deck.splice(players[currentPlayer].deck.indexOf(discarded[currentIndex]), 1);
+                                discarded.splice(currentIndex, 1);
                         } 
                         sumPowers(currentPlayer);
                 })
@@ -343,7 +340,7 @@ function playCard(cardType, e) {
                                         }
                                         else{
                                                 shownCardSlot.splice(0, 1);
-                                                document.getElementById("shown_card").removeChild(targetCard);
+                                                //document.getElementById("shown_card").removeChild(targetCard);
                                         }
                                 }  
                         }
@@ -383,11 +380,7 @@ function playCardDirect(cardType, id) {
         targetCard.className = "cardPlayed";
         targetCard.style.margin = "2px";
         if (cardType == "weather_cards") {
-                let t = 0;
-                playedWeatherCards.forEach(element => {
-                        if(playedCard.name != element) t++;
-                })
-                if(t == playedWeatherCards.length){
+                if(playedWeatherCards.indexOf(playedCard.name)== -1){
                         playedWeatherCards.push(playedCard.name);
                         document.getElementById(cardType).appendChild(targetCard);
                         targetCard.className = "weatherCardPlayed";

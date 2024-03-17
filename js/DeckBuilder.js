@@ -54,8 +54,8 @@ if(mode == 1){
         })
     }
     splitLeadersArray();
-    let p1Leader = p1leaders[4];
-    let p2Leader = p2leaders[4];
+    let p1Leader = p1leaders[1];
+    let p2Leader = p2leaders[0];
     
     let picture1Src = "../images/"+p1faction+".png";
     picture1Src = picture1Src.replaceAll(" ","_");
