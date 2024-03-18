@@ -320,8 +320,8 @@ img {
     height: 56%;
 }
 
-.shown_button_div {
-    height: 32%;
+#shown_button_div {
+    height: 8%;
 }
 
 .shownButton {

@@ -233,7 +233,7 @@ function playCard(cardType, e) {
                 shownCardSlot.splice(0, 1);
                 shownCardSlot.push(targetCard);
                 targetCard.className = "cardShown";
-                if (cardType != "leader") marginTrueNeckKeys(false);
+                if (cardType != "leader") marginTruePiss();
         }
         if (cardType == "agile" || cardType == "horn") {
                 buttonMelee.style.display = "inline-block";
@@ -357,7 +357,7 @@ function playCard(cardType, e) {
                                 buttonRanged.style.display = "none";
                                 buttonSiege.style.display = "none";
                         }
-                        marginTrueNeckKeys(true);       
+                        marginTruePiss();       
                 }
                 else {
                         document.getElementById("own_leader_div").appendChild(targetCard);
@@ -550,7 +550,7 @@ function drawCard(card){
         cardFrame.style.backgroundSize = "100% 100%";
         currentHand.appendChild(cardFrame);
         cardsInHand.push(document.getElementById(cardFrame.id));
-        marginTrueNeckKeys(true);
+        marginTruePiss();
 }
 
 addCardListener();

@@ -11,8 +11,8 @@ var zoomLevel = window.devicePixelRatio;
 let margin;
 let marginDiff;
 let currentHand = document.getElementById("current_cards")
-if (zoomLevel > 1) {margin = -16; marginDiff = 3}
-else {margin = -18; marginDiff = 5}
+if (zoomLevel > 1) {margin = -16; marginDiff = 4}
+else {margin = -18; marginDiff = 4.25}
 let cardsInHand = [];
 //console.log(margin + "px")
 
@@ -51,6 +51,19 @@ function marginTrueNeckKeys(value) {
             }
         }
         console.debug("Current margin " + margin);
+    }
+}
+
+function marginTruePiss() {
+    let margin = -16;
+    let multiply = 1.28;
+    let handCards = document.getElementsByClassName("cardInHand");
+    margin -= Math.pow(handCards.length, multiply);
+    if (handCards.length >= 22) margin = -65;
+    for (let i = 0; i < handCards.length; i++) {
+        if (handCards.length >= 9 && i != 0) {
+            handCards[i].style.marginLeft = margin + "px";
+        }
     }
 }
 
