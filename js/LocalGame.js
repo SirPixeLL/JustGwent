@@ -284,7 +284,7 @@ function dandelion(i,j){
     if(players[i].bard && j == 0) {
         console.log("je tam");
         for(let e = 0; e < boards[i][0].length; e++){
-            if(boards[i][0][e].name != "Dandelion") boards[i][0][e].power = boards[i][0][e].power*2;
+            if(boards[i][0][e].name != "Dandelion" && boards[i][0][e].isLegend == false) boards[i][0][e].power = boards[i][0][e].power*2;
         }
     }
 }
