@@ -368,6 +368,10 @@ function playCard(cardType, e) {
         };
 }
 
+function showCardInfo() {
+        
+}
+
 function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListener na karty
         for(let synch = 0; synch < players[currentPlayer].hand.length; synch++){
                 if(e.target.id.includes(players[currentPlayer].hand[synch].id)){

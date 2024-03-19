@@ -72,7 +72,7 @@
 
 .cardShown {
     margin-left: 0px !important;
-    height: 70%;
+    width: 100%;
     font-size: 25px;
     --a: 25px;
     top: 5%;
