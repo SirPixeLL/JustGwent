@@ -11,8 +11,6 @@ var zoomLevel = window.devicePixelRatio;
 let margin;
 let marginDiff;
 let currentHand = document.getElementById("current_cards")
-if (zoomLevel > 1) {margin = -16; marginDiff = 4}
-else {margin = -18; marginDiff = 4.25}
 let cardsInHand = [];
 //console.log(margin + "px")
 
@@ -55,7 +53,7 @@ function marginTrueNeckKeys(value) {
 }
 
 function marginTruePiss() {
-    let margin = -16;
+    let margin = -14;
     let multiply = 1.28;
     let handCards = document.getElementsByClassName("cardInHand");
     margin -= Math.pow(handCards.length, multiply);

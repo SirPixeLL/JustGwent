@@ -56,14 +56,7 @@ if(mode == 1){
     splitLeadersArray();
     let p1Leader = p1leaders[1];
     let p2Leader = p2leaders[0];
-    
-    let picture1Src = "../images/"+p1faction+".png";
-    picture1Src = picture1Src.replaceAll(" ","_");
-    picture1Src = picture1Src.replaceAll(/[':]/g, '');
-    let picture2Src = "../images/"+p2faction+".png";
-    picture2Src = picture2Src.replaceAll(" ","_");
-    picture2Src = picture2Src.replaceAll(/[':]/g, '');
-    let player1 = new Player(1, p1Leader.name, p1faction, p1Leader , p1deck, picture1Src);
-    let player2 = new Player(2, p2Leader.name, p2faction, p2Leader, p2deck, picture2Src);
+    let player1 = new Player(1, p1Leader.name, p1faction, p1Leader , p1deck);
+    let player2 = new Player(2, p2Leader.name, p2faction, p2Leader, p2deck);
     players = [player1, player2];
 }

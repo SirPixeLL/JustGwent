@@ -82,6 +82,7 @@
 .weatherCardPlayed {
     height: 80%;
     margin-left: 0px !important;
+    margin-inline: 2px;
 }
 
 .cardInMedicUI {

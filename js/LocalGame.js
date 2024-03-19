@@ -81,6 +81,15 @@ function setWeatherDebuff(){ //row = číslo(0 melee, 1 ranged, 2 siege)
     })
 }
 function clearWeather(){
+    let weatherSlot = document.getElementById("weather_cards");
+    let weatherCards = document.getElementById("weather_cards").children;
+    console.debug(weatherCards);
+    if (weatherCards.length > 0) {
+        for (let i = 0; weatherCards.length+1 > i; i++) {
+            console.debug(weatherCards[i]);
+            weatherSlot.removeChild(weatherCards[i]);
+        }
+    }
     weather[0] = false;
     weather[1] = false;
     weather[2] = false;

@@ -2,7 +2,7 @@ let playedWeatherCards = [];
 let types = {
         'Melee': 0,
         'Ranged': 1,
-        'Siege': 2
+        'Siege': 2,
 }
 let shownCardSlot = [];
 
@@ -329,15 +329,14 @@ function playCard(cardType, e) {
                                 players[currentPlayer].hand.splice(index,1);
                                 play(playedCard, currentPlayer);
                                 if (cardType == "weather_cards") {
-                                        if(playedWeatherCards.indexOf(playedCard.name)== -1){
-                                                playedWeatherCards.push(playedCard.name);
+                                        if(playedWeatherCards.indexOf(playedCard.name)== -1 && targetCard.id.includes("Clear_Weather") == false){
+                                                playedWeatherCards.push(playedCard.name)
                                                 document.getElementById(cardType).appendChild(targetCard);
                                                 shownCardSlot.splice(0, 1);
                                                 targetCard.className = "weatherCardPlayed";
                                         }
                                         else{
                                                 shownCardSlot.splice(0, 1);
-                                                //document.getElementById("shown_card").removeChild(targetCard);
                                         }
                                 }  
                         }
@@ -367,24 +366,6 @@ function playCard(cardType, e) {
                         buttonNo.style.display = "none";
                 }
         };
-}
-
-function playCardDirect(cardType, id) {
-        let targetCard = document.getElementById(id);
-        console.log(targetCard);
-        console.log(cardType);
-        if (cardType != "weather") document.getElementById(cardType).appendChild(targetCard);
-        targetCard.className = "cardPlayed";
-        if (cardType == "weather_cards") {
-                if(playedWeatherCards.indexOf(playedCard.name)== -1){
-                        playedWeatherCards.push(playedCard.name);
-                        document.getElementById(cardType).appendChild(targetCard);
-                        targetCard.className = "weatherCardPlayed";
-                }
-                else{
-                        targetCard.style.display = "none";
-                }
-        }
 }
 
 function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListener na karty
