@@ -274,7 +274,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Nilfgaardian Empire",
         "ability": "TightBond",
-        "quote": "The Impera Brigade neber surrenders. Ever.",
+        "quote": "The Impera Brigade never surrenders. Ever.",
         "number": 4,
         "hasVariations": true
     },

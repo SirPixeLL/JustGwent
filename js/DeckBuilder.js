@@ -13,11 +13,11 @@ function splitLeadersArray(){
     p2leaders = [];
     leaderArray.forEach(e =>{
         if(e.faction == p1faction){
-            appendLeader = new Leader(e.id+"A", e.name, e.faction);
+            appendLeader = new Leader(e.id+"A", e.name, e.faction, e.quote);
             p1leaders.push(appendLeader);
         }
         if(e.faction == p2faction){
-            appendLeader = new Leader(e.id+"B", e.name, e.faction);
+            appendLeader = new Leader(e.id+"B", e.name, e.faction, e.quote);
             p2leaders.push(appendLeader);
         }
         

@@ -4,7 +4,7 @@ function localGame(){
     
     currentPlayer = startingPlayer();
     localGameStart();
-    console.log(players[currentPlayer].hand);
+    console.log(players[currentPlayer].leader);
 }
 function localGameStart(){
     playerUpdate(currentPlayer);
