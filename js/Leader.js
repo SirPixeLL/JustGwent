@@ -1,9 +1,10 @@
 class Leader{
-    constructor(id, name, faction){
+    constructor(id, name, faction, quote){
         this.id = id;
         this.name = name;
         this.faction = faction;
         this.playable = true;
+        this.quote = quote;
     }
 }
 
