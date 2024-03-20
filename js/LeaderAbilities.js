@@ -14,7 +14,7 @@ function playLeader(leader){
             break;
         case "Eredin: Commander of the Red Riders": //bez chyb
             //horn na melee
-            commanderHornSet(new Card("","",0,"Melee","","","","","",""), currentPlayer);
+            commanderHornSet(new Card("LeaderHorn"+players[currentPlayer].id,"Commander's Horn", null,"Melee","Neutral","CommandersHorn",false,false), currentPlayer);
             endTurn();
             break;
         case "Eredin: Destroyer of Worlds":
@@ -68,7 +68,7 @@ function playLeader(leader){
             break;
         case "Foltest: The Siegemaster": //bez chyb
             //commanderHorn na siege
-            commanderHornSet(new Card("","",0,"Siege","","","","","",""), currentPlayer);
+            commanderHornSet(new Card("LeaderHorn"+players[currentPlayer].id,"Commander's Horn", null,"Siege","Neutral","CommandersHorn",false,false), currentPlayer);
             endTurn();
             break;
         case "Foltest: The Steel-Forged": //bez chyb
@@ -120,7 +120,7 @@ function playLeader(leader){
             break;
         case "Francesca Findabair: The Beautiful": //bez chyb
             //commanderHorn na ranged
-            commanderHornSet(new Card("","Commander's Horn",0,"Ranged","","","","","",""), currentPlayer);
+            commanderHornSet(new Card("LeaderHorn"+players[currentPlayer].id,"Commander's Horn", null,"Ranged","Neutral","CommandersHorn",false,false), currentPlayer);
             endTurn();
     updateLeaders();
     }

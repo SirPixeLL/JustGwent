@@ -4,6 +4,7 @@ function localGame(){
     
     currentPlayer = startingPlayer();
     localGameStart();
+    console.log(players[currentPlayer].hand);
 }
 function localGameStart(){
     playerUpdate(currentPlayer);
@@ -108,7 +109,7 @@ function commanderHornSet(card, currentPlayer){
     }
     else row = 2;
     horn[currentPlayer][row] = true;
-    hornUI[currentPlayer][row].push(new Card("Commanders_Horn"+uHorn+"U", "Commanders Horn",null,"Horn","url(../images/cards/Commanders_Horn.png)","Neutral", "CommandersHorn", null, false, true));
+    hornUI[currentPlayer][row].push(new Card("Commanders_Horn"+uHorn+"U", "Commanders Horn",null,"Horn","Neutral", "CommandersHorn", false, false));
     uHorn++;
     //přidat funkci která dává horn na true podle toho kam se to dá
 }
@@ -125,17 +126,18 @@ function bond(i, j, n){ //volá se na konci cyklu kola
     if(boards[i][j][n].ability=="TightBond"){
         boards[i][j][n].power = boards[i][j][n].basepower;
         for(let m = 0; m < boards[i][j].length; m++){
-            if(boards[i][j][m] != boards[i][j][n] && boards[i][j][n].summons == boards[i][j][m].name){
+            if(boards[i][j][m] != boards[i][j][n] && boards[i][j][n].name == boards[i][j][m].name){
                 boards[i][j][n].power = boards[i][j][n].power+boards[i][j][n].basepower;
             }}}
 }
 function muster(currentPlayer, card){
     let toRemove = [];
+    let cardGroup = card.name.split(":");
 
     //z balíčku
     players[currentPlayer].deck.forEach(element=>{
-        let i = players[currentPlayer].deck.indexOf(element); 
-        if(element.name === card.summons){
+        let elementGroup = element.name.split(":"); 
+        if(elementGroup[0] === cardGroup[0] && element.name != "Gaunter O'Dimm"){
             switch(element.type){
                 case "Melee":
                     row = 0;
@@ -155,9 +157,9 @@ function muster(currentPlayer, card){
 
     //z ruky
     toRemove = [];
-    players[currentPlayer].hand.forEach(element=>{
-        let i = players[currentPlayer].hand.indexOf(element); 
-        if(element.name === card.summons && element.id != card.id){
+    players[currentPlayer].hand.forEach(element=>{ 
+        let elementGroup = element.name.split(":"); 
+        if(elementGroup[0] === cardGroup[0] && element.name != "Gaunter O'Dimm"){
             
             switch(element.type){
                 case "Melee":

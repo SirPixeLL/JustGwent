@@ -40,7 +40,6 @@ function makeCardObject(cardValues, idn, i){
     cardValues.type,
     cardValues.faction,
     cardValues.ability,
-    cardValues.summons,
     cardValues.isLegend,
     cardValues.hasVariations
   );
