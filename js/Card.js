@@ -14,7 +14,7 @@ let currentHand = document.getElementById("current_cards")
 let cardsInHand = [];
 //console.log(margin + "px")
 
-function marginTrueNeckKeys(value) {
+/*function marginTrueNeckKeys(value) {
     let handCards = document.getElementsByClassName("cardInHand");
     if (value == true) {
         console.debug(handCards.length);
@@ -50,9 +50,9 @@ function marginTrueNeckKeys(value) {
         }
         console.debug("Current margin " + margin);
     }
-}
+}*/
 
-function marginTruePiss() {
+function marginTrueNeckKeys() {
     let margin = -14;
     let multiply = 1.28;
     let handCards = document.getElementsByClassName("cardInHand");

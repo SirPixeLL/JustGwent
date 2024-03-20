@@ -201,6 +201,8 @@ function playCard(cardType, e) {
         let buttonYes = document.getElementById("shownButtonYes");
         let buttonNo = document.getElementById("shownButtonNo");
         let targetCard = document.getElementById(e.target.id);
+        if (cardType == "leader") showCardInfo(1)
+        else showCardInfo();
         if (shownCardSlot.length > 0) {
                 if ((shownCardSlot[0].id.includes("Agile") || shownCardSlot[0].id.includes("Horn")) && (cardType != "agile" || cardType != "horn")) {
                         buttonMelee.style.display = "none";
@@ -233,7 +235,7 @@ function playCard(cardType, e) {
                 shownCardSlot.splice(0, 1);
                 shownCardSlot.push(targetCard);
                 targetCard.className = "cardShown";
-                if (cardType != "leader") marginTruePiss();
+                if (cardType != "leader") marginTrueNeckKeys();
         }
         if (cardType == "agile" || cardType == "horn") {
                 buttonMelee.style.display = "inline-block";
@@ -255,6 +257,7 @@ function playCard(cardType, e) {
                         buttonRanged.style.display = "none";
                         buttonSiege.style.display = "none";
                         buttonNo.style.display = "none";
+                        hideCardInfo();
                 }
                 buttonRanged.onclick = function() {
                         shownCardSlot.splice(0, 1);
@@ -271,6 +274,7 @@ function playCard(cardType, e) {
                         buttonRanged.style.display = "none";
                         buttonSiege.style.display = "none";
                         buttonNo.style.display = "none";
+                        hideCardInfo();
                 }
                 if (cardType == "horn") {
                         buttonSiege.onclick = function() {
@@ -287,6 +291,7 @@ function playCard(cardType, e) {
                                 buttonRanged.style.display = "none";
                                 buttonSiege.style.display = "none";
                                 buttonNo.style.display = "none";
+                                hideCardInfo();
                         }
                 }
         }
@@ -299,6 +304,7 @@ function playCard(cardType, e) {
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
                                 document.getElementById(e.target.id).remove();
                                 shownCardSlot.splice(0, 1);
+                                hideCardInfo();
                         }
                         else if (cardType == "decoy") {
                                 let playedCard = players[currentPlayer].hand[index];
@@ -307,7 +313,8 @@ function playCard(cardType, e) {
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
                                 document.getElementById(e.target.id).remove();
                                 shownCardSlot.splice(0, 1);
-                        }
+                                hideCardInfo();
+                                }
                         else if (cardType == "leader") {
                                 players[currentPlayer].leader.playable = false;
                                 targetCard.className = "cardLeader";
@@ -315,6 +322,7 @@ function playCard(cardType, e) {
                                 playLeader(players[currentPlayer].leader);
                                 shownCardSlot.splice(0, 1);
                                 document.getElementById("own_leader_div").firstElementChild.removeEventListener("click", cardListenerHelper, false);
+                                hideCardInfo();
                         }
                         else {
                                 shownCardSlot.splice(0, 1);
@@ -341,7 +349,8 @@ function playCard(cardType, e) {
                                 }  
                         }
                         buttonYes.style.display = "none";
-                        buttonNo.style.display = "none"; 
+                        buttonNo.style.display = "none";
+                        hideCardInfo(); 
                 };
         }              
         buttonNo.onclick = function() {
@@ -356,7 +365,7 @@ function playCard(cardType, e) {
                                 buttonRanged.style.display = "none";
                                 buttonSiege.style.display = "none";
                         }
-                        marginTruePiss();       
+                        marginTrueNeckKeys();       
                 }
                 else {
                         document.getElementById("own_leader_div").appendChild(targetCard);
@@ -365,11 +374,28 @@ function playCard(cardType, e) {
                         buttonYes.style.display = "none";
                         buttonNo.style.display = "none";
                 }
-        };
+                hideCardInfo();
+        }
 }
 
-function showCardInfo() {
-        
+function showCardInfo(leader = 0) {
+        let infoElement =  document.getElementById("cardInfo");
+        let cardName = document.getElementById("cardName");
+        let cardQuote = document.getElementById("cardQuote");
+        infoElement.style.display = "block";
+        if (leader == 1) {
+                cardName.innerHTML = players[currentPlayer].leader.name;
+                cardQuote.innerHTML = '"' + players[currentPlayer].leader.quote + '"';
+        }
+        else {
+                cardName.innerHTML = players[currentPlayer].hand[index].name;
+                cardQuote.innerHTML = '"' + players[currentPlayer].hand[index].quote + '"';      
+        }
+}
+
+function hideCardInfo() {
+        let infoElement =  document.getElementById("cardInfo");
+        infoElement.style.display = "none";
 }
 
 function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListener na karty
@@ -429,7 +455,7 @@ function addLeaderListener() {
         document.getElementById("own_leader_div").firstElementChild.addEventListener("click", cardListenerHelper);
 }
 
-function createCardElement(card){
+function createCardElement(card) {
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
         cardFrame.id = card.type + card.id;
@@ -480,7 +506,7 @@ function createCardElement(card){
         return cardFrame;
 }
 
-function drawCard(card){
+function drawCard(card) {
         let cardFrame = document.createElement("div");
         cardFrame.className = "cardInHand";
         cardFrame.id = card.type + card.id;
@@ -535,7 +561,7 @@ function drawCard(card){
         cardFrame.style.backgroundSize = "100% 100%";
         currentHand.appendChild(cardFrame);
         cardsInHand.push(document.getElementById(cardFrame.id));
-        marginTruePiss();
+        marginTrueNeckKeys();
 }
 
 addCardListener();

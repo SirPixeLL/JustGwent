@@ -1,0 +1,28 @@
+#deck_customizer {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 0px;
+}
+
+#top_div {
+    display: block;
+    width: 100%;
+    height: 20%;
+    background-color: grey;
+}
+
+#left_side,
+#right_side,
+#center {
+    display: inline-block;
+    height: 80%;
+    width: 37.5%;
+    background-color: aqua;
+}
+
+#center {
+    width: 25%;
+    background-color: blueviolet;
+}

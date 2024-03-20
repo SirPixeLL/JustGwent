@@ -28,6 +28,7 @@ img {
     aspect-ratio: 16/7.8;
 }
 
+
 /*Switch screen*/
 #switch_screen {
     position: absolute;
@@ -327,8 +328,8 @@ img {
 #shown_card {
     position: relative;
     display: block;
-    left: 22.5%;
-    width: 55%;
+    left: 19%;
+    width: 62%;
     aspect-ratio: 3/4;
 }
 
@@ -349,11 +350,26 @@ img {
     border-radius: 5px;
     margin-top: -5%;
     z-index: 10;
-    left: 22.5%;
-    width: 55%;
+    left: 19%;
+    width: 62%;
     height: 20%;
     color: #aa9667;
     background-color: #17191a;
+}
+
+#cardName {
+    padding-top: 2px;
+    height: 35%;
+    line-height: 100%;
+    font-weight: bold;
+    font-size: 1vw;
+}
+
+#cardQuote {
+    height: 55%;
+    padding-top: 4px;
+    line-height: 100%;
+    font-size: 0.9vw;
 }
 
 #enemy_remaining_div,
