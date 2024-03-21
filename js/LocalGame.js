@@ -58,8 +58,9 @@ function play(card, currentPlayer){
             else players[currentPlayer].bard = true;
             break;
         case "Scorch":
-            if(card.name == "Schirrú") scorchRow(2);
             if(card.name == "Villentretenmerth") scorchRow(0);
+            else if(card.name == "Toad") scorchRow(1);
+            else if(card.name == "Schirrú") scorchRow(2);
             else scorch();
             break;
         case "Medic":
@@ -132,25 +133,28 @@ function bond(i, j, n){ //volá se na konci cyklu kola
 }
 function muster(currentPlayer, card){
     let toRemove = [];
-    let cardGroup = card.name.split(":");
+    let cardGroup = card.name.split(" ");
 
     //z balíčku
     players[currentPlayer].deck.forEach(element=>{
-        let elementGroup = element.name.split(":"); 
+        let elementGroup = element.name.split(" "); 
         if(elementGroup[0] === cardGroup[0] && element.name != "Gaunter O'Dimm"){
-            switch(element.type){
-                case "Melee":
-                    row = 0;
-                    break;
-                case "Ranged":
-                    row = 1;
-                    break;
-                case "Siege":
-                    row = 2;
-                    break;
-            }
+            if(element.name == "Gaunter O'Dimm" || element.name == "Arachas Behemoth");
+            else{
+                switch(element.type){
+                    case "Melee":
+                        row = 0;
+                        break;
+                    case "Ranged":
+                        row = 1;
+                        break;
+                    case "Siege":
+                        row = 2;
+                        break;
+                }
             boards[currentPlayer][row].push(element);
             toRemove.push(element);
+            }
         }
     })
     spliceSelected(toRemove, players[currentPlayer].deck);
@@ -158,22 +162,24 @@ function muster(currentPlayer, card){
     //z ruky
     toRemove = [];
     players[currentPlayer].hand.forEach(element=>{ 
-        let elementGroup = element.name.split(":"); 
-        if(elementGroup[0] === cardGroup[0] && element.name != "Gaunter O'Dimm"){
-            
-            switch(element.type){
-                case "Melee":
-                    row = 0;
-                    break;
-                case "Ranged":
-                    row = 1;
-                    break;
-                case "Siege":
-                    row = 2;
-                    break;
-            }
+        let elementGroup = element.name.split(" "); 
+        if(elementGroup[0] === cardGroup[0]){
+            if(element.name == "Gaunter O'Dimm" || element.name == "Arachas Behemoth");
+            else {
+                switch(element.type){
+                    case "Melee":
+                        row = 0;
+                        break;
+                    case "Ranged":
+                        row = 1;
+                        break;
+                    case "Siege":
+                        row = 2;
+                        break;
+                }
             boards[currentPlayer][row].push(element);
             toRemove.push(element);
+            }
         }
     })
     spliceSelected(toRemove, players[currentPlayer].hand);

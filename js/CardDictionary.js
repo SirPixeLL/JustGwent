@@ -158,7 +158,326 @@ const cardDict = {
         "ability": null,
         "number": 1
     },
-
+    //Monsters
+    "Arachas": {
+        "name": "Arachas",
+        "power": 4,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": "Muster",
+        "quote": "Ugly - nature's way of saying 'Stay the fuck away.'",
+        "number": 3
+    },
+    "Arachas_Behemoth": {
+        "name": "Arachas Behemoth",
+        "power": 6,
+        "type": "Siege",
+        "faction": "Monsters",
+        "ability": "Muster",
+        "quote": "Like a cross between a crab, a spider...and a ploughin' mountain",
+        "number": 1
+    },
+    "Botchling": {
+        "name": "Botchling",
+        "power": 4,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "Admit your mistakes and bury them proper - else they'll come back to haunt you.",
+        "number": 1
+    },
+    "Celaeno_Harpy": {
+        "name": "Celaeno Harpy",
+        "power": 2,
+        "type": "Agile",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "Common harpies feed on carrion. Celaeno harpies... they feed on dreams.",
+        "number": 1
+    },
+    "Cockatrice": {
+        "name": "Cockatrice",
+        "power": 2,
+        "type": "Ranged",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "Born of an egg laid by a cockerel... if you believe such peasant drivel.",
+        "number": 1
+    },
+    "Brewess": {
+        "name": "Crone: Brewess",
+        "power": 6,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": "Muster",
+        "quote": "We'll cut you up, boy. A fine broth you will make.",
+        "number": 1
+    },
+    "Weavess": {
+        "name": "Crone: Weavess",
+        "power": 6,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": "Muster",
+        "quote": "I sense your pain. I see your fear...",
+        "number": 1
+    },
+    "Whispess": {
+        "name": "Crone: Whispess",
+        "power": 6,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": "Muster",
+        "quote": "I'd be your best - and last.",
+        "number": 1
+    },
+    "Draug": {
+        "name": "Draug",
+        "power": 10,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": null,
+        "isLegend": true,
+        "quote": "Some men cannot admit defeat. Some keep fighting from beyond the grave.",
+        "number": 1
+    },
+    "Earth_Elemental": {
+        "name": "Earth Elemental",
+        "power": 6,
+        "type": "Siege",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "How to fight an earth elemental? You don't. You run. Fast as you can.",
+        "number": 1
+    },
+    "Endrega": {
+        "name": "Endrega",
+        "power": 2,
+        "type": "Ranged",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "The nest! Take out the nest, or the Vergils'll just keep coming!",
+        "number": 1
+    },
+    "Fiend": {
+        "name": "Fiend",
+        "power": 6,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "A fiend looks a bit like a deer. An enormous, evil deer.",
+        "number": 1
+    },
+    "Fire_Elemental": {
+        "name": "Fire Elemental",
+        "power": 6,
+        "type": "Siege",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "Fire is so delightful.",
+        "number": 1
+    },
+    "Foglet": {
+        "name": "Foglet",
+        "power": 2,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "Fog creeps on little cat feet. Foglets creep over the bodies of their victims.",
+        "number": 1
+    },
+    "Forktail": {
+        "name": "Forktail",
+        "power": 5,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "Fork tails... Bah! Vergils' tails're more like cleavers.",
+        "number": 1
+    },
+    "Frightener": {
+        "name": "Frightener",
+        "power": 5,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": '"What have I done?" the mage cried out, frightened of his own creation.',
+        "number": 1
+    },
+    "Gargoyle": {
+        "name": "Gargoyle",
+        "power": 2,
+        "type": "Ranged",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "Ancient sculptors' nightmarish fantasies, brought to life by bored mages.",
+        "number": 1
+    },
+    "Ghoul": {
+        "name": "Ghoul",
+        "power": 1,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": "Muster",
+        "quote": "If ghouls are part of the Circle of Life... then it's a damn vicious circle.",
+        "number": 3
+    },
+    "Grave_Hag": {
+        "name": "Grave Hag",
+        "power": 5,
+        "type": "Ranged",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "Their long tongues're for slurping marrow - and whipping prep.",
+        "number": 1
+    },
+    "Griffin": {
+        "name": "Griffin",
+        "power": 5,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "Griffins like to toy with their prey. Eat 'em alive, piece by piece.",
+        "number": 1
+    },
+    "Harpy": {
+        "name": "Harpy",
+        "power": 2,
+        "type": "Agile",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "There are many species of harpy, and all are kleptomaniacs.",
+        "number": 1
+    },
+    "Ice_Giant": {
+        "name": "Ice Giant",
+        "power": 5,
+        "type": "Siege",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "There are many species of harpy, and all are kleptomaniacs.",
+        "number": 1
+    },
+    "Imlerith": {
+        "name": "Imlerith",
+        "power": 10,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": null,
+        "isLegend": true,
+        "quote": "add nahw! Kill them! Litter the earth with their entrails!",
+        "number": 1
+    },
+    "Kayran": {
+        "name": "Kayran",
+        "power": 8,
+        "type": "Agile",
+        "faction": "Monsters",
+        "ability": null,
+        "isLegend": true,
+        "quote": "Kill a kayran? Simple. Take your best sword... then sell it and hire a witcher.",
+        "number": 1
+    },
+    "Leshen": {
+        "name": "Leshen",
+        "power": 10,
+        "type": "Ranged",
+        "faction": "Monsters",
+        "ability": null,
+        "isLegend": true,
+        "quote": "We never hunt in these woods. Not even if it means the whole village starves.",
+        "number": 1
+    },
+    "Nekker": {
+        "name": "Nekker",
+        "power": 2,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": "Damn things are almost cute, if you ignore the whole vicious killer aspect.",
+        "number": 3
+    },
+    "Plague_Maiden": {
+        "name": "Plague Maiden",
+        "power": 5,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": '"The sick rave about a boil-pocked woman surrounded by herds of rabid rats..."',
+        "number": 1
+    },
+    "Toad": {
+        "name": "Toad",
+        "power": 7,
+        "type": "Ranged",
+        "faction": "Monsters",
+        "ability": "Scorch", //Ranged
+        "quote": '"Big. Bad. Ugly. Squats in the sewers."',
+        "number": 1
+    },
+    "Bruxa": {
+        "name": "Vampire: Bruxa",
+        "power": 4,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": "Muster",
+        "quote": '"A vile, bloodthirsty, man-eating hag. Kind of like my mother-in-law."',
+        "number": 1
+    },
+    "Ekimmara": {
+        "name": "Vampire: Ekimmara",
+        "power": 4,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": "Muster",
+        "quote": '"Who would think overgrown bats would have a taste for gaudy jewelry?"',
+        "number": 1
+    },
+    "Fleder": {
+        "name": "Vampire: Fleder",
+        "power": 4,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": "Muster",
+        "quote": '"Higher vampires embrace their victims. Fleders rip them to shreds."',
+        "number": 1
+    },
+    "Garkain": {
+        "name": "Vampire: Garkain",
+        "power": 4,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": "Muster",
+        "quote": '"Blood-drinkers and corpse-eaters so foul their very ugliness paralyses foes."',
+        "number": 1
+    },
+    "Katakan": {
+        "name": "Vampire: Katakan",
+        "power": 5,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": "Muster",
+        "quote": 'Drinking the blood of the Continent since the Conjunction.',
+        "number": 1
+    },
+    "Werewolf": {
+        "name": "Werewolf",
+        "power": 5,
+        "type": "Melee",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": '"'+"Wolves aren't as bad as they say. Werewolves, though - they're worse."+'"',
+        "number": 1
+    },
+    "Wyvern": {
+        "name": "Wyvern",
+        "power": 2,
+        "type": "Ranged",
+        "faction": "Monsters",
+        "ability": null,
+        "quote": '"Imagine a cross between a winged snake and a nightmare. Wyverns are worse."',
+        "number": 1
+    },
     //Northern Realms
     "Ballista": {
         "name": "Ballista",

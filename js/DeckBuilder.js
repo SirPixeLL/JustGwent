@@ -2,7 +2,7 @@ let p1deck = [];
 let p1faction =  "Nilfgaardian Empire";
 
 let p2deck = [];
-let p2faction = "Scoia'tael";
+let p2faction = "Monsters";
 
 //Balanced = 1
 //Classic = 2
