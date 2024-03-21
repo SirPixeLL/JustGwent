@@ -5,12 +5,13 @@ let types = {
         'Siege': 2,
 }
 let shownCardSlot = [];
-
 let currentIndex = 0;
-
 let redrawCount = 0;
+let decoyOn = false;
 
 function decoy(decoyCard) {
+        decoyOn = true;
+        let numCards = 0;
         cycleBoard(function(i, j, n) {
                 let object = boards[i][j][n];
                 if (object != null) {
@@ -19,11 +20,12 @@ function decoy(decoyCard) {
                         else if (j == 1) element = document.getElementById("Ranged"+object.id);
                         else if (j == 2) element = document.getElementById("Siege"+object.id);
                         if (i == currentPlayer && object.isLegend == false) {
+                                numCards++;
                                 element.style.border = "2px yellow solid";
                                 element.addEventListener("click", function getCardBack() {
                                         players[currentPlayer].hand.push(object);
                                         boards[i][j].splice(n, 1, decoyCard);
-                                        
+                                        decoyOn = false;
                                         updateAll(currentPlayer);
                                         changeButton("switch");
                                         endTurn();
@@ -31,6 +33,12 @@ function decoy(decoyCard) {
                         }
                 }
         })
+        if (numCards == 0) {
+                decoyOn = false;
+                players[currentPlayer].hand.push(decoyCard);
+                clearHand();
+                drawHand(currentPlayer);
+        }
 }
 
 function showMedicUI(version, random = 0) {
@@ -118,10 +126,7 @@ function showMedicUI(version, random = 0) {
                                 ui.style.display = "none";
                                 selected.removeChild(selectedCard);
                                 if (redrawCount == 2) players[currentPlayer].redraw = false;
-                                setTimeout(() => {
-                                        
-                                }, timeout);
-                                showMedicUI(version);
+                                showMedicUI(version);   
                         }
                         else if (selectedCard.id.includes("Melee") || selectedCard.id.includes("Ranged") || selectedCard.id.includes("Siege")) {
                                 checkForSpy(currentIndex, types[discarded[currentIndex].type], "discarded");
@@ -342,9 +347,9 @@ function playCard(cardType, e) {
                         else if (cardType == "decoy") {
                                 let playedCard = players[currentPlayer].hand[index];
                                 players[currentPlayer].hand.splice(index,1);
+                                document.getElementById(e.target.id).remove();
                                 decoy(playedCard);
                                 cardsInHand.splice(cardsInHand.indexOf(targetCard), 1);
-                                document.getElementById(e.target.id).remove();
                                 shownCardSlot.splice(0, 1);
                                 hideCardInfo();
                                 }

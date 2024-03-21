@@ -372,12 +372,15 @@ function endTurn(){
 }
 
 function passFunction(){
-    changeButton("remove");
-    players[currentPlayer].hasPassed = true;
-    if(players[currentPlayer].hasPassed && players[1-currentPlayer].hasPassed);
-    else switchFunction();
-    endTurn();
-
+    if ((document.getElementById("medic_ui").style.display == "" || document.getElementById("medic_ui").style.display == "none") && decoyOn == false) {
+        console.log(decoyOn);
+        changeButton("remove");
+        players[currentPlayer].hasPassed = true;
+        if(players[currentPlayer].hasPassed && players[1-currentPlayer].hasPassed);
+        else switchFunction();
+        endTurn();
+    }
+    else return;  
 }
 function switchFunction(){
     document.activeElement.blur();

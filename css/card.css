@@ -89,4 +89,5 @@
 .cardInMedicUI {
     border-radius: 5px;
     width: 100%;
+    --a: 20px;
 }
