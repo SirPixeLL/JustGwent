@@ -16,6 +16,7 @@ class Player{
         this.totalPower = 0;
         
         this.bard = false;
+        this.redraw = true;
 
         let pictureSrc = "../images/"+this.faction+".png";
         pictureSrc = pictureSrc.replaceAll(" ","_");
