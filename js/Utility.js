@@ -86,8 +86,8 @@ function updateAll(currentPlayer){
 
 function playerUpdate(currentPlayer){
     //leader, pfp, name, faction
-    let enemyHUD =[document.getElementById("enemy_leader"), document.getElementById("enemy_pic"), document.getElementById("enemy_name"), document.getElementById("enemy_faction")];
-    let ownHUD =[document.getElementById("own_leader"), document.getElementById("own_pic"), document.getElementById("own_name"), document.getElementById("own_faction")];
+    let enemyHUD =[document.getElementById("enemy_leader"), document.getElementById("enemy_pic"), document.getElementById("enemy_name"), document.getElementById("enemy_faction"), document.getElementById("enemy_remaining_div")];
+    let ownHUD =[document.getElementById("own_leader"), document.getElementById("own_pic"), document.getElementById("own_name"), document.getElementById("own_faction"), document.getElementById("own_remaining_div")];
     let HUD =[];
     if(currentPlayer == 0){
         HUD = [ownHUD, enemyHUD];
@@ -98,6 +98,11 @@ function playerUpdate(currentPlayer){
         HUD[i][1].src=players[i].factionCOA;
         HUD[i][2].innerHTML=players[i].name;
         HUD[i][3].innerHTML=players[i].faction;
+        cardBack = players[i].faction;
+        cardBack = cardBack.replace(" ", "_");
+        cardBack = cardBack.replace("'", "");
+        console.log(cardBack)
+        HUD[i][4].style.backgroundImage = "url(../images/cards/cardBacks/"+cardBack+"_Back.jpg)";
     }
 }
 

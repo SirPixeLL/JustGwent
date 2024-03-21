@@ -383,6 +383,7 @@ img {
     background-color: #17191a;
     aspect-ratio: 3/4;
     color: white;
+    background-size: cover;
 }
 
 #own_remaining,
