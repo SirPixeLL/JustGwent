@@ -8,6 +8,8 @@ let shownCardSlot = [];
 
 let currentIndex = 0;
 
+let redrawCount = 0;
+
 function decoy(decoyCard) {
         cycleBoard(function(i, j, n) {
                 let object = boards[i][j][n];
@@ -72,6 +74,20 @@ function showMedicUI(version, random = 0) {
                         ui.style.display = "none";
                 })
         }
+        else if (version == "redraw") {
+                if (players[currentPlayer].redraw == false) {
+                        currentIndex = 0;
+                        return;
+                }
+                text.innerHTML = "Choose up to 2 cards to redraw";
+                lookButton.style.display = "block";
+                discarded = players[currentPlayer].hand;
+                lookButton.addEventListener("click", function redraw() {
+                        players[currentPlayer].redraw = false;
+                        lookButton.style.display = "none";
+                        ui.style.display = "none";
+                })
+        }
         if(previous2.firstChild) {
                 previous2.removeChild(previous2.firstChild);
         }
@@ -90,7 +106,24 @@ function showMedicUI(version, random = 0) {
                 ui.style.display = "block";
                 selected.appendChild(selectedCard);
                 if (version != "lookAtEnemy") selectedCard.addEventListener("click", function medicHelper() {
-                        if (selectedCard.id.includes("Melee") || selectedCard.id.includes("Ranged") || selectedCard.id.includes("Siege")) {
+                        if (version == "redraw") {
+                                redrawCount++;
+                                let randomNum = getRandomInt(players[currentPlayer].deck.length-1);
+                                let randomCard = players[currentPlayer].deck[getRandomInt(players[currentPlayer].deck.length-1)];
+                                players[currentPlayer].deck.splice(randomNum, 1,  players[currentPlayer].hand[currentIndex]);
+                                players[currentPlayer].hand.splice(currentIndex, 1, randomCard)
+                                clearHand();
+                                drawHand(currentPlayer);
+                                selectedCard.removeEventListener("click", medicHelper, false);
+                                ui.style.display = "none";
+                                selected.removeChild(selectedCard);
+                                if (redrawCount == 2) players[currentPlayer].redraw = false;
+                                setTimeout(() => {
+                                        
+                                }, timeout);
+                                showMedicUI(version);
+                        }
+                        else if (selectedCard.id.includes("Melee") || selectedCard.id.includes("Ranged") || selectedCard.id.includes("Siege")) {
                                 checkForSpy(currentIndex, types[discarded[currentIndex].type], "discarded");
                                 play(discarded[currentIndex], currentPlayer);
                                 players[currentPlayer].discardedCards.splice(players[currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
@@ -389,7 +422,8 @@ function showCardInfo(leader = 0) {
         }
         else {
                 cardName.innerHTML = players[currentPlayer].hand[index].name;
-                cardQuote.innerHTML = '"' + players[currentPlayer].hand[index].quote + '"';      
+                if(players[currentPlayer].hand[index].quote != false) cardQuote.innerHTML = '"' + players[currentPlayer].hand[index].quote + '"'
+                else cardQuote.innerHTML = "";      
         }
 }
 
@@ -498,7 +532,12 @@ function createCardElement(card) {
                 abilityDiv.style.backgroundSize = "100% 100%";
                 cardFrame.appendChild(abilityDiv);
         }
-        let pictureSrc = "url(../images/cards/"+card.name+".png";
+        let pictureNum = "";
+        if(card.id[card.id.length-2]>=0 && card.id[card.id.length-2]<=9 && card.hasVariations){
+            pictureNum = card.id[card.id.length-2]
+            
+        }
+        let pictureSrc = "url(../images/cards/"+card.name+pictureNum+".png";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
         cardFrame.style.backgroundImage = pictureSrc;

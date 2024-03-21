@@ -91,17 +91,19 @@ img {
     position: absolute;
     display: none;
     z-index: 2;
-    height: 55%;
+    height: 75%;
     width: 100%;
-    background-color: rgba(23, 25, 26, 0.5);
-    top: 25%;
+    background-color: rgba(23, 25, 26, 0.7);
+    top: 12.5%;
 }
 
 #medic_text {
     display: block;
-    height: 5%;
+    height: 8%;
     margin-top: 10px;
-    color: #ffffff;
+    color: #aa9667;
+    font-weight: bold;
+    font-size: 1.2vw;
 }
 #selected_card,
 .side_card1,
@@ -123,15 +125,17 @@ img {
 }
 
 #look_button {
+    position: relative;
     display: none;
     height: 10%;
-    width: 40%;
+    width: 20%;
     border-radius: 10px;
     margin: 2px;
     font-weight: bold;
+    font-size: 1vw;
     background-color: #17191a;
     color: #ffffff;
-    margin-left: 30%;
+    left: 40%;
 }
 
 /* MAIN BOARDS */
@@ -385,6 +389,16 @@ img {
     color: white;
     background-size: cover;
 }
+
+#enemy_remaining_div,
+#own_remaining_div {
+    aspect-ratio: 12/18;
+}
+
+#own_remaining_div {
+    margin-top: 0px;
+}
+
 
 #own_remaining,
 #enemy_remaining {
