@@ -14,6 +14,7 @@ function localGameStart(){
     drawHand(currentPlayer);
     updateLeaders(currentPlayer);
     sumPowers(currentPlayer);
+    roundResults = [];
 }
 function startingPlayer(){
     //"Coinflip" na začátku hry
@@ -459,6 +460,7 @@ function endRound(){
             winner = "draw"; 
         }
     }
+    roundResults.push[players[0].totalPower, players[1].totalPower]
     showEndGraphic(winner, gameEnded());
 }
 

@@ -86,6 +86,35 @@ img {
     transition: opacity 2s ease-in;
 }
 
+/*End Game*/
+#end_game_results{
+    display:block;
+    width: 100vw;
+    height:80vh;
+    margin-top: 10vh;
+    position: absolute;
+    background-color: #17191a;
+    opacity: 0.9;
+    z-index: 10;
+}
+.players_result_names{
+    color: #aa9667;
+    display: inline-block;
+    margin-top: 10vh;
+    font-size: 1.5vw;
+    margin-right: 60vw;
+}
+#player1_result{
+    margin-top: 30vh;
+}
+.round_results{
+    display: inline-block;
+    position: relative;
+    color: #aa9667;
+    margin-bottom: 30vw;
+    
+}
+
 /*Medic UI*/
 #medic_ui {
     position: absolute;

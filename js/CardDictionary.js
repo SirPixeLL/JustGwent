@@ -166,6 +166,7 @@ const cardDict = {
         "faction": "Monsters",
         "ability": "Muster",
         "quote": "Ugly - nature's way of saying 'Stay the fuck away.'",
+        "hasVariations": true,
         "number": 3
     },
     "Arachas_Behemoth": {
@@ -320,6 +321,7 @@ const cardDict = {
         "faction": "Monsters",
         "ability": "Muster",
         "quote": "If ghouls are part of the Circle of Life... then it's a damn vicious circle.",
+        "hasVariations": true,
         "number": 3
     },
     "Grave_Hag": {
@@ -395,6 +397,7 @@ const cardDict = {
         "faction": "Monsters",
         "ability": null,
         "quote": "Damn things are almost cute, if you ignore the whole vicious killer aspect.",
+        "hasVariations": true,
         "number": 3
     },
     "Plague_Maiden": {
