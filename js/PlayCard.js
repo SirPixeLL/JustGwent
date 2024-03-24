@@ -215,7 +215,6 @@ function showMedicUI(version, random = 0) {
 
 function checkForSpy(index, row, handOrDiscarded){
         let toPush;
-        console.log(index, row);
         switch(handOrDiscarded){
                 case "hand":
                         toPush = players[currentPlayer].hand[index]

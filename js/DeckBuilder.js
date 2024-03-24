@@ -56,7 +56,7 @@ if(mode == 1){
     splitLeadersArray();
     let p1Leader = p1leaders[1];
     let p2Leader = p2leaders[2];
-    let player1 = new Player(1, p1Leader.name, p1faction, p1Leader , p1deck);
-    let player2 = new Player(2, p2Leader.name, p2faction, p2Leader, p2deck);
+    let player1 = new Player(1, "Martin", p1faction, p1Leader , p1deck);
+    let player2 = new Player(2, "Trunečkis", p2faction, p2Leader, p2deck);
     players = [player1, player2];
 }

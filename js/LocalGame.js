@@ -4,7 +4,6 @@ function localGame(){
     
     currentPlayer = startingPlayer();
     localGameStart();
-    console.log(players[currentPlayer].leader);
 }
 function localGameStart(){
     playerUpdate(currentPlayer);
@@ -374,7 +373,6 @@ function endTurn(){
 
 function passFunction(){
     if ((document.getElementById("medic_ui").style.display == "" || document.getElementById("medic_ui").style.display == "none") && decoyOn == false) {
-        console.log(decoyOn);
         changeButton("remove");
         players[currentPlayer].hasPassed = true;
         if(players[currentPlayer].hasPassed && players[1-currentPlayer].hasPassed);
@@ -412,7 +410,6 @@ function changeButton(action){
             break;
     }
 }
-
 function endRound(){
     clearHand(currentPlayer);
     let winner;
@@ -463,7 +460,7 @@ function endRound(){
             winner = "draw"; 
         }
     }
-    roundResults.push[players[0].totalPower, players[1].totalPower]
+    roundResults.push([players[0].totalPower, players[1].totalPower, winner]);
     showEndGraphic(winner, gameEnded());
 }
 
@@ -476,7 +473,6 @@ function discardCardsOnRoundEnd(){
             for(let j = 0; j < 3; j++){
                 
                 if(boards[i][j].length > 0){
-                    console.log(j, boards[i][j].length);
                     r.push(j);
                 }
             }
@@ -502,7 +498,6 @@ function discardCardsOnRoundEnd(){
     boards = [[[],[],[]],[[],[],[]]];
     if($.isEmptyObject(preserve) == false){
        for(let a = 0; a < preserve.length; a++){
-            console.log(preserve[a]);
             boards[preserve[a][0]][preserve[a][1]].push(preserve[a][2]);
         } 
     }

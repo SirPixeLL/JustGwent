@@ -131,15 +131,17 @@ class Card {
                 typeDiv.style.backgroundSize = "100% 100%";
                 cardFrame.appendChild(typeDiv);
             }
-            let abilitySrc;
-            let abilityDiv = document.createElement("div");
-            abilityDiv.className = "abilityDiv";
-            if(this.isAgile && this.ability == null) abilitySrc = "url(../images/cardWidgets/AgileAbility.png";
-            else abilitySrc = "url(../images/cardWidgets/"+this.ability+".png";
-            
-            abilityDiv.style.backgroundImage = abilitySrc;
-            abilityDiv.style.backgroundSize = "100% 100%";
-            cardFrame.appendChild(abilityDiv);
+            if(this.ability != null || this.isAgile){
+                let abilitySrc;
+                let abilityDiv = document.createElement("div");
+                abilityDiv.className = "abilityDiv";
+                if(this.isAgile && this.ability == null) abilitySrc = "url(../images/cardWidgets/AgileAbility.png";
+                else abilitySrc = "url(../images/cardWidgets/"+this.ability+".png";
+                
+                abilityDiv.style.backgroundImage = abilitySrc;
+                abilityDiv.style.backgroundSize = "100% 100%";
+                cardFrame.appendChild(abilityDiv);
+            }
         }
         let pictureNum = "";
         if(this.id[this.id.length-2]>=0 && this.id[this.id.length-2]<=9 && this.hasVariations){

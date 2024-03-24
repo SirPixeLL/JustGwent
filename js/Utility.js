@@ -101,7 +101,6 @@ function playerUpdate(currentPlayer){
         cardBack = players[i].faction;
         cardBack = cardBack.replace(" ", "_");
         cardBack = cardBack.replace("'", "");
-        console.log(cardBack)
         HUD[i][4].style.backgroundImage = "url(../images/cards/cardBacks/"+cardBack+"_Back.jpg)";
     }
 }
@@ -188,19 +187,39 @@ function showEndGraphic(winner, gameEnded){
         graphic.style.opacity = "0.75";
     }, 0);
     setTimeout(()=>{
-        hideEndGraphic();
+        hideEndGraphic(gameEnded);
     }, 1500);
 
 }
-function hideEndGraphic(){
+function hideEndGraphic(gameEnded){
     fadeOut(graphic)
-    setTimeout(()=>{
+    if(gameEnded){
+
+        document.getElementById("player0_result").innerHTML=players[0].name;
+        document.getElementById("player1_result").innerHTML=players[1].name;
+        let endGameTitle = document.getElementById("end_game_title");
+        if(roundResults[roundResults.length-1][2] == "draw") endGameTitle.innerHTML="DRAW";
+        else endGameTitle.innerHTML=roundResults[roundResults.length-1][2].name+" WINS!";
+
+        if(roundResults.length == 3) document.getElementById("round3_results").style.display="inline-block";
+        for(let r = 0; r < roundResults.length; r++){
+            for(let p = 0; p < 2; p++){
+                document.getElementById("p"+p+"_round"+r+"_result").innerHTML=roundResults[r][p];
+                if(roundResults[r][2] == players[p]) document.getElementById("p"+p+"_round"+r+"_result").style.color ="yellow";
+            }  
+        }
+        document.getElementById("end_game_results").style.display="inline-block";
+    }
+    else{
+        setTimeout(()=>{
         graphic.style.display="none";
         discardCardsOnRoundEnd();
         players[0].hasPassed = false;
         players[1].hasPassed = false;
         switchFunction();
-    }, 1500);
+        }, 1500);
+    }
+    
 }
 function gameEnded(){
     for(let i = 0; i < 2; i++){
@@ -226,7 +245,10 @@ function fadeOut(element) {
  function discardPile(){
     if($.isEmptyObject(players[currentPlayer].discardedCards)==false){
         let card = players[currentPlayer].discardedCards[players[currentPlayer].discardedCards.length - 1];
-        console.log(card);
         card.drawTo(document.getElementById("own_discarded"))
     }
+ }
+
+ function endGameUI(){
+
  }
