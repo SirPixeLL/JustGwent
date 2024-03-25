@@ -15,11 +15,65 @@
 </head>
 <body>
     <div id="body_div">
-        <div id="deck_customizer">
-            <div id="top_div"></div>
-            <div id="left_side"></div>
-            <div id="center"></div>
-            <div id="right_side"></div>
+        <div id="deck_customizer" style="display: none;">
+            <div id="opacity_div">
+                <div id="top_div">
+                    <div id="player_title">Player 1</div>
+                    <div id="faction_title">Northern Realms</div>
+                    <div id="faction_ability">Draw a card from your deck whenever you win a round</div>
+                    <div id="options_div">
+                        <p id="name_select_text">Name (Max. 8 characters):</p>
+                        <input id="name_input" type="text" placeholder="Input a name..." maxlength="8">
+                        <button id="name_button"><span>&#8594;</span></button>
+                        <p id="faction_select_text">Faction:</p>
+                        <select id="faction_select">
+                            <option value="Northern Realms">Northern Realms</option>
+                            <option value="Nilfgaardian Empire">Nilfgaardian Empire</option>
+                            <option value="Monsters">Monsters</option>
+                            <option value="Scoia'tael">Scoia'tael</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="left_side">
+                    <div id="left_side_title">Available Cards</div>
+                    <div id="available_cards" class="side_card_div"></div>
+                </div>
+                <div id="center">
+                    <div id="leader_title">Leader</div>
+                    <div id="leader_div"></div>
+                    <div class="number_card_div">
+                        <div class="number_card_title">Total cards in deck</div>
+                        <img class="number_card_image">
+                        <div id="total_num" class="number_card_total">15</div>
+                    </div>
+                    <div class="number_card_div">
+                        <div class="number_card_title">Number of unit card in deck</div>
+                        <img class="number_card_image">
+                        <div id="unit_num" class="number_card_total">15</div>
+                    </div>
+                    <div class="number_card_div">
+                        <div class="number_card_title">Special Cards</div>
+                        <img class="number_card_image">
+                        <div id="special_num" class="number_card_total">15</div>
+                    </div>
+                    <div class="number_card_div">
+                        <div class="number_card_title">Total unit card strength</div>
+                        <img class="number_card_image">
+                        <div id="strength_num" class="number_card_total">15</div>
+                    </div>
+                    <div class="number_card_div">
+                        <div class="number_card_title">Hero Cards</div>
+                        <img class="number_card_image">
+                        <div id="hero_num" class="number_card_total">15</div>
+                    </div>
+                    <button id="goto_game_button" class="customizer_button">PLAY</button>
+                    <button id="switch_players_button" class="customizer_button">SWITCH PLAYER</button>
+                </div>
+                <div id="right_side">
+                    <div id="right_side_title">Cards in Deck</div>
+                    <div id="cards_in_deck" class="side_card_div"></div>
+                </div>
+            </div>
         </div>
         <div id="switch_screen">
             <div id="switch_text">To switch players press</div>

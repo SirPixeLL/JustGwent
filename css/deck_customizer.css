@@ -1,28 +1,177 @@
 #deck_customizer {
-    display: none;
+    display: block;
     position: absolute;
     width: 100%;
     height: 100%;
-    font-size: 0px;
+    background-color: #000000;
+    background-image: url("../images/Northern_Realms.png");
+    background-size: 7% 15%;
+    background-repeat: space;
+    background-position: top left;
+    z-index: 20;
 }
 
+#opacity_div {
+    display: block;
+    position: absolute;
+    font-size: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(23, 25, 26, 0.9);
+}
+
+/*MAIN DIVS*/
+
 #top_div {
+    font-size: 1vw;
     display: block;
     width: 100%;
     height: 20%;
-    background-color: grey;
+    color: #ffffff;
 }
 
 #left_side,
 #right_side,
 #center {
+    font-size: 1vw;
     display: inline-block;
     height: 80%;
     width: 37.5%;
-    background-color: aqua;
+    color: #ffffff;
 }
 
 #center {
     width: 25%;
-    background-color: blueviolet;
+}
+
+/*TOP*/
+
+#player_title,
+#faction_title,
+#faction_ability,
+#options_div {
+    position: relative;
+    display: block;
+    width: 100%;
+    line-height: 100%;
+}
+
+#player_title {
+    height: 15%;
+    top: 5%;
+    font-size: 1.2vw;
+}
+
+#name_input {
+    display: inline-block;
+    font-size: 1.2vw;
+}
+
+#name_button {
+    display: inline-block;
+    font-size: 1.3vw;
+    aspect-ratio: 1/1;
+    background-color: #aa9667;
+    border: none;
+    border-radius: 5px;
+}
+
+#faction_title {
+    top: 10%;
+    font-size: 1.5vw;
+}
+
+#faction_ability {
+    top: 15%;
+    color: #aa9667;
+}
+
+#options_div {
+    top: 15%;
+}
+
+#name_select_text,
+#faction_select_text {
+    margin: 0.3%;
+}
+
+#faction_select {
+    font-size: 1vw;
+}
+
+/*SIDES*/
+
+#right_side_title,
+#left_side_title {
+    margin-top: -15%;
+    font-size: 1.4vw;
+}
+
+.side_card_div {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    top: 5%;
+    left: 5%;
+    background-color: #232729;
+    opacity: none;
+    overflow-y: scroll;
+    border-radius: 5px;
+}
+
+/*CENTER*/
+
+#leader_title,
+#leader_div,
+.number_card_div,
+.customizer_button {
+    display: block;
+    position: relative;
+}
+
+#leader_title {
+    top: 5%;
+    color: #aa9667;
+    font-size: 1.2vw;
+}
+
+#leader_div {
+    top: 5%;
+    width:40%;
+    aspect-ratio: 3/4;
+    background-color: #232729;
+    left: 30%;
+}
+
+.number_card_div {
+    top: 8%;
+    height: 8%;
+}
+
+.number_card_title {
+    height: 50%;
+}
+
+.number_card_image,
+.number_card_total {
+    display: inline-block;
+    height: 50%;
+}
+
+.number_card_total {
+    color: #aa9667;
+}
+
+.customizer_button {
+    display: inline-block;
+    top: 8%;
+    width: 35%;
+    height: 6%;
+    margin: 5%;
+    background-color: #aa9667;
+    color: #000000;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 1vw;
 }
