@@ -7,6 +7,7 @@ const cardDict = {
         "type": "Weather",
         "faction": "Neutral",
         "ability": "BitingFrost",
+        "quote": '"'+"Best part about frost - bodies of the fallen don't rot so quickly."+'"',
         "number": 3
     },
     "Decoy": {
@@ -15,6 +16,7 @@ const cardDict = {
         "type": null,
         "faction": "Neutral",
         "ability": "Decoy",
+        "quote": '"'+"When you run out of peasants, decoys also make decent arrow fodder."+'"',
         "number": 3
     },
     "Clear_Weather": {
@@ -23,6 +25,7 @@ const cardDict = {
         "type": "Weather",
         "faction": "Neutral",
         "ability": "ClearWeather",
+        "quote": '"'+"The sun's shinin', Dromle! The sun's shinin'! Maybe there's hope left after all..."+'"',
         "number": 3
     },
     "Commanders_Horn": {
@@ -31,6 +34,7 @@ const cardDict = {
         "type": "Horn",
         "faction": "Neutral",
         "ability": "CommandersHorn",
+        "quote": '"'+"Plus one to morale, minus three to hearing."+'"',
         "number": 3
     },
     "Impenetrable_Fog": {
@@ -39,6 +43,7 @@ const cardDict = {
         "type": "Weather",
         "faction": "Neutral",
         "ability": "ImpenetrableFog",
+        "quote": '"'+"A good commander's dream... a bad one's horror."+'"',
         "number": 3
     },
     "Scorch": {
@@ -47,6 +52,7 @@ const cardDict = {
         "type": null,
         "faction": "Neutral",
         "ability": "Scorch",
+        "quote": '"'+"Pillars of flame turn the mightiest to ash. All others tremble in shock and awe."+'"',
         "number": 3
     },
     "Torrential_Rain": {
@@ -55,6 +61,7 @@ const cardDict = {
         "type": "Weather",
         "faction": "Neutral",
         "ability": "TorrentialRain",
+        "quote": '"'+"Even the rain in this land smells like Vergil."+'"',
         "number": 3
     },
     //Neutral (chybí kráva a defence idk co s nima)
@@ -65,6 +72,7 @@ const cardDict = {
         "faction": "Neutral",
         "ability": null,
         "isLegend": true,
+        "quote": '"'+"Know when fairy tales cease to be tales? When people start believing in them."+'"',
         "number": 1
     },
     "Dandelion": {
@@ -73,6 +81,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Neutral",
         "ability": "CommandersHorn",
+        "quote": '"'+"Dandelion, you're a cynic, a lecher, a whoremonger, a liar - and my best friend."+'"',
         "number": 1
     },
     "Regis": {
@@ -81,6 +90,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Neutral",
         "ability": null,
+        "quote": '"'+"Men, the polite ones, at least, would call me a monster. A blood-drinking freak."+'"',
         "number": 1
     },
     "O'Dimm": {
@@ -89,6 +99,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Neutral",
         "ability": "Muster",
+        "quote": '"'+"He always grants exactly what you wish for. That's the problem."+'"',
         "number": 1
     },
     "Darkness": { //3x
@@ -97,6 +108,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Neutral",
         "ability": "Muster",
+        "quote": '"'+"Fear not the shadows, but the light."+'"',
         "number": 3
     },
     "Geralt": {
@@ -106,7 +118,8 @@ const cardDict = {
         "faction": "Neutral",
         "ability": null,
         "isLegend": true,
-        "number": 1
+        "quote": '"'+"If that's what it takes to save the world, it'd better to let that world die."+'"',
+        "number": 1,
     },
     "Mysterious_Elf": {
         "name": "Mysterious Elf",
@@ -115,6 +128,7 @@ const cardDict = {
         "faction": "Neutral",
         "ability": "Spy",
         "isLegend": true,
+        "quote": '"'+"You humans have... unusual tastes."+'"',
         "number": 1
     },
     "Olgierd": {
@@ -123,14 +137,26 @@ const cardDict = {
         "type": "Agile",
         "faction": "Neutral",
         "ability": "MoraleBoost",
+        "quote": '"'+"At least you now know I don't easily lose my head."+'"',
         "number": 1
     },
+    "Triss": {
+        "name": "Triss Merigold",
+        "power": 7,
+        "type": "Melee",
+        "faction": "Neutral",
+        "ability": null,
+        "quote": '"'+"I can take care of myself. Trust me."+'"',
+        "isLegend": true,
+        "number": 1
+    }, 
     "Vesemir": {
         "name": "Vesemir",
         "power": 6,
         "type": "Melee",
         "faction": "Neutral",
         "ability": null,
+        "quote": '"'+"If you're to be hanged, ask for water. Anything can happen before they fetch it."+'"',
         "number": 1
     },
     "Villentretenmerth": {
@@ -139,6 +165,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Neutral",
         "ability": "Scorch",
+        "quote": '"'+"Also calls himself Borkh Three Jackdaws... he's not the best at names."+'"',
         "number": 1
     },
     "Yennefer": {
@@ -148,6 +175,7 @@ const cardDict = {
         "faction": "Neutral",
         "ability": "Medic",
         "isLegend": true,
+        "quote": '"'+"Magic is Chaos, Art and Science. It is a curse, a blessing and a progression."+'"',
         "number": 1
     },
     "Zoltan": {
@@ -156,6 +184,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Neutral",
         "ability": null,
+        "quote": '"'+"Life without old mates and booze is like a woman without a rump."+'"',
         "number": 1
     },
     //Monsters
@@ -488,23 +517,9 @@ const cardDict = {
         "type": "Siege",
         "faction": "Northern Realms",
         "ability": null,
-        "number": 1
-    },
-    "Kaedweni_Siege": {
-        "name": "Kaedweni Siege Expert",
-        "power": 1,
-        "type": "Siege",
-        "faction": "Northern Realms",
-        "ability": "MoraleBoost",
-        "number": 3
-    },
-    "Keira_Metz": {
-        "name": "Keira Metz",
-        "power": 5,
-        "type": "Ranged",
-        "faction": "Northern Realms",
-        "ability": null,
-        "number": 1
+        "quote": "'Usually we give 'em female names.' 'Like Jenny?' 'More like Bertha.'",
+        "number": 1,
+        "hasVariations": true
     },
     "Stripes_Commando": {
         "name": "Blue Stripes Commando",
@@ -512,9 +527,228 @@ const cardDict = {
         "type": "Melee",
         "faction": "Northern Realms",
         "ability": "TightBond",
-        "number": 3
+        "quote": '"'+"I'd do anything for Temeria. Mostly, though, I kill for her."+'"',
+        "number": 3,
+        "hasVariations": true
     },
-
+    "Catapult": {
+        "name": "Catapult",
+        "power": 8,
+        "type": "Siege",
+        "faction": "Northern Realms",
+        "ability": "TightBond",
+        "quote": '"'+"The gods help those who have better catapults."+'"',
+        "number": 2,
+        "hasVariations": true
+    },
+    "Reavers": {
+        "name": "Crinfrid Reavers Dragon Hunter",
+        "power": 5,
+        "type": "Ranged",
+        "faction": "Northern Realms",
+        "ability": "TightBond",
+        "quote": '"'+"Haven't had much luck with monsters of late, so we enlisted."+'"',
+        "number": 3,
+        "hasVariations": true
+    },
+    "Dethmold": {
+        "name": "Dethmold",
+        "power": 6,
+        "type": "Ranged",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": '"'+"I once made a prisoner vomit his own entrails... Ah, good times..."+'"',
+        "number": 1
+    },
+    "Dun_Medic": {
+        "name": "Dun Banner Medic",
+        "power": 5,
+        "type": "Siege",
+        "faction": "Northern Realms",
+        "ability": "Medic",
+        "quote": '"'+"Stitch red to red, white to white, and everything will be all right."+'"',
+        "number": 1
+    },
+    "Thyssen": {
+        "name": "Esterad Thyssen",
+        "power": 10,
+        "type": "Melee",
+        "faction": "Northern Realms",
+        "ability": null,
+        "isLegend": true,
+        "quote": '"'+"Like all Thyssen men, he was tall, powerfully built and criminally handsome."+'"',
+        "number": 1
+    },
+    "Natalis": {
+        "name": "John Natalis",
+        "power": 10,
+        "type": "Melee",
+        "faction": "Northern Realms",
+        "ability": null,
+        "isLegend": true,
+        "quote": '"'+"That square should bear the names of my soldiers, of the dead. Not mine."+'"',
+        "number": 1
+    },    
+    "Kaedweni_Siege": {
+        "name": "Kaedweni Siege Expert",
+        "power": 1,
+        "type": "Siege",
+        "faction": "Northern Realms",
+        "ability": "MoraleBoost",
+        "quote": '"'+'You gotta recalibrate the arm by five degrees." "Do what by the what now?'+'"',
+        "number": 3,
+        "hasVariations": true
+    },
+    "Keira_Metz": {
+        "name": "Keira Metz",
+        "power": 5,
+        "type": "Ranged",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": '"'+"If I'm to die today, I wish to look smashing for the occasion."+'"',
+        "number": 1
+    },
+    "Philippa": {
+        "name": "Philippa Eilhart",
+        "power": 10,
+        "type": "Ranged",
+        "faction": "Northern Realms",
+        "ability": null,
+        "isLegend": true,
+        "quote": '"'+"Soon the power of kings will wither, and the Lodge shall seize its rightful place."+'"',
+        "number": 1
+    },
+    "PFI": {
+        "name": "Poor Vergiling Infantry",
+        "power": 1,
+        "type": "Melee",
+        "faction": "Northern Realms",
+        "ability": "TightBond",
+        "quote": '"'+"I's a war veteran! ... spare me a crown?"+'"',
+        "number": 3,
+        "hasVariations": true
+    },
+    "Stennis": {
+        "name": "Prince Stennis",
+        "power": 5,
+        "type": "Melee",
+        "faction": "Northern Realms",
+        "ability": "Spy",
+        "quote": '"'+"He Vergilin' wears golden armor. Golden. 'Course he's a Vergil."+'"',
+        "number": 1
+    },
+    "Redanian_Foot": {
+        "name": "Redanian Foot Soldier",
+        "power": 1,
+        "type": "Melee",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": '"'+"I've bled for Redania! I've killed for Redania... Dammit, I've even Vergiled for Redania!"+'"',
+        "hasVariations": true,
+        "number": 2,
+        "hasVariations": true
+    },
+    "Sabrina": {
+        "name": "Sabrina Glevissig",
+        "power": 4,
+        "type": "Ranged",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": "The Daughter of the Kaedweni Wilderness.",
+        "number": 1
+    },
+    "Sheldon": {
+        "name": "Sheldon Skaggs",
+        "power": 4,
+        "type": "Ranged",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": '"'+"I was there, on the front lines! Right where the fightin' was the thickest!"+'"',
+        "number": 1
+    },
+    "Siege_Tower": {
+        "name": "Siege Tower",
+        "power": 6,
+        "type": "Siege",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": '"'+"I love the clamor of siege towers in the morning. Sounds like victory."+'"',
+        "number": 1
+    },
+    "Siegfried": {
+        "name": "Siegfried of Denesle",
+        "power": 5,
+        "type": "Melee",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": '"'+"We're on the same side, witcher. You'll realize this one day."+'"',
+        "number": 1
+    },
+    "Dijkstra": {
+        "name": "Sigismund Dijkstra",
+        "power": 4,
+        "type": "Melee",
+        "faction": "Northern Realms",
+        "ability": "Spy",
+        "quote": '"'+"Gwent's like politics, just more honest."+'"',
+        "number": 1
+    },
+    "Síle": {
+        "name": "Síle de Tansarville",
+        "power": 5,
+        "type": "Ranged",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": '"'+"The Lodge lacks humility. Our lust for power may yet be our undoing."+'"',
+        "number": 1
+    },
+    "Thaler": {
+        "name": "Thaler",
+        "power": 1,
+        "type": "Siege",
+        "faction": "Northern Realms",
+        "ability": "Spy",
+        "quote": '"'+"Vergil off! We aren't all Vergilin' philanderers. Some of us have depth..."+'"',
+        "number": 1
+    },
+    "Trebuchet": {
+        "name": "Trebuchet",
+        "power": 6,
+        "type": "Siege",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": '"'+"Castle won't batter itself down, now will it? Get them trebuchets rollin'!"+'"',
+        "number": 2,
+        "hasVariations": true
+    },
+    "Roche": {
+        "name": "Vernon Roche",
+        "power": 10,
+        "type": "Melee",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": '"'+"A patriot... and a real son of a bitch."+'"',
+        "isLegend": true,
+        "number": 1
+    },
+    "Ves": {
+        "name": "Ves",
+        "power": 5,
+        "type": "Melee",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": '"'+"Better to live one day as a king than a whole life as a beggar."+'"',
+        "number": 1
+    },
+    "Yarpen": {
+        "name": "Yarpen Zigrin",
+        "power": 2,
+        "type": "Melee",
+        "faction": "Northern Realms",
+        "ability": null,
+        "quote": '"'+"The world belongs to whoever's best at crackin' skulls and impregnatin' lasses."+'"',
+        "number": 1
+    },
     //Nilfgaard
     "Albrich": {
         "name": "Albrich",

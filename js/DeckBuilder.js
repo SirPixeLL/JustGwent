@@ -1,8 +1,8 @@
 let p1deck = [];
-let p1faction =  "Nilfgaardian Empire";
+let p1faction =  "Monsters";
 
 let p2deck = [];
-let p2faction = "Monsters";
+let p2faction = "Northern Realms";
 
 //Balanced = 1
 //Classic = 2

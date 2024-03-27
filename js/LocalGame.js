@@ -125,10 +125,10 @@ function commanderHornBuff(i, j){ //ošklivý ale funkční
 //Schopnosti
 function bond(i, j, n){ //volá se na konci cyklu kola
     if(boards[i][j][n].ability=="TightBond"){
-        boards[i][j][n].power = boards[i][j][n].basepower;
         for(let m = 0; m < boards[i][j].length; m++){
             if(boards[i][j][m] != boards[i][j][n] && boards[i][j][n].name == boards[i][j][m].name){
-                boards[i][j][n].power = boards[i][j][n].power+boards[i][j][n].basepower;
+                if(boards[i][j][n].debuffed)boards[i][j][n].power = boards[i][j][n].power*2;
+                else boards[i][j][n].power = boards[i][j][n].power+boards[i][j][n].basepower;
             }}}
 }
 function muster(currentPlayer, card){
@@ -339,6 +339,27 @@ function sumPowers(currentPlayer){
             players[half].totalPower += rowPower
         }
         Total[half].innerHTML = players[half].totalPower;
+    }
+    for(let i = 0; i < 2; i++){
+        if(players[i].totalPower>players[1-i].totalPower){
+            for(let l = 0; l < 3; l++){
+                console.log(UI[i][l]);
+                UI[i][l].parentElement.style.backgroundColor="#aa9667";
+            }
+            Total[i].parentElement.style.backgroundColor="#aa9667";
+        }
+        else{
+            for(let l = 0; l < 3; l++){
+                UI[i][l].parentElement.style.backgroundColor="#90979a";
+            }
+            Total[i].parentElement.style.backgroundColor="#90979a";
+        }
+    }
+    for(let w = 0; w < 3; w++){
+        if(weather[w]){
+            UI[0][w].parentElement.style.backgroundColor="#d65454";
+            UI[1][w].parentElement.style.backgroundColor="#d65454";
+        }
     }
 }
 
