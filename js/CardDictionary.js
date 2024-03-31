@@ -1,7 +1,7 @@
 //cokoliv co se bude přidávat psát až za 'Specials'
 const cardDict = {
     //Specials
-    "Biting_Frost": {
+    "Biting_frost": {
         "name": "Biting Frost",
         "power": null,
         "type": "Weather",
@@ -19,7 +19,7 @@ const cardDict = {
         "quote": '"'+"When you run out of peasants, decoys also make decent arrow fodder."+'"',
         "number": 3
     },
-    "Clear_Weather": {
+    "Clear_weather": {
         "name": "Clear Weather",
         "power": null,
         "type": "Weather",
@@ -28,7 +28,7 @@ const cardDict = {
         "quote": '"'+"The sun's shinin', Dromle! The sun's shinin'! Maybe there's hope left after all..."+'"',
         "number": 3
     },
-    "Commanders_Horn": {
+    "Commanders_horn": {
         "name": "Commander's Horn",
         "power": null,
         "type": "Horn",
@@ -37,7 +37,7 @@ const cardDict = {
         "quote": '"'+"Plus one to morale, minus three to hearing."+'"',
         "number": 3
     },
-    "Impenetrable_Fog": {
+    "Impenetrable_fog": {
         "name": "Impenetrable Fog",
         "power": null,
         "type": "Weather",
@@ -55,7 +55,7 @@ const cardDict = {
         "quote": '"'+"Pillars of flame turn the mightiest to ash. All others tremble in shock and awe."+'"',
         "number": 3
     },
-    "Torrential_Rain": {
+    "Torrential_rain": {
         "name": "Torrential Rain",
         "power": null,
         "type": "Weather",
@@ -521,7 +521,7 @@ const cardDict = {
         "number": 1,
         "hasVariations": true
     },
-    "Stripes_Commando": {
+    "Stripes_commando": {
         "name": "Blue Stripes Commando",
         "power": 4,
         "type": "Melee",
@@ -589,7 +589,7 @@ const cardDict = {
         "quote": '"'+"That square should bear the names of my soldiers, of the dead. Not mine."+'"',
         "number": 1
     },    
-    "Kaedweni_Siege": {
+    "Kaedweni_siege": {
         "name": "Kaedweni Siege Expert",
         "power": 1,
         "type": "Siege",
@@ -618,7 +618,7 @@ const cardDict = {
         "quote": '"'+"Soon the power of kings will wither, and the Lodge shall seize its rightful place."+'"',
         "number": 1
     },
-    "PFI": {
+    "Pfi": {
         "name": "Poor Vergiling Infantry",
         "power": 1,
         "type": "Melee",
@@ -637,7 +637,7 @@ const cardDict = {
         "quote": '"'+"He Vergilin' wears golden armor. Golden. 'Course he's a Vergil."+'"',
         "number": 1
     },
-    "Redanian_Foot": {
+    "Redanian_foot": {
         "name": "Redanian Foot Soldier",
         "power": 1,
         "type": "Melee",
@@ -768,7 +768,7 @@ const cardDict = {
         "quote": "Nilfgaardian mage do ahve a choice: servile submission, or the gallows.",
         "number": 1
     },
-    "Black_Infantry_Archer": {
+    "Black_infantry_archer": {
         "name": "Black Infantry Archer",
         "power": 10,
         "type": "Ranged",
@@ -796,7 +796,7 @@ const cardDict = {
         "quote": "Cynthia's talents can be deadly. She needs a tight leash.",
         "number": 1
     },
-    "Etolian_Axiliary_Archers": {
+    "Etolian_auxiliary_archers": {
         "name": "Etolian Auxiliary Archers",
         "power": 1,
         "type": "Ranged",
@@ -824,7 +824,7 @@ const cardDict = {
         "quote": "Not the best for taking cities, but great for razing them to the ground.",
         "number": 1
     },
-    "Brigade_Guard": {
+    "Brigade_guard": {
         "name": "Impera Brigade Guard",
         "power": 3,
         "type": "Melee",
@@ -873,7 +873,7 @@ const cardDict = {
         "quote": "Summer sun reflecting in the quite waters of the Alba - that's the Nilfgaard to me.",
         "number": 1
     },
-    "Nausicaa_Cav": {
+    "Nausicaa_cav": {
         "name": "Nausicaa Cavalry Rider",
         "power": 2,
         "type": "Melee",
@@ -1001,7 +1001,7 @@ const cardDict = {
         "quote": "Discipline is the Empire's deadliest weapon.",
         "number": 1
     },
-    "Young_Emisarry": {
+    "Young_emisarry": {
         "name": "Young Emissary",
         "power": 5,
         "type": "Melee",
@@ -1058,7 +1058,7 @@ const cardDict = {
         "quote": "Take another step, dh'oine. You'd look better with an arrow between your eyes.",
         "number": 1
     },
-    "Dol_Blathanna_Scout": {
+    "Dol_blathanna_scout": {
         "name": "Dol Blathanna Scout",
         "power": 6,
         "type": "Agile",
@@ -1068,7 +1068,7 @@ const cardDict = {
         "number": 3,
         "hasVariations": true
     },
-    "Dwarven_Skirmisher": {
+    "Dwarven_skirmisher": {
         "name": "Dwarven Skirmisher",
         "power": 3,
         "type": "Melee",
@@ -1088,7 +1088,7 @@ const cardDict = {
         "quote": "The dryad queen has eyes of molten silver, and a heart of cold-forged steel.",
         "number": 1
     },
-    "Elven_Skirmisher": {
+    "Elven_skirmisher": {
         "name": "Elven Skirmisher",
         "power": 2,
         "type": "Ranged",
@@ -1107,7 +1107,7 @@ const cardDict = {
         "quote": "Though we are now few and scattered, our hearts burn brighter than ever.",
         "number": 1
     },
-    "Havekar_Healer": {
+    "Havekar_healer": {
         "name": "Havekar Healer",
         "power": 0,
         "type": "Ranged",
@@ -1117,7 +1117,7 @@ const cardDict = {
         "number": 3,
         "hasVariations": true
     },
-    "Havekar_Smuggler": {
+    "Havekar_smuggler": {
         "name": "Havekar Smuggler",
         "power": 5,
         "type": "Melee",
@@ -1156,7 +1156,7 @@ const cardDict = {
         "quote": "It dawns on them once they notice my scar: a realization of imminent death.",
         "number": 1
     },
-    "Mahakaman_Defender": {
+    "Mahakaman_defender": {
         "name": "Mahakaman Defender",
         "power": 5,
         "type": "Melee",
@@ -1221,7 +1221,7 @@ const cardDict = {
         "quote": "Hatred burns brighter than any fire, and cuts deeper than any blade.",
         "number": 1
     },
-    "Vrihedd_Brigade_Veteran": {
+    "Vrihedd_brigade_veteran": {
         "name": "Vrihedd Brigade Veteran",
         "power": 5,
         "type": "Agile",

@@ -41,8 +41,27 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
     cardElement.className = "wholeCard";
     cardElement.id = card.type + card.id;
     cardName.innerHTML = card.name;
-    cardNum.innerHTML = "x" + card.number;
-    if (card.power != null) {
+    cardNum.innerHTML = "x"+1;
+    let cardsAvailable = document.getElementsByClassName("wholeCard");
+    let cardsInWhereTo = [];
+    let appended = false;
+    for(let e of cardsAvailable){
+        if(document.getElementById(whereTo).contains(e)){
+            cardsInWhereTo.push(e);
+        }
+    }
+    for(let e of cardsInWhereTo){
+        let nameFromId = e.id.split(/(?=[A-Z, 0-9])/);
+        if(nameFromId.includes(card.id.slice(0, -2))){
+            let cardEditNum = e.childNodes[1];
+            cardEditNum = cardEditNum.childNodes[1];
+            let currentNum = cardEditNum.innerHTML;
+            cardEditNum.innerHTML="x"+(Number(currentNum[1])+1)
+            appended = true;
+        }
+    }
+    if(appended == false){
+        if (card.power != null) {
             let powerDiv = document.createElement("div");
             powerDiv.className = "powerDiv";
             let power = document.createElement("p");
@@ -57,69 +76,102 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
             }
             powerDiv.appendChild(power);
             cardFrame.appendChild(powerDiv);   
-    }
-    if (card.type == "Agile" || card.type == "Melee" || card.type == "Ranged" || card.type == "Siege") {
-            let typeDiv = document.createElement("div");
-            typeDiv.className = "typeDiv";
-            let typeSrc = "url(../images/cardWidgets/"+card.type+".png";
-            typeDiv.style.backgroundImage = typeSrc;
-            typeDiv.style.backgroundSize = "100% 100%";
-            cardFrame.appendChild(typeDiv);
-    }
-    if (card.ability != null) {
-            let abilityDiv = document.createElement("div");
-            abilityDiv.className = "abilityDiv";
-            let abilitySrc = "url(../images/cardWidgets/"+card.ability+".png";
-            abilityDiv.style.backgroundImage = abilitySrc;
-            abilityDiv.style.backgroundSize = "100% 100%";
-            cardFrame.appendChild(abilityDiv);
-    } else if(card.isAgile){
-            let abilityDiv = document.createElement("div");
-            abilityDiv.className = "abilityDiv";
-            let abilitySrc = "url(../images/cardWidgets/AgileAbility.png";
-            abilityDiv.style.backgroundImage = abilitySrc;
-            abilityDiv.style.backgroundSize = "100% 100%";
-            cardFrame.appendChild(abilityDiv);
-    }
-    let pictureNum = "";
-    if(card.id[card.id.length-2]>=0 && card.id[card.id.length-2]<=9 && card.hasVariations){
-        pictureNum = card.id[card.id.length-2]
-        
-    }
-    let pictureSrc = "url(../images/cards/"+card.name+pictureNum+".png";
-    pictureSrc = pictureSrc.replaceAll(" ","_");
-    pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
-    cardFrame.style.backgroundImage = pictureSrc;
-    cardFrame.style.backgroundSize = "100% 100%";
-    cardInfo.appendChild(cardName);
-    cardInfo.appendChild(cardNum);
-    cardElement.appendChild(cardFrame);
-    cardElement.appendChild(cardInfo);
-    document.getElementById(whereTo).appendChild(cardElement);
-    cardElement.addEventListener("click", function moveCard() {
-        if (whereTo == "available_cards") {
-            if (currentPlayer == 0) {
-                p1available.splice(p1available.indexOf(card), 1);
-                p1testDeck.push(card);
-            }
-            else if (currentPlayer == 1) {
-                p2available.splice(p2available.indexOf(card), 1);
-                p2testDeck.push(card);
-            }
-            updateCards(currentPlayer);
         }
-        else {
-            if (currentPlayer == 0) {
-                p1testDeck.splice(p1testDeck.indexOf(card), 1);
-                p1available.push(card);
-            }
-            else if (currentPlayer == 1) {
-                p2testDeck.splice(p2testDeck.indexOf(card), 1);
-                p2available.push(card);
-            }
-            updateCards(currentPlayer);
+        if (card.type == "Agile" || card.type == "Melee" || card.type == "Ranged" || card.type == "Siege") {
+                let typeDiv = document.createElement("div");
+                typeDiv.className = "typeDiv";
+                let typeSrc = "url(../images/cardWidgets/"+card.type+".png";
+                typeDiv.style.backgroundImage = typeSrc;
+                typeDiv.style.backgroundSize = "100% 100%";
+                cardFrame.appendChild(typeDiv);
         }
-    })
+        if (card.ability != null) {
+                let abilityDiv = document.createElement("div");
+                abilityDiv.className = "abilityDiv";
+                let abilitySrc = "url(../images/cardWidgets/"+card.ability+".png";
+                abilityDiv.style.backgroundImage = abilitySrc;
+                abilityDiv.style.backgroundSize = "100% 100%";
+                cardFrame.appendChild(abilityDiv);
+        } else if(card.isAgile){
+                let abilityDiv = document.createElement("div");
+                abilityDiv.className = "abilityDiv";
+                let abilitySrc = "url(../images/cardWidgets/AgileAbility.png";
+                abilityDiv.style.backgroundImage = abilitySrc;
+                abilityDiv.style.backgroundSize = "100% 100%";
+                cardFrame.appendChild(abilityDiv);
+        }
+        let pictureNum = "";
+        if(card.id[card.id.length-2]>=0 && card.id[card.id.length-2]<=9 && card.hasVariations){
+            pictureNum = card.id[card.id.length-2]
+
+        }
+        let pictureSrc = "url(../images/cards/"+card.name+pictureNum+".png";
+        pictureSrc = pictureSrc.replaceAll(" ","_");
+        pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
+        cardFrame.style.backgroundImage = pictureSrc;
+        cardFrame.style.backgroundSize = "100% 100%";
+        cardInfo.appendChild(cardName);
+        cardInfo.appendChild(cardNum);
+        cardElement.appendChild(cardFrame);
+        cardElement.appendChild(cardInfo);
+        document.getElementById(whereTo).appendChild(cardElement);
+        cardElement.addEventListener("click", function moveCard() {
+            if(Number(cardNum.innerHTML[1])>1){
+                let cardToMove;
+                let lastId = card.id.replace(card.id[card.id.length-2],Number(cardNum.innerHTML[1]-1))
+                if(whereTo == "available_cards"){
+                    if(currentPlayer == 0){
+                        cardToMove = p1available.findIndex(x => x.id === lastId);
+                        p1testDeck.push(p1available[cardToMove]);
+                        p1available.splice(cardToMove, 1);
+                    }
+                    else{
+                        cardToMove = p2available.findIndex(x => x.id === lastId);
+                        p2testDeck.push(p2available[cardToMove]);
+                        p2available.splice(cardToMove, 1);
+                    }
+                }
+                else{
+                    if(currentPlayer == 0){
+                        cardToMove = p1testDeck.findIndex(x => x.id === lastId);
+                        p1available.push(p1testDeck[cardToMove]);
+                        p1testDeck.splice(cardToMove, 1);
+                    }
+                    else{
+                        cardToMove = p2testDeck.findIndex(x => x.id === lastId);
+                        p2available.push(p2testDeck[cardToMove]);
+                        p2testDeck.splice(cardToMove, 1);
+                    }
+                }
+                updateCards(currentPlayer);
+            }
+            else{
+                if (whereTo == "available_cards") {
+                    if (currentPlayer == 0) {
+                        p1available.splice(p1available.indexOf(card), 1);
+                        p1testDeck.push(card);
+                    }
+                    else if (currentPlayer == 1) {
+                        p2available.splice(p2available.indexOf(card), 1);
+                        p2testDeck.push(card);
+                    }
+                    updateCards(currentPlayer);
+                }
+                else {
+                    if (currentPlayer == 0) {
+                        p1testDeck.splice(p1testDeck.indexOf(card), 1);
+                        p1available.push(card);
+                    }
+                    else if (currentPlayer == 1) {
+                        p2testDeck.splice(p2testDeck.indexOf(card), 1);
+                        p2available.push(card);
+                    }
+                    updateCards(currentPlayer);
+                }
+            }
+             
+        })
+    }
 }
 
 function updateCards(currentPlayer) {
