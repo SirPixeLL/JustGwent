@@ -42,9 +42,9 @@
 }
 
 .cardInHand {
-    margin: 2px;
+    margin: 1px;
     height: 90%;
-    transition: ease-in-out 300ms;
+    transition: ease-out 300ms;
     font-size: 12px;
     --a: 12px;
 }

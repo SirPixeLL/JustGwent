@@ -84,7 +84,7 @@ function clearHand(){
 }
 
 class Card {
-    constructor(id, name, power, type, faction, ability, isLegend, hasVariations, quote){
+    constructor(id, name, power, type, faction, ability, isLegend, hasVariations, quote, number){
         this.id = id;
         this.name = name;
         this.basepower = power;
@@ -98,6 +98,7 @@ class Card {
         this.isAgile = this.type == "Agile" ? true :false;
         this.quote = quote;
         this.hasVariations = hasVariations == true ? true : false;
+        this.number = number;
     }
 
     drawTo(whereTo){
