@@ -105,7 +105,7 @@ class Card {
         cardFrame.className = "cardPlayed";
         cardFrame.id = this.type + this.id;
         if(this.type != "Horn"){
-            if (this.power != null) {
+            if (this.basepower != null) {
                 let powerDiv = document.createElement("div");
                 powerDiv.className = "powerDiv";
                 let power = document.createElement("p");
