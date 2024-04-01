@@ -2,11 +2,13 @@ let p1deck = [];
 let p1testDeck = [];
 let p1available = [];
 let p1faction =  "Monsters";
+let p1Name = "";
 
 let p2deck = [];
 let p2testDeck = [];
 let p2available = [];
 let p2faction = "Northern Realms";
+let p2Name = "";
 
 //Balanced = 1
 //Classic = 2
@@ -26,6 +28,23 @@ function splitLeadersArray(){
         }
         
     })
+}
+
+function updateName(currentPlayer) { //musí se vytvořit nějáká proměná co bude kontrolovat jaký hráč je zrovna vybrán, ale dneska to už nědělám
+    let nameElement = document.getElementById("player_title")
+    console.log(p1Name);
+    if (currentPlayer == 0) nameElement.innerHTML = "Player 1";
+    else if (currentPlayer == 1) nameElement.innerHTML = "Player 2";
+    if (currentPlayer == 0 && p1Name != "") nameElement.innerHTML = p1Name;
+    else if (currentPlayer == 1 && p2Name != "") nameElement.innerHTML = p2Name;
+}
+
+function getPlayerName(currentPlayer) {
+    nameInput = document.getElementById("name_input").value;
+    console.log(nameInput);
+    if (currentPlayer == 0) p1Name = nameInput;
+    else p2Name = nameInput;
+    updateName(currentPlayer);
 }
 
 function drawCustomizerCard(card, currentPlayer, whereTo) {
