@@ -85,6 +85,20 @@ function showMedicUI(version, random = 0) {
         else if (version == "redraw") {
                 if (players[currentPlayer].redraw == false) {
                         currentIndex = 0;
+                        if(previous2.firstChild) {
+                                previous2.removeChild(previous2.firstChild);
+                        }
+                        if(previous1.firstChild) {
+                                previous1.removeChild(previous1.firstChild);
+                        }
+                        if(next1.firstChild) {
+                                next1.removeChild(next1.firstChild);
+                        }
+                        if(next2.firstChild) {
+                                next2.removeChild(next2.firstChild);
+                        }
+                        clearHand(currentPlayer);
+                        drawHand(currentPlayer);
                         return;
                 }
                 text.innerHTML = "Choose up to 2 cards to redraw";
@@ -94,7 +108,7 @@ function showMedicUI(version, random = 0) {
                         players[currentPlayer].redraw = false;
                         lookButton.style.display = "none";
                         ui.style.display = "none";
-                        selected.removeChild(selected.firstChild);
+                        if (selected.firstChild) selected.removeChild(selected.firstChild);
                 })
         }
         else if (version == "deckBuilder") {
@@ -133,11 +147,12 @@ function showMedicUI(version, random = 0) {
                                 let randomCard = players[currentPlayer].deck[getRandomInt(players[currentPlayer].deck.length-1)];
                                 players[currentPlayer].deck.splice(randomNum, 1,  players[currentPlayer].hand[currentIndex]);
                                 players[currentPlayer].hand.splice(currentIndex, 1, randomCard)
-                                clearHand();
-                                drawHand(currentPlayer);
                                 selectedCard.removeEventListener("click", medicHelper, false);
+                                selectedCard.className = "cardInHand";
+                                selectedCard.remove();
+                                clearHand(currentPlayer);
+                                drawHand(currentPlayer);
                                 ui.style.display = "none";
-                                selected.removeChild(selectedCard);
                                 if (redrawCount == 2) players[currentPlayer].redraw = false;
                                 showMedicUI(version);   
                         }
@@ -180,7 +195,7 @@ function showMedicUI(version, random = 0) {
                                 players[currentPlayer].deck.splice(players[currentPlayer].deck.indexOf(discarded[currentIndex]), 1);
                                 discarded.splice(currentIndex, 1);
                         }
-                        if (version != "deckBuilder")sumPowers(currentPlayer);
+                        if (version != "deckBuilder") sumPowers(currentPlayer);
                 })
                 try {   
                         let next1Card;
@@ -239,6 +254,8 @@ function showMedicUI(version, random = 0) {
                 }
                 catch {}
         }
+        
+
         //updateAll(currentPlayer);
 }
 
@@ -501,6 +518,7 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
     }
 
 function addCardListener() {
+        console.log(cardsInHand);
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].addEventListener("click", cardListenerHelper);
         }
@@ -513,6 +531,7 @@ function addCardListenerToElement(element) {
 }
 
 function removeCardListener() {
+        console.log(cardsInHand);
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].removeEventListener("click", cardListenerHelper);
         }
@@ -635,5 +654,3 @@ function drawCard(card) {
         cardsInHand.push(document.getElementById(cardFrame.id));
         marginTrueNeckKeys();
 }
-
-//addCardListener();

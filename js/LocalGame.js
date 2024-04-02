@@ -365,6 +365,7 @@ function sumPowers(currentPlayer){
 }
 
 function endTurn(){
+    redrawCount = 0;
     setWeatherDebuff();
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){

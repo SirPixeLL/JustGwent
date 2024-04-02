@@ -111,6 +111,8 @@ document.getElementById("goto_game_button").addEventListener("click",function st
     })
     console.log(document.getElementById("unit_num").innerHTML.split("≥")[0]);
     if(document.getElementById("unit_num").innerHTML.split("≥")[0] > 21 && enemyUnitCount > 21){
+        document.getElementById("available_cards").innerHTML = "";
+        document.getElementById("cards_in_deck").innerHTML = "";
         document.getElementById("deck_customizer").style.display="none";
         let player1 = new Player(0, p1name, p1faction, p1leaders[p1leader] , p1testDeck);
         let player2 = new Player(1, p2name, p2faction, p2leaders[p2leader], p2testDeck);
