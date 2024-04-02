@@ -264,7 +264,7 @@ function drawCustomizerLeader() {
         leaderElement.addEventListener("click", () => {
             showMedicUI("deckBuilder");
         });
-        document.getElementById("leader_div").appendChild(drawLeader(p2leaders[p2leader]));
+        document.getElementById("leader_div").appendChild(leaderElement);
     }
 }
 
