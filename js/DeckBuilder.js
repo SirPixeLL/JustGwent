@@ -51,8 +51,15 @@ function getPlayerName() {
 }
 
 function updateFaction(playerSwitch = false) {
+    let factionPerks = [
+        "Draw a card from your deck whenever you win a round.",
+        "Win whenever there is a draw.",
+        "One randomly-chosen Monsters Unit Card stays on the battlefield after each round.",
+        "You go first at the start of a battle."  //mělo by být You decide who goes first at the start of a battle. ale to nemáme implementovaný kvůli grafice upps
+    ]
     let factionTitle = document.getElementById("faction_title");
     if (playerToBuild == 0) {
+        document.getElementById("faction_ability").innerHTML = factionPerks[document.getElementById("faction_select").selectedIndex]
         factionTitle.innerHTML = p1faction;
         let factionPNG = p1faction.replaceAll(" ","_").replaceAll("'", "");
         document.getElementById("deck_customizer").style.backgroundImage = "url(../images/" + factionPNG + ".png)";
