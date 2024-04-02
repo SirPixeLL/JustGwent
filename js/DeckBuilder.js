@@ -192,59 +192,65 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
         cardElement.appendChild(cardInfo);
         document.getElementById(whereTo).appendChild(cardElement);
         cardElement.addEventListener("click", function moveCard() {
-            if(Number(cardNum.innerHTML[1])>1){
-                let cardToMove;
-                let lastId = card.id.replace(card.id[card.id.length-2],Number(cardNum.innerHTML[1]-1))
-                if(whereTo == "available_cards"){
-                    if(currentPlayer == 0){
-                        cardToMove = p1available.findIndex(x => x.id === lastId);
-                        p1testDeck.push(p1available[cardToMove]);
-                        p1available.splice(cardToMove, 1);
-                    }
-                    else{
-                        cardToMove = p2available.findIndex(x => x.id === lastId);
-                        p2testDeck.push(p2available[cardToMove]);
-                        p2available.splice(cardToMove, 1);
-                    }
-                }
-                else{
-                    if(currentPlayer == 0){
-                        cardToMove = p1testDeck.findIndex(x => x.id === lastId);
-                        p1available.push(p1testDeck[cardToMove]);
-                        p1testDeck.splice(cardToMove, 1);
-                    }
-                    else{
-                        cardToMove = p2testDeck.findIndex(x => x.id === lastId);
-                        p2available.push(p2testDeck[cardToMove]);
-                        p2testDeck.splice(cardToMove, 1);
-                    }
-                }
-                updateCards();
+            if(card.isSpecial && specials == 10){
+                //sem alert že má moc specials
             }
             else{
-                if (whereTo == "available_cards") {
-                    if (currentPlayer == 0) {
-                        p1available.splice(p1available.indexOf(card), 1);
-                        p1testDeck.push(card);
+                if(Number(cardNum.innerHTML[1])>1){
+                    let cardToMove;
+                    let lastId = card.id.replace(card.id[card.id.length-2],Number(cardNum.innerHTML[1]-1))
+                    if(whereTo == "available_cards"){
+                        if(currentPlayer == 0){
+                            cardToMove = p1available.findIndex(x => x.id === lastId);
+                            p1testDeck.push(p1available[cardToMove]);
+                            p1available.splice(cardToMove, 1);
+                        }
+                        else{
+                            cardToMove = p2available.findIndex(x => x.id === lastId);
+                            p2testDeck.push(p2available[cardToMove]);
+                            p2available.splice(cardToMove, 1);
+                        }
                     }
-                    else if (currentPlayer == 1) {
-                        p2available.splice(p2available.indexOf(card), 1);
-                        p2testDeck.push(card);
+                    else{
+                        if(currentPlayer == 0){
+                            cardToMove = p1testDeck.findIndex(x => x.id === lastId);
+                            p1available.push(p1testDeck[cardToMove]);
+                            p1testDeck.splice(cardToMove, 1);
+                        }
+                        else{
+                            cardToMove = p2testDeck.findIndex(x => x.id === lastId);
+                            p2available.push(p2testDeck[cardToMove]);
+                            p2testDeck.splice(cardToMove, 1);
+                        }
                     }
                     updateCards();
                 }
-                else {
-                    if (currentPlayer == 0) {
-                        p1testDeck.splice(p1testDeck.indexOf(card), 1);
-                        p1available.push(card);
+                else{
+                    if (whereTo == "available_cards") {
+                        if (currentPlayer == 0) {
+                            p1available.splice(p1available.indexOf(card), 1);
+                            p1testDeck.push(card);
+                        }
+                        else if (currentPlayer == 1) {
+                            p2available.splice(p2available.indexOf(card), 1);
+                            p2testDeck.push(card);
+                        }
+                        updateCards();
                     }
-                    else if (currentPlayer == 1) {
-                        p2testDeck.splice(p2testDeck.indexOf(card), 1);
-                        p2available.push(card);
+                    else {
+                        if (currentPlayer == 0) {
+                            p1testDeck.splice(p1testDeck.indexOf(card), 1);
+                            p1available.push(card);
+                        }
+                        else if (currentPlayer == 1) {
+                            p2testDeck.splice(p2testDeck.indexOf(card), 1);
+                            p2available.push(card);
+                        }
+                        updateCards();
                     }
-                    updateCards();
                 }
             }
+            
              
         })
     }
@@ -289,8 +295,29 @@ function updateCards() {
             drawCustomizerCard(card, playerToBuild, "cards_in_deck")
         })
     }
-    
+    deckBuilderCounters();
+}
 
+function deckBuilderCounters(){
+    let heroes = 0;
+    specials = 0;
+    let combinedPower = 0;
+
+    let deckToCount = playerToBuild == 0 ? p1testDeck : p2testDeck
+
+    deckToCount.forEach(element =>{
+        if (element.isLegend) heroes++;
+        if (element.isSpecial) specials++;        
+        if (element.basepower != null) combinedPower += element.basepower; 
+    })
+
+    document.getElementById("total_num").innerHTML=deckToCount.length;
+    document.getElementById("unit_num").innerHTML=deckToCount.length-specials+"≥22";
+    if(deckToCount.length-specials < 22) document.getElementById("unit_num").style.color="#d65454";
+    else document.getElementById("unit_num").style.color="#aa9667";
+    document.getElementById("special_num").innerHTML=specials+"/10";
+    document.getElementById("strength_num").innerHTML=combinedPower;
+    document.getElementById("hero_num").innerHTML=heroes;
 }
 
 if(mode == 1){
