@@ -1,14 +1,20 @@
+let playerToBuild = 0;
+
 let p1deck = [];
 let p1testDeck = [];
 let p1available = [];
-let p1faction =  "Monsters";
-let p1Name = "";
+let p1faction =  "Northern Realms";
+let p1leader = 0;
+let p1name = "";
+let p1deckReady = false;
 
 let p2deck = [];
 let p2testDeck = [];
 let p2available = [];
 let p2faction = "Northern Realms";
-let p2Name = "";
+let p2leader = 0;
+let p2name = "";
+let p2deckReady = false;
 
 //Balanced = 1
 //Classic = 2
@@ -30,22 +36,73 @@ function splitLeadersArray(){
     })
 }
 
-function updateName(currentPlayer) { //musí se vytvořit nějáká proměná co bude kontrolovat jaký hráč je zrovna vybrán, ale dneska to už nědělám
-    let nameElement = document.getElementById("player_title")
-    console.log(p1Name);
-    if (currentPlayer == 0) nameElement.innerHTML = "Player 1";
-    else if (currentPlayer == 1) nameElement.innerHTML = "Player 2";
-    if (currentPlayer == 0 && p1Name != "") nameElement.innerHTML = p1Name;
-    else if (currentPlayer == 1 && p2Name != "") nameElement.innerHTML = p2Name;
+function updateName() {
+    let nameElement = document.getElementById("player_title");
+    if (playerToBuild == 0) nameElement.innerHTML = "Player 1";
+    else if (playerToBuild == 1) nameElement.innerHTML = "Player 2";
+    if (playerToBuild == 0 && p1name != "") nameElement.innerText = p1name;
+    else if (playerToBuild == 1 && p2name != "") nameElement.innerText = p2name;
 }
 
-function getPlayerName(currentPlayer) {
+function getPlayerName() {
     nameInput = document.getElementById("name_input").value;
-    console.log(nameInput);
-    if (currentPlayer == 0) p1Name = nameInput;
-    else p2Name = nameInput;
-    updateName(currentPlayer);
+    document.getElementById("name_input").value = "";
+    if (playerToBuild == 0) p1name = nameInput;
+    else p2name = nameInput;
+    updateName();
 }
+
+function updateFaction(playerSwitch = false) {
+    let factionTitle = document.getElementById("faction_title");
+    if (playerToBuild == 0) {
+        factionTitle.innerHTML = p1faction;
+        let factionPNG = p1faction.replaceAll(" ","_").replaceAll("'", "");
+        document.getElementById("deck_customizer").style.backgroundImage = "url(../images/" + factionPNG + ".png)";
+        if (playerSwitch == false) {
+            p1testDeck = [];
+            p1available = [];
+            cardArray.forEach(element =>{
+                if(element.faction == p1faction || element.faction == "Neutral"){
+                    appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                    p1available.push(appendCard);
+                }
+            })
+        }
+        updateCards();
+    }
+    else if (playerToBuild == 1) {
+        factionTitle.innerHTML = p2faction;
+        let factionPNG = p2faction.replaceAll(" ","_").replaceAll("'", "");
+        document.getElementById("deck_customizer").style.backgroundImage = "url(../images/" + factionPNG + ".png)";
+        if (playerSwitch == false) {
+            p2testDeck = [];
+            p2available = [];
+            cardArray.forEach(element =>{
+                if(element.faction == p2faction || element.faction == "Neutral"){
+                    appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                    p2available.push(appendCard);
+                }
+            })
+        }
+        updateCards();
+    }
+    drawCustomizerLeader();
+}
+
+document.getElementById("faction_select").addEventListener("change", function factionChange() {
+    let chosenFaction = document.getElementById("faction_select").value;
+    if (playerToBuild == 0) p1faction = chosenFaction;
+    else if (playerToBuild == 1) p2faction = chosenFaction;
+    updateFaction();
+})
+
+document.getElementById("switch_players_button").addEventListener("click", function switchPlayer() {
+    if (playerToBuild == 0) playerToBuild = 1;
+    else if (playerToBuild == 1) playerToBuild = 0;
+    updateName();
+    drawCustomizerLeader();
+    updateFaction(true);
+})
 
 function drawCustomizerCard(card, currentPlayer, whereTo) {
     let cardElement = document.createElement("div");
@@ -162,7 +219,7 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
                         p2testDeck.splice(cardToMove, 1);
                     }
                 }
-                updateCards(currentPlayer);
+                updateCards();
             }
             else{
                 if (whereTo == "available_cards") {
@@ -174,7 +231,7 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
                         p2available.splice(p2available.indexOf(card), 1);
                         p2testDeck.push(card);
                     }
-                    updateCards(currentPlayer);
+                    updateCards();
                 }
                 else {
                     if (currentPlayer == 0) {
@@ -185,7 +242,7 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
                         p2testDeck.splice(p2testDeck.indexOf(card), 1);
                         p2available.push(card);
                     }
-                    updateCards(currentPlayer);
+                    updateCards();
                 }
             }
              
@@ -193,25 +250,43 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
     }
 }
 
-function updateCards(currentPlayer) {
+function drawCustomizerLeader() {
+    document.getElementById("leader_div").innerHTML = "";
+    if (playerToBuild == 0) {
+        let leaderElement = drawLeader(p1leaders[p1leader]);
+        leaderElement.addEventListener("click", () => {
+            showMedicUI("deckBuilder");
+        });
+        document.getElementById("leader_div").appendChild(leaderElement);
+    }
+    else if (playerToBuild == 1) {
+        let leaderElement = drawLeader(p2leaders[p2leader]);
+        leaderElement.addEventListener("click", () => {
+            showMedicUI("deckBuilder");
+        });
+        document.getElementById("leader_div").appendChild(drawLeader(p2leaders[p2leader]));
+    }
+}
+
+function updateCards() {
     document.getElementById("available_cards").innerHTML = "";
     document.getElementById("cards_in_deck").innerHTML = "";
-    if (currentPlayer == 0) {
+    if (playerToBuild == 0) {
         console.log(p1available);
         p1available.forEach(card => {
-            drawCustomizerCard(card, currentPlayer, "available_cards")
+            drawCustomizerCard(card, playerToBuild, "available_cards")
         })
         console.log(p1testDeck);
         p1testDeck.forEach(card => {
-            drawCustomizerCard(card, currentPlayer, "cards_in_deck")
+            drawCustomizerCard(card, playerToBuild, "cards_in_deck")
         })
     }
-    else if (currentPlayer == 1) {
+    else if (playerToBuild == 1) {
         p2available.forEach(card => {
-            drawCustomizerCard(card, currentPlayer, "available_cards")
+            drawCustomizerCard(card, playerToBuild, "available_cards")
         })
         p2testDeck.forEach(card => {
-            drawCustomizerCard(card, currentPlayer, "cards_in_deck")
+            drawCustomizerCard(card, playerToBuild, "cards_in_deck")
         })
     }
     
@@ -277,5 +352,6 @@ else if(mode == 2) {
     let player1 = new Player(0, "Martin", p1faction, p1Leader , p1deck);
     let player2 = new Player(1, "Trunečkis", p2faction, p2Leader, p2deck);
     players = [player1, player2];
-    updateCards(0);
+    drawCustomizerLeader();
+    updateCards();
 }

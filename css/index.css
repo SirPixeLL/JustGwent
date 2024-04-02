@@ -138,7 +138,7 @@ img {
 #medic_ui {
     position: absolute;
     display: none;
-    z-index: 2;
+    z-index: 30;
     height: 75%;
     width: 100%;
     background-color: rgba(23, 25, 26, 0.7);
