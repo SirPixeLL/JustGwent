@@ -109,6 +109,20 @@ function showMedicUI(version, random = 0) {
                         lookButton.style.display = "none";
                         ui.style.display = "none";
                         if (selected.firstChild) selected.removeChild(selected.firstChild);
+                        if(previous2.firstChild) {
+                                previous2.removeChild(previous2.firstChild);
+                        }
+                        if(previous1.firstChild) {
+                                previous1.removeChild(previous1.firstChild);
+                        }
+                        if(next1.firstChild) {
+                                next1.removeChild(next1.firstChild);
+                        }
+                        if(next2.firstChild) {
+                                next2.removeChild(next2.firstChild);
+                        }
+                        clearHand(currentPlayer);
+                        drawHand(currentPlayer);
                 })
         }
         else if (version == "deckBuilder") {
