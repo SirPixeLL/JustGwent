@@ -5,16 +5,14 @@ let p1testDeck = [];
 let p1available = [];
 let p1faction =  "Northern Realms";
 let p1leader = 0;
-let p1name = "";
-let p1deckReady = false;
+let p1name = "Player 1";
 
 let p2deck = [];
 let p2testDeck = [];
 let p2available = [];
 let p2faction = "Northern Realms";
 let p2leader = 0;
-let p2name = "";
-let p2deckReady = false;
+let p2name = "Player 2";
 
 //Balanced = 1
 //Classic = 2
@@ -86,6 +84,7 @@ function updateFaction(playerSwitch = false) {
         }
         updateCards();
     }
+    splitLeadersArray();
     drawCustomizerLeader();
 }
 
@@ -102,6 +101,25 @@ document.getElementById("switch_players_button").addEventListener("click", funct
     updateName();
     drawCustomizerLeader();
     updateFaction(true);
+})
+
+document.getElementById("goto_game_button").addEventListener("click",function startGameButton(){
+    enemyDeck = playerToBuild == 0 ? p2testDeck : p1testDeck;
+    enemyUnitCount = 0;
+    enemyDeck.forEach(e =>{
+        if(e.basepower != null) enemyUnitCount++;
+    })
+    console.log(document.getElementById("unit_num").innerHTML.split("≥")[0]);
+    if(document.getElementById("unit_num").innerHTML.split("≥")[0] > 21 && enemyUnitCount > 21){
+        document.getElementById("deck_customizer").style.display="none";
+        let player1 = new Player(0, p1name, p1faction, p1leaders[p1leader] , p1testDeck);
+        let player2 = new Player(1, p2name, p2faction, p2leaders[p2leader], p2testDeck);
+        players = [player1, player2];
+        localGame()
+    }
+    else{
+        console.log("Someone has illegal amount of cards!")
+    }
 })
 
 function drawCustomizerCard(card, currentPlayer, whereTo) {
@@ -374,11 +392,7 @@ else if(mode == 2) {
         }
     })
     splitLeadersArray();
-    let p1Leader = p1leaders[1];
-    let p2Leader = p2leaders[2];
-    let player1 = new Player(0, "Martin", p1faction, p1Leader , p1deck);
-    let player2 = new Player(1, "Trunečkis", p2faction, p2Leader, p2deck);
-    players = [player1, player2];
     drawCustomizerLeader();
     updateCards();
 }
+

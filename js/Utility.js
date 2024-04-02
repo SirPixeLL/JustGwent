@@ -124,6 +124,7 @@ function hideSwitchScreen(){
     updateAll(currentPlayer);
     sumPowers(currentPlayer);
     playerUpdate(currentPlayer);
+    if(players[currentPlayer].redraw) showMedicUI("redraw");
 }
 
 function cycleBoard(func){

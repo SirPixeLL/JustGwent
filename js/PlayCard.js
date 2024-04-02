@@ -94,6 +94,7 @@ function showMedicUI(version, random = 0) {
                         players[currentPlayer].redraw = false;
                         lookButton.style.display = "none";
                         ui.style.display = "none";
+                        selected.removeChild(selected.firstChild);
                 })
         }
         else if (version == "deckBuilder") {
@@ -124,6 +125,7 @@ function showMedicUI(version, random = 0) {
                 selectedCard.className = "cardInMedicUI";
                 ui.style.display = "block";
                 selected.appendChild(selectedCard);
+                [p1leader,p2leader][playerToBuild] = currentIndex;
                 if (version != "lookAtEnemy") selectedCard.addEventListener("click", function medicHelper() {
                         if (version == "redraw") {
                                 redrawCount++;
@@ -178,7 +180,7 @@ function showMedicUI(version, random = 0) {
                                 players[currentPlayer].deck.splice(players[currentPlayer].deck.indexOf(discarded[currentIndex]), 1);
                                 discarded.splice(currentIndex, 1);
                         }
-                        sumPowers(currentPlayer);
+                        if (version != "deckBuilder")sumPowers(currentPlayer);
                 })
                 try {   
                         let next1Card;
@@ -237,7 +239,7 @@ function showMedicUI(version, random = 0) {
                 }
                 catch {}
         }
-        
+        //updateAll(currentPlayer);
 }
 
 function checkForSpy(index, row, handOrDiscarded){
@@ -634,4 +636,4 @@ function drawCard(card) {
         marginTrueNeckKeys();
 }
 
-addCardListener();
+//addCardListener();

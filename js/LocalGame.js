@@ -1,9 +1,10 @@
-localGame();
 function localGame(){    
     //console.log(JSON.parse(JSON.stringify(boards)));
     
     currentPlayer = startingPlayer();
     localGameStart();
+    showMedicUI("redraw");
+    addCardListener();
 }
 function localGameStart(){
     playerUpdate(currentPlayer);
