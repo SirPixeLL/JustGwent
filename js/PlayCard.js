@@ -552,7 +552,7 @@ function removeCardListener() {
 }
 
 function addLeaderListener() {
-        document.getElementById("own_leader_div").firstElementChild.addEventListener("click", cardListenerHelper);
+        document.getElementById("own_leader_div").firstChild.addEventListener("click", cardListenerHelper);
 }
 
 function createCardElement(card) {

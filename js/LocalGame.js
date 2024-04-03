@@ -401,7 +401,7 @@ function endTurn(){
 }
 
 function passFunction(){
-    if ((document.getElementById("medic_ui").style.display == "" || document.getElementById("medic_ui").style.display == "none") && decoyOn == false) {
+    if ((document.getElementById("medic_ui").style.display == "" || document.getElementById("medic_ui").style.display == "none") && decoyOn == false && shownCardSlot.length == 0) {
         changeButton("remove");
         players[currentPlayer].hasPassed = true;
         if(players[currentPlayer].hasPassed && players[1-currentPlayer].hasPassed);

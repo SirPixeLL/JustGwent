@@ -59,7 +59,7 @@ function marginTrueNeckKeys() {
     margin -= Math.pow(handCards.length, multiply);
     if (handCards.length >= 22) margin = -65;
     for (let i = 0; i < handCards.length; i++) {
-        if (handCards.length >= 9 && i != 0) {
+        if (handCards.length >= 9) {
             handCards[i].style.marginLeft = margin + "px";
         }
     }

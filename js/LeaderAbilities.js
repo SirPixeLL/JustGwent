@@ -6,6 +6,7 @@ function playLeader(leader){
         case "Eredin Bréacc Glas: The Trecherous": //bez chyb
             //všechny spy power*2
             spyDouble = true;
+            changeButton("switch");
             endTurn();
             break;
         case "Eredin: Bringer of Death":
@@ -15,6 +16,7 @@ function playLeader(leader){
         case "Eredin: Commander of the Red Riders": //bez chyb
             //horn na melee
             commanderHornSet(new Card("LeaderHorn"+players[currentPlayer].id,"Commander's Horn", null,"Melee","Neutral","CommandersHorn",false,false), currentPlayer);
+            changeButton("switch");
             endTurn();
             break;
         case "Eredin: Destroyer of Worlds":
@@ -30,6 +32,7 @@ function playLeader(leader){
         case "Emhyr var Emreis: Emperor of Nilfgaard": //bez chyb
             //podívá se na 3 náhodné karty z nepřítelovi ruky
             showMedicUI("lookAtEnemy");
+            changeButton("switch");
             endTurn();
             break;
         case "Emhyr var Emreis: His Imperial Majesty": //bez chyb
@@ -47,6 +50,7 @@ function playLeader(leader){
         case "Emhyr var Emreis: The White Flame": //bez chyb - musí se přidat podmíka na playable někde mimo
             //zakáže hraní leaderů
             players[1-currentPlayer].leader.playable = false;
+            changeButton("switch");
             endTurn();
             break;
         
@@ -65,16 +69,21 @@ function playLeader(leader){
             //Scorchne nepřátelskou ranged
             scorchRow(1);
             updateBoards(currentPlayer);
+            changeButton("switch");
+            endTurn();
             break;
         case "Foltest: The Siegemaster": //bez chyb
             //commanderHorn na siege
             commanderHornSet(new Card("LeaderHorn"+players[currentPlayer].id,"Commander's Horn", null,"Siege","Neutral","CommandersHorn",false,false), currentPlayer);
+            changeButton("switch")
             endTurn();
             break;
         case "Foltest: The Steel-Forged": //bez chyb
             //Scorchne nepřátelskou siege
             scorchRow(2);
             updateBoards(currentPlayer);
+            changeButton("switch");
+            endTurn();
             break;
         
         //Scoia'tael
@@ -104,6 +113,7 @@ function playLeader(leader){
                     }
                 }
             }
+            changeButton("switch");
             endTurn();
             updateHorn();
             updateBoards(currentPlayer);
@@ -117,10 +127,13 @@ function playLeader(leader){
             //Scorchne nepřátelskou melee
             scorchRow(0);
             updateBoards(currentPlayer);
+            changeButton("switch");
+            endTurn();
             break;
         case "Francesca Findabair: The Beautiful": //bez chyb
             //commanderHorn na ranged
             commanderHornSet(new Card("LeaderHorn"+players[currentPlayer].id,"Commander's Horn", null,"Ranged","Neutral","CommandersHorn",false,false), currentPlayer);
+            changeButton("switch");
             endTurn();
     updateLeaders();
     }
@@ -137,11 +150,12 @@ function leaderWeather(effect){
                 cardElement.className = "weatherCardPlayed";
                 console.log(cardElement);
                 document.getElementById("weather_cards").append(cardElement);
+                spliceSelected([element],players[currentPlayer].deck);
+                return false;
             }
-            spliceSelected([element],players[currentPlayer].deck);
-            return false;
+            return true;  
         }
-        return true;
     });
+    changeButton("switch");
     endTurn();
 }

@@ -153,6 +153,7 @@ function updateHorn(){
     }
 }
 function updateLeaders(){
+    clearLeaders();
     drawLeaders(currentPlayer);
 }
 

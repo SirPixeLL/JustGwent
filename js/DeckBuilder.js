@@ -16,7 +16,7 @@ let p2name = "Player 2";
 
 //Balanced = 1
 //Classic = 2
-let mode = 2;
+let mode;
 
 function splitLeadersArray(){
     p1leaders = [];
@@ -64,14 +64,25 @@ function updateFaction(playerSwitch = false) {
         let factionPNG = p1faction.replaceAll(" ","_").replaceAll("'", "");
         document.getElementById("deck_customizer").style.backgroundImage = "url(../images/" + factionPNG + ".png)";
         if (playerSwitch == false) {
-            p1testDeck = [];
-            p1available = [];
-            cardArray.forEach(element =>{
-                if(element.faction == p1faction || element.faction == "Neutral"){
-                    appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
-                    p1available.push(appendCard);
+            if (mode == 2) {
+                p1testDeck = [];
+                p1available = [];
+                cardArray.forEach(element =>{
+                    if(element.faction == p1faction || element.faction == "Neutral"){
+                        appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                        p1available.push(appendCard);
+                    }
+                })
                 }
-            })
+            else if (mode == 1) {
+                p2deck = []
+                cardArray.forEach(element => {
+                    if((element.faction == p2faction || element.faction == "Neutral") && !element.isSpecial){
+                        appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                        p2deck.push(appendCard);
+                    }
+                })
+            }
         }
         updateCards();
     }
@@ -80,14 +91,25 @@ function updateFaction(playerSwitch = false) {
         let factionPNG = p2faction.replaceAll(" ","_").replaceAll("'", "");
         document.getElementById("deck_customizer").style.backgroundImage = "url(../images/" + factionPNG + ".png)";
         if (playerSwitch == false) {
-            p2testDeck = [];
-            p2available = [];
-            cardArray.forEach(element =>{
-                if(element.faction == p2faction || element.faction == "Neutral"){
-                    appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
-                    p2available.push(appendCard);
-                }
-            })
+            if (mode == 2) {
+                p2testDeck = [];
+                p2available = [];
+                cardArray.forEach(element =>{
+                    if(element.faction == p2faction || element.faction == "Neutral"){
+                        appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                        p2available.push(appendCard);
+                    }
+                })
+            }
+            else if (mode == 1) {
+                p2deck = []
+                cardArray.forEach(element => {
+                    if((element.faction == p2faction || element.faction == "Neutral") && !element.isSpecial){
+                        appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                        p2deck.push(appendCard);
+                    }
+                })
+            }
         }
         updateCards();
     }
@@ -111,24 +133,40 @@ document.getElementById("switch_players_button").addEventListener("click", funct
 })
 
 document.getElementById("goto_game_button").addEventListener("click",function startGameButton(){
-    enemyDeck = playerToBuild == 0 ? p2testDeck : p1testDeck;
-    enemyUnitCount = 0;
-    enemyDeck.forEach(e =>{
-        if(e.basepower != null) enemyUnitCount++;
-    })
-    console.log(document.getElementById("unit_num").innerHTML.split("≥")[0]);
-    if(document.getElementById("unit_num").innerHTML.split("≥")[0] > 21 && enemyUnitCount > 21){
+    if (mode == 2) {
+        enemyDeck = playerToBuild == 0 ? p2testDeck : p1testDeck;
+        enemyUnitCount = 0;
+        enemyDeck.forEach(e =>{
+            if(e.basepower != null) enemyUnitCount++;
+        })
+        console.log(document.getElementById("unit_num").innerHTML.split("≥")[0]);
+        if(document.getElementById("unit_num").innerHTML.split("≥")[0] > 21 && enemyUnitCount > 21){
+            document.getElementById("available_cards").innerHTML = "";
+            document.getElementById("cards_in_deck").innerHTML = "";
+            document.getElementById("leader_div").innerHTML = "";
+            document.getElementById("deck_customizer").style.display="none";
+            let player1 = new Player(0, p1name, p1faction, p1leaders[p1leader] , p1testDeck);
+            let player2 = new Player(1, p2name, p2faction, p2leaders[p2leader], p2testDeck);
+            players = [player1, player2];
+            localGame()
+        }
+        else{
+            alert("Someone has an illegal amount of cards!")
+        }
+    }
+    else if (mode == 1) {
         document.getElementById("available_cards").innerHTML = "";
         document.getElementById("cards_in_deck").innerHTML = "";
+        document.getElementById("leader_div").innerHTML = "";
         document.getElementById("deck_customizer").style.display="none";
-        let player1 = new Player(0, p1name, p1faction, p1leaders[p1leader] , p1testDeck);
-        let player2 = new Player(1, p2name, p2faction, p2leaders[p2leader], p2testDeck);
+        let player1 = new Player(0, p1name, p1faction, p1leaders[p1leader] , p1deck);
+        let player2 = new Player(1, p2name, p2faction, p2leaders[p2leader], p2deck);
         players = [player1, player2];
         localGame()
     }
-    else{
-        console.log("Someone has illegal amount of cards!")
-    }
+    document.getElementById("left_board").style.display = "inline-block";
+    document.getElementById("center_board").style.display = "inline-block";
+    document.getElementById("right_board").style.display = "inline-block";
 })
 
 function drawCustomizerCard(card, currentPlayer, whereTo) {
@@ -287,15 +325,17 @@ function drawCustomizerLeader() {
     document.getElementById("leader_div").innerHTML = "";
     if (playerToBuild == 0) {
         let leaderElement = drawLeader(p1leaders[p1leader]);
-        leaderElement.addEventListener("click", () => {
+        leaderElement.addEventListener("click", function leaderEventListener() {
             showMedicUI("deckBuilder");
+            leaderElement.removeEventListener("click", leaderEventListener, false);
         });
         document.getElementById("leader_div").appendChild(leaderElement);
     }
     else if (playerToBuild == 1) {
         let leaderElement = drawLeader(p2leaders[p2leader]);
-        leaderElement.addEventListener("click", () => {
+        leaderElement.addEventListener("click", function leaderEventListener() {
             showMedicUI("deckBuilder");
+            leaderElement.removeEventListener("click", leaderEventListener, false);
         });
         document.getElementById("leader_div").appendChild(leaderElement);
     }
@@ -347,61 +387,57 @@ function deckBuilderCounters(){
     document.getElementById("hero_num").innerHTML=heroes;
 }
 
-if(mode == 1){
+function gameStart() {
+    if(mode == 1){
 
-    balancedSpecial();
-
-    cardArray.forEach(element =>{
-        //Player1
-        if((element.faction == p1faction || element.faction == "Neutral") && !element.isSpecial){
-            appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
-            p1deck.push(appendCard);
-        }
-        
-        //Player2
-        if((element.faction == p2faction || element.faction == "Neutral") && !element.isSpecial){
-            appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
-            p2deck.push(appendCard);
-        }
-    })
+        balancedSpecial();
     
-    //Specials 
-    function balancedSpecial(){
         cardArray.forEach(element =>{
-            if(element.isSpecial){
-                if(element.id.charAt(element.id.length-1)!=2){ //limituje počet special karet
-                    p1deck.push(new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.hasVariations, element.quote, element.number));
-                    p2deck.push(new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.hasVariations, element.quote, element.number));
-                }
+            //Player1
+            if((element.faction == p1faction || element.faction == "Neutral") && !element.isSpecial){
+                appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                p1deck.push(appendCard);
+            }
+            
+            //Player2
+            if((element.faction == p2faction || element.faction == "Neutral") && !element.isSpecial){
+                appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                p2deck.push(appendCard);
             }
         })
-    }
-    splitLeadersArray();
-    let p1Leader = p1leaders[1];
-    let p2Leader = p2leaders[2];
-    let player1 = new Player(0, "Martin", p1faction, p1Leader , p1deck);
-    let player2 = new Player(1, "Trunečkis", p2faction, p2Leader, p2deck);
-    players = [player1, player2];
-}
-
-else if(mode == 2) {
-    cardArray.forEach(element =>{
-        //Player1
-        if(element.faction == p1faction || element.faction == "Neutral"){
-            appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
-            p1deck.push(appendCard);
-            p1available.push(appendCard);
-        }
         
-        //Player2
-        if(element.faction == p2faction || element.faction == "Neutral"){
-            appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
-            p2deck.push(appendCard);
-            p2available.push(appendCard);
+        //Specials 
+        function balancedSpecial(){
+            cardArray.forEach(element =>{
+                if(element.isSpecial){
+                    if(element.id.charAt(element.id.length-1)!=2){ //limituje počet special karet
+                        p1deck.push(new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.hasVariations, element.quote, element.number));
+                        p2deck.push(new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.hasVariations, element.quote, element.number));
+                    }
+                }
+            })
         }
-    })
-    splitLeadersArray();
-    drawCustomizerLeader();
-    updateCards();
+        splitLeadersArray();
+        drawCustomizerLeader();
+    }
+    
+    else if(mode == 2) {
+        cardArray.forEach(element =>{
+            //Player1
+            if(element.faction == p1faction || element.faction == "Neutral"){
+                appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                p1available.push(appendCard);
+            }
+            
+            //Player2
+            if(element.faction == p2faction || element.faction == "Neutral"){
+                appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                p2available.push(appendCard);
+            }
+        })
+        splitLeadersArray();
+        drawCustomizerLeader();
+        updateCards();
+    }
 }
 
