@@ -75,11 +75,11 @@ function updateFaction(playerSwitch = false) {
                 })
                 }
             else if (mode == 1) {
-                p2deck = []
+                p1deck = []
                 cardArray.forEach(element => {
-                    if((element.faction == p2faction || element.faction == "Neutral") && !element.isSpecial){
+                    if((element.faction == p1faction || element.faction == "Neutral") && !element.isSpecial){
                         appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
-                        p2deck.push(appendCard);
+                        p1deck.push(appendCard);
                     }
                 })
             }
