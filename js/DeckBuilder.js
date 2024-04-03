@@ -63,6 +63,7 @@ function updateFaction(playerSwitch = false) {
         factionTitle.innerHTML = p1faction;
         let factionPNG = p1faction.replaceAll(" ","_").replaceAll("'", "");
         document.getElementById("deck_customizer").style.backgroundImage = "url(../images/" + factionPNG + ".png)";
+        document.getElementById("faction_select").value = p1faction;
         if (playerSwitch == false) {
             if (mode == 2) {
                 p1testDeck = [];
@@ -90,6 +91,7 @@ function updateFaction(playerSwitch = false) {
         factionTitle.innerHTML = p2faction;
         let factionPNG = p2faction.replaceAll(" ","_").replaceAll("'", "");
         document.getElementById("deck_customizer").style.backgroundImage = "url(../images/" + factionPNG + ".png)";
+        document.getElementById("faction_select").value = p2faction;
         if (playerSwitch == false) {
             if (mode == 2) {
                 p2testDeck = [];
