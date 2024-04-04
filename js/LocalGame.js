@@ -7,12 +7,20 @@ function localGame(){
     addCardListener();
 }
 function localGameStart(){
+    boards = [[[],[],[]],[[],[],[]]]
+    horn = [[false, false, false],[false, false, false]];
+    hornUI = [[[],[],[]],[[],[],[]]];
+    weather = [false, false, false];
+    medicsRandom = false;
+    spyDouble = false;
+    bard = [false, false];
+
     playerUpdate(currentPlayer);
         for(let i = 0; i < 2; i++){
             players[i].populateHand();
         }
-    drawHand(currentPlayer);
     updateLeaders(currentPlayer);
+    updateAll(currentPlayer);
     sumPowers(currentPlayer);
     roundResults = [];
 }
@@ -532,4 +540,15 @@ function discardCardsOnRoundEnd(){
     }
     horn = [[false, false, false],[false, false, false]];
     hornUI = [[[],[],[]],[[],[],[]]];
+}
+
+function restart(){
+    players.forEach(e =>{
+        e.rollback();
+        console.log(e);
+    })
+    document.getElementById("end_game_results").style.display="none";
+    document.getElementById("end_round_graphic").style.display="none";
+    clearLeaders();
+    localGame();
 }

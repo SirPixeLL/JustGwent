@@ -22,6 +22,8 @@ class Player{
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
         this.factionCOA = pictureSrc;
+
+        this.entireDeck = copyDeck(deck);
     }
 
     drawNewCard(){
@@ -40,4 +42,31 @@ class Player{
             this.drawNewCard();
         }
     }
+
+    rollback(){
+        this.leader.playable = true;
+        this.deck = copyDeck(this.entireDeck);
+        
+        this.hasPassed = false;
+        this.lives = 2;
+        this.discardedCards = [];
+        this.leaderUses = false;
+        this.hand = [];
+        this.totalPower = 0;
+        
+        this.bard = false;
+        this.redraw = true;
+    }
+}
+
+function copyDeck(arr) {
+    let copy = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            copy[i] = deepCopy(arr[i]);
+        } else {
+            copy[i] = arr[i];
+        }
+    }
+    return copy;
 }

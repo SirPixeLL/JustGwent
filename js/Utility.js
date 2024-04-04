@@ -1,11 +1,3 @@
-boards = [[[],[],[]],[[],[],[]]]
-horn = [[false, false, false],[false, false, false]];
-hornUI = [[[],[],[]],[[],[],[]]];
-weather = [false, false, false];
-medicsRandom = false;
-spyDouble = false;
-bard = [false, false];
-
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
@@ -173,11 +165,6 @@ let graphic = document.getElementById("end_round_graphic");
 function showEndGraphic(winner, gameEnded){
     let result = document.getElementById("end_round_result");
     let resultText;
-    
-    if(gameEnded){
-        document.getElementById("switch_text").innerHTML = "Return to menu";
-        document.getElementById("switch_button").setAttribute("onclick", "returnToMenu()");
-    }
     if(winner == "draw"&&gameEnded) resultText = "Game ended in a draw!"; 
     else if(winner == "draw") resultText = "Round ended in a draw!";
     else if(gameEnded) resultText = winner.name + " won the game!";
