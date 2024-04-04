@@ -85,6 +85,20 @@ function showMedicUI(version, random = 0) {
         else if (version == "redraw") {
                 if (players[currentPlayer].redraw == false) {
                         currentIndex = 0;
+                        if(previous2.firstChild) {
+                                previous2.removeChild(previous2.firstChild);
+                        }
+                        if(previous1.firstChild) {
+                                previous1.removeChild(previous1.firstChild);
+                        }
+                        if(next1.firstChild) {
+                                next1.removeChild(next1.firstChild);
+                        }
+                        if(next2.firstChild) {
+                                next2.removeChild(next2.firstChild);
+                        }
+                        clearHand(currentPlayer);
+                        drawHand(currentPlayer);
                         return;
                 }
                 text.innerHTML = "Choose up to 2 cards to redraw";
@@ -94,7 +108,31 @@ function showMedicUI(version, random = 0) {
                         players[currentPlayer].redraw = false;
                         lookButton.style.display = "none";
                         ui.style.display = "none";
+                        if (selected.firstChild) selected.removeChild(selected.firstChild);
+                        if(previous2.firstChild) {
+                                previous2.removeChild(previous2.firstChild);
+                        }
+                        if(previous1.firstChild) {
+                                previous1.removeChild(previous1.firstChild);
+                        }
+                        if(next1.firstChild) {
+                                next1.removeChild(next1.firstChild);
+                        }
+                        if(next2.firstChild) {
+                                next2.removeChild(next2.firstChild);
+                        }
+                        clearHand(currentPlayer);
+                        drawHand(currentPlayer);
                 })
+        }
+        else if (version == "deckBuilder") {
+                text.innerHTML = "Choose a faction leader";
+                if (playerToBuild == 0) {
+                        discarded = p1leaders;
+                }
+                else if (playerToBuild == 1) {
+                        discarded = p2leaders;
+                }
         }
         if(previous2.firstChild) {
                 previous2.removeChild(previous2.firstChild);
@@ -109,10 +147,13 @@ function showMedicUI(version, random = 0) {
                 next2.removeChild(next2.firstChild);
         }
         if (discarded.length >= 1) {
-                let selectedCard = createCardElement(discarded[currentIndex]);
+                let selectedCard;
+                if (version != "deckBuilder") selectedCard = createCardElement(discarded[currentIndex]);
+                else selectedCard = drawLeader(discarded[currentIndex]);
                 selectedCard.className = "cardInMedicUI";
                 ui.style.display = "block";
                 selected.appendChild(selectedCard);
+                [p1leader,p2leader][playerToBuild] = currentIndex;
                 if (version != "lookAtEnemy") selectedCard.addEventListener("click", function medicHelper() {
                         if (version == "redraw") {
                                 redrawCount++;
@@ -120,14 +161,23 @@ function showMedicUI(version, random = 0) {
                                 let randomCard = players[currentPlayer].deck[getRandomInt(players[currentPlayer].deck.length-1)];
                                 players[currentPlayer].deck.splice(randomNum, 1,  players[currentPlayer].hand[currentIndex]);
                                 players[currentPlayer].hand.splice(currentIndex, 1, randomCard)
-                                clearHand();
-                                drawHand(currentPlayer);
                                 selectedCard.removeEventListener("click", medicHelper, false);
+                                selectedCard.className = "cardInHand";
+                                selectedCard.remove();
+                                clearHand(currentPlayer);
+                                drawHand(currentPlayer);
                                 ui.style.display = "none";
-                                selected.removeChild(selectedCard);
                                 if (redrawCount == 2) players[currentPlayer].redraw = false;
                                 showMedicUI(version);   
                         }
+                        else if (version == "deckBuilder") {
+                                if (playerToBuild == 0) p1leader = currentIndex;
+                                else if (playerToBuild == 1) p2leader = currentIndex;
+                                ui.style.display = "none";
+                                selected.removeChild(selectedCard);
+                                currentIndex = 0;
+                                drawCustomizerLeader();
+                        } 
                         else if (selectedCard.id.includes("Melee") || selectedCard.id.includes("Ranged") || selectedCard.id.includes("Siege")) {
                                 checkForSpy(currentIndex, types[discarded[currentIndex].type], "discarded");
                                 play(discarded[currentIndex], currentPlayer);
@@ -158,11 +208,13 @@ function showMedicUI(version, random = 0) {
                                 }
                                 players[currentPlayer].deck.splice(players[currentPlayer].deck.indexOf(discarded[currentIndex]), 1);
                                 discarded.splice(currentIndex, 1);
-                        } 
-                        sumPowers(currentPlayer);
+                        }
+                        if (version != "deckBuilder") sumPowers(currentPlayer);
                 })
-                try {
-                        let next1Card = createCardElement(discarded[currentIndex+1]);
+                try {   
+                        let next1Card;
+                        if (version != "deckBuilder") next1Card = createCardElement(discarded[currentIndex+1]);
+                        else next1Card = drawLeader(discarded[currentIndex+1]);
                         next1.appendChild(next1Card);
                         next1Card.className = "cardInMedicUI";
                         next1Card.addEventListener("click", function next1() {
@@ -174,7 +226,9 @@ function showMedicUI(version, random = 0) {
                 }
                 catch {}
                 try {
-                        let next2Card = createCardElement(discarded[currentIndex+2]);
+                        let next2Card;
+                        if (version != "deckBuilder") next2Card = createCardElement(discarded[currentIndex+2]);
+                        else next2Card = drawLeader(discarded[currentIndex+2]);
                         next2.appendChild(next2Card);
                         next2Card.className = "cardInMedicUI";
                         next2Card.addEventListener("click", function next2() {
@@ -186,7 +240,9 @@ function showMedicUI(version, random = 0) {
                 }
                 catch {}
                 try {
-                        let previous1Card = createCardElement(discarded[currentIndex-1]);
+                        let previous1Card;
+                        if (version != "deckBuilder") previous1Card = createCardElement(discarded[currentIndex-1]);
+                        else previous1Card = drawLeader(discarded[currentIndex-1]);
                         previous1.appendChild(previous1Card);
                         previous1Card.className = "cardInMedicUI";
                         previous1Card.addEventListener("click", function previous1() {
@@ -198,7 +254,9 @@ function showMedicUI(version, random = 0) {
                 }
                 catch {}
                 try {
-                        let previous2Card = createCardElement(discarded[currentIndex-2]);
+                        let previous2Card;
+                        if (version != "deckBuilder") previous2Card = createCardElement(discarded[currentIndex-2]);
+                        else previous2Card = drawLeader(discarded[currentIndex-2]);
                         previous2.appendChild(previous2Card);
                         previous2Card.className = "cardInMedicUI";
                         previous2Card.addEventListener("click", function previous2() {
@@ -211,6 +269,8 @@ function showMedicUI(version, random = 0) {
                 catch {}
         }
         
+
+        //updateAll(currentPlayer);
 }
 
 function checkForSpy(index, row, handOrDiscarded){
@@ -471,6 +531,7 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
     }
 
 function addCardListener() {
+        console.log(cardsInHand);
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].addEventListener("click", cardListenerHelper);
         }
@@ -483,13 +544,14 @@ function addCardListenerToElement(element) {
 }
 
 function removeCardListener() {
+        console.log(cardsInHand);
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].removeEventListener("click", cardListenerHelper);
         }
 }
 
 function addLeaderListener() {
-        document.getElementById("own_leader_div").firstElementChild.addEventListener("click", cardListenerHelper);
+        document.getElementById("own_leader_div").firstChild.addEventListener("click", cardListenerHelper);
 }
 
 function createCardElement(card) {
@@ -605,5 +667,3 @@ function drawCard(card) {
         cardsInHand.push(document.getElementById(cardFrame.id));
         marginTrueNeckKeys();
 }
-
-addCardListener();

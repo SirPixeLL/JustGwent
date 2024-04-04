@@ -34,6 +34,6 @@ function drawLeaders(currentPlayer) {
 function clearLeaders() {
     let ownLeaderDiv = document.getElementById("own_leader_div");
     let enemyLeaderDiv = document.getElementById("enemy_leader_div");
-    ownLeaderDiv.removeChild(ownLeaderDiv.firstElementChild);
-    enemyLeaderDiv.removeChild(enemyLeaderDiv.firstElementChild);
+    if (ownLeaderDiv.firstChild) ownLeaderDiv.removeChild(ownLeaderDiv.firstChild);
+    if (enemyLeaderDiv.firstChild) enemyLeaderDiv.removeChild(enemyLeaderDiv.firstChild);
 }

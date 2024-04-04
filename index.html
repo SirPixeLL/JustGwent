@@ -12,19 +12,31 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/card.css">
     <link rel="stylesheet" href="css/deck_customizer.css">
+    <link rel="stylesheet" href="css/menu.css">
 </head>
 <body>
     <div id="body_div">
+        <div id="main_menu">
+            <div id="menu_title">JUST GWENT</div>
+            <div id="modes">
+                <div id="menu_button1" class="menu_button" onclick="localClassic()">
+                    <p id="menu_button_text">Classic</p>
+                </div>
+                <div id="menu_button2" class="menu_button" onclick="localBalanced()">
+                    <p id="menu_button_text">Balanced</p>
+                </div>
+            </div>
+        </div>
         <div id="deck_customizer" style="display: none;">
             <div id="opacity_div">
                 <div id="top_div">
                     <div id="player_title">Player 1</div>
                     <div id="faction_title">Northern Realms</div>
-                    <div id="faction_ability">Draw a card from your deck whenever you win a round</div>
+                    <div id="faction_ability">Draw a card from your deck whenever you win a round.</div>
                     <div id="options_div">
-                        <p id="name_select_text">Name (Max. 8 characters):</p>
+                        <p id="name_select_text">Nickame (Max. 8 characters):</p>
                         <input id="name_input" type="text" placeholder="Input a name..." maxlength="8">
-                        <button id="name_button"><span>&#8594;</span></button>
+                        <button id="name_button" onclick="getPlayerName(0)"><span>&#8594;</span></button>
                         <p id="faction_select_text">Faction:</p>
                         <select id="faction_select">
                             <option value="Northern Realms">Northern Realms</option>
@@ -49,7 +61,7 @@
                     <div class="number_card_div">
                         <div class="number_card_title">Number of unit card in deck</div>
                         <img class="number_card_image">
-                        <div id="unit_num" class="number_card_total">15</div>
+                        <div id="unit_num" class="number_card_total">15/22</div>
                     </div>
                     <div class="number_card_div">
                         <div class="number_card_title">Special Cards</div>
@@ -117,7 +129,7 @@
             <div id="next_card2" class="side_card2"></div>
             <button id="look_button">Continue</button>
         </div>
-        <div id="left_board">
+        <div id="left_board" style="display: none;">
             <div id="enemy_leader_div" class="leader_div">
             </div>
             <div id="enemy_status">
@@ -156,7 +168,7 @@
             </div>
             <button id="pass_button" onclick="passFunction()">PASS</button>
         </div>
-        <div id="center_board">
+        <div id="center_board" style="display: none;">
             <div id="enemy_side">
                 <div id="enemy_siege_div" class="line_div">
                     <div class="line_value"><p id="enemy_siege_value" class="value_p">0</p></div>
@@ -196,7 +208,7 @@
             </div>
 
         </div>
-        <div id="right_board">
+        <div id="right_board" style="display: none;">
             <div id="enemy_right_board">
                 <div id="enemy_discarded">
 

@@ -1,9 +1,10 @@
-localGame();
 function localGame(){    
     //console.log(JSON.parse(JSON.stringify(boards)));
     
     currentPlayer = startingPlayer();
     localGameStart();
+    showMedicUI("redraw");
+    addCardListener();
 }
 function localGameStart(){
     playerUpdate(currentPlayer);
@@ -243,24 +244,30 @@ function scorchRow(row){
     let strongest = {};
     let a = 1-currentPlayer;
     let t = 0;
-    for(let n = 0; n < boards[a][row].length; n++){
-        let element = boards[a][row][n];
-        if(element.isLegend == false){
-            if($.isEmptyObject(strongest)){
-                powerIndex = [element.power, n, t];
-                strongest[element.id+t] = powerIndex;
+    let rowPwr = 0;
+    boards[a][row].forEach(e=>{
+        rowPwr += e.power;
+    })
+    if(rowPwr > 7){
+        for(let n = 0; n < boards[a][row].length; n++){
+            let element = boards[a][row][n];
+            if(element.isLegend == false){
+                if($.isEmptyObject(strongest)){
+                    powerIndex = [element.power, n, t];
+                    strongest[element.id+t] = powerIndex;
+                }
+                else if(powerIndex[0] < element.power){
+                    t = 0;
+                    powerIndex = [element.power, n, t];
+                    strongest = {};
+                    strongest[element.id+t] = powerIndex;
+                }
+                else if(powerIndex[0] == element.power){
+                    t++;
+                    strongestIndex = [element.power, n, t];
+                    strongest[element.id+t] = strongestIndex;
+                } 
             }
-            else if(powerIndex[0] < element.power){
-                t = 0;
-                powerIndex = [element.power, n, t];
-                strongest = {};
-                strongest[element.id+t] = powerIndex;
-            }
-            else if(powerIndex[0] == element.power){
-                t++;
-                strongestIndex = [element.power, n, t];
-                strongest[element.id+t] = strongestIndex;
-            } 
         }
     }
     for(let key in strongest){
@@ -364,6 +371,7 @@ function sumPowers(currentPlayer){
 }
 
 function endTurn(){
+    redrawCount = 0;
     setWeatherDebuff();
     for(let i = 0; i < boards.length; i++){
         for(let j = 0; j < boards[i].length; j++){
@@ -393,7 +401,7 @@ function endTurn(){
 }
 
 function passFunction(){
-    if ((document.getElementById("medic_ui").style.display == "" || document.getElementById("medic_ui").style.display == "none") && decoyOn == false) {
+    if ((document.getElementById("medic_ui").style.display == "" || document.getElementById("medic_ui").style.display == "none") && decoyOn == false && shownCardSlot.length == 0 && (document.getElementById("end_game_results").style.display == "" || document.getElementById("end_game_results").style.display == "none")) {
         changeButton("remove");
         players[currentPlayer].hasPassed = true;
         if(players[currentPlayer].hasPassed && players[1-currentPlayer].hasPassed);

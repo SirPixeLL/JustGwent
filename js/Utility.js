@@ -124,6 +124,7 @@ function hideSwitchScreen(){
     updateAll(currentPlayer);
     sumPowers(currentPlayer);
     playerUpdate(currentPlayer);
+    if(players[currentPlayer].redraw) showMedicUI("redraw");
 }
 
 function cycleBoard(func){
@@ -152,6 +153,7 @@ function updateHorn(){
     }
 }
 function updateLeaders(){
+    clearLeaders();
     drawLeaders(currentPlayer);
 }
 
