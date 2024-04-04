@@ -47,8 +47,9 @@ if(mode == 1){
         cardArray.forEach(element =>{
             if(element.isSpecial){
                 if(element.id.charAt(element.id.length-1)!=2){ //limituje počet special karet
-                    p1deck.push(new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.hasVariations, element.quote));
-                    p2deck.push(new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.hasVariations, element.quote));
+                    p1deck.push(new Card(element.id+"A", element.name, null, element.type, "Neutral", element.ability, false, false, element.quote));
+                    p2deck.push(new Card(element.id+"B", element.name, null, element.type, "Neutral", element.ability, false, false, element.quote));
+                    console.log(new Card(element.id+"A", element.name, null, element.type, "Neutral", element.ability, false, false, element.quote));
                 }
             }
         })

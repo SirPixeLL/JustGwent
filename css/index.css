@@ -93,8 +93,7 @@ img {
     height:80%;
     top: 10%;
     position: absolute;
-    background-color: #17191a;
-    opacity: 0.9;
+    background-color:  rgb(23, 25, 26, 0.9);
     z-index: 10;
 }
 
@@ -132,6 +131,25 @@ img {
 .results_value {
     font-size: 1.2vw;
     margin: 5%;
+}
+
+#result_button_div {
+    position: relative;
+    display: block;
+    height: 25%;
+    top: 40%;
+}
+
+#replay_button,
+#back_button {
+    width: 10%;
+    height: 35%;
+    margin: 3%;
+    background-color: #aa9667;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2vw;
+    font-weight: bold;
 }
 
 /*Medic UI*/

@@ -426,8 +426,7 @@ function showCardInfo(leader = 0) {
         }
         else {
                 cardName.innerHTML = players[currentPlayer].hand[index].name;
-                if(players[currentPlayer].hand[index].quote != false) cardQuote.innerHTML = '"' + players[currentPlayer].hand[index].quote + '"'
-                else cardQuote.innerHTML = "";      
+                cardQuote.innerHTML = players[currentPlayer].hand[index].quote;      
         }
 }
 
