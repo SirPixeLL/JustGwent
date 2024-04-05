@@ -3,8 +3,8 @@ function localGame(){
     
     currentPlayer = startingPlayer();
     localGameStart();
-    showMedicUI("redraw");
     addCardListener();
+    showMedicUI("redraw");
 }
 function localGameStart(){
     boards = [[[],[],[]],[[],[],[]]]

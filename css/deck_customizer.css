@@ -74,6 +74,7 @@
     background-color: #aa9667;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 #faction_title {
@@ -174,6 +175,7 @@
     border: none;
     font-weight: bold;
     font-size: 1vw;
+    cursor: pointer;
 }
 
 /*CARDS*/
@@ -183,6 +185,7 @@
     aspect-ratio: 3/5;
     width: 25%;
     margin: 2%;
+    cursor: pointer;
 }
 
 .cardInCustomizer {

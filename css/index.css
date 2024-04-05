@@ -193,6 +193,17 @@ img {
     width: 7.5%;
 }
 
+#leader_description {
+    position: relative;
+    display: none;
+    width: 40%;
+    height: 25%;
+    left: 30%;
+    color: #aa9667;
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+
 #look_button {
     position: relative;
     display: none;

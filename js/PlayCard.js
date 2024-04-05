@@ -50,7 +50,9 @@ function showMedicUI(version, random = 0) {
         let next1 = document.getElementById("next_card1");
         let next2 = document.getElementById("next_card2");
         let lookButton = document.getElementById("look_button")
+        let leaderDescription = document.getElementById("leader_description")
         let discarded = [];
+        removeCardListener();
         if (version == "default" || version == "takeOwnDiscarded") discarded = players[currentPlayer].discardedCards;
         else if (version == "takeEnemysDiscarded") discarded = players[1-currentPlayer].discardedCards;
         else if (version == "leaderWeather") {
@@ -127,6 +129,7 @@ function showMedicUI(version, random = 0) {
                 })
         }
         else if (version == "deckBuilder") {
+                leaderDescription.style.display = "block";
                 text.innerHTML = "Choose a faction leader";
                 if (playerToBuild == 0) {
                         discarded = p1leaders;
@@ -134,6 +137,8 @@ function showMedicUI(version, random = 0) {
                 else if (playerToBuild == 1) {
                         discarded = p2leaders;
                 }
+
+                leaderDescription.innerHTML = discarded[currentIndex].abilityDescript;
         }
         if(previous2.firstChild) {
                 previous2.removeChild(previous2.firstChild);
@@ -159,7 +164,7 @@ function showMedicUI(version, random = 0) {
                         if (version == "redraw") {
                                 redrawCount++;
                                 let randomNum = getRandomInt(players[currentPlayer].deck.length-1);
-                                let randomCard = players[currentPlayer].deck[getRandomInt(players[currentPlayer].deck.length-1)];
+                                let randomCard = players[currentPlayer].deck[randomNum];
                                 players[currentPlayer].deck.splice(randomNum, 1,  players[currentPlayer].hand[currentIndex]);
                                 players[currentPlayer].hand.splice(currentIndex, 1, randomCard)
                                 selectedCard.removeEventListener("click", medicHelper, false);
@@ -197,6 +202,7 @@ function showMedicUI(version, random = 0) {
                                 if (playerToBuild == 0) p1leader = currentIndex;
                                 else if (playerToBuild == 1) p2leader = currentIndex;
                                 ui.style.display = "none";
+                                leaderDescription.style.display = "none";
                                 selected.removeChild(selectedCard);
                                 currentIndex = 0;
                                 drawCustomizerLeader();
@@ -563,7 +569,7 @@ function addCardListenerToElement(element) {
 
 function removeCardListener() {
         for (let i = 0; i < cardsInHand.length; i++) {
-                cardsInHand[i].removeEventListener("click", cardListenerHelper);
+                cardsInHand[i].removeEventListener("click", cardListenerHelper, false);
         }
 }
 
