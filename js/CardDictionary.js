@@ -61,7 +61,7 @@ const cardDict = {
         "type": "Weather",
         "faction": "Neutral",
         "ability": "TorrentialRain",
-        "quote": '"'+"Even the rain in this land smells like Vergil."+'"',
+        "quote": '"'+"Even the rain in this land smells like *****."+'"',
         "number": 3
     },
     //Neutral (chybí kráva a defence idk co s nima)
@@ -194,7 +194,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Monsters",
         "ability": "Muster",
-        "quote": "Ugly - nature's way of saying 'Stay the fuck away.'",
+        "quote": '"'+"Ugly - nature's way of saying:"+' "Stay the **** away."',
         "hasVariations": true,
         "number": 3
     },
@@ -204,7 +204,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Monsters",
         "ability": "Muster",
-        "quote": "Like a cross between a crab, a spider...and a ploughin' mountain",
+        "quote": '"'+"Like a cross between a crab, a spider...and a ploughin' mountain"+'"',
         "number": 1
     },
     "Botchling": {
@@ -213,7 +213,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Monsters",
         "ability": null,
-        "quote": "Admit your mistakes and bury them proper - else they'll come back to haunt you.",
+        "quote": '"'+"Admit your mistakes and bury them proper - else they'll come back to haunt you."+'"',
         "number": 1
     },
     "Celaeno_Harpy": {
@@ -222,7 +222,7 @@ const cardDict = {
         "type": "Agile",
         "faction": "Monsters",
         "ability": null,
-        "quote": "Common harpies feed on carrion. Celaeno harpies... they feed on dreams.",
+        "quote": '"'+"Common harpies feed on carrion. Celaeno harpies... they feed on dreams."+'"',
         "number": 1
     },
     "Cockatrice": {
@@ -231,7 +231,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Monsters",
         "ability": null,
-        "quote": "Born of an egg laid by a cockerel... if you believe such peasant drivel.",
+        "quote": '"'+"Born of an egg laid by a cockerel... if you believe such peasant drivel."+'"',
         "number": 1
     },
     "Brewess": {
@@ -240,7 +240,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Monsters",
         "ability": "Muster",
-        "quote": "We'll cut you up, boy. A fine broth you will make.",
+        "quote": '"'+"We'll cut you up, boy. A fine broth you will make."+'"',
         "number": 1
     },
     "Weavess": {
@@ -249,7 +249,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Monsters",
         "ability": "Muster",
-        "quote": "I sense your pain. I see your fear...",
+        "quote": '"'+"I sense your pain. I see your fear..."+'"',
         "number": 1
     },
     "Whispess": {
@@ -258,7 +258,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Monsters",
         "ability": "Muster",
-        "quote": "I'd be your best - and last.",
+        "quote": '"'+"I'd be your best - and last."+'"',
         "number": 1
     },
     "Draug": {
@@ -268,7 +268,7 @@ const cardDict = {
         "faction": "Monsters",
         "ability": null,
         "isLegend": true,
-        "quote": "Some men cannot admit defeat. Some keep fighting from beyond the grave.",
+        "quote": '"'+"Some men cannot admit defeat. Some keep fighting from beyond the grave."+'"',
         "number": 1
     },
     "Earth_Elemental": {
@@ -277,7 +277,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Monsters",
         "ability": null,
-        "quote": "How to fight an earth elemental? You don't. You run. Fast as you can.",
+        "quote": '"'+"How to fight an earth elemental? You don't. You run. Fast as you can."+'"',
         "number": 1
     },
     "Endrega": {
@@ -286,7 +286,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Monsters",
         "ability": null,
-        "quote": "The nest! Take out the nest, or the Vergils'll just keep coming!",
+        "quote": '"'+"The nest! Take out the nest, or the *****s'll just keep coming!"+'"',
         "number": 1
     },
     "Fiend": {
@@ -295,7 +295,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Monsters",
         "ability": null,
-        "quote": "A fiend looks a bit like a deer. An enormous, evil deer.",
+        "quote": '"'+"A fiend looks a bit like a deer. An enormous, evil deer."+'"',
         "number": 1
     },
     "Fire_Elemental": {
@@ -304,7 +304,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Monsters",
         "ability": null,
-        "quote": "Fire is so delightful.",
+        "quote": '"'+"Fire is so delightful."+'"',
         "number": 1
     },
     "Foglet": {
@@ -313,7 +313,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Monsters",
         "ability": null,
-        "quote": "Fog creeps on little cat feet. Foglets creep over the bodies of their victims.",
+        "quote": '"'+"Fog creeps on little cat feet. Foglets creep over the bodies of their victims."+'"',
         "number": 1
     },
     "Forktail": {
@@ -322,7 +322,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Monsters",
         "ability": null,
-        "quote": "Fork tails... Bah! Vergils' tails're more like cleavers.",
+        "quote": '"'+"Fork tails... Bah! *****s' tails're more like cleavers."+'"',
         "number": 1
     },
     "Frightener": {
@@ -340,7 +340,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Monsters",
         "ability": null,
-        "quote": "Ancient sculptors' nightmarish fantasies, brought to life by bored mages.",
+        "quote": '"'+"Ancient sculptors' nightmarish fantasies, brought to life by bored mages."+'"',
         "number": 1
     },
     "Ghoul": {
@@ -349,7 +349,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Monsters",
         "ability": "Muster",
-        "quote": "If ghouls are part of the Circle of Life... then it's a damn vicious circle.",
+        "quote": '"'+"If ghouls are part of the Circle of Life... then it's a damn vicious circle."+'"',
         "hasVariations": true,
         "number": 3
     },
@@ -619,7 +619,7 @@ const cardDict = {
         "number": 1
     },
     "Pfi": {
-        "name": "Poor Vergiling Infantry",
+        "name": "Poor Shameful Infantry",
         "power": 1,
         "type": "Melee",
         "faction": "Northern Realms",
@@ -634,7 +634,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Northern Realms",
         "ability": "Spy",
-        "quote": '"'+"He Vergilin' wears golden armor. Golden. 'Course he's a Vergil."+'"',
+        "quote": '"'+"He *****in' wears golden armor. Golden. 'Course he's a *****."+'"',
         "number": 1
     },
     "Redanian_foot": {
@@ -643,7 +643,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Northern Realms",
         "ability": null,
-        "quote": '"'+"I've bled for Redania! I've killed for Redania... Dammit, I've even Vergiled for Redania!"+'"',
+        "quote": '"'+"I've bled for Redania! I've killed for Redania... Dammit, I've even *****ed for Redania!"+'"',
         "hasVariations": true,
         "number": 2,
         "hasVariations": true
@@ -708,7 +708,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Northern Realms",
         "ability": "Spy",
-        "quote": '"'+"Vergil off! We aren't all Vergilin' philanderers. Some of us have depth..."+'"',
+        "quote": '"'+"***** off! We aren't all *****in' philanderers. Some of us have depth..."+'"',
         "number": 1
     },
     "Trebuchet": {
@@ -727,7 +727,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Northern Realms",
         "ability": null,
-        "quote": '"'+"A patriot... and a real son of Vergil."+'"',
+        "quote": '"'+"A patriot... and a real son of *****."+'"',
         "isLegend": true,
         "number": 1
     },
@@ -802,7 +802,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": "Medic",
-        "quote": "Double or nothing, aim for his Vergil",
+        "quote": "Double or nothing, aim for his *****",
         "number": 2,
         "hasVariations": true
     },
@@ -907,7 +907,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "They say the Impera fear nothing. Untrue. Renuald scares them Vergilless.",
+        "quote": "They say the Impera fear nothing. Untrue. Renuald scares them *****less.",
         "number": 1
     },
     "Rotten_Mangonel": {
@@ -1028,7 +1028,7 @@ const cardDict = {
         "type": "Agile",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "Our mead smells like Vergil, do it? Easy to fix - I'll break your Vergilin' nose!",
+        "quote": "Our mead smells like *****, do it? Easy to fix - I'll break your *****in' nose!",
         "number": 1
     },
     "Ciaran": {
@@ -1064,7 +1064,7 @@ const cardDict = {
         "type": "Agile",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "They track like hounds, run like deer and kill like cold-hearted Vergils.",
+        "quote": "They track like hounds, run like deer and kill like cold-hearted *****s.",
         "number": 3,
         "hasVariations": true
     },

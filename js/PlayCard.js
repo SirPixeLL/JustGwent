@@ -140,6 +140,13 @@ function showMedicUI(version, random = 0) {
 
                 leaderDescription.innerHTML = discarded[currentIndex].abilityDescript;
         }
+        else if (version == "sacrifice"){
+                if (sacrificeCounter == 2){
+                        return;
+                }
+                ui.style.display="block";
+                discarded = players[currentPlayer].hand;
+        }
         if(previous2.firstChild) {
                 previous2.removeChild(previous2.firstChild);
         }
@@ -197,6 +204,25 @@ function showMedicUI(version, random = 0) {
                                 clearHand()
                                 drawHand(currentPlayer)
                                 endTurn();
+                        }
+                        else if (version == "sacrifice"){
+                                sacrificeCounter++;
+                                players[currentPlayer].discardedCards.push(discarded[currentIndex])
+                                players[currentPlayer].hand.splice(players[currentPlayer].hand.indexOf(discarded[currentIndex]), 1);
+                                ui.style.display = "none";
+                                currentIndex = 0;
+                                selectedCard.removeEventListener("click", medicHelper, false);
+                                selected.removeChild(selectedCard);
+                                if (sacrificeCounter == 2){
+                                        let randomNum = getRandomInt(players[currentPlayer].deck.length-1);
+                                        let randomCard = players[currentPlayer].deck[randomNum];
+                                        players[currentPlayer].hand.push(randomCard);
+                                        players[currentPlayer].deck.splice(randomNum, 1);
+                                        endTurn();
+                                }
+                                clearHand();
+                                drawHand(currentPlayer);
+                                showMedicUI(version);
                         }
                         else if (version == "deckBuilder") {
                                 if (playerToBuild == 0) p1leader = currentIndex;
