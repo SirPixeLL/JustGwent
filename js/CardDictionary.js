@@ -727,7 +727,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Northern Realms",
         "ability": null,
-        "quote": '"'+"A patriot... and a real son of a bitch."+'"',
+        "quote": '"'+"A patriot... and a real son of Vergil."+'"',
         "isLegend": true,
         "number": 1
     },

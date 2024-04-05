@@ -51,7 +51,8 @@ function showMedicUI(version, random = 0) {
         let next2 = document.getElementById("next_card2");
         let lookButton = document.getElementById("look_button")
         let discarded = [];
-        if (version == "default") discarded = players[currentPlayer].discardedCards;
+        if (version == "default" || version == "takeOwnDiscarded") discarded = players[currentPlayer].discardedCards;
+        else if (version == "takeEnemysDiscarded") discarded = players[1-currentPlayer].discardedCards;
         else if (version == "leaderWeather") {
                 text.innerHTML = "Pick any weather card from your deck";
                 let weatherCardDeck = players[currentPlayer].deck.filter(function (Card) {
@@ -170,6 +171,28 @@ function showMedicUI(version, random = 0) {
                                 if (redrawCount == 2) players[currentPlayer].redraw = false;
                                 showMedicUI(version);   
                         }
+                        else if (version == "takeOwnDiscarded"){
+                                players[currentPlayer].hand.push(discarded[currentIndex]);
+                                players[currentPlayer].discardedCards.splice(players[currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
+                                ui.style.display = "none";
+                                currentIndex = 0;
+                                selectedCard.removeEventListener("click", medicHelper, false);
+                                selected.removeChild(selectedCard);
+                                clearHand()
+                                drawHand(currentPlayer)
+                                endTurn();
+                        }
+                        else if (version == "takeEnemysDiscarded"){
+                                players[currentPlayer].hand.push(discarded[currentIndex])
+                                players[1-currentPlayer].discardedCards.splice(players[1-currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
+                                ui.style.display = "none";
+                                currentIndex = 0;
+                                selectedCard.removeEventListener("click", medicHelper, false);
+                                selected.removeChild(selectedCard);
+                                clearHand()
+                                drawHand(currentPlayer)
+                                endTurn();
+                        }
                         else if (version == "deckBuilder") {
                                 if (playerToBuild == 0) p1leader = currentIndex;
                                 else if (playerToBuild == 1) p2leader = currentIndex;
@@ -182,14 +205,12 @@ function showMedicUI(version, random = 0) {
                                 checkForSpy(currentIndex, types[discarded[currentIndex].type], "discarded");
                                 play(discarded[currentIndex], currentPlayer);
                                 players[currentPlayer].discardedCards.splice(players[currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
-                                discarded.splice(currentIndex, 1);
+                                //discarded.splice(currentIndex, 1);
                                 ui.style.display = "none";
                                 currentIndex = 0;
                                 selectedCard.removeEventListener("click", medicHelper, false);
                         }
                         else if (discarded[currentIndex].type == "Weather") {
-                                console.log(playedWeatherCards);
-                                console.log(discarded[currentIndex].name)
                                 play(discarded[currentIndex], currentPlayer);
                                 if(playedWeatherCards.indexOf(discarded[currentIndex].name)== -1){
                                         playedWeatherCards.push(discarded[currentIndex].name);
@@ -198,13 +219,11 @@ function showMedicUI(version, random = 0) {
                                         ui.style.display = "none";
                                         currentIndex = 0;
                                         selectedCard.removeEventListener("click", medicHelper, false);
-                                        console.log(playedWeatherCards)
                                 }
                                 else{
                                         ui.style.display = "none";
                                         currentIndex = 0;
                                         selectedCard.removeEventListener("click", medicHelper, false);
-                                        console.log(playedWeatherCards)
                                 }
                                 players[currentPlayer].deck.splice(players[currentPlayer].deck.indexOf(discarded[currentIndex]), 1);
                                 discarded.splice(currentIndex, 1);
@@ -531,7 +550,6 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
     }
 
 function addCardListener() {
-        console.log(cardsInHand);
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].addEventListener("click", cardListenerHelper);
         }
@@ -544,7 +562,6 @@ function addCardListenerToElement(element) {
 }
 
 function removeCardListener() {
-        console.log(cardsInHand);
         for (let i = 0; i < cardsInHand.length; i++) {
                 cardsInHand[i].removeEventListener("click", cardListenerHelper);
         }

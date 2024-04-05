@@ -305,7 +305,6 @@ function spy(){
 
 function dandelion(i,j){
     if(players[i].bard && j == 0) {
-        console.log("je tam");
         for(let e = 0; e < boards[i][0].length; e++){
             if(boards[i][0][e].name != "Dandelion" && boards[i][0][e].isLegend == false) boards[i][0][e].power = boards[i][0][e].power*2;
         }
@@ -358,7 +357,6 @@ function sumPowers(currentPlayer){
     for(let i = 0; i < 2; i++){
         if(players[i].totalPower>players[1-i].totalPower){
             for(let l = 0; l < 3; l++){
-                console.log(UI[i][l]);
                 UI[i][l].parentElement.style.backgroundColor="#aa9667";
             }
             Total[i].parentElement.style.backgroundColor="#aa9667";
@@ -502,7 +500,6 @@ function endRound(){
 }
 
 function discardCardsOnRoundEnd(){
-    console.trace()
     let preserve = [];
     for(let i = 0; i < 2; i++){
         if(players[i].faction == "Monsters"){
@@ -545,7 +542,7 @@ function discardCardsOnRoundEnd(){
 function restart(){
     players.forEach(e =>{
         e.rollback();
-        console.log(e);
+        //console.log(e);
     })
     document.getElementById("end_game_results").style.display="none";
     document.getElementById("end_round_graphic").style.display="none";

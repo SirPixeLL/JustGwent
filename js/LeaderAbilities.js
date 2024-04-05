@@ -1,4 +1,4 @@
-//leaderů funkčních: 16/20
+//leaderů funkčních: 18/20
 
 function playLeader(leader){
     switch(leader.name){
@@ -11,7 +11,8 @@ function playLeader(leader){
             break;
         case "Eredin: Bringer of Death":
             //medic do ruky
-            showMedicUI("takeEnemysDiscarded")
+            showMedicUI("takeOwnDiscarded");
+            changeButton("switch");
             break;
         case "Eredin: Commander of the Red Riders": //bez chyb
             //horn na melee
@@ -46,6 +47,8 @@ function playLeader(leader){
             break;
         case "Emhyr var Emreis: The Relentless":
             //vezme si do ruky kartu z nepřítelaova discarded
+            showMedicUI("takeEnemysDiscarded");
+            changeButton("switch");
             break;
         case "Emhyr var Emreis: The White Flame": //bez chyb - musí se přidat podmíka na playable někde mimo
             //zakáže hraní leaderů
