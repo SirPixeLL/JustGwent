@@ -242,6 +242,68 @@ function fadeOut(element) {
     }
  }
 
- function endGameUI(){
+ function startingGraphic(version, picker = 0){
+    let startScreen = document.getElementById("start_screen");
+    let startText = document.getElementById("player_to_start");
+    let startButton = document.getElementById("start_button");
+    let startTitle = document.getElementById("start_text");
+    let p1button = document.getElementById("player1_button");
+    let p2button =document.getElementById("player2_button");
+    p1button.style.display = "none";
+    p2button.style.display = "none";
+    startScreen.style.display="block";
+    if(version == "default"){
+        startTitle.innerHTML = "Player to start:";
+        startText.style.color="#90979a";
+        let i = 0
+        startText.innerHTML=players[i].name;
+        let intervalSpeed = 10;
+        setTimeout(()=>{
+                timer = function() {
+                    intervalSpeed = intervalSpeed*1.2;
+                    startText.innerHTML=players[i].name;
+                    i = 1-i;
+                    if(intervalSpeed < 600) {
+                        setTimeout(timer, intervalSpeed);
 
+                    }
+                    else{
+                        startText.style.color="#aa9667";
+                        startText.innerHTML=players[currentPlayer].name;
+                        startButton.addEventListener("click", function startH(){
+                            startScreen.style.display="none";
+                            localGameStart();
+                            addCardListener();
+                            showMedicUI("redraw");
+                            startButton.removeEventListener("click", startH)
+                        })
+                    }
+                }
+                timer();
+        },500)
+    }
+    else{
+        p1button.style.display = "inline-block";
+        p2button.style.display = "inline-block";
+        startTitle.innerHTML=players[picker].name+" picks whos playing first:"
+        p1button.addEventListener("click", function(){
+            startButton.removeEventListener("click", startH)
+            currentPlayer = 0;
+            startText.innerHTML = players[currentPlayer].name;
+            startButton.addEventListener("click",startH) 
+        })
+        p2button.addEventListener("click", function(){
+            startButton.removeEventListener("click", startH)
+            currentPlayer = 1
+            startText.innerHTML = players[currentPlayer].name;
+            startButton.addEventListener("click", startH)
+        })
+    }
  }
+ function startH(){
+    document.getElementById("start_screen").style.display="none";
+    localGameStart();
+    addCardListener();
+    showMedicUI("redraw");
+    document.getElementById("start_button").removeEventListener("click", startH)
+}

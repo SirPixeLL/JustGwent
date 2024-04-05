@@ -1,9 +1,7 @@
 function localGame(){    
     //console.log(JSON.parse(JSON.stringify(boards)));
-    currentPlayer = startingPlayer();
-    localGameStart();
-    addCardListener();
-    showMedicUI("redraw");
+    currentPlayer = 3;
+    startingPlayer();
 }
 function localGameStart(){
     boards = [[[],[],[]],[[],[],[]]]
@@ -26,21 +24,22 @@ function localGameStart(){
 function startingPlayer(){
     //"Coinflip" na začátku hry
     //scoia'tael jede první
-    let coinflip;
+    
     if(players[0].faction == "Scoia'tael" && players[1].faction == "Scoia'tael"){
-        coinflip = getRandomInt(2);
+        currentPlayer = getRandomInt(2);
+        startingGraphic("default");
     }
     else if(players[0].faction == "Scoia'tael"){
-        coinflip = 0;
+        startingGraphic("pick", 0)
     }
     else if(players[1].faction == "Scoia'tael"){
-        coinflip = 1;
+        startingGraphic("pick", 1)
     }
     else{
-        coinflip = getRandomInt(2);
+        currentPlayer = getRandomInt(2);
+        startingGraphic("default");
     }
-    console.log("Starting player: " + coinflip);
-    return coinflip;
+    console.log("Starting player: " + currentPlayer);
 }
 
 //zahraje kartu
