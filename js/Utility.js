@@ -93,7 +93,7 @@ function playerUpdate(currentPlayer){
         cardBack = players[i].faction;
         cardBack = cardBack.replace(" ", "_");
         cardBack = cardBack.replace("'", "");
-        HUD[i][4].style.backgroundImage = "url(../images/cards/cardBacks/"+cardBack+"_Back.jpg)";
+        HUD[i][4].style.backgroundImage = "url(./images/cards/cardBacks/"+cardBack+"_Back.jpg)";
     }
 }
 

@@ -113,10 +113,10 @@ class Card {
                 power.innerHTML = this.power;
                 power.className = "power";
                 if (this.isLegend == true) {
-                        powerDiv.style.backgroundImage = "url(../images/cardWidgets/legendPowerBack.png";
+                        powerDiv.style.backgroundImage = "url(./images/cardWidgets/legendPowerBack.png";
                 }
                 else {
-                        powerDiv.style.backgroundImage = "url(../images/cardWidgets/powerBack.png";
+                        powerDiv.style.backgroundImage = "url(./images/cardWidgets/powerBack.png";
                         power.style.color = "#000000";
                 }
                 if(this.power > this.basepower) power.style.color="Green";
@@ -127,7 +127,7 @@ class Card {
             if (this.type == "Agile" || this.type == "Melee" || this.type == "Ranged" || this.type == "Siege") {
                 let typeDiv = document.createElement("div");
                 typeDiv.className = "typeDiv";
-                let typeSrc = "url(../images/cardWidgets/"+this.type+".png";
+                let typeSrc = "url(./images/cardWidgets/"+this.type+".png";
                 typeDiv.style.backgroundImage = typeSrc;
                 typeDiv.style.backgroundSize = "100% 100%";
                 cardFrame.appendChild(typeDiv);
@@ -136,8 +136,8 @@ class Card {
                 let abilitySrc;
                 let abilityDiv = document.createElement("div");
                 abilityDiv.className = "abilityDiv";
-                if(this.isAgile && this.ability == null) abilitySrc = "url(../images/cardWidgets/AgileAbility.png";
-                else abilitySrc = "url(../images/cardWidgets/"+this.ability+".png";
+                if(this.isAgile && this.ability == null) abilitySrc = "url(./images/cardWidgets/AgileAbility.png";
+                else abilitySrc = "url(./images/cardWidgets/"+this.ability+".png";
                 
                 abilityDiv.style.backgroundImage = abilitySrc;
                 abilityDiv.style.backgroundSize = "100% 100%";
@@ -148,7 +148,7 @@ class Card {
         if(this.id[this.id.length-2]>=0 && this.id[this.id.length-2]<=9 && this.hasVariations){
             pictureNum = this.id[this.id.length-2]
         }
-        let pictureSrc = "url(../images/cards/"+this.name+pictureNum+".png)";
+        let pictureSrc = "url(./images/cards/"+this.name+pictureNum+".png)";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
         cardFrame.style.backgroundImage = pictureSrc;

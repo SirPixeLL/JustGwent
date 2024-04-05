@@ -18,7 +18,7 @@ class Player{
         this.bard = false;
         this.redraw = true;
 
-        let pictureSrc = "../images/"+this.faction+".png";
+        let pictureSrc = "./images/"+this.faction+".png";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
         this.factionCOA = pictureSrc;
