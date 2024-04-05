@@ -1,4 +1,4 @@
-//leaderů funkčních: 18/20
+//leaderů funkčních: 19.5/20
 
 function playLeader(leader){
     switch(leader.name){
@@ -9,7 +9,7 @@ function playLeader(leader){
             changeButton("switch");
             endTurn();
             break;
-        case "Eredin: Bringer of Death":
+        case "Eredin: Bringer of Death": //bez chyb
             //medic do ruky
             showMedicUI("takeOwnDiscarded");
             changeButton("switch");
@@ -22,6 +22,9 @@ function playLeader(leader){
             break;
         case "Eredin: Destroyer of Worlds":
             //vybere 2 karty z ruky, vyhodí je a vezme si z balíčku libovolnou kartu
+            sacrificeCounter = 0;
+            showMedicUI("sacrifice");
+            changeButton("switch")
             break;
         case "Eredin: King of the Wild Hunt": //bez chyb
             //z balíčku si vybere weather kartu
@@ -45,7 +48,7 @@ function playLeader(leader){
             //medici oživujou random
             medicsRandom = true;
             break;
-        case "Emhyr var Emreis: The Relentless":
+        case "Emhyr var Emreis: The Relentless": //bez chyb
             //vezme si do ruky kartu z nepřítelaova discarded
             showMedicUI("takeEnemysDiscarded");
             changeButton("switch");
