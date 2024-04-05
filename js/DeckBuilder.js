@@ -261,7 +261,7 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
         cardElement.appendChild(cardInfo);
         document.getElementById(whereTo).appendChild(cardElement);
         cardElement.addEventListener("click", function moveCard() {
-            if(card.isSpecial && specials == 10){
+            if(card.isSpecial && specials == 10 && whereTo == "available_cards"){
                 alert("Special card limit reached!")
             }
             else{

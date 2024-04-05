@@ -1,6 +1,5 @@
 function localGame(){    
     //console.log(JSON.parse(JSON.stringify(boards)));
-    
     currentPlayer = startingPlayer();
     localGameStart();
     addCardListener();
