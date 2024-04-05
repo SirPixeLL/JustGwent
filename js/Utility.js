@@ -236,6 +236,10 @@ function fadeOut(element) {
         let card = players[currentPlayer].discardedCards[players[currentPlayer].discardedCards.length - 1];
         card.drawTo(document.getElementById("own_discarded"))
     }
+    if($.isEmptyObject(players[1-currentPlayer].discardedCards)==false){
+        let card = players[1-currentPlayer].discardedCards[players[1-currentPlayer].discardedCards.length - 1];
+        card.drawTo(document.getElementById("enemy_discarded"))
+    }
  }
 
  function endGameUI(){
