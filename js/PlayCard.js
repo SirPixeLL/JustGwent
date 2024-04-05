@@ -326,12 +326,12 @@ function playCard(cardType, e) {
         if (cardType == "leader") showCardInfo(1)
         else showCardInfo();
         if (shownCardSlot.length > 0) {
-                if ((shownCardSlot[0].id.includes("Agile") || shownCardSlot[0].id.includes("Horn")) && (cardType != "agile" || cardType != "horn")) {
+                if ((shownCardSlot[0].id.includes("Agile") || shownCardSlot[0].id.includes("horn")) && (cardType != "agile" || cardType != "horn")) {
                         buttonMelee.style.display = "none";
                         buttonRanged.style.display = "none";
                         buttonSiege.style.display = "none";
                 }
-                if (shownCardSlot[0].id.includes("Horn") && cardType == "agile") {
+                if (shownCardSlot[0].id.includes("horn") && cardType == "agile") {
                         buttonSiege.style.display = "none";
                 }
                 if (shownCardSlot[0].id.includes("Leader")) {
@@ -459,7 +459,7 @@ function playCard(cardType, e) {
                                 players[currentPlayer].hand.splice(index,1);
                                 play(playedCard, currentPlayer);
                                 if (cardType == "weather_cards") {
-                                        if(playedWeatherCards.indexOf(playedCard.name)== -1 && targetCard.id.includes("Clear_Weather") == false){
+                                        if(playedWeatherCards.indexOf(playedCard.name)== -1 && targetCard.id.includes("Clear_weather") == false){
                                                 playedWeatherCards.push(playedCard.name)
                                                 document.getElementById(cardType).appendChild(targetCard);
                                                 shownCardSlot.splice(0, 1);
@@ -544,7 +544,7 @@ function cardListenerHelper(e){ //existuje aby se dalo pouzit removeEventListene
         else if (e.target.id.includes("Scorch")) {
                 playCard("scorch", e);
         }
-        else if (e.target.id.includes("Commanders_Horn")) {
+        else if (e.target.id.includes("Commanders_horn")) {
                 playCard("horn", e);
         }
         else if (e.target.id.includes("Decoy")) {

@@ -28,11 +28,38 @@ img {
     aspect-ratio: 16/7.9;
 }
 
+/*Start screen*/
+#start_screen {
+    position: absolute;
+    z-index: 50;
+    display: none;
+    background-color: #17191a;
+    height: 99vh;
+    width: 99vw;  
+}
+
+#start_text,
+#player_to_start {
+    position: relative;
+    display: block;
+    color: #aa9667;
+}
+
+#start_text {
+    width: 50%;
+    height: 30%;
+    left: 25%;
+    font-size: 4vw;
+}
+
+#player_to_start {
+
+}
 
 /*Switch screen*/
 #switch_screen {
     position: absolute;
-    z-index: 2;
+    z-index: 10;
     display: none;
     opacity: 0;
     background-color: #17191a;
