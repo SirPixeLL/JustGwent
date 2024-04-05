@@ -27,7 +27,8 @@ function makeLeaderObject(leaderValues, i){
     Object.keys(leaderDict)[i],
     leaderValues.name,
     leaderValues.faction,
-    leaderValues.quote
+    leaderValues.quote,
+    leaderValues.abilityDescript
   )
   leaderArray.push(leader);
 }
