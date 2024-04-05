@@ -12,7 +12,7 @@ function drawLeader(leader) {
     let cardFrame = document.createElement("div");
         cardFrame.className = "cardLeader";
         cardFrame.id = "Leader" + leader.id;
-        let pictureSrc = "url(../images/cards/leaders/"+leader.name+".png";
+        let pictureSrc = "url(./images/cards/leaders/"+leader.name+".png";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
         cardFrame.style.backgroundImage = pictureSrc;

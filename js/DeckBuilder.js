@@ -62,7 +62,7 @@ function updateFaction(playerSwitch = false) {
         document.getElementById("faction_ability").innerHTML = factionPerks[document.getElementById("faction_select").selectedIndex]
         factionTitle.innerHTML = p1faction;
         let factionPNG = p1faction.replaceAll(" ","_").replaceAll("'", "");
-        document.getElementById("deck_customizer").style.backgroundImage = "url(../images/" + factionPNG + ".png)";
+        document.getElementById("deck_customizer").style.backgroundImage = "url(./images/" + factionPNG + ".png)";
         document.getElementById("faction_select").value = p1faction;
         if (playerSwitch == false) {
             if (mode == 2) {
@@ -91,7 +91,7 @@ function updateFaction(playerSwitch = false) {
     else if (playerToBuild == 1) {
         factionTitle.innerHTML = p2faction;
         let factionPNG = p2faction.replaceAll(" ","_").replaceAll("'", "");
-        document.getElementById("deck_customizer").style.backgroundImage = "url(../images/" + factionPNG + ".png)";
+        document.getElementById("deck_customizer").style.backgroundImage = "url(./images/" + factionPNG + ".png)";
         document.getElementById("faction_select").value = p2faction;
         if (playerSwitch == false) {
             if (mode == 2) {
@@ -213,10 +213,10 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
             power.innerHTML = card.power;
             power.className = "power";
             if (card.isLegend == true) {
-                    powerDiv.style.backgroundImage = "url(../images/cardWidgets/legendPowerBack.png";
+                    powerDiv.style.backgroundImage = "url(./images/cardWidgets/legendPowerBack.png";
             }
             else {
-                    powerDiv.style.backgroundImage = "url(../images/cardWidgets/powerBack.png";
+                    powerDiv.style.backgroundImage = "url(./images/cardWidgets/powerBack.png";
                     power.style.color = "#000000";
             }
             powerDiv.appendChild(power);
@@ -225,7 +225,7 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
         if (card.type == "Agile" || card.type == "Melee" || card.type == "Ranged" || card.type == "Siege") {
                 let typeDiv = document.createElement("div");
                 typeDiv.className = "typeDiv";
-                let typeSrc = "url(../images/cardWidgets/"+card.type+".png";
+                let typeSrc = "url(./images/cardWidgets/"+card.type+".png";
                 typeDiv.style.backgroundImage = typeSrc;
                 typeDiv.style.backgroundSize = "100% 100%";
                 cardFrame.appendChild(typeDiv);
@@ -233,14 +233,14 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
         if (card.ability != null) {
                 let abilityDiv = document.createElement("div");
                 abilityDiv.className = "abilityDiv";
-                let abilitySrc = "url(../images/cardWidgets/"+card.ability+".png";
+                let abilitySrc = "url(./images/cardWidgets/"+card.ability+".png";
                 abilityDiv.style.backgroundImage = abilitySrc;
                 abilityDiv.style.backgroundSize = "100% 100%";
                 cardFrame.appendChild(abilityDiv);
         } else if(card.isAgile){
                 let abilityDiv = document.createElement("div");
                 abilityDiv.className = "abilityDiv";
-                let abilitySrc = "url(../images/cardWidgets/AgileAbility.png";
+                let abilitySrc = "url(./images/cardWidgets/AgileAbility.png";
                 abilityDiv.style.backgroundImage = abilitySrc;
                 abilityDiv.style.backgroundSize = "100% 100%";
                 cardFrame.appendChild(abilityDiv);
@@ -250,7 +250,7 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
             pictureNum = card.id[card.id.length-2]
 
         }
-        let pictureSrc = "url(../images/cards/"+card.name+pictureNum+".png";
+        let pictureSrc = "url(./images/cards/"+card.name+pictureNum+".png";
         pictureSrc = pictureSrc.replaceAll(" ","_");
         pictureSrc = pictureSrc.replaceAll(/[':]/g, '');
         cardFrame.style.backgroundImage = pictureSrc;
@@ -262,7 +262,7 @@ function drawCustomizerCard(card, currentPlayer, whereTo) {
         document.getElementById(whereTo).appendChild(cardElement);
         cardElement.addEventListener("click", function moveCard() {
             if(card.isSpecial && specials == 10){
-                //sem alert že má moc specials
+                alert("Special card limit reached!")
             }
             else{
                 if(Number(cardNum.innerHTML[1])>1){
