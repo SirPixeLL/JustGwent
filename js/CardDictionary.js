@@ -1247,104 +1247,124 @@ const leaderDict = {
     "Trecherous":{
         "name": "Eredin Bréacc Glas: The Trecherous",
         "faction": "Monsters",
-        "quote": "I'm enjoying this. You are my toy."
+        "quote": "I'm enjoying this. You are my toy.",
+        "abilityDescript": "Doubles the strength of all spy cards (affects both players)."
     },
     "Bringer_of_Death":{
         "name": "Eredin: Bringer of Death",
         "faction": "Monsters",
-        "quote": "Go on. Show me your spins, pirouettes and feints. I want to watch."
+        "quote": "Go on. Show me your spins, pirouettes and feints. I want to watch.",
+        "abilityDescript": "Restore a card from your discard pile to your hand."
     },
     "Commander_Riders":{
         "name": "Eredin: Commander of the Red Riders",
         "faction": "Monsters",
-        "quote": "Have some dignity. You know how this will end."
+        "quote": "Have some dignity. You know how this will end.",
+        "abilityDescript": "	Double the strength of all your Close Combat units (unless a Commander's horn is also present on that row)."
     },
     "Destroyer_Worlds":{
         "name": "Eredin: Destroyer of Worlds",
         "faction": "Monsters",
-        "quote": "It is unavoidable."
+        "quote": "It is unavoidable.",
+        "abilityDescript": "Discard 2 card and draw 1 card of your choice from your deck."
     },
     "King_Wild_Hunt":{
         "name": "Eredin: King of the Wild Hunt",
         "faction": "Monsters",
-        "quote": "I've long awaited this..."
+        "quote": "I've long awaited this...",
+        "abilityDescript": "Pick any weather card from your deck and play it instantly."
     },
     //Nilfgaard
     "Emperor_Nilfgaard":{
         "name": "Emhyr var Emreis: Emperor of Nilfgaard",
         "faction": "Nilfgaardian Empire",
-        "quote": "Your motives do not interest me. Only results." 
+        "quote": "Your motives do not interest me. Only results.",
+        "abilityDescript": "Look at 3 random cards from your opponent's hand."
     },
     "Imperial_Majesty":{
         "name": "Emhyr var Emreis: His Imperial Majesty",
         "faction": "Nilfgaardian Empire",
-        "quote": "The skies wept when my Pavetta died. They will not weep for me."
+        "quote": "The skies wept when my Pavetta died. They will not weep for me.",
+        "abilityDescript": "Pick a Torrential Rain card from your deck and play it instantly."
     },
     "Invader_North":{
         "name": "Emhyr var Emreis: Invader of the North",
         "faction": "Nilfgaardian Empire",
-        "quote": "Emperors command multitudes, yet cannot control two things: their time and their hearts."
+        "quote": "Emperors command multitudes, yet cannot control two things: their time and their hearts.",
+        "abilityDescript": "Abilities that restore a unit to the battlefield restore a randomly-chosen unit. Affects both players."
     },
     "Relentless":{
         "name": "Emhyr var Emreis: The Relentless",
         "faction": "Nilfgaardian Empire",
-        "quote": "They do not call me the Patient. Take care they do not call you the Headless."
+        "quote": "They do not call me the Patient. Take care they do not call you the Headless.",
+        "abilityDescript": "Draw a card from your opponent's discard pile."
     },
     "White_Flame":{
         "name": "Emhyr var Emreis: The White Flame",
         "faction": "Nilfgaardian Empire",
-        "quote": "A sword is but one of many tools at a ruler's disposal."  
+        "quote": "A sword is but one of many tools at a ruler's disposal.",
+        "abilityDescript": "Cancel your opponent's Leader Ability."
     },
     //Northern Realms
     "King_Temeria":{
         "name": "Foltest: King of Temeria",
         "faction": "Northern Realms",
-        "quote": "It is natural and beautiful that a man should love his sister."  
+        "quote": "It is natural and beautiful that a man should love his sister.",
+        "abilityDescript": "Pick an Impenetrable Fog card from your deck and play it instantly."  
     },
     "Lord_Commander":{
         "name": "Foltest: Lord Commander of the North",
         "faction": "Northern Realms",
-        "quote": "Sod advisors and their schemes. I place my trust in my solders' blades."  
+        "quote": "Sod advisors and their schemes. I place my trust in my solders' blades.",
+        "abilityDescript": "Clear any weather effects in play."  
     },
     "Son_Medell":{
         "name": "Foltest: Son of Medell",
         "faction": "Northern Realms",
-        "quote": "Dammit, I rule this land and I refuse to creep around its corners."  
+        "quote": "Dammit, I rule this land and I refuse to creep around its corners.",
+        "abilityDescript": "Destroy your enemy's strongest Ranged Combat unit(s) if the combined strength of all his or her Ranged Combat units is 10 or more."  
     },
     "Siegemaster":{
         "name": "Foltest: The Siegemaster",
         "faction": "Northern Realms",
-        "quote": "A well-aimed ballista razes not just the enemy's walls, but his morale as well."  
+        "quote": "A well-aimed ballista razes not just the enemy's walls, but his morale as well.",
+        "abilityDescript": "Doubles the strength of all your Siege units (unless a Commander's Horn is also present on that row)."  
     },
     "SteelForged":{
         "name": "Foltest: The Steel-Forged",
         "faction": "Northern Realms",
-        "quote": "A beautiful day for battle."  
+        "quote": "A beautiful day for battle.",
+        "abilityDescript": "Destroy your enemy's strongest Siege unit(s) if the combined strength of all his or her Siege units is 10 or more."  
     },
     //Scoia'tael
     "Daisy_Valley":{
         "name": "Francesca Findabair: Daisy of the Valley",
         "faction": "Scoia'tael",
-        "quote": "The Elder Races have forgotten more than humans can ever hope to know."  
+        "quote": "The Elder Races have forgotten more than humans can ever hope to know.",
+        "abilityDescript": "Draw an extra card at the beginning of the battle."
     },
     "Hope_Aen_Seidhe":{
         "name": "Francesca Findabair: Hope of the Aen Seidhe",
         "faction": "Scoia'tael",
-        "quote": "Daede sian caente, Aen Seidhe en'allane ael coeden..."  
+        "quote": "Daede sian caente, Aen Seidhe en'allane ael coeden...",
+        "abilityDescript": "Move agile units to whichever valid row maximizes their strength (don't move units already in optimal row)."
     },
     "Pureblood_Elf":{
         "name": "Francesca Findabair: Pureblood Elf",
         "faction": "Scoia'tael",
-        "quote": "Ash shall fertilize the soil. By spring, the valley shall bloom once more."  
+        "quote": "Ash shall fertilize the soil. By spring, the valley shall bloom once more.",
+        "abilityDescript": "Pick a Biting Frost card from your deck and play it instantly."
     },
     "Queen_Dol_Blathanna":{
         "name": "Francesca Findabair: Queen of Dol Blathanna",
         "faction": "Scoia'tael",
-        "quote": "To live in peace, we first must kill. This is human oppression's cruel finale."  
+        "quote": "To live in peace, we first must kill. This is human oppression's cruel finale.",
+        "abilityDescript": "Destroy your enemy's strongest Close Combat unit(s) if the combined strength of all his or her Close Combat units is 10 or more."
     },
     "Beutiful":{
         "name": "Francesca Findabair: The Beautiful",
         "faction": "Scoia'tael",
-        "quote": "Do not let my beauty distract your aim."  
+        "quote": "Do not let my beauty distract your aim.",
+        "abilityDescript": "Doubles the strength of all your Ranged Combat units (unless a Commander's Horn is also present on that row)."  
     }
 }

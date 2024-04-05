@@ -399,13 +399,13 @@ function gameStart() {
         cardArray.forEach(element =>{
             //Player1
             if((element.faction == p1faction || element.faction == "Neutral") && !element.isSpecial){
-                appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote);
                 p1deck.push(appendCard);
             }
             
             //Player2
             if((element.faction == p2faction || element.faction == "Neutral") && !element.isSpecial){
-                appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote);
                 p2deck.push(appendCard);
             }
         })
@@ -438,12 +438,13 @@ function balancedSpecial(array = null){
         cardArray.forEach(element =>{
             if(element.isSpecial){
                 if(element.id.charAt(element.id.length-1)!=2){ //limituje počet special karet
-                    p1deck.push(new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.hasVariations, element.quote, element.number));
-                    p2deck.push(new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.hasVariations, element.quote, element.number));
+                    p2deck.push(new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote));
+                    p1deck.push(new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote));
                 }}})}
     else{
         cardArray.forEach(element =>{
             if(element.isSpecial){
                 if(element.id.charAt(element.id.length-1)!=2){ //limituje počet special karet
-                    array.push(new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.summons, element.isLegend, element.hasVariations, element.quote, element.number));
+                    let uid = playerToBuild == 0 ? "A" : "B";
+                    array.push(new Card(element.id+uid, element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote));
                 }}})}}
