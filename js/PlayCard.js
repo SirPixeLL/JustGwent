@@ -69,14 +69,16 @@ function showMedicUI(version, random = 0) {
                 ui.style.display = "block";
                 lookButton.style.display = "block";
                 let enemyDeck = players[1-currentPlayer].hand;
+                if (enemyDeck.length < 3) peekNum = enemyDeck.length;
+                else peekNum = 3;
                 if (random == 0) {
-                        random = generateRandomUniqueInt(0, enemyDeck.length, 3)
-                        for (let i = 0; i < 3; i++) {
+                        random = generateRandomUniqueInt(0, enemyDeck.length, peekNum)
+                        for (let i = 0; i < peekNum; i++) {
                                 discarded[i] = (enemyDeck[random[i]]);          
                         } 
                 }
                 else {
-                        for (let i = 0; i < 3; i++) {
+                        for (let i = 0; i < peekNum; i++) {
                                 discarded[i] = (enemyDeck[random[i]]);         
                         } 
                 }
@@ -102,6 +104,7 @@ function showMedicUI(version, random = 0) {
                         }
                         clearHand(currentPlayer);
                         drawHand(currentPlayer);
+                        lookButton.style.display="none";
                         return;
                 }
                 text.innerHTML = "Choose up to 2 cards to redraw";
@@ -145,7 +148,12 @@ function showMedicUI(version, random = 0) {
                         return;
                 }
                 ui.style.display="block";
+                text.innerHTML = "Pick 2 cards to sacrifice"
                 discarded = players[currentPlayer].hand;
+        }
+        else if (version == "pickFromDeck") {
+                discarded = players[currentPlayer].deck;
+                text.innerHTML = "Choose a card to take"
         }
         if(previous2.firstChild) {
                 previous2.removeChild(previous2.firstChild);
@@ -184,6 +192,7 @@ function showMedicUI(version, random = 0) {
                                 showMedicUI(version);   
                         }
                         else if (version == "takeOwnDiscarded"){
+                                text.innerHTML = "Choose a card to take"
                                 players[currentPlayer].hand.push(discarded[currentIndex]);
                                 players[currentPlayer].discardedCards.splice(players[currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
                                 ui.style.display = "none";
@@ -195,6 +204,7 @@ function showMedicUI(version, random = 0) {
                                 endTurn();
                         }
                         else if (version == "takeEnemysDiscarded"){
+                                text.innerHTML = "Choose a card to take"
                                 players[currentPlayer].hand.push(discarded[currentIndex])
                                 players[1-currentPlayer].discardedCards.splice(players[1-currentPlayer].discardedCards.indexOf(discarded[currentIndex]), 1);
                                 ui.style.display = "none";
@@ -210,19 +220,23 @@ function showMedicUI(version, random = 0) {
                                 players[currentPlayer].discardedCards.push(discarded[currentIndex])
                                 players[currentPlayer].hand.splice(players[currentPlayer].hand.indexOf(discarded[currentIndex]), 1);
                                 ui.style.display = "none";
-                                currentIndex = 0;
                                 selectedCard.removeEventListener("click", medicHelper, false);
                                 selected.removeChild(selectedCard);
-                                if (sacrificeCounter == 2){
-                                        let randomNum = getRandomInt(players[currentPlayer].deck.length-1);
-                                        let randomCard = players[currentPlayer].deck[randomNum];
-                                        players[currentPlayer].hand.push(randomCard);
-                                        players[currentPlayer].deck.splice(randomNum, 1);
-                                        endTurn();
-                                }
+                                if (sacrificeCounter == 2) currentIndex = 0; showMedicUI("pickFromDeck");
                                 clearHand();
                                 drawHand(currentPlayer);
                                 showMedicUI(version);
+                        }
+                        else if (version == "pickFromDeck"){
+                                players[currentPlayer].hand.push(discarded[currentIndex])
+                                players[currentPlayer].deck.splice(currentIndex, 1);
+                                ui.style.display = "none";
+                                currentIndex = 0;
+                                selectedCard.removeEventListener("click", medicHelper, false);
+                                selected.removeChild(selectedCard);
+                                endTurn();
+                                clearHand();
+                                drawHand(currentPlayer);
                         }
                         else if (version == "deckBuilder") {
                                 if (playerToBuild == 0) p1leader = currentIndex;
@@ -241,6 +255,7 @@ function showMedicUI(version, random = 0) {
                                 ui.style.display = "none";
                                 currentIndex = 0;
                                 selectedCard.removeEventListener("click", medicHelper, false);
+                                selected.removeChild(selectedCard);
                         }
                         else if (discarded[currentIndex].type == "Weather") {
                                 play(discarded[currentIndex], currentPlayer);
@@ -251,6 +266,7 @@ function showMedicUI(version, random = 0) {
                                         ui.style.display = "none";
                                         currentIndex = 0;
                                         selectedCard.removeEventListener("click", medicHelper, false);
+                                        selected.removeChild(selectedCard);
                                 }
                                 else{
                                         ui.style.display = "none";
@@ -349,6 +365,7 @@ function playCard(cardType, e) {
         let buttonYes = document.getElementById("shownButtonYes");
         let buttonNo = document.getElementById("shownButtonNo");
         let targetCard = document.getElementById(e.target.id);
+        console.log(cardType);
         if (cardType == "leader") showCardInfo(1)
         else showCardInfo();
         if (shownCardSlot.length > 0) {
@@ -532,10 +549,13 @@ function showCardInfo(leader = 0) {
         let cardQuote = document.getElementById("cardQuote");
         infoElement.style.display = "block";
         if (leader == 1) {
+                console.log("leader"+ leader);
                 cardName.innerHTML = players[currentPlayer].leader.name;
                 cardQuote.innerHTML = '"' + players[currentPlayer].leader.quote + '"';
         }
         else {
+                console.log(players[currentPlayer].leader)
+                console.log(index)
                 cardName.innerHTML = players[currentPlayer].hand[index].name;
                 cardQuote.innerHTML = players[currentPlayer].hand[index].quote;      
         }
@@ -601,6 +621,9 @@ function removeCardListener() {
 
 function addLeaderListener() {
         document.getElementById("own_leader_div").firstChild.addEventListener("click", cardListenerHelper);
+}
+function removeLeaderListener() {
+        document.getElementById("own_leader_div").firstChild.removeEventListener("click", cardListenerHelper, false)
 }
 
 function createCardElement(card) {

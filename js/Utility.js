@@ -117,6 +117,7 @@ function hideSwitchScreen(){
     sumPowers(currentPlayer);
     playerUpdate(currentPlayer);
     if(players[currentPlayer].redraw) showMedicUI("redraw");
+    console.log(players[currentPlayer].leader);
 }
 
 function cycleBoard(func){
@@ -150,15 +151,18 @@ function updateLeaders(){
 }
 
 function assingToBoard(card){
+    let toSide;
+    if(card.ability == "Spy") toSide = 1-currentPlayer;
+    else toSide = currentPlayer; 
     switch(card.type){
         case "Melee":
-            boards[currentPlayer][0].push(card);
+            boards[toSide][0].push(card);
             break;
         case "Ranged":
-            boards[currentPlayer][1].push(card);
+            boards[toSide][1].push(card);
             break;
         case "Siege":
-            boards[currentPlayer][2].push(card);
+            boards[toSide][2].push(card);
     }
 }
 let graphic = document.getElementById("end_round_graphic");

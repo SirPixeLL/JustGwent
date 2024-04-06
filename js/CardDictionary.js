@@ -1324,7 +1324,7 @@ const leaderDict = {
         "quote": "Dammit, I rule this land and I refuse to creep around its corners.",
         "abilityDescript": "Destroy your enemy's strongest Ranged Combat unit(s) if the combined strength of all his or her Ranged Combat units is 10 or more."  
     },
-    "Siegemaster":{
+    "Siegmaster":{
         "name": "Foltest: The Siegemaster",
         "faction": "Northern Realms",
         "quote": "A well-aimed ballista razes not just the enemy's walls, but his morale as well.",

@@ -55,7 +55,7 @@ function updateFaction(playerSwitch = false) {
         "Draw a card from your deck whenever you win a round.",
         "Win whenever there is a draw.",
         "One randomly-chosen Monsters Unit Card stays on the battlefield after each round.",
-        "You go first at the start of a battle."  //mělo by být You decide who goes first at the start of a battle. ale to nemáme implementovaný kvůli grafice upps
+        "You decide who goes first at the start of a battle."
     ]
     let factionTitle = document.getElementById("faction_title");
     if (playerToBuild == 0) {
@@ -79,7 +79,7 @@ function updateFaction(playerSwitch = false) {
                 p1deck = [];
                 cardArray.forEach(element => {
                     if((element.faction == p1faction || element.faction == "Neutral") && !element.isSpecial){
-                        appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                        appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
                         p1deck.push(appendCard);
                     }
                 })

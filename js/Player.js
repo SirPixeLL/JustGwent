@@ -40,6 +40,7 @@ class Player{
         //Daisy of the Valley ability:
         if(this.leader.name == "Francesca Findabair: Daisy of the Valley"){
             this.drawNewCard();
+            this.leader.playable = false;
         }
     }
 

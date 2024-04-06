@@ -141,7 +141,7 @@ function muster(currentPlayer, card){
     //z balíčku
     players[currentPlayer].deck.forEach(element=>{
         let elementGroup = element.name.split(" "); 
-        if(elementGroup[0] === cardGroup[0] && element.name != "Gaunter O'Dimm"){
+        if(elementGroup[0] === cardGroup[0] && element.ability=="Muster"){
             if(element.name == "Gaunter O'Dimm" || element.name == "Arachas Behemoth");
             else{
                 switch(element.type){
@@ -284,9 +284,12 @@ function medic(card){
     if(medicsRandom && card.isLegend == false){
         ressurectedIndex = getRandomInt(players[currentPlayer].discardedCards.length);
         ressurectedCard = players[currentPlayer].discardedCards[ressurectedIndex];
-        assingToBoard(ressurectedCard);
-        play(ressurectedCard, currentPlayer);
-        players[currentPlayer].discardedCards.splice(ressurectedIndex, 1);
+        if(ressurectedCard.isLegend && players[currentPlayer].discardedCards.length != 1) medic(card);
+        else if(ressurectedCard.isLegend == false){
+            assingToBoard(ressurectedCard);
+            play(ressurectedCard, currentPlayer);
+            players[currentPlayer].discardedCards.splice(ressurectedIndex, 1);
+        }
     }
     else showMedicUI("default");
 }
@@ -295,6 +298,11 @@ function spy(){
     for(let i = 0; i < 2; i++){
         players[currentPlayer].drawNewCard();
     }
+}
+function setBards(){
+    cycleBoard(function(i,j,n){
+        if (boards[i][j][n].name == "Dandelion") players[i].bard = true;
+    })
 }
 
 function dandelion(i,j){
@@ -371,6 +379,7 @@ function sumPowers(currentPlayer){
 }
 
 function endTurn(){
+    setBards();
     redrawCount = 0;
     setWeatherDebuff();
     for(let i = 0; i < boards.length; i++){
@@ -398,6 +407,7 @@ function endTurn(){
             endRound();
         }        
     }
+    removeLeaderListener()
 }
 
 function passFunction(){
@@ -508,7 +518,8 @@ function discardCardsOnRoundEnd(){
             if($.isEmptyObject(r) == false){
                 let j = r[Math.floor((Math.random()*r.length))];
                 let n = getRandomInt(boards[i][j].length);
-                preserve.push([i,j, boards[i][j][n]]);   
+                preserve.push([i,j, boards[i][j][n]]);
+                if(boards[i][j][n].name == "Dandelion") players[i].bard = true;
             }
         }
     }
@@ -532,6 +543,7 @@ function discardCardsOnRoundEnd(){
     }
     horn = [[false, false, false],[false, false, false]];
     hornUI = [[[],[],[]],[[],[],[]]];
+    setBards()
 }
 
 function restart(){

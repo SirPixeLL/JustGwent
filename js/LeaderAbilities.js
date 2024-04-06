@@ -47,6 +47,8 @@ function playLeader(leader){
         case "Emhyr var Emreis: Invader of the North": //bez chyb
             //medici oživujou random
             medicsRandom = true;
+            changeButton("switch");
+            endTurn();
             break;
         case "Emhyr var Emreis: The Relentless": //bez chyb
             //vezme si do ruky kartu z nepřítelaova discarded
@@ -158,9 +160,9 @@ function leaderWeather(effect){
                 document.getElementById("weather_cards").append(cardElement);
                 spliceSelected([element],players[currentPlayer].deck);
                 return false;
-            }
-            return true;  
+            }    
         }
+        return true; 
     });
     changeButton("switch");
     endTurn();
