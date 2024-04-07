@@ -111,6 +111,7 @@ function showMedicUI(version, random = 0) {
                 lookButton.style.display = "block";
                 discarded = players[currentPlayer].hand;
                 lookButton.addEventListener("click", function redraw() {
+                        currentIndex = 0;
                         players[currentPlayer].redraw = false;
                         lookButton.style.display = "none";
                         ui.style.display = "none";

@@ -5,11 +5,13 @@ let leftTitle = document.getElementById("left_side_title");
 let availableCards = document.getElementById("available_cards");
 let cardsInDeck = document.getElementById("cards_in_deck");
 let numberDivs = document.getElementsByClassName("number_card_div");
+let menu_button = document.getElementById("back_to_menu");
 
 function localClassic(){
     mode = 2;
     menu.style.display = "none";
     customizer.style.display = "block";
+    menu_button.style.display = "inline-block";
     gameStart();
 }
 
@@ -17,6 +19,7 @@ function localBalanced(){
     mode = 1;
     menu.style.display = "none";
     customizer.style.display = "block";
+    menu_button.style.display = "inline-block";
     rightTitle.style.display = "none";
     leftTitle.style.display = "none";
     availableCards.style.display = "none";
@@ -26,13 +29,4 @@ function localBalanced(){
         
     }
     gameStart();
-}
-
-
-function returnToMenu(){
-    document.getElementById("switch_screen").style.display="none";
-    document.getElementById("switch_button").setAttribute("onclick", "hideSwitchScreen()");
-    document.getElementById("switch_text").innerHTML = "To switch players press";
-
-    document.getElementById("main_menu").style.display = "inline-block";
 }

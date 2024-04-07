@@ -423,6 +423,7 @@ function passFunction(){
 function switchFunction(){
     document.activeElement.blur();
     switchScreen.style.display = "inline-block";
+    switchPlayer.innerHTML = "Next up: " + players[currentPlayer].name;
     setTimeout(()=>{
         switchScreen.style.opacity = "1";
     }, 0);

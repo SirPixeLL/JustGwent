@@ -25,7 +25,20 @@ img {
 #body_div {
     position: absolute;
     width: 100%;
-    aspect-ratio: 16/7.9;
+    aspect-ratio: 16/8;
+}
+
+#back_to_menu {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    left: 0px;
+    font-size: 1.4vw;
+    font-weight: bold;
+    border-radius: 0px 0px 5px 0px;
+    width: 7%;
+    background-color: #aa9667;
+    cursor: pointer;
 }
 
 /*Start screen*/
@@ -41,6 +54,7 @@ img {
 #start_text,
 #player_to_start {
     position: relative;
+    top: 20%;
     display: block;
     color: #aa9667;
 }
@@ -53,6 +67,8 @@ img {
 }
 
 #player_to_start {
+    position: relative;
+    top: 30%;
     width: 30%;
     height: 10%;
     left: 35%;
@@ -64,18 +80,20 @@ img {
 #start_button {
     position: relative;
     display: inline-block;
+    top: 30%;
     width: 10%;
     height: 5%;
     background-color: #90979a;
     margin: 4%;
     border-radius: 5px;
-    border: none;
     cursor: pointer;
     font-size: 1.3vw;
 }
 
+
 #start_button {
     display: block;
+    top: 40%;
     width: 15%;
     height: 7.5%;
     margin: 0px;
@@ -86,7 +104,9 @@ img {
 
 /*Switch screen*/
 #switch_screen {
+    display: block;
     position: absolute;
+    left: 0px;
     z-index: 10;
     display: none;
     opacity: 0;
@@ -97,17 +117,26 @@ img {
 }
 
 #switch_text {
-    margin-top: 20%;
+    position: relative;
+    top: 25%;
     font-weight: bold;
     color: #aa9667;
     font-size: 3vw;
 }
 
+#switch_player {
+    position: relative;
+    font-size: 2vw;
+    color: #aa9667;
+    top: 35%;
+}
+
 #switch_button {
-    margin-top: 20px;
+    position: relative;
+    top: 40%;
     background-color: #90979a;
-    width: 100px;
-    height: 40px;
+    width: 15%;
+    height: 7.5%;
     font-weight: bold;
     cursor: pointer;
 }

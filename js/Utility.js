@@ -105,6 +105,7 @@ function spliceSelected(which, from){
 }
 
 switchScreen = document.getElementById("switch_screen");
+switchPlayer = document.getElementById("switch_player");
 
 function hideSwitchScreen(){
     changeButton("pass");
@@ -165,6 +166,7 @@ function assingToBoard(card){
             boards[toSide][2].push(card);
     }
 }
+
 let graphic = document.getElementById("end_round_graphic");
 function showEndGraphic(winner, gameEnded){
     let result = document.getElementById("end_round_result");
@@ -184,6 +186,7 @@ function showEndGraphic(winner, gameEnded){
     }, 1500);
 
 }
+
 function hideEndGraphic(gameEnded){
     fadeOut(graphic)
     if(gameEnded){
@@ -214,11 +217,13 @@ function hideEndGraphic(gameEnded){
     }
     
 }
+
 function gameEnded(){
     for(let i = 0; i < 2; i++){
         if(players[i].lives == 0) return true;
     }
 }
+
 function fadeOut(element) {
     let interval = setInterval(function() {
        let opacity = element.style.opacity;
@@ -235,7 +240,7 @@ function fadeOut(element) {
     }, 50);
  }
  
- function discardPile(){
+function discardPile(){
     if($.isEmptyObject(players[currentPlayer].discardedCards)==false){
         let card = players[currentPlayer].discardedCards[players[currentPlayer].discardedCards.length - 1];
         card.drawTo(document.getElementById("own_discarded"))
@@ -246,7 +251,7 @@ function fadeOut(element) {
     }
  }
 
- function startingGraphic(version, picker = 0){
+function startingGraphic(version, picker = 0){
     let startScreen = document.getElementById("start_screen");
     let startText = document.getElementById("player_to_start");
     let startButton = document.getElementById("start_button");
@@ -274,13 +279,8 @@ function fadeOut(element) {
                     else{
                         startText.style.color="#aa9667";
                         startText.innerHTML=players[currentPlayer].name;
-                        startButton.addEventListener("click", function startH(){
-                            startScreen.style.display="none";
-                            localGameStart();
-                            addCardListener();
-                            showMedicUI("redraw");
-                            startButton.removeEventListener("click", startH)
-                        })
+                        startButton.addEventListener("click", startH);
+                        document.addEventListener("keydown", startButtonFunc);
                     }
                 }
                 timer();
@@ -294,20 +294,33 @@ function fadeOut(element) {
             startButton.removeEventListener("click", startH)
             currentPlayer = 0;
             startText.innerHTML = players[currentPlayer].name;
-            startButton.addEventListener("click",startH) 
+            startButton.addEventListener("click",startH)
+            document.addEventListener("keydown", startButtonFunc);
         })
         p2button.addEventListener("click", function(){
             startButton.removeEventListener("click", startH)
             currentPlayer = 1
             startText.innerHTML = players[currentPlayer].name;
             startButton.addEventListener("click", startH)
+            document.addEventListener("keydown", startButtonFunc);
         })
     }
  }
- function startH(){
+
+function startH(){
     document.getElementById("start_screen").style.display="none";
     localGameStart();
     addCardListener();
     showMedicUI("redraw");
     document.getElementById("start_button").removeEventListener("click", startH)
+}
+
+function startButtonFunc(event) {
+    if(event.key == " " &&  document.getElementById("start_screen").style.display == "block") {
+        document.getElementById("start_screen").style.display="none";
+        localGameStart();
+        addCardListener();
+        showMedicUI("redraw");
+        document.removeEventListener("keydown", startButtonFunc)
+    }
 }
