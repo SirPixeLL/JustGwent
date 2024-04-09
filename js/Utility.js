@@ -290,6 +290,8 @@ function startingGraphic(version, picker = 0){
         p1button.style.display = "inline-block";
         p2button.style.display = "inline-block";
         startTitle.innerHTML=players[picker].name+" picks whos playing first:"
+        p1button.innerHTML = players[0].name;
+        p2button.innerHTML = players[1].name;
         p1button.addEventListener("click", function(){
             startButton.removeEventListener("click", startH)
             currentPlayer = 0;

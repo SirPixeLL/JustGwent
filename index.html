@@ -13,6 +13,21 @@
     <link rel="stylesheet" href="css/card.css">
     <link rel="stylesheet" href="css/deck_customizer.css">
     <link rel="stylesheet" href="css/menu.css">
+    <script>
+        $(document).ready(function () {
+            $('<script/>',{src:"js/CardDictionary.js"}).appendTo('head');
+            $('<script/>',{src:"js/Menu.js"}).appendTo('head');
+            $('<script/>',{src:"js/Card.js"}).appendTo('head');
+            $('<script/>',{src:"js/Player.js"}).appendTo('head');
+            $('<script/>',{src:"js/Leader.js"}).appendTo('head');
+            $('<script/>',{src:"js/CardFetcher.js"}).appendTo('head');
+            $('<script/>',{src:"js/DeckBuilder.js"}).appendTo('head');
+            $('<script/>',{src:"js/Utility.js"}).appendTo('head');
+            $('<script/>',{src:"js/PlayCard.js"}).appendTo('head');
+            $('<script/>',{src:"js/LocalGame.js"}).appendTo('head');
+            $('<script/>',{src:"js/LeaderAbilities.js"}).appendTo('head');
+        })
+    </script>
 </head>
 <body>
     <div id="body_div">
@@ -251,16 +266,5 @@
             </div>
         </div>
     </div>
-    <script src="js/CardDictionary.js"></script>
-    <script src="js/Menu.js"></script>
-    <script src="js/Card.js"></script>
-    <script src="js/Player.js"></script>
-    <script src="js/Leader.js"></script>
-    <script src="js/CardFetcher.js"></script>
-    <script src="js/DeckBuilder.js"></script>
-    <script src="js/Utility.js"></script>
-    <script src="js/PlayCard.js"></script>
-    <script src="js/LocalGame.js"></script>
-    <script src="js/LeaderAbilities.js"></script>
 </body>
 </html>
