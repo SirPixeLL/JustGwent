@@ -25,7 +25,6 @@ img {
 #body_div {
     position: absolute;
     width: 100%;
-    aspect-ratio: 16/7.9;
     overflow-y: auto;
 }
 

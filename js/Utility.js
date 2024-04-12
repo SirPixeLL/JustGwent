@@ -1,3 +1,6 @@
+document.getElementById("body_div").style.aspectRatio = $(document).width() / $(document).height();;
+
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
