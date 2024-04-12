@@ -99,7 +99,7 @@ function updateFaction(playerSwitch = false) {
                 p2available = [];
                 cardArray.forEach(element =>{
                     if(element.faction == p2faction || element.faction == "Neutral"){
-                        appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                        appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
                         p2available.push(appendCard);
                     }
                 })
@@ -108,7 +108,7 @@ function updateFaction(playerSwitch = false) {
                 p2deck = []
                 cardArray.forEach(element => {
                     if((element.faction == p2faction || element.faction == "Neutral") && !element.isSpecial){
-                        appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
+                        appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote, element.number);
                         p2deck.push(appendCard);
                     }
                 })
