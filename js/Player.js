@@ -11,7 +11,6 @@ class Player{
         this.hasPassed = false;
         this.lives = 2;
         this.discardedCards = [];
-        this.leaderUses = false;
         this.hand = [];
         this.totalPower = 0;
         
@@ -51,7 +50,6 @@ class Player{
         this.hasPassed = false;
         this.lives = 2;
         this.discardedCards = [];
-        this.leaderUses = false;
         this.hand = [];
         this.totalPower = 0;
         
@@ -64,7 +62,7 @@ function copyDeck(arr) {
     let copy = [];
     for (let i = 0; i < arr.length; i++) {
         if (Array.isArray(arr[i])) {
-            copy[i] = deepCopy(arr[i]);
+            copy[i] = copyDeck(arr[i]);
         } else {
             copy[i] = arr[i];
         }

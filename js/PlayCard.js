@@ -366,7 +366,6 @@ function playCard(cardType, e) {
         let buttonYes = document.getElementById("shownButtonYes");
         let buttonNo = document.getElementById("shownButtonNo");
         let targetCard = document.getElementById(e.target.id);
-        console.log(cardType);
         if (cardType == "leader") showCardInfo(1)
         else showCardInfo();
         if (shownCardSlot.length > 0) {
@@ -550,13 +549,10 @@ function showCardInfo(leader = 0) {
         let cardQuote = document.getElementById("cardQuote");
         infoElement.style.display = "block";
         if (leader == 1) {
-                console.log("leader"+ leader);
                 cardName.innerHTML = players[currentPlayer].leader.name;
                 cardQuote.innerHTML = '"' + players[currentPlayer].leader.quote + '"';
         }
         else {
-                console.log(players[currentPlayer].leader)
-                console.log(index)
                 cardName.innerHTML = players[currentPlayer].hand[index].name;
                 cardQuote.innerHTML = players[currentPlayer].hand[index].quote;      
         }

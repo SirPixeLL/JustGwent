@@ -150,13 +150,11 @@ function playLeader(leader){
 function leaderWeather(effect){
     players[currentPlayer].deck.every(element => {
         if(element.ability==effect){
-            console.log(element);
             play(element,currentPlayer);
             if(playedWeatherCards.indexOf(element.name) == -1){
                 playedWeatherCards.push(element.name);
                 let cardElement = createCardElement(element);
                 cardElement.className = "weatherCardPlayed";
-                console.log(cardElement);
                 document.getElementById("weather_cards").append(cardElement);
                 spliceSelected([element],players[currentPlayer].deck);
                 return false;

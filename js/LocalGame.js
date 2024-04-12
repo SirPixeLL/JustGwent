@@ -10,12 +10,11 @@ function localGameStart(){
     weather = [false, false, false];
     medicsRandom = false;
     spyDouble = false;
-    bard = [false, false];
 
     playerUpdate(currentPlayer);
-        for(let i = 0; i < 2; i++){
-            players[i].populateHand();
-        }
+    for(let i = 0; i < 2; i++){
+        players[i].populateHand();
+    }
     updateLeaders(currentPlayer);
     updateAll(currentPlayer);
     sumPowers(currentPlayer);
@@ -39,7 +38,6 @@ function startingPlayer(){
         currentPlayer = getRandomInt(2);
         startingGraphic("default");
     }
-    console.log("Starting player: " + currentPlayer);
 }
 
 //zahraje kartu
@@ -525,6 +523,7 @@ function discardCardsOnRoundEnd(){
         }
     }
     cycleBoard(function(i,j,n){
+        boards[i][j][n].power = boards[i][j][n].basepower;
         if($.isEmptyObject(preserve) || preserve.length == 1 && preserve[0][0] != i){
             players[i].discardedCards.push(boards[i][j][n])
         }
@@ -550,7 +549,6 @@ function discardCardsOnRoundEnd(){
 function restart(){
     players.forEach(e =>{
         e.rollback();
-        //console.log(e);
     })
     document.getElementById("end_game_results").style.display="none";
     document.getElementById("end_round_graphic").style.display="none";

@@ -359,7 +359,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Monsters",
         "ability": null,
-        "quote": "Their long tongues're for slurping marrow - and whipping prep.",
+        "quote": '"'+"Their long tongues're for slurping marrow - and whipping prep."+'"',
         "number": 1
     },
     "Griffin": {
@@ -368,7 +368,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Monsters",
         "ability": null,
-        "quote": "Griffins like to toy with their prey. Eat 'em alive, piece by piece.",
+        "quote": '"'+"Griffins like to toy with their prey. Eat 'em alive, piece by piece."+'"',
         "number": 1
     },
     "Harpy": {
@@ -377,7 +377,7 @@ const cardDict = {
         "type": "Agile",
         "faction": "Monsters",
         "ability": null,
-        "quote": "There are many species of harpy, and all are kleptomaniacs.",
+        "quote": '"'+"There are many species of harpy, and all are kleptomaniacs."+'"',
         "number": 1
     },
     "Ice_Giant": {
@@ -386,7 +386,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Monsters",
         "ability": null,
-        "quote": "There are many species of harpy, and all are kleptomaniacs.",
+        "quote": '"'+"Fled one time in my life. From the Ice Giant. And I'm not a bit ashamed.."+'"',
         "number": 1
     },
     "Imlerith": {
@@ -756,7 +756,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "A fireball? Of course. Whatever your Imperial Majesty wishes",
+        "quote": '"'+"A fireball? Of course. Whatever your Imperial Majesty wishes"+'"',
         "number": 1
     },
     "Assire_var_Anahid": {
@@ -765,7 +765,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "Nilfgaardian mage do ahve a choice: servile submission, or the gallows.",
+        "quote": '"'+"Nilfgaardian mage do have a choice: servile submission, or the gallows."+'"',
         "number": 1
     },
     "Black_infantry_archer": {
@@ -774,7 +774,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "I aim for the knee. Always.",
+        "quote": '"'+"I aim for the knee. Always."+'"',
         "number": 2,
         "hasVariations": true
     },
@@ -784,7 +784,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "His eyes flashed under his winged helmet. Fire gleamed from his sword's blade",
+        "quote": '"'+"His eyes flashed under his winged helmet. Fire gleamed from his sword's blade"+'"',
         "number": 1
     },
     "Cynthia": {
@@ -793,7 +793,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "Cynthia's talents can be deadly. She needs a tight leash.",
+        "quote": '"'+"Cynthia's talents can be deadly. She needs a tight leash."+'"',
         "number": 1
     },
     "Etolian_auxiliary_archers": {
@@ -802,7 +802,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": "Medic",
-        "quote": "Double or nothing, aim for his *****",
+        "quote": '"'+"Double or nothing, aim for his *****"+'"',
         "number": 2,
         "hasVariations": true
     },
@@ -812,7 +812,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "Magic is the highest good. It transcends all borders and divisions.",
+        "quote": '"'+"Magic is the highest good. It transcends all borders and divisions."+'"',
         "number": 1
     },
     "Heavy_Scorpion": {
@@ -821,7 +821,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "Not the best for taking cities, but great for razing them to the ground.",
+        "quote": '"'+"Not the best for taking cities, but great for razing them to the ground."+'"',
         "number": 1
     },
     "Brigade_guard": {
@@ -830,7 +830,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Nilfgaardian Empire",
         "ability": "TightBond",
-        "quote": "The Impera Brigade never surrenders. Ever.",
+        "quote": '"'+"The Impera Brigade never surrenders. Ever."+'"',
         "number": 4,
         "hasVariations": true
     },
@@ -841,7 +841,7 @@ const cardDict = {
         "faction": "Nilfgaardian Empire",
         "ability": null,
         "isLegend": true,
-        "quote": "Witchers never die in their beds.",
+        "quote": '"'+"Witchers never die in their beds."+'"',
         "number": 1
     },
     "Coehoorn": {
@@ -851,7 +851,7 @@ const cardDict = {
         "faction": "Nilfgaardian Empire",
         "ability": "Medic",
         "isLegend": true,
-        "quote": "I'll take an attentive reconnaissance unit over a fine cavalry brigade any day.",
+        "quote": '"'+"I'll take an attentive reconnaissance unit over a fine cavalry brigade any day."+'"',
         "number": 1
     },
     "Morteisen": {
@@ -860,7 +860,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "No Nordling pikemen or dwarven spearbearers can hope to best trained cavalry.",
+        "quote": '"'+"No Nordling pikemen or dwarven spearbearers can hope to best trained cavalry."+'"',
         "number": 1
     },
     "Morvran_Voorhis": {
@@ -870,7 +870,7 @@ const cardDict = {
         "faction": "Nilfgaardian Empire",
         "ability": null,
         "isLegend": true,
-        "quote": "Summer sun reflecting in the quite waters of the Alba - that's the Nilfgaard to me.",
+        "quote": '"'+"Summer sun reflecting in the quiet waters of the Alba - that's the Nilfgaard to me."+'"',
         "number": 1
     },
     "Nausicaa_cav": {
@@ -879,7 +879,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Nilfgaardian Empire",
         "ability": "TightBond",
-        "quote": "The Emperor will teach the North discipline.",
+        "quote": '"'+"The Emperor will teach the North discipline."+'"',
         "number": 3,
         "hasVariations": true
     },
@@ -889,7 +889,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "Learned a lot at Braibant Military Academy. How to scrub potatoes, for instance",
+        "quote": '"'+"Learned a lot at Braibant Military Academy. How to scrub potatoes, for instance"+'"',
         "number": 1
     },
     "Rainfarn": {
@@ -898,7 +898,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "You'll die as painfully as that pathetic traitor Windhalm did.",
+        "quote": '"'+"You'll die as painfully as that pathetic traitor Windhalm did."+'"',
         "number": 1
     },
     "Matsen": {
@@ -907,7 +907,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "They say the Impera fear nothing. Untrue. Renuald scares them *****less.",
+        "quote": '"'+"They say the Impera fear nothing. Untrue. Renuald scares them *****less."+'"',
         "number": 1
     },
     "Rotten_Mangonel": {
@@ -916,7 +916,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "The rotten smell brings back childhood memories",
+        "quote": '"'+"The rotten smell brings back childhood memories"+'"',
         "number": 1
     },
     "Shilard": {
@@ -925,7 +925,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Nilfgaardian Empire",
         "ability": "Spy",
-        "quote": "Warfare is mere sound and fury - diplomacy is what truly shapes history.",
+        "quote": '"'+"Warfare is mere sound and fury - diplomacy is what truly shapes history."+'"',
         "number": 1
     },
     "Siege_Engineer": {
@@ -934,7 +934,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "Wielded correctly, a protractor can be a deadly weapon.",
+        "quote": '"'+"Wielded correctly, a protractor can be a deadly weapon."+'"',
         "number": 1
     },
     "Siege_Technician": {
@@ -943,7 +943,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Nilfgaardian Empire",
         "ability": "Medic",
-        "quote": "I never miss twice.",
+        "quote": '"'+"I never miss twice."+'"',
         "number": 1
     },
     "Skellen": {
@@ -952,7 +952,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Nilfgaardian Empire",
         "ability": "Spy",
-        "quote": "My mark scars the face of our future empress. That is my proudest achievement.",
+        "quote": '"'+"My mark scars the face of our future empress. That is my proudest achievement."+'"',
         "number": 1
     },
     "Sweers": {
@@ -961,7 +961,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "And hands off the girl! Whatever we may be, we're not savages.",
+        "quote": '"'+"And hands off the girl! Whatever we may be, we're not savages."+'"',
         "number": 1
     },
     "Eggebracht": {
@@ -971,7 +971,7 @@ const cardDict = {
         "faction": "Nilfgaardian Empire",
         "ability": null,
         "isLegend": true,
-        "quote": "Albaaaa! Forward!! Alba! Long live the Emperor!",
+        "quote": '"'+"Albaaaa! Forward!! Alba! Long live the Emperor!"+'"',
         "number": 1
     },
     "Vanhemar": {
@@ -980,7 +980,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "For a fire mage, he's not very... flamboyant.",
+        "quote": '"'+"For a fire mage, he's not very... flamboyant."+'"',
         "number": 1
     },
     "Rideaux": {
@@ -989,7 +989,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Nilfgaardian Empire",
         "ability": "Spy",
-        "quote": "There's never been a problem a well-planned assassinaton couldn't solve.",
+        "quote": '"'+"There's never been a problem a well-planned assassinaton couldn't solve."+'"',
         "number": 1
     },
     "Vreende": {
@@ -998,7 +998,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "Discipline is the Empire's deadliest weapon.",
+        "quote": '"'+"Discipline is the Empire's deadliest weapon."+'"',
         "number": 1
     },
     "Young_emisarry": {
@@ -1007,7 +1007,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Nilfgaardian Empire",
         "ability": "TightBond",
-        "quote": "If I acquit myself well, perhaps next they'll post me somewhere civilized.",
+        "quote": '"'+"If I acquit myself well, perhaps next they'll post me somewhere civilized."+'"',
         "number": 2,
         "hasVariations": true
     },
@@ -1017,7 +1017,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Nilfgaardian Empire",
         "ability": null,
-        "quote": "The Zerrikania Desert used to be a lush garden. Then these came along.",
+        "quote": '"'+"The Zerrikania Desert used to be a lush garden. Then these came along."+'"',
         "number": 1
     },
 
@@ -1028,7 +1028,7 @@ const cardDict = {
         "type": "Agile",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "Our mead smells like *****, do it? Easy to fix - I'll break your *****in' nose!",
+        "quote": '"'+"Our mead smells like *****, do it? Easy to fix - I'll break your *****in' nose!"+'"',
         "number": 1
     },
     "Ciaran": {
@@ -1037,7 +1037,7 @@ const cardDict = {
         "type": "Agile",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "The path to freedom is paved in blood, not ink.",
+        "quote": '"'+"The path to freedom is paved in blood, not ink."+'"',
         "number": 1
     },
     "Cranmer": {
@@ -1046,7 +1046,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "I know how to carry out orders, so you can shove your advice up your coal chute.",
+        "quote": '"'+"I know how to carry out orders, so you can shove your advice up your coal chute."+'"',
         "number": 1
     },
     "Dol_Blathanna_Archer": {
@@ -1055,7 +1055,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "Take another step, dh'oine. You'd look better with an arrow between your eyes.",
+        "quote": '"'+"Take another step, dh'oine. You'd look better with an arrow between your eyes."+'"',
         "number": 1
     },
     "Dol_blathanna_scout": {
@@ -1064,7 +1064,7 @@ const cardDict = {
         "type": "Agile",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "They track like hounds, run like deer and kill like cold-hearted *****s.",
+        "quote": '"'+"They track like hounds, run like deer and kill like cold-hearted *****s."+'"',
         "number": 3,
         "hasVariations": true
     },
@@ -1074,7 +1074,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Scoia'tael",
         "ability": "Muster",
-        "quote": "Worked a pickaxe all me life. Battleaxe won't be any trouble.",
+        "quote": '"'+"Worked a pickaxe all me life. Battleaxe won't be any trouble."+'"',
         "number": 3,
         "hasVariations": true
     },
@@ -1085,7 +1085,7 @@ const cardDict = {
         "faction": "Scoia'tael",
         "ability": null,
         "isLegend": true,
-        "quote": "The dryad queen has eyes of molten silver, and a heart of cold-forged steel.",
+        "quote": '"'+"The dryad queen has eyes of molten silver, and a heart of cold-forged steel."+'"',
         "number": 1
     },
     "Elven_skirmisher": {
@@ -1094,7 +1094,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Scoia'tael",
         "ability": "Muster",
-        "quote": "No matter what you may have heard, elves don't take human scalps. Too much lice.",
+        "quote": '"'+"No matter what you may have heard, elves don't take human scalps. Too much lice."+'"',
         "number": 3,
         "hasVariations": true
     },
@@ -1104,7 +1104,7 @@ const cardDict = {
         "type": "Agile",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "Though we are now few and scattered, our hearts burn brighter than ever.",
+        "quote": '"'+"Though we are now few and scattered, our hearts burn brighter than ever."+'"',
         "number": 1
     },
     "Havekar_healer": {
@@ -1113,7 +1113,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Scoia'tael",
         "ability": "Medic",
-        "quote": "Sure, I'll patch you up. Gonna cost you, though.",
+        "quote": '"'+"Sure, I'll patch you up. Gonna cost you, though."+'"',
         "number": 3,
         "hasVariations": true
     },
@@ -1123,7 +1123,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Scoia'tael",
         "ability": "Muster",
-        "quote": "Sure, I'll patch you up. Gonna cost you, though.",
+        "quote": '"'+"I fight for whoever's paying the best. Or whoever's easiest to rob."+'"',
         "number": 3,
         "hasVariations": true
     },
@@ -1133,7 +1133,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "I am a Sage. My power lies in possessing knowledge. Not sharing it.",
+        "quote": '"'+"I am a Sage. My power lies in possessing knowledge. Not sharing it."+'"',
         "number": 1
     },
     "Iorveth": {
@@ -1143,7 +1143,7 @@ const cardDict = {
         "faction": "Scoia'tael",
         "ability": null,
         "isLegend": true,
-        "quote": "King or beggar, what's the difference? One dh'oine less.",
+        "quote": '"'+"King or beggar, what's the difference? One dh'oine less."+'"',
         "number": 1
     },
     "Isengrim": {
@@ -1153,7 +1153,7 @@ const cardDict = {
         "faction": "Scoia'tael",
         "ability": "MoraleBoost",
         "isLegend": true,
-        "quote": "It dawns on them once they notice my scar: a realization of imminent death.",
+        "quote": '"'+"It dawns on them once they notice my scar: a realization of imminent death."+'"',
         "number": 1
     },
     "Mahakaman_defender": {
@@ -1162,7 +1162,7 @@ const cardDict = {
         "type": "Melee",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "I'm telling ye, we're born fer battle - we slash straight at their knees!",
+        "quote": '"'+"I'm telling ye, we're born fer battle - we slash straight at their knees!"+'"',
         "number": 5,
         "hasVariations": true
     },
@@ -1172,7 +1172,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Scoia'tael",
         "ability": "MoraleBoost",
-        "quote": "With each arrow I loose, I think of my da. He'd be proud. I think.",
+        "quote": '"'+"With each arrow I loose, I think of my da. He'd be proud. I think."+'"',
         "number": 1
     },
     "Riordain": {
@@ -1181,7 +1181,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "Stare into their eyes, feast on their terror. Then go in for the kill.",
+        "quote": '"'+"Stare into their eyes, feast on their terror. Then go in for the kill."+'"',
         "number": 1
     },
     "Saesenthessis": {
@@ -1191,7 +1191,7 @@ const cardDict = {
         "faction": "Scoia'tael",
         "ability": null,
         "isLegend": true,
-        "quote": "Beautiful, pure, fierce - the prefect icon for a rebellion.",
+        "quote": '"'+"Beautiful, pure, fierce - the prefect icon for a rebellion."+'"',
         "number": 1
     },
     "Schirrú": {
@@ -1200,7 +1200,7 @@ const cardDict = {
         "type": "Siege",
         "faction": "Scoia'tael",
         "ability": "Scorch",
-        "quote": "Time to look death in the face.",
+        "quote": '"'+"Time to look death in the face."+'"',
         "number": 1
     },
     "Toruviel": {
@@ -1209,7 +1209,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "I'd gladly kill you from up close, stare in your eyes... But you reek, human.",
+        "quote": '"'+"I'd gladly kill you from up close, stare in your eyes... But you reek, human."+'"',
         "number": 1
     },
     "Vrihedd_Brigade_Recruit": {
@@ -1218,7 +1218,7 @@ const cardDict = {
         "type": "Ranged",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "Hatred burns brighter than any fire, and cuts deeper than any blade.",
+        "quote": '"'+"Hatred burns brighter than any fire, and cuts deeper than any blade."+'"',
         "number": 1
     },
     "Vrihedd_brigade_veteran": {
@@ -1237,7 +1237,7 @@ const cardDict = {
         "type": "Agile",
         "faction": "Scoia'tael",
         "ability": null,
-        "quote": "We are the drops of rain that together make a ferocious storm.",
+        "quote": '"'+"We are the drops of rain that together make a ferocious storm."+'"',
         "number": 1
     }
 }

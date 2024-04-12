@@ -143,7 +143,6 @@ document.getElementById("goto_game_button").addEventListener("click",function st
         enemyDeck.forEach(e =>{
             if(e.basepower != null) enemyUnitCount++;
         })
-        console.log(document.getElementById("unit_num").innerHTML.split("≥")[0]);
         if(document.getElementById("unit_num").innerHTML.split("≥")[0] > 21 && enemyUnitCount > 21){
             document.getElementById("available_cards").innerHTML = "";
             document.getElementById("cards_in_deck").innerHTML = "";
@@ -349,11 +348,9 @@ function updateCards() {
     document.getElementById("available_cards").innerHTML = "";
     document.getElementById("cards_in_deck").innerHTML = "";
     if (playerToBuild == 0) {
-        console.log(p1available);
         p1available.forEach(card => {
             drawCustomizerCard(card, playerToBuild, "available_cards")
         })
-        console.log(p1testDeck);
         p1testDeck.forEach(card => {
             drawCustomizerCard(card, playerToBuild, "cards_in_deck")
         })
@@ -399,13 +396,15 @@ function gameStart() {
         cardArray.forEach(element =>{
             //Player1
             if((element.faction == p1faction || element.faction == "Neutral") && !element.isSpecial){
-                appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote);
+                appendCard = new Card(element.id+"A", element.name, element.power, element.type, element.faction,
+                 element.ability, element.isLegend, element.hasVariations, element.quote);
                 p1deck.push(appendCard);
             }
             
             //Player2
             if((element.faction == p2faction || element.faction == "Neutral") && !element.isSpecial){
-                appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction, element.ability, element.isLegend, element.hasVariations, element.quote);
+                appendCard = new Card(element.id+"B", element.name, element.power, element.type, element.faction,
+                 element.ability, element.isLegend, element.hasVariations, element.quote);
                 p2deck.push(appendCard);
             }
         })
