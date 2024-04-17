@@ -400,6 +400,18 @@ img {
     width: 10%;
 }
 
+.passed_div {
+    display: block;
+    position: relative;
+    left: 36%;
+    height: 40%;
+    margin-top: -6%;
+    font-size: 1vw;
+    font-weight: bold;
+    color: #aa9667;
+    z-index: 5;
+}
+
 .leader_div {
     display: inline-block;
     height: 18%;

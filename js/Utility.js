@@ -1,5 +1,4 @@
-document.getElementById("body_div").style.aspectRatio = $(document).width() / $(document).height();;
-
+document.getElementById("body_div").style.aspectRatio = window.innerWidth / window.innerHeight;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -276,7 +275,6 @@ function startingGraphic(version, picker = 0){
                     i = 1-i;
                     if(intervalSpeed < 600) {
                         setTimeout(timer, intervalSpeed);
-
                     }
                     else{
                         startText.style.color="#aa9667";
