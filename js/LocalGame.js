@@ -414,6 +414,7 @@ function passFunction(){
         players[currentPlayer].hasPassed = true;
         if(players[currentPlayer].hasPassed && players[1-currentPlayer].hasPassed);
         else switchFunction();
+        playerUpdate(currentPlayer)
         endTurn();
     }
     else return;  
