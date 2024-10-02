@@ -107,6 +107,7 @@ function showMedicUI(version, random = 0) {
                         lookButton.style.display="none";
                         return;
                 }
+                else{
                 text.innerHTML = "Choose up to 2 cards to redraw";
                 lookButton.style.display = "block";
                 discarded = players[currentPlayer].hand;
@@ -130,7 +131,8 @@ function showMedicUI(version, random = 0) {
                         }
                         clearHand(currentPlayer);
                         drawHand(currentPlayer);
-                })
+                        lookButton.removeEventListener("click", redraw)
+                })}
         }
         else if (version == "deckBuilder") {
                 leaderDescription.style.display = "block";
