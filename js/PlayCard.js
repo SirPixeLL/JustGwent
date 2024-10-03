@@ -53,7 +53,12 @@ function showMedicUI(version, random = 0) {
         let leaderDescription = document.getElementById("leader_description")
         let discarded = [];
         removeCardListener();
-        if (version == "default" || version == "takeOwnDiscarded") discarded = players[currentPlayer].discardedCards;
+        if (version == "default" || version == "takeOwnDiscarded") {
+                discarded = players[currentPlayer].discardedCards;
+                discarded.forEach(element => {
+                        if(element.isLegend)  discarded.splice(discarded.indexOf(element), 1);
+                });
+        }
         else if (version == "takeEnemysDiscarded") discarded = players[1-currentPlayer].discardedCards;
         else if (version == "leaderWeather") {
                 text.innerHTML = "Pick any weather card from your deck";
@@ -170,6 +175,7 @@ function showMedicUI(version, random = 0) {
         if(next2.firstChild) {
                 next2.removeChild(next2.firstChild);
         }
+        console.log(discarded);
         if (discarded.length >= 1) {
                 let selectedCard;
                 if (version != "deckBuilder") selectedCard = createCardElement(discarded[currentIndex]);
